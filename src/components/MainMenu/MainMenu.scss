@@ -1,0 +1,12 @@
+.main-menu {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+
+  &__link {
+    text-decoration: none;
+    &_active {
+      color: yellow;
+    }
+  }
+}

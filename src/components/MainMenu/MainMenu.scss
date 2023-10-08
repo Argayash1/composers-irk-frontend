@@ -1,12 +1,21 @@
 .main-menu {
-  display: flex;
-  list-style: none;
-  gap: 10px;
-
-  &__link {
-    text-decoration: none;
-    &_active {
-      color: yellow;
+  margin-left: 43px;
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    &-link {
+      text-decoration: none;
+      color: #282f30;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 125%; /* 20px */
+      &_active {
+        color: #fcbe13;
+      }
     }
   }
 }

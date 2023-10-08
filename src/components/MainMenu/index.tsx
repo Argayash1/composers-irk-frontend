@@ -15,12 +15,12 @@ const menuItems = [
 
 export const MainMenu: React.FC = () => {
   return (
-    <nav>
-      <ul className='main-menu'>
+    <nav className='main-menu'>
+      <ul className='main-menu__list'>
         {menuItems.map((item) => (
           <li>
             <NavLink
-              className={({ isActive }) => `main-menu__link ${isActive ? 'main-menu__link_active' : ''}`}
+              className={({ isActive }) => `main-menu__list-link ${isActive ? 'main-menu__list-link_active' : ''}`}
               to={item.path}
             >
               {item.name}

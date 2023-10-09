@@ -1,0 +1,21 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 85px 18px 86px;
+  position: relative;
+
+  &__input {
+    width: 473px;
+    height: 35px;
+    border-radius: 3px;
+    border: 1px solid #303a3d;
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 26px;
+    right: 729px;
+    display: flex;
+    gap: 15px;
+  }
+}

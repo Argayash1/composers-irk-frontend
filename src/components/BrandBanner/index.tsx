@@ -2,7 +2,7 @@ import React from 'react';
 import { Logo } from '../Logo';
 import './BrandBanner.scss';
 
-const BrandBanner: React.FC = () => {
+export const BrandBanner: React.FC = () => {
   return (
     <section className='brand-banner'>
       <p className='brand-banner__subtitle'>Иркутская областная общественная организация </p>
@@ -11,5 +11,3 @@ const BrandBanner: React.FC = () => {
     </section>
   );
 };
-
-export default BrandBanner;

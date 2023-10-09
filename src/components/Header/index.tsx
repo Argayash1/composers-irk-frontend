@@ -1,23 +1,17 @@
-import { Logo } from '../Logo';
-import { MailLink } from '../MailLink';
-import { MainMenu } from '../MainMenu';
-import { SearchButton } from '../SearchButton';
-import { VKLink } from '../VKLink';
+import { Logo, MailLink, MainMenu, SearchButton, VKLink } from '../../components';
+import { useDispatch } from 'react-redux';
 import './Header.scss';
+import { setIsSearchOpen } from '../../redux/searchSlice/slice';
 
 export const Header: React.FC = () => {
+  const dispatch = useDispatch();
+
   return (
     <header className='header'>
-      <div className='header__title-container'>
-        <Logo />
-        <p className='header__title'>
-          иооо <br />
-          союз композиторов
-        </p>
-      </div>
+      <Logo />
       <MainMenu />
       <div className='header__icons'>
-        <SearchButton type='button' />
+        <SearchButton type='button' onClick={() => dispatch(setIsSearchOpen())} />
         <VKLink />
         <MailLink />
       </div>

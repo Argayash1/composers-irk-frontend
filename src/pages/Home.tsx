@@ -1,20 +1,14 @@
 import React from 'react';
 import { BrandBanner, Search } from '../components';
+import { useSelector } from 'react-redux';
+import { selectIsSearchOpen } from '../redux/searchSlice/selectors';
 
 const Home: React.FC = () => {
-  const [isSearchBarVisible, setIsSearchBarVisible] = React.useState(true);
-
-  const handleShowSearchBar = () => {
-    setIsSearchBarVisible(true);
-  };
-
-  const handleHideSearchBar = () => {
-    setIsSearchBarVisible(false);
-  };
+  const isSearchOpen = useSelector(selectIsSearchOpen);
 
   return (
     <div>
-      {isSearchBarVisible && <Search />}
+      {isSearchOpen && <Search />}
       <BrandBanner />
     </div>
   );

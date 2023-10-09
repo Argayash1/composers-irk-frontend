@@ -1,10 +1,23 @@
 .logo {
-  width: 31px;
-  height: 38px;
+  display: flex;
+  text-decoration: none;
+  &__image {
+    width: 31px;
+    height: 38px;
+    &_place_main {
+      width: 110.132px;
+      height: 135px;
+      margin-right: 207px;
+    }
+  }
 
-  &_place_main {
-    width: 110.132px;
-    height: 135px;
-    margin-right: 207px;
+  &__title {
+    color: #282f30;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0 0 0 10px;
   }
 }

@@ -1,27 +1,44 @@
 .search {
   display: flex;
+  visibility: hidden;
+  height: 0px;
   justify-content: space-between;
-  padding: 18px 85px 18px 86px;
+  align-items: center;
+  padding: 0 85px 0 86px;
   position: relative;
+  opacity: 0;
+  transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
-  &__input {
+  &_is_opened {
+    visibility: visible;
+    height: 71px;
+    opacity: 1;
+    transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  &__form {
     width: 473px;
     height: 35px;
     border-radius: 3px;
     border: 1px solid #303a3d;
-    color: #282f30;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
+    padding: 0 8px 0 10px;
+  }
+
+  &__input {
+    width: 392px;
+    border: none;
+    color: #282f30;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 125%;
-    padding-left: 10px;
+    margin-right: 10px;
   }
 
   &__buttons {
-    position: absolute;
-    top: 26px;
-    right: 729px;
     display: flex;
     gap: 15px;
   }

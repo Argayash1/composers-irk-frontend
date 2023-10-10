@@ -1,4 +1,4 @@
-import { Logo, MailLink, MainMenu, SearchButton, VKLink } from '../../components';
+import { ButtonTypeEnum, Logo, MailLink, MainMenu, SearchButton, VKLink } from '../../components';
 import { useDispatch } from 'react-redux';
 import './Header.scss';
 import { setIsSearchOpen } from '../../redux/searchSlice/slice';
@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
       <Logo />
       <MainMenu />
       <div className='header__icons'>
-        <SearchButton type='button' onClick={() => dispatch(setIsSearchOpen())} />
+        <SearchButton type={ButtonTypeEnum.BUTTON} onClick={() => dispatch(setIsSearchOpen())} />
         <VKLink />
         <MailLink />
       </div>

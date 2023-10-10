@@ -12,9 +12,9 @@ export const CloseButton: React.FC<CloseButtonProps> = ({ onClick }) => {
         <path
           d='M16.625 16.625L9.50002 9.50002M9.50002 9.50002L2.375 2.375M9.50002 9.50002L16.625 2.375M9.50002 9.50002L2.375 16.625'
           stroke='#303A3D'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
+          strokeWidth='2'
+          strokeLinecap='round'
+          strokeLinejoin='round'
         />
       </svg>
     </button>

@@ -1,12 +1,11 @@
 import React from 'react';
-import { SearchButton, CloseButton } from '../../components';
+import { SearchButton, CloseButton, ButtonTypeEnum } from '../../components';
 import './Search.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsSearchOpen, setSearchValue } from '../../redux/searchSlice/slice';
-import { selectSearchValue } from '../../redux/searchSlice/selectors';
 
 export const Search = () => {
-  const searchValue = useSelector(selectSearchValue);
+  const { searchValue, isSearchOpen } = useSelector((state: any) => state.search);
   const dispatch = useDispatch();
 
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -21,8 +20,8 @@ export const Search = () => {
   };
 
   return (
-    <section className='search'>
-      <form action=''>
+    <section className={`search ${isSearchOpen ? 'search_is_opened' : ''}`}>
+      <form className='search__form' action=''>
         <input
           className='search__input'
           type='text'
@@ -32,7 +31,7 @@ export const Search = () => {
           ref={inputRef}
         />
         <div className='search__buttons'>
-          <SearchButton type='submit' />
+          <SearchButton type={ButtonTypeEnum.SUBMIT} />
           <CloseButton onClick={handleClearSearchBar} />
         </div>
       </form>

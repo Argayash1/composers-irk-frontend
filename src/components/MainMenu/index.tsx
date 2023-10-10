@@ -17,8 +17,8 @@ export const MainMenu: React.FC = () => {
   return (
     <nav className='main-menu'>
       <ul className='main-menu__list'>
-        {menuItems.map((item) => (
-          <li>
+        {menuItems.map((item, index) => (
+          <li key={index}>
             <NavLink
               className={({ isActive }) => `main-menu__list-link ${isActive ? 'main-menu__list-link_active' : ''}`}
               to={item.path}

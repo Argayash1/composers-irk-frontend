@@ -7,3 +7,6 @@ export * from './SearchButton';
 export * from './CloseButton';
 export * from './VKLink';
 export * from './MailLink';
+export * from './CTALink';
+export * from './Footer';
+export * from './ContactItem';

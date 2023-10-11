@@ -1,0 +1,33 @@
+.cta-link {
+  border: 2px solid #fcbe13;
+  border-radius: 6px;
+  width: 190px;
+  height: 50px;
+  text-decoration: none;
+  color: #282f30;
+  font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 125%;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 13px 0;
+  margin: 0;
+  backdrop-filter: blur(6px);
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background: #fcbe13;
+  }
+
+  &_border_grey {
+    border: 2px solid #62767c;
+    &:hover {
+      color: #fff;
+      background: #62767c;
+    }
+  }
+}

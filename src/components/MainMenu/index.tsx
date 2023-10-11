@@ -1,7 +1,7 @@
 import React from 'react';
 import './MainMenu.scss';
 import { NavLink } from 'react-router-dom';
-const menuItems = [
+export const menuItems = [
   { name: 'Главная', path: '/' },
   { name: 'Новости', path: '/news' },
   { name: 'Состав', path: '/unionmembers' },

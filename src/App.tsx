@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './App.css';
+import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
@@ -16,16 +16,16 @@ import Reports from './pages/Reports';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<MainLayout />}> 
-<Route path='' element={<Home />}/>
-<Route path='news' element={<News />} />
-<Route path='unionmembers' element={<UnionMembers />} />
-<Route path='projects' element={<Projects />} />
-<Route path='scores' element={<Scores />} />
-<Route path='media' element={<Media />} />
-<Route path='aboutus' element={<AboutUs />} />
-<Route path='reports' element={<Reports />} />
-<Route path='contacts' element={<Contacts />} />
+      <Route path='/' element={<MainLayout />}>
+        <Route path='' element={<Home />} />
+        <Route path='news' element={<News />} />
+        <Route path='unionmembers' element={<UnionMembers />} />
+        <Route path='projects' element={<Projects />} />
+        <Route path='scores' element={<Scores />} />
+        <Route path='media' element={<Media />} />
+        <Route path='aboutus' element={<AboutUs />} />
+        <Route path='reports' element={<Reports />} />
+        <Route path='contacts' element={<Contacts />} />
       </Route>
     </Routes>
   );

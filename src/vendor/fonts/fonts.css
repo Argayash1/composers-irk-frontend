@@ -1,0 +1,81 @@
+@font-face {
+   font-family: 'Manrope';
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+   src: url('Manrope-Regular.woff2') format('woff2'), 
+	url('Manrope-Regular.woff') format('woff');	
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('Manrope-Medium.woff2') format('woff2'), 
+         url('Manrope-Medium.woff') format('woff');	
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('Manrope-SemiBold.woff2') format('woff2'), 
+	 url('Manrope-SemiBold.woff') format('woff');  
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('Manrope-Bold.woff2') format('woff2'), 
+	 url('Manrope-Bold.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("./Inter-Regular.woff2") format("woff2"),
+         url("./Inter-Regular.woff") format("woff");
+  }
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("./Inter-Medium.woff2") format("woff2"),
+         url("./Inter-Medium.woff") format("woff");
+  }
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("Inter-SemiBold.woff2?v=3.19") format("woff2"),
+         url("Inter-SemiBold.woff?v=3.19") format("woff");
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./Helvetica.woff2') format('woff2'),
+         url('./Helvetica.woff') format('woff'),   
+  }
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('Roboto.woff2') format('woff2'), 
+         url('Roboto.woff') format('woff');   
+}

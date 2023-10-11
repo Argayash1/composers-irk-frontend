@@ -1,0 +1,39 @@
+.page {
+  background: #fff;
+  color: #000;
+  font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+
+  &__content {
+    min-width: 320px;
+    max-width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.home {
+  &__title-container {
+    padding: 65px 85px 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 5px 0 0;
+    padding: 0;
+  }
+
+  &__news-container {
+    margin: 0;
+    padding: 0 85px 120px;
+    // border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    list-style: none;
+    gap: 70px 20px;
+  }
+}

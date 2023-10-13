@@ -1,0 +1,37 @@
+.union-member {
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    width: 255px;
+    height: 255px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  &__name {
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%; /* 22px */
+    margin: 0 0 10px 0;
+    padding: 0;
+    width: 255px;
+    min-height: 44px;
+  }
+
+  &__profession {
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 23.4px */
+    margin: 0;
+    padding: 0;
+    min-height: 46px;
+  }
+}

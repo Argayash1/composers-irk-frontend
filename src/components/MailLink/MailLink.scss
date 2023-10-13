@@ -1,8 +1,26 @@
-.close-button {
-  background-color: #fff;
-  border: none;
+.mail-link {
   padding: 0;
   margin: 0;
-  background: transparent;
   cursor: pointer;
+
+  &__icon {
+    background-image: url('../../assets/mail-Icon.svg');
+    background-size: cover;
+    background-position: 0 0;
+    width: 17px;
+    height: 14px;
+    transition: background-image 0.3s linear;
+    &:hover {
+      background-image: url('../../assets/mail-Icon-hover.svg');
+    }
+  }
+
+  &__icon_place_footer {
+    background-image: url('../../assets/mail-Icon-footer.svg');
+    width: 20px;
+    height: 16px;
+    &:hover {
+      background-image: url('../../assets/mail-Icon-footer-hover.svg');
+    }
+  }
 }

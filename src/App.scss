@@ -15,25 +15,69 @@
   }
 }
 
-.home {
-  &__title-container {
-    padding: 65px 85px 50px;
-    display: flex;
-    justify-content: space-between;
-  }
+.projects {
+  padding: 60px 87px 120px 85px;
 
   &__title {
-    margin: 5px 0 0;
+    color: #282f30;
+    font-family: 'Manrope';
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%; /* 37.8px */
+    margin: 0 0 50px;
     padding: 0;
   }
 
-  &__news-container {
-    margin: 0;
-    padding: 0 85px 120px;
-    // border: 1px solid red;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  &__list {
     list-style: none;
-    gap: 70px 20px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 85px;
+  }
+}
+
+.union-members {
+  padding: 60px 85px 90px;
+
+  &__title {
+    margin: 0 0 50px 0;
+    padding: 0;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 40px 24px;
+  }
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0 0 85px;
+
+  &__title {
+    margin: 0 0 50px;
+    padding: 0;
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%; /* 37.8px */
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 5px;
   }
 }

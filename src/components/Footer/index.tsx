@@ -34,10 +34,10 @@ export const Footer: React.FC = () => {
           <Logo place='footer' />
           <ul className='footer__social-icons'>
             <li>
-              <VKLink />
+              <VKLink place='footer' />
             </li>
             <li>
-              <MailLink />
+              <MailLink place='footer' />
             </li>
           </ul>
           <p className='footer__author'>&copy;&nbsp; Я. Зильберман, {new Date().getFullYear()}</p>

@@ -30,10 +30,10 @@ export const Search = () => {
           placeholder='Введите запрос'
           ref={inputRef}
         />
-        <div className='search__buttons'>
-          <SearchButton type={ButtonTypeEnum.SUBMIT} />
-          <CloseButton onClick={handleClearSearchBar} />
-        </div>
+        {/* <div className='search__buttons'> */}
+        <SearchButton type={ButtonTypeEnum.SUBMIT} />
+        {searchValue && <CloseButton onClick={handleClearSearchBar} />}
+        {/* </div> */}
       </form>
       <CloseButton onClick={() => dispatch(setIsSearchOpen())} />
     </section>

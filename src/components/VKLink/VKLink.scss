@@ -1,8 +1,24 @@
 .vk-link {
-  background-color: #fff;
-  border: none;
   padding: 0;
   margin: 0;
-  background: transparent;
   cursor: pointer;
+
+  &__icon {
+    background-image: url('../../assets/vk-icon.svg');
+    width: 17px;
+    height: 17px;
+    transition: background-image 0.3s linear;
+    &:hover {
+      background-image: url('../../assets/vk-icon-hover.svg');
+    }
+  }
+
+  &__icon_place_footer {
+    background-image: url('../../assets/vk-icon-footer.svg');
+    width: 20px;
+    height: 20px;
+    &:hover {
+      background-image: url('../../assets/vk-icon-footer-hover.svg');
+    }
+  }
 }

@@ -1,8 +1,18 @@
 .search-button {
+  width: 19px;
+  height: 19px;
   background-color: #fff;
   border: none;
   padding: 0;
   margin: 0;
   background: transparent;
+  background-image: url('../../assets/search-icon.svg');
   cursor: pointer;
+  transition: background-image 0.3s linear;
+
+  &_place_header {
+    &:hover {
+      background-image: url('../../assets/search-icon-hover.svg');
+    }
+  }
 }

@@ -1,0 +1,36 @@
+.video-recordings {
+  list-style: none;
+  display: flex;
+  max-width: 1109px;
+  flex-wrap: wrap;
+  gap: 21px;
+  margin: 50px 0 90px;
+  padding: 0;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__iframe {
+    width: 540px;
+    height: 303px;
+  }
+
+  &__item-title {
+    width: 541px;
+    min-height: 44px;
+    margin: 30px 0 15px;
+    padding: 0;
+    color: #000;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%; /* 22px */
+  }
+
+  &__item-date {
+    display: inline-block;
+  }
+}

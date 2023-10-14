@@ -1,6 +1,6 @@
 .search {
-  display: flex;
   visibility: hidden;
+  display: flex;
   height: 0px;
   justify-content: space-between;
   align-items: center;
@@ -13,34 +13,41 @@
     visibility: visible;
     height: 71px;
     opacity: 1;
-    transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   &__form {
     width: 473px;
     height: 35px;
-    border-radius: 3px;
-    border: 1px solid #303a3d;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0 8px 0 10px;
+    position: relative;
   }
 
   &__input {
-    width: 392px;
+    width: 473px;
+    height: 35px;
     border: none;
+    outline: 1px solid #62767c;
+    border-radius: 3px;
     color: #282f30;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 125%;
-    margin-right: 10px;
+    box-sizing: border-box;
+    padding: 0 71px 0 10px;
+    &:focus {
+      outline: 1px solid #303a3d;
+    }
   }
 
   &__buttons {
     display: flex;
     gap: 15px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
   }
 }

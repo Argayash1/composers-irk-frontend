@@ -8,6 +8,11 @@
     margin-bottom: 15px;
     object-fit: cover;
     object-position: top;
+
+    &:hover {
+      width: 270px;
+      height: 270px;
+    }
   }
 
   &__name {

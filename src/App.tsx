@@ -12,6 +12,9 @@ import Media from './pages/Media';
 import AboutUs from './pages/AboutUs';
 import Contacts from './pages/Contacts';
 import Reports from './pages/Reports';
+import FullNews from './pages/FullNews';
+import FullProject from './pages/FullProject';
+import FullUnionMemberInfo from './pages/FullUnionMemberInfo';
 
 function App() {
   return (
@@ -19,8 +22,11 @@ function App() {
       <Route path='/' element={<MainLayout />}>
         <Route path='' element={<Home />} />
         <Route path='news' element={<News />} />
+        <Route path='news/:id' element={<FullNews />} />
         <Route path='unionmembers' element={<UnionMembers />} />
+        <Route path='unionmembers/:id' element={<FullUnionMemberInfo />} />
         <Route path='projects' element={<Projects />} />
+        <Route path='projects/:id' element={<FullProject />} />
         <Route path='scores' element={<Scores />} />
         <Route path='media' element={<Media />} />
         <Route path='aboutus' element={<AboutUs />} />

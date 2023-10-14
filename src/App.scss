@@ -27,6 +27,8 @@
   &__image {
     width: 1110px;
     height: 600px;
+    object-fit: cover;
+    object-position: top -100px right 0;
   }
 
   &__text {

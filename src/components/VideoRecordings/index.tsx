@@ -1,7 +1,8 @@
 import React from 'react';
 import './VideoRecordings.scss';
+import { Link } from 'react-router-dom';
 
-const iFrameItems = [
+export const iFrameItems = [
   {
     iFrameUrl: 'https://www.youtube.com/embed/GVlRhEp0fnQ',
     title: 'Концерт, посвященный памяти Иркутского композитора В. Ф. Павлова. 21.05.2000',
@@ -24,7 +25,10 @@ export const VideoRecordings = () => {
             allowFullScreen
             title={iFrameItem.title}
           ></iframe>
-          <h2 className='video-recordings__item-title'>{iFrameItem.title}</h2>
+
+          <Link to={`/media/${index}`}>
+            <h2 className='video-recordings__item-title'>{iFrameItem.title}</h2>
+          </Link>
           <span>01.01.2023</span>
         </li>
       ))}

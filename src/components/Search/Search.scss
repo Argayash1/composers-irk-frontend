@@ -41,6 +41,14 @@
     &:focus {
       outline: 1px solid #303a3d;
     }
+    &::placeholder {
+      color: #bdbdbd;
+      font-family: Manrope;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
   }
 
   &__buttons {

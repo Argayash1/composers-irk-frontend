@@ -97,6 +97,10 @@
 .full-union-member {
   padding: 60px 85px 120px;
 
+  &__container {
+    margin-bottom: 45px;
+  }
+
   &__image {
     width: 445px;
     height: 445px;
@@ -116,12 +120,70 @@
 
 .scores {
   padding: 60px 0 0 85px;
+
+  &__list {
+    list-style: none;
+    margin: 51px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #000;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%; /* 22px */
+    display: flex;
+    gap: 22px;
+  }
+
+  &__link-image {
+    background-image: url('./assets/score-image.svg');
+    width: 19px;
+    height: 22px;
+  }
 }
 
 .media {
   display: flex;
   flex-direction: column;
   padding: 60px 0 0 85px;
+}
+
+.full-video {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 85px 326px;
+
+  &__iframe {
+    width: 1109.945px;
+    height: 622.802px;
+  }
+
+  &__title {
+    margin: 40px 0 20px;
+    padding: 0;
+    color: #000;
+    font-family: 'Manrope';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%; /* 29.4px */
+  }
+
+  &__date {
+    color: #000;
+    font-family: 'Manrope';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 24px */
+  }
 }
 
 .reports {
@@ -133,11 +195,22 @@
 .about-us {
   display: flex;
   flex-direction: column;
-  padding: 60px 0 0 85px;
+  padding: 60px 85px 0 85px;
 }
 
 .contacts {
   display: flex;
   flex-direction: column;
   padding: 60px 0 0 85px;
+
+  &__list {
+    width: 598px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 35px 172px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 }

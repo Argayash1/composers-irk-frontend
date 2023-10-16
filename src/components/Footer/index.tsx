@@ -20,7 +20,7 @@ const footerMenuItems = [
   menuItems[8],
 ];
 
-const contacts = [
+const footerContacts = [
   { iconUrl: phone, text: '+7 (999) 9999999', altText: 'Телефон' },
   { iconUrl: email, text: 'composersirk@mail.ru', altText: 'E-mail' },
   { iconUrl: adress, text: 'ул. Грязнова, 12, Иркутск', altText: 'Адрес' },
@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
         <div className='footer__column'>
           <h3 className='footer__menu-heading'>Контакты</h3>
           <ul className='footer__contact-items'>
-            {contacts.map((contact, index) => (
+            {footerContacts.map((contact, index) => (
               <li key={index}>
                 <ContactItem {...contact} />
               </li>

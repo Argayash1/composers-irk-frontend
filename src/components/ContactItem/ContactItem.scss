@@ -1,8 +1,19 @@
 .contact-item {
   display: flex;
+  text-decoration: none;
 
   &__text {
     margin: 0 0 0 15px;
+    color: #fff;
     padding: 0;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%; /* 20px */
+
+    &_color_black {
+      color: #303a3d;
+    }
   }
 }

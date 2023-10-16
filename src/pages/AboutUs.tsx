@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle, Tabs } from '../components';
+import { OurHistory, PageTitle, Tabs } from '../components';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
@@ -18,6 +18,7 @@ export const AboutUs: React.FC = () => {
     <div className='about-us'>
       <PageTitle name='Про нас' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={category} />
+      {category === 1 && <OurHistory />}
     </div>
   );
 };

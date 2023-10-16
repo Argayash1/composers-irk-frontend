@@ -19,3 +19,4 @@ export * from './PageTitle';
 export * from './AudioRecordings';
 export * from './VideoRecordings';
 export * from './SharePanel';
+export * from './OurHistory';

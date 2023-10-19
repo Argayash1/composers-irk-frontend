@@ -143,7 +143,7 @@
   }
 
   &__link-image {
-    background-image: url('./assets/score-image.svg');
+    background-image: url('./assets/icons/score-image.svg');
     width: 19px;
     height: 22px;
   }
@@ -152,7 +152,7 @@
 .media {
   display: flex;
   flex-direction: column;
-  padding: 60px 0 0 85px;
+  padding: 60px 85px 0;
 }
 
 .full-video {

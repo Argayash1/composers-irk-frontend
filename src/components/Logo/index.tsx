@@ -1,5 +1,5 @@
-import logo from '../../assets/logo.png';
-import logo2 from '../../assets/logo-place-brand-banner.png';
+import logo from '../../assets/images/logo.png';
+import logo2 from '../../assets/images/logo-place-brand-banner.png';
 import '../Logo/Logo.scss';
 import { Link } from 'react-router-dom';
 import { handleScrollToTop } from '../../utils/utils';

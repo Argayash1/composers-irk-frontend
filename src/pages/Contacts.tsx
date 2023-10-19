@@ -1,9 +1,9 @@
 import React from 'react';
 import { ContactItem, PageTitle } from '../components';
-import phone from '../assets/phone-icon-contacts.svg';
-import email from '../assets/mail-icon-contacts.svg';
-import adress from '../assets/adress-icon-contacts.svg';
-import vk from '../assets/vk-icon-contacts.svg';
+import phone from '../assets/icons/phone-icon-contacts.svg';
+import email from '../assets/icons/mail-icon-contacts.svg';
+import adress from '../assets/icons/adress-icon-contacts.svg';
+import vk from '../assets/icons/vk-icon-contacts.svg';
 
 const contactsData = [
   { iconUrl: phone, text: '+7 (999) 9999999', altText: 'Телефон' },

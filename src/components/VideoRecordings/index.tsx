@@ -26,7 +26,7 @@ export const VideoRecordings = () => {
             title={iFrameItem.title}
           ></iframe>
 
-          <Link to={`/media/${index}`}>
+          <Link to={`/media/${index}`} className='video-recordings__item-link'>
             <h2 className='video-recordings__item-title'>{iFrameItem.title}</h2>
           </Link>
           <span>01.01.2023</span>

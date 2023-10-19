@@ -4,9 +4,9 @@ import { Logo, VKLink, MailLink, ContactItem } from '../../components';
 import { Link } from 'react-router-dom';
 import { menuItems } from '../MainMenu';
 import { handleScrollToTop } from '../../utils/utils';
-import phone from '../../assets/contacts-phone.svg';
-import email from '../../assets/contacts-mail.svg';
-import adress from '../../assets/contacts-adress.svg';
+import phone from '../../assets/icons/contacts-phone.svg';
+import email from '../../assets/icons/contacts-mail.svg';
+import adress from '../../assets/icons/contacts-adress.svg';
 
 const footerMenuItems = [
   menuItems[0],
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
               <MailLink place='footer' />
             </li>
           </ul>
-          <p className='footer__author'>&copy;&nbsp; Я. Зильберман, {new Date().getFullYear()}</p>
+          <p className='footer__author'>&copy;&nbsp; М. Толстова, Я. Зильберман, {new Date().getFullYear()}</p>
         </div>
         <div className='footer__column'>
           <h3 className='footer__menu-heading'>Меню</h3>

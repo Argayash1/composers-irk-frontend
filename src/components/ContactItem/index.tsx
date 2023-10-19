@@ -10,7 +10,10 @@ type ContactItemProps = {
 
 export const ContactItem: React.FC<ContactItemProps> = ({ iconUrl, text, altText, place }) => {
   const hrefProperty = text.includes('@') ? `mailto: ${text}` : `https://${text}`;
-  const contactItemTextClassName = `contact-item__text ${place === 'contacts' ? 'contact-item__text_color_black' : ''}`;
+  const contactItemTextClassName = `contact-item__text ${
+    place === 'contacts' ? 'contact-item__text_place_contacts' : ''
+  }`;
+
   return (
     <>
       {text.includes('@') || text.includes('/') ? (

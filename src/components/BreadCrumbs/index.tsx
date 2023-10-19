@@ -1,22 +1,29 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './BreadCrumbs.scss';
-import { useLocation } from 'react-router-dom';
-import { Crumb } from '../Crumb';
 
-export interface IBreadCrumbsLocationState {
-  id: string;
-  path: string;
-  title: string;
-  url: string;
-}
+export const BreadCrumbs = () => {
+  const location = useLocation();
+  const pathnames = location.pathname.split('/').filter((pathname) => pathname);
 
-export const BreadCrumbs: React.FC = () => {
-  const { state } = useLocation();
   return (
     <nav className='bread-crumbs'>
-      {/* {state.map((crumb) => {
-        <Crumb {...crumb} key={crumb.url} />;
-      })} */}
+      {pathnames.length > 0 && (
+        <ul className='bread-crumbs__list'>
+          {pathnames.map((pathname, index) =>
+            index === pathnames.length - 1 ? (
+              <li className='bread-crumbs__list-item' key={index}>
+                {pathname}
+              </li>
+            ) : (
+              <li className='bread-crumbs__list-item' key={index}>
+                <Link to={`/${pathnames.slice(0, index + 1).join('/')}`}>{pathname}</Link>
+                <span className='bread-crumbs__span'>|</span>
+              </li>
+            ),
+          )}
+        </ul>
+      )}
     </nav>
   );
 };

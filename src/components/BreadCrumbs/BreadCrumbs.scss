@@ -18,6 +18,10 @@
     line-height: 125%; /* 20px */
   }
 
+  &__list-item_link {
+    text-decoration: none;
+  }
+
   &__span {
     margin-left: 20px;
     color: #282f30;

@@ -17,7 +17,9 @@ export const BreadCrumbs = () => {
               </li>
             ) : (
               <li className='bread-crumbs__list-item' key={index}>
-                <Link to={`/${pathnames.slice(0, index + 1).join('/')}`}>{pathname}</Link>
+                <Link className='bread-crumbs__list-item_link' to={`/${pathnames.slice(0, index + 1).join('/')}`}>
+                  {pathname}
+                </Link>
                 <span className='bread-crumbs__span'>|</span>
               </li>
             ),

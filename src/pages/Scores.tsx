@@ -3,14 +3,14 @@ import { PageTitle, Tabs } from '../components';
 
 const tabNames = ['Все ноты', 'Вокал', 'Фортепиано'];
 
-const scoresData = [
+const allScores = [
   { title: 'Д. Григоруцэ Вечное движение', url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU', category: 'piano' },
   { title: 'C. Михайлов "Ната-вальс"', url: 'https://cloud.mail.ru/public/QSjX/xcjiwBJUm', category: 'piano' },
   { title: 'Л. Янковская "Песня о Пскове"', url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU', category: 'voice' },
 ];
 
-const pianoScores = scoresData.filter((scoreData) => scoreData.category === 'piano');
-const vocalScores = scoresData.filter((scoreData) => scoreData.category === 'voice');
+const pianoScores = allScores.filter((score) => score.category === 'piano');
+const vocalScores = allScores.filter((score) => score.category === 'voice');
 
 const Scores: React.FC = () => {
   const [scoreCategory, setScoreCategory] = React.useState(0);
@@ -23,37 +23,21 @@ const Scores: React.FC = () => {
     document.title = 'Ноты';
   }, []);
 
+  const scoreItems = scoreCategory === 0 ? allScores : scoreCategory === 1 ? vocalScores : pianoScores;
+
   return (
     <div className='scores'>
       <PageTitle name='Ноты' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeScoreCategory} value={scoreCategory} />
       <ul className='scores__list'>
-        {scoreCategory === 0
-          ? scoresData.map((score, index) => (
-              <li key={index}>
-                <a className='scores__link' href={score.url}>
-                  <div className='scores__link-image'></div>
-                  {score.title}
-                </a>
-              </li>
-            ))
-          : scoreCategory === 2
-          ? pianoScores.map((pianoScore, index) => (
-              <li key={index}>
-                <a className='scores__link' href={pianoScore.url}>
-                  <div className='scores__link-image'></div>
-                  {pianoScore.title}
-                </a>
-              </li>
-            ))
-          : vocalScores.map((pianoScore, index) => (
-              <li key={index}>
-                <a className='scores__link' href={pianoScore.url}>
-                  <div className='scores__link-image'></div>
-                  {pianoScore.title}
-                </a>
-              </li>
-            ))}
+        {scoreItems.map((scoreItem, index) => (
+          <li key={index}>
+            <a className='scores__link' href={scoreItem.url}>
+              <div className='scores__link-image'></div>
+              {scoreItem.title}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

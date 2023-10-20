@@ -4,15 +4,15 @@ import './AudioRecordings.scss';
 
 const audioItems = [
   {
-    url: 'http://composersirk.ru/files/d/11.mp3',
+    url: 'https://cloud.mail.ru/public/3HFG/NhYbZd2GD',
     title: 'Анатолий Тепляков "Спеши на меня наглядеться". Исп. Марина Заитова 1',
   },
   {
-    url: 'http://composersirk.ru/files/d/12.mp3',
+    url: 'https://cloud.mail.ru/public/ASym/34Ckk5d8c',
     title: 'Анатолий Тепляков "Спеши на меня наглядеться". Исп. Марина Заитова 2',
   },
   {
-    url: 'http://composersirk.ru/files/d/10.mp3',
+    url: 'https://cloud.mail.ru/public/VUVp/LhpJGdSC5',
     title: 'Анатолий Тепляков "Спеши на меня наглядеться". Исп. Марина Заитова 3',
   },
 ];

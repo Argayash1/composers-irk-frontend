@@ -16,10 +16,16 @@
     font-style: normal;
     font-weight: 400;
     line-height: 125%; /* 20px */
+
+    &_margin-top_big {
+      margin-top: 3.2px;
+    }
   }
 
   &__list-item_link {
     text-decoration: none;
+    display: inline-block;
+    color: #282f30;
   }
 
   &__span {

@@ -3,7 +3,7 @@ import { PageTitle, Tabs } from '../components';
 
 const tabNames = ['Все ноты', 'Вокал', 'Фортепиано'];
 
-const allScores = [
+export const allScores = [
   { title: 'Д. Григоруцэ Вечное движение', url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU', category: 'piano' },
   { title: 'C. Михайлов "Ната-вальс"', url: 'https://cloud.mail.ru/public/QSjX/xcjiwBJUm', category: 'piano' },
   { title: 'Л. Янковская "Песня о Пскове"', url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU', category: 'voice' },

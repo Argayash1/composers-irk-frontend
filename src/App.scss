@@ -201,13 +201,13 @@
 .contacts {
   display: flex;
   flex-direction: column;
-  padding: 60px 84px 0 85px;
+  padding: 60px 84px 467px 85px;
 
   &__list {
-    display: grid;
-    grid-template-columns: 204px 222px;
-    gap: 35px 172px;
     list-style-type: none;
+    display: grid;
+    grid-template-columns: 204px 227px;
+    gap: 35px 172px;
     margin: 0 0 70px;
     padding: 0;
   }

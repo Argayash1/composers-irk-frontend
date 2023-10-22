@@ -1,6 +1,6 @@
 import React from 'react';
 import { membersArray } from '../utils/membersArray';
-import { PageTitle, UnionMember } from '../components';
+import { PageTitle, UnionMemberBlock } from '../components';
 
 const UnionMembers: React.FC = () => {
   React.useEffect(() => {
@@ -13,7 +13,7 @@ const UnionMembers: React.FC = () => {
       <ul className='union-members__list'>
         {membersArray.map((member, index) => (
           <li key={index}>
-            <UnionMember index={index} {...member} />
+            <UnionMemberBlock index={index} {...member} />
           </li>
         ))}
       </ul>

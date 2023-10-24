@@ -7,9 +7,9 @@ const News: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <NewsContainer place='news' />
-    </div>
+    </main>
   );
 };
 

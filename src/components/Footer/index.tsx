@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className='footer'>
       <div className='footer__columns'>
-        <div className='footer__column'>
+        <div className='footer__column footer__column_type_first'>
           <Logo place='footer' />
           <ul className='footer__social-icons'>
             <li>
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
           </ul>
           <p className='footer__author'>&copy;&nbsp; М. Толстова, Я. Зильберман, {new Date().getFullYear()}</p>
         </div>
-        <div className='footer__column'>
+        <div className='footer__column footer__column_type_second'>
           <h3 className='footer__menu-heading'>Меню</h3>
           <nav>
             <ul className='footer__menu-items'>
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div className='footer__column'>
+        <div className='footer__column footer__column_type_third'>
           <h3 className='footer__menu-heading'>Контакты</h3>
           <ul className='footer__contact-items'>
             {footerContacts.map((contact, index) => (

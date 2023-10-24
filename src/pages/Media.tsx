@@ -15,11 +15,11 @@ const Media: React.FC = () => {
   }, []);
 
   return (
-    <div className='media'>
+    <main className='media'>
       <PageTitle name='Медиа' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeMediaCategory} value={mediaCategory} />
       {mediaCategory === 0 ? <AudioRecordings /> : <VideoRecordings />}
-    </div>
+    </main>
   );
 };
 

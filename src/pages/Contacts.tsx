@@ -18,7 +18,7 @@ export const Contacts: React.FC = () => {
   }, []);
 
   return (
-    <div className='contacts'>
+    <main className='contacts'>
       <PageTitle name='Контакты' />
       <ul className='contacts__list'>
         {contactsData.map((contact, index) => (
@@ -34,7 +34,7 @@ export const Contacts: React.FC = () => {
         className='contacts__iframe'
         allowFullScreen
       ></iframe>
-    </div>
+    </main>
   );
 };
 

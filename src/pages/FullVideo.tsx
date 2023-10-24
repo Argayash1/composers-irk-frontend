@@ -2,7 +2,7 @@ import React from 'react';
 import { PageTitle, iFrameItems } from '../components';
 import { useParams } from 'react-router-dom';
 
-const FullVideo = () => {
+const FullVideo: React.FC = () => {
   const [video, setVideo] = React.useState<{ iFrameUrl: string; title: string }>();
 
   const { id } = useParams();
@@ -17,12 +17,12 @@ const FullVideo = () => {
   }
 
   return (
-    <div className='full-video'>
+    <main className='full-video'>
       <PageTitle name='Медиа' />
       <iframe className='full-video__iframe' src={video.iFrameUrl} allowFullScreen title={video.title}></iframe>
       <h2 className='full-video__title'>{video.title}</h2>
       <span className='full-video__date'>01.01.2023</span>
-    </div>
+    </main>
   );
 };
 

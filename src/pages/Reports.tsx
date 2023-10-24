@@ -15,10 +15,10 @@ const Reports: React.FC = () => {
   }, []);
 
   return (
-    <div className='reports'>
+    <main className='reports'>
       <PageTitle name='Отчёты' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={reportYear} />
-    </div>
+    </main>
   );
 };
 

@@ -7,10 +7,10 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className='home'>
+    <main className='home'>
       <BrandBanner />
       <NewsContainer />
-    </div>
+    </main>
   );
 };
 

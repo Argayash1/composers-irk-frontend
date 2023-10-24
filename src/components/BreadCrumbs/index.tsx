@@ -4,6 +4,7 @@ import './BreadCrumbs.scss';
 import { newsArray } from '../../utils/newsArray';
 import { projectArray } from '../../utils/projectsArray';
 import { membersArray } from '../../utils/membersArray';
+import { menuItems } from '../MainMenu';
 
 export const BreadCrumbs: React.FC = () => {
   const { pathname } = useLocation();
@@ -25,6 +26,7 @@ export const BreadCrumbs: React.FC = () => {
     imageUrl: string;
     title?: string;
     name?: string;
+    surname?: string;
     profession?: string;
     biography?: string;
     description?: string;
@@ -32,14 +34,14 @@ export const BreadCrumbs: React.FC = () => {
   };
 
   const crumbTexts: CrumbTexts = {
-    news: 'Новости',
-    unionmembers: 'Состав',
-    projects: 'Проекты',
-    scores: 'Ноты',
-    media: 'Медиа',
-    aboutus: 'Про нас',
-    reports: 'Отчёты',
-    contacts: 'Контакты',
+    news: menuItems[1].name,
+    unionmembers: menuItems[2].name,
+    projects: menuItems[3].name,
+    scores: menuItems[4].name,
+    media: menuItems[5].name,
+    aboutus: menuItems[6].name,
+    reports: menuItems[7].name,
+    contacts: menuItems[8].name,
   };
 
   const itemsArray: Item[] = pathname.includes('news')
@@ -62,7 +64,8 @@ export const BreadCrumbs: React.FC = () => {
             index === pathnames.length - 1 ? (
               <li className='bread-crumbs__list-item bread-crumbs__list-item_margin-top_big' key={index}>
                 {pathnames.length === 2
-                  ? itemsArray[Number(pathname)].title || itemsArray[Number(pathname)].name
+                  ? itemsArray[Number(pathname)].title ||
+                    `${itemsArray[Number(pathname)].surname} ${itemsArray[Number(pathname)].name}`
                   : crumbTexts[pathname]}
               </li>
             ) : (

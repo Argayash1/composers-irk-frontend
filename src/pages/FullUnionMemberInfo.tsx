@@ -35,7 +35,7 @@ const FullUnionMemberInfo: React.FC = () => {
 
   return (
     <div className='full-union-member'>
-      <PageTitle name={unionMember.name} />
+      <PageTitle name={`${unionMember.surname} ${unionMember.name}`} />
       <div className='full-union-member__container'>
         <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />
         <p className='full-union-member__text'>{unionMember.biography}</p>

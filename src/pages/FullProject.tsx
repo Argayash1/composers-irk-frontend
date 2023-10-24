@@ -23,7 +23,7 @@ const FullProject: React.FC = () => {
   }
 
   return (
-    <div className='full-project'>
+    <main className='full-project'>
       <PageTitle name={news.title} />
       <img className='full-project__image' src={news.imageUrl} alt='' />
       <p className='full-project__text'>{news.description}</p>
@@ -32,7 +32,7 @@ const FullProject: React.FC = () => {
       ) : (
         <CTA linkText='Поделиться' onClick={hadleToggleSharePanel} />
       )}
-    </div>
+    </main>
   );
 };
 

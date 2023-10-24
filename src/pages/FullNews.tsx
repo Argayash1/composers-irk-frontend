@@ -22,7 +22,7 @@ const FullNews: React.FC = () => {
   };
 
   return (
-    <div className='full-news'>
+    <main className='full-news'>
       <PageTitle name={news.title} />
       <span className='full-news__date'>{news.createdAt}</span>
       <img className='full-news__image' src={news.imageUrl} alt='' />
@@ -32,7 +32,7 @@ const FullNews: React.FC = () => {
       ) : (
         <CTA linkText='Поделиться' onClick={hadleToggleSharePanel} />
       )}
-    </div>
+    </main>
   );
 };
 

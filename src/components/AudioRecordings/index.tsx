@@ -17,7 +17,7 @@ const audioItems = [
   },
 ];
 
-export const AudioRecordings = () => {
+export const AudioRecordings: React.FC = () => {
   return (
     <ul className='audio-recordings'>
       {audioItems.map((audioItem, index) => (

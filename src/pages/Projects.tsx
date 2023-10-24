@@ -9,7 +9,7 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className='projects'>
+    <main className='projects'>
       <PageTitle name='Проекты' />
       <ul className='projects__list'>
         {projectArray.map((project, index) => (
@@ -18,7 +18,7 @@ const Projects: React.FC = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 };
 

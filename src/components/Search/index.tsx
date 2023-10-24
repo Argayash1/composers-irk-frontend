@@ -4,7 +4,7 @@ import './Search.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsSearchOpen, setSearchValue } from '../../redux/searchSlice/slice';
 
-export const Search = () => {
+export const Search: React.FC = () => {
   const { searchValue, isSearchOpen } = useSelector((state: any) => state.search);
   const dispatch = useDispatch();
 

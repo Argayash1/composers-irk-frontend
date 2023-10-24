@@ -14,7 +14,7 @@ export const iFrameItems = [
   },
 ];
 
-export const VideoRecordings = () => {
+export const VideoRecordings: React.FC = () => {
   return (
     <ul className='video-recordings'>
       {iFrameItems.map((iFrameItem, index) => (

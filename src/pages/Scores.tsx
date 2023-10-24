@@ -26,7 +26,7 @@ const Scores: React.FC = () => {
   const scoreItems = scoreCategory === 0 ? allScores : scoreCategory === 1 ? vocalScores : pianoScores;
 
   return (
-    <div className='scores'>
+    <main className='scores'>
       <PageTitle name='Ноты' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeScoreCategory} value={scoreCategory} />
       <ul className='scores__list'>
@@ -39,7 +39,7 @@ const Scores: React.FC = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 };
 

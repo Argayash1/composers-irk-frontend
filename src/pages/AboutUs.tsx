@@ -15,11 +15,11 @@ export const AboutUs: React.FC = () => {
   }, []);
 
   return (
-    <div className='about-us'>
+    <main className='about-us'>
       <PageTitle name='Про нас' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={category} />
       {category === 1 && <OurHistory />}
-    </div>
+    </main>
   );
 };
 

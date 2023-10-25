@@ -21,3 +21,5 @@ export * from './VideoRecordings';
 export * from './SharePanel';
 export * from './OurHistory';
 export * from './BreadCrumbs';
+export * from './AudioPlayer';
+export * from './Overlay';

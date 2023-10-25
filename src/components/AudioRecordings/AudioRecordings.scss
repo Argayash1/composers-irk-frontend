@@ -17,32 +17,4 @@
     margin: 0 0 25px;
     padding: 0;
   }
-
-  &__item-audio {
-    width: 730px;
-    overflow: hidden;
-    border-radius: 0%;
-    &::-webkit-media-controls-panel {
-      background-color: #fafafa;
-    }
-
-    &::-webkit-media-controls-timeline {
-      height: 4px; /* Высота дорожки */
-      border-radius: 6px;
-    }
-
-    &::-webkit-media-controls-progress-bar {
-      color: yellow; /* Цвет прогресса дорожки */
-    }
-
-    &::-webkit-media-controls-current-time-display,
-    &::-webkit-media-controls-time-remaining-display {
-      color: #303a3d;
-      font-family: Manrope;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-  }
 }

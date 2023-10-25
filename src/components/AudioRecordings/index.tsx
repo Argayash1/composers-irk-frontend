@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './AudioRecordings.scss';
+import { AudioPlayer } from '../AudioPlayer';
 
 const audioItems = [
   {
@@ -23,7 +24,8 @@ export const AudioRecordings: React.FC = () => {
       {audioItems.map((audioItem, index) => (
         <li key={index}>
           <h2 className='audio-recordings__item-title'>{audioItem.title}</h2>
-          <audio className='audio-recordings__item-audio' src={audioItem.url} controls></audio>
+          <AudioPlayer src={audioItem.url} />
+          {/* <audio className='audio-recordings__item-audio' src={audioItem.url} controls></audio> */}
         </li>
       ))}
     </ul>

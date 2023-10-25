@@ -21,8 +21,8 @@ export const CTA: React.FC<CTAProps> = ({ linkText, path, borderColor, onClick }
         <Link
           to={path}
           className={`cta ${borderColor === 'grey' ? 'cta_border_grey' : ''} ${
-            path === '/projects' ? 'cta_grid-column_23' : ''
-          }`}
+            path === '/projects' || path === '/scores' ? 'cta_grid-column_23' : ''
+          } `}
           onClick={handleScrollToTop}
         >
           {linkText ? linkText : 'Подробнее'}

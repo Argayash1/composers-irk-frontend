@@ -5,6 +5,7 @@ import { newsArray } from '../../utils/newsArray';
 import { projectArray } from '../../utils/projectsArray';
 import { membersArray } from '../../utils/membersArray';
 import { menuItems } from '../MainMenu';
+import { compareBySurname } from '../../utils/utils';
 
 export const BreadCrumbs: React.FC = () => {
   const { pathname } = useLocation();
@@ -28,7 +29,7 @@ export const BreadCrumbs: React.FC = () => {
     name?: string;
     surname?: string;
     profession?: string;
-    biography?: string;
+    biography?: string[];
     description?: string;
     newsText?: string;
   };
@@ -44,11 +45,13 @@ export const BreadCrumbs: React.FC = () => {
     contacts: menuItems[8].name,
   };
 
+  const membersArraySortedBySurname = membersArray.sort(compareBySurname);
+
   const itemsArray: Item[] = pathname.includes('news')
     ? newsArray
     : pathname.includes('projects')
     ? projectArray
-    : membersArray;
+    : membersArraySortedBySurname;
 
   return (
     <nav className='bread-crumbs'>

@@ -1,20 +1,9 @@
 import React from 'react';
-import { UnionMember, membersArray } from '../utils/membersArray';
+import { membersArray } from '../utils/membersArray';
 import { PageTitle, UnionMemberBlock } from '../components';
+import { compareBySurname } from '../utils/utils';
 
 const UnionMembers: React.FC = () => {
-  function compareBySurname(a: UnionMember, b: UnionMember) {
-    const surnameA = a.surname.toUpperCase();
-    const surnameB = b.surname.toUpperCase();
-
-    if (surnameA < surnameB) {
-      return -1;
-    }
-    if (surnameA > surnameB) {
-      return 1;
-    }
-    return 0;
-  }
   const membersArraySortedBySurname = membersArray.sort(compareBySurname);
 
   React.useEffect(() => {

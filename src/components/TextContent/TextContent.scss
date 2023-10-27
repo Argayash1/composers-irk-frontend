@@ -1,0 +1,18 @@
+.text-content {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  &__paragraph {
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+
+    &_font_bold {
+      font-weight: 700;
+    }
+  }
+}

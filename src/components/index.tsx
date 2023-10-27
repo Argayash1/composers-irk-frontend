@@ -23,3 +23,4 @@ export * from './OurHistory';
 export * from './BreadCrumbs';
 export * from './AudioPlayer';
 export * from './Overlay';
+export * from './Heading';

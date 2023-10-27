@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { articlesArray } from '../utils/articlesArray';
 import { PageTitle } from '../components';
+import { TextContent } from '../components/TextContent';
 
 const FullArticle = () => {
   const [article, setArticle] = React.useState<{
@@ -30,13 +31,14 @@ const FullArticle = () => {
         <img className='full-article__image' src={article.imageUrl} alt='' />
         <p className='full-article__description'>{article.articleDescription}</p>
       </div>
-      <ul className='full-article__paragraph-list'>
+      <TextContent textArray={article.articleText} />
+      {/* <ul className='full-article__paragraph-list'>
         {article.articleText.map((string, index) => (
           <li key={index}>
             <p>{string}</p>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </main>
   );
 };

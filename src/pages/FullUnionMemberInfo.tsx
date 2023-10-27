@@ -4,6 +4,7 @@ import { CTA, PageTitle, Tabs } from '../components';
 import { membersArray } from '../utils/membersArray';
 import { allScores } from './Scores';
 import { compareBySurname } from '../utils/utils';
+import { TextContent } from '../components/TextContent';
 
 const FullUnionMemberInfo: React.FC = () => {
   const [unionMember, setUnionMember] = React.useState<{
@@ -68,13 +69,14 @@ const FullUnionMemberInfo: React.FC = () => {
         )}
       </div>
       <Tabs tabNamesArray={tabNames} value={сategory} onChangeTab={handleChangeCategory} />
-      <ul className='full-union-member__category-info-items'>
+      <TextContent textArray={unionMemberData[сategory]} />
+      {/* <ul className='full-union-member__category-info-items'>
         {unionMemberData[сategory].map((string, index) => (
           <li key={index}>
             <p className='full-union-member__text'>{string}</p>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </main>
   );
 };

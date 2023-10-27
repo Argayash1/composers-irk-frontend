@@ -231,6 +231,38 @@
   padding: 60px 85px 0 85px;
 }
 
+.full-article {
+  padding: 60px 85px 120px;
+
+  &__container {
+    display: flex;
+  }
+
+  &__image {
+    width: 585px;
+    height: 445px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+  }
+
+  &__description {
+    margin: 0;
+    padding: o;
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  &__paragraph-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .contacts {
   display: flex;
   flex-direction: column;

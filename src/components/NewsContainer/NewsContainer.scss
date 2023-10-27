@@ -3,6 +3,10 @@
     padding: 65px 85px 50px;
     display: flex;
     justify-content: space-between;
+
+    &_place_aboutus {
+      padding: 50px 0 0;
+    }
   }
 
   &__title {
@@ -18,5 +22,9 @@
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     list-style: none;
     gap: 70px 21px;
+
+    &_place_aboutus {
+      padding: 0 0 90px;
+    }
   }
 }

@@ -6,6 +6,8 @@ import { projectArray } from '../../utils/projectsArray';
 import { membersArray } from '../../utils/membersArray';
 import { menuItems } from '../MainMenu';
 import { compareBySurname } from '../../utils/utils';
+import { iFrameItemsArray } from '../VideoRecordings';
+import { articlesArray } from '../../utils/articlesArray';
 
 export const BreadCrumbs: React.FC = () => {
   const { pathname } = useLocation();
@@ -24,7 +26,7 @@ export const BreadCrumbs: React.FC = () => {
   }
 
   type Item = {
-    imageUrl: string;
+    imageUrl?: string;
     title?: string;
     name?: string;
     surname?: string;
@@ -40,8 +42,8 @@ export const BreadCrumbs: React.FC = () => {
     projects: menuItems[3].name,
     scores: menuItems[4].name,
     media: menuItems[5].name,
-    aboutus: menuItems[6].name,
-    reports: menuItems[7].name,
+    reports: menuItems[6].name,
+    aboutus: menuItems[7].name,
     contacts: menuItems[8].name,
   };
 
@@ -51,7 +53,11 @@ export const BreadCrumbs: React.FC = () => {
     ? newsArray
     : pathname.includes('projects')
     ? projectArray
-    : membersArraySortedBySurname;
+    : pathname.includes('unionmembers')
+    ? membersArraySortedBySurname
+    : pathname.includes('aboutus')
+    ? articlesArray
+    : iFrameItemsArray;
 
   return (
     <nav className='bread-crumbs'>

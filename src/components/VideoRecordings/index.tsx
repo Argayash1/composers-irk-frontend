@@ -2,7 +2,7 @@ import React from 'react';
 import './VideoRecordings.scss';
 import { Link } from 'react-router-dom';
 
-export const iFrameItems = [
+export const iFrameItemsArray = [
   {
     iFrameUrl: 'https://www.youtube.com/embed/GVlRhEp0fnQ',
     title: 'Концерт, посвященный памяти Иркутского композитора В. Ф. Павлова. 21.05.2000',
@@ -17,7 +17,7 @@ export const iFrameItems = [
 export const VideoRecordings: React.FC = () => {
   return (
     <ul className='video-recordings'>
-      {iFrameItems.map((iFrameItem, index) => (
+      {iFrameItemsArray.map((iFrameItem, index) => (
         <li key={index} className='video-recordings__item'>
           <iframe
             className='video-recordings__iframe'

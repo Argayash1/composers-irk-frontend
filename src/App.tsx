@@ -16,6 +16,7 @@ import FullNews from './pages/FullNews';
 import FullProject from './pages/FullProject';
 import FullUnionMemberInfo from './pages/FullUnionMemberInfo';
 import FullVideo from './pages/FullVideo';
+import FullArticle from './pages/FullArticle';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='media' element={<Media />} />
         <Route path='media/:id' element={<FullVideo />} />
         <Route path='aboutus' element={<AboutUs />} />
+        <Route path='aboutus/:id' element={<FullArticle />} />
         <Route path='reports' element={<Reports />} />
         <Route path='contacts' element={<Contacts />} />
       </Route>

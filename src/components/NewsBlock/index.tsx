@@ -8,11 +8,22 @@ type NewsBlockProps = {
   imageUrl: string;
   createdAt: string;
   title: string;
-  newsText: string;
+  newsText?: string;
+  articleDescription?: string;
   index: number;
 };
 
-export const NewsBlock: React.FC<NewsBlockProps> = ({ imageUrl, createdAt, title, newsText, index }) => {
+export const NewsBlock: React.FC<NewsBlockProps> = ({
+  imageUrl,
+  createdAt,
+  title,
+  newsText,
+  articleDescription,
+  index,
+}) => {
+  const fullNewsPath = `/news/${index}`;
+  const fullArticlePath = `/aboutus/${index}`;
+
   return (
     <div className='news-block'>
       <Link to={`/news/${index}`} onClick={handleScrollToTop}>
@@ -20,8 +31,8 @@ export const NewsBlock: React.FC<NewsBlockProps> = ({ imageUrl, createdAt, title
       </Link>
       <span className='news-block__date'>{createdAt}</span>
       <h3 className='news-block__title'>{title}</h3>
-      <p className='news-block__text'>{newsText}</p>
-      <CTA path={`/news/${index}`} />
+      <p className='news-block__text'>{articleDescription ? articleDescription : newsText}</p>
+      <CTA path={articleDescription ? fullArticlePath : fullNewsPath} />
     </div>
   );
 };

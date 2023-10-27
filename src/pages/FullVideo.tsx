@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle, iFrameItems } from '../components';
+import { PageTitle, iFrameItemsArray } from '../components';
 import { useParams } from 'react-router-dom';
 
 const FullVideo: React.FC = () => {
@@ -8,7 +8,7 @@ const FullVideo: React.FC = () => {
   const { id } = useParams();
 
   React.useEffect(() => {
-    const videoObject = iFrameItems[Number(id)];
+    const videoObject = iFrameItemsArray[Number(id)];
     setVideo(videoObject);
   }, [id]);
 

@@ -13,7 +13,7 @@ type UnionMemberProps = {
 export const UnionMemberBlock: React.FC<UnionMemberProps> = ({ imageUrl, surname, name, profession, index }) => {
   return (
     <div className='union-member'>
-      <Link to={`/unionmembers/${index}`}>
+      <Link to={`/unionmembers/${index}`} className='union-member__link'>
         <img className='union-member__image' src={imageUrl} alt={name} />
       </Link>
       <h2 className='union-member__name'>

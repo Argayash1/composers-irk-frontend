@@ -4,11 +4,11 @@ import { Footer, Header } from '../components';
 const MainLayout: React.FC = () => {
   return (
     <div className='page'>
-      <Header />
       <div className='page__content'>
+        <Header />
         <Outlet />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

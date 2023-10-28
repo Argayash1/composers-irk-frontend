@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewsContainer, OurHistory, PageTitle, Tabs } from '../components';
+import { NewsContainer, OurHistory, PageTitle, Tabs, menuItems } from '../components';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
@@ -16,7 +16,7 @@ export const AboutUs: React.FC = () => {
 
   return (
     <main className='about-us'>
-      <PageTitle name='Про нас' />
+      <PageTitle name={menuItems[7].name} />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={category} />
       {category === 0 ? <NewsContainer place='aboutus' /> : <OurHistory />}
     </main>

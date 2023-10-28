@@ -26,7 +26,7 @@ export const NewsBlock: React.FC<NewsBlockProps> = ({
 
   return (
     <div className='news-block'>
-      <Link to={`/news/${index}`} onClick={handleScrollToTop}>
+      <Link to={articleDescription ? fullArticlePath : fullNewsPath} onClick={handleScrollToTop}>
         <img src={imageUrl} alt='' className='news-block__image' />
       </Link>
       <span className='news-block__date'>{createdAt}</span>

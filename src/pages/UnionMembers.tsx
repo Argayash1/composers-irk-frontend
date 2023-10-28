@@ -1,6 +1,6 @@
 import React from 'react';
 import { membersArray } from '../utils/membersArray';
-import { PageTitle, UnionMemberBlock } from '../components';
+import { PageTitle, UnionMemberBlock, menuItems } from '../components';
 import { compareBySurname } from '../utils/utils';
 
 const UnionMembers: React.FC = () => {
@@ -12,7 +12,7 @@ const UnionMembers: React.FC = () => {
 
   return (
     <main className='union-members'>
-      <PageTitle name='Состав ИООО Союза композиторов' />
+      <PageTitle name={`${menuItems[2].name} ИООО Союза композиторов`} />
       <ul className='union-members__list'>
         {membersArraySortedBySurname.map((member, index) => (
           <li key={index}>

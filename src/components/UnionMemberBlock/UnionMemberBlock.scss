@@ -2,10 +2,13 @@
   display: flex;
   flex-direction: column;
 
+  &__link {
+    height: 270px;
+  }
+
   &__image {
     width: 255px;
     height: 255px;
-    margin-bottom: 15px;
     object-fit: cover;
     object-position: top;
 

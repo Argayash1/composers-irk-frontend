@@ -1,12 +1,17 @@
 import { BreadCrumbs, ButtonTypeEnum, Logo, MailLink, MainMenu, Search, SearchButton, VKLink } from '../../components';
 import { useDispatch } from 'react-redux';
 import './Header.scss';
-import { setIsSearchOpen } from '../../redux/searchSlice/slice';
+import { setCloseSearch, setIsSearchOpen } from '../../redux/searchSlice/slice';
 import { useLocation } from 'react-router-dom';
+import React from 'react';
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+
+  React.useEffect(() => {
+    dispatch(setCloseSearch());
+  }, [pathname, dispatch]);
 
   return (
     <header className='header'>

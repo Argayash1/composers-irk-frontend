@@ -26,19 +26,12 @@ const FullArticle = () => {
 
   return (
     <main className='full-article'>
-      <PageTitle name={article.title} />
+      <PageTitle name={article.title} place='full-data' />
       <div className='full-article__container'>
         <img className='full-article__image' src={article.imageUrl} alt='' />
         <p className='full-article__description'>{article.articleDescription}</p>
       </div>
       <TextContent textArray={article.articleText} />
-      {/* <ul className='full-article__paragraph-list'>
-        {article.articleText.map((string, index) => (
-          <li key={index}>
-            <p>{string}</p>
-          </li>
-        ))}
-      </ul> */}
     </main>
   );
 };

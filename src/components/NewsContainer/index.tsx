@@ -1,5 +1,5 @@
 import React from 'react';
-import { CTA, NewsBlock } from '../../components';
+import { NewsBlock } from '../../components';
 import { newsArray } from '../../utils/newsArray';
 import './NewsContainer.scss';
 import { articlesArray } from '../../utils/articlesArray';
@@ -28,19 +28,14 @@ export const NewsContainer: React.FC<NewsContainerProps> = ({ place }) => {
       <NewsBlock index={index} {...article} />
     </li>
   ));
+
+  const newsContainerListClassName = `news-container__news-list ${
+    place === 'news' ? 'news-container__news-list_place_news' : ''
+  }${place === 'aboutus' ? 'news-container__news-list_place_aboutus' : ''} `;
+
   return (
     <section className='news-container'>
-      <div
-        className={`news-container__title-container ${
-          place === 'aboutus' ? 'news-container__title-container_place_aboutus' : ''
-        }`}
-      >
-        {place !== 'aboutus' && <h2 className='news-container__title'>Новости</h2>}
-        {place !== 'news' && place !== 'aboutus' && <CTA linkText='Все новости' path='/news' borderColor='grey' />}
-      </div>
-      <ul
-        className={`news-container__news-list ${place === 'aboutus' ? 'news-container__news-list_place_aboutus' : ''}`}
-      >
+      <ul className={newsContainerListClassName}>
         {place === 'news' ? news : place === 'aboutus' ? articles : slicedNews}
       </ul>
     </section>

@@ -16,7 +16,7 @@
       line-height: 125%; /* 20px */
       transition: color 0.2s ease-in-out;
 
-      &:hover {
+      &:not(.main-menu__list-link_active):hover {
         color: #62767c;
       }
 

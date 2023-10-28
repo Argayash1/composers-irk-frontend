@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewsContainer } from '../components';
+import { NewsContainer, PageTitle, menuItems } from '../components';
 
 const News: React.FC = () => {
   React.useEffect(() => {
@@ -7,7 +7,8 @@ const News: React.FC = () => {
   }, []);
 
   return (
-    <main>
+    <main className='news'>
+      <PageTitle name={menuItems[1].name} />
       <NewsContainer place='news' />
     </main>
   );

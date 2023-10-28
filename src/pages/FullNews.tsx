@@ -23,7 +23,7 @@ const FullNews: React.FC = () => {
 
   return (
     <main className='full-news'>
-      <PageTitle name={news.title} />
+      <PageTitle name={news.title} place='full-news' />
       <span className='full-news__date'>{news.createdAt}</span>
       <img className='full-news__image' src={news.imageUrl} alt='' />
       <p className='full-news__text'>{news.newsText}</p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle, Tabs } from '../components';
+import { PageTitle, Tabs, menuItems } from '../components';
 import { reportsArray } from '../utils/reportsArray';
 import { ReportPopup } from '../components/ReportPopup';
 
@@ -19,7 +19,7 @@ const Reports: React.FC = () => {
 
   return (
     <main className='reports'>
-      <PageTitle name='Отчёты' />
+      <PageTitle name={menuItems[6].name} />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={reportYear} />
       <img
         className='reports__image'

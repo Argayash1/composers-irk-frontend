@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, PageTitle, AudioRecordings, VideoRecordings } from '../components';
+import { Tabs, PageTitle, AudioRecordings, VideoRecordings, menuItems } from '../components';
 
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 
@@ -16,7 +16,7 @@ const Media: React.FC = () => {
 
   return (
     <main className='media'>
-      <PageTitle name='Медиа' />
+      <PageTitle name={menuItems[5].name} />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeMediaCategory} value={mediaCategory} />
       {mediaCategory === 0 ? <AudioRecordings /> : <VideoRecordings />}
     </main>

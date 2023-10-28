@@ -70,13 +70,6 @@ const FullUnionMemberInfo: React.FC = () => {
       </div>
       <Tabs tabNamesArray={tabNames} value={сategory} onChangeTab={handleChangeCategory} />
       <TextContent textArray={unionMemberData[сategory]} />
-      {/* <ul className='full-union-member__category-info-items'>
-        {unionMemberData[сategory].map((string, index) => (
-          <li key={index}>
-            <p className='full-union-member__text'>{string}</p>
-          </li>
-        ))}
-      </ul> */}
     </main>
   );
 };

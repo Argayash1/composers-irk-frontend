@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactItem, PageTitle } from '../components';
+import { ContactItem, PageTitle, menuItems } from '../components';
 import phone from '../assets/icons/phone-icon-contacts.svg';
 import email from '../assets/icons/mail-icon-contacts.svg';
 import adress from '../assets/icons/adress-icon-contacts.svg';
@@ -19,7 +19,7 @@ export const Contacts: React.FC = () => {
 
   return (
     <main className='contacts'>
-      <PageTitle name='Контакты' />
+      <PageTitle name={menuItems[8].name} />
       <ul className='contacts__list'>
         {contactsData.map((contact, index) => (
           <li key={index}>

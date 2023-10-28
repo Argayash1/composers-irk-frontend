@@ -7,4 +7,12 @@
   font-style: normal;
   font-weight: 700;
   line-height: 105%; /* 37.8px */
+
+  &_place_main {
+    margin: 5px 0 0;
+  }
+
+  &_place_full-news {
+    margin-bottom: 30px;
+  }
 }

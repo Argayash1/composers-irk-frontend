@@ -20,10 +20,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
       setProgress(progress);
 
-      // Обнуление ширины полосы воспроизведения при достижении конца трека
       if (progress >= 100) {
-        setProgress(0);
-        setPlaying(false); // Добавьте эту строку
+        setPlaying(false);
       }
     }
   };
@@ -44,13 +42,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
     const audioPlayer = audioRef.current;
     if (audioPlayer) {
       audioPlayer.addEventListener('timeupdate', handleTimeUpdate);
-      // Добавьте следующий обработчик события
       audioPlayer.addEventListener('ended', () => {
         setPlaying(false);
       });
+
       return () => {
         audioPlayer.removeEventListener('timeupdate', handleTimeUpdate);
-        // Удалите обработчик события
         audioPlayer.removeEventListener('ended', () => {
           setPlaying(false);
         });

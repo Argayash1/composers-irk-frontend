@@ -1,29 +1,69 @@
 .audio-player {
-  &__item-audio {
+  position: relative;
+
+  &__container {
     width: 730px;
-    overflow: hidden;
-    border-radius: 0%;
-    &::-webkit-media-controls-panel {
-      background-color: #fafafa;
-    }
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 14px;
+    box-sizing: border-box;
+    background-color: #fafafa;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+  }
 
-    &::-webkit-media-controls-timeline {
-      height: 4px; /* Высота дорожки */
-      border-radius: 6px;
-    }
+  &__play-button {
+    width: 22px;
+    height: 22px;
+    background-image: url('../../assets/icons/audioplayer-play-icon.svg');
+    background-color: transparent;
+    border: none;
 
-    &::-webkit-media-controls-progress-bar {
-      color: yellow; /* Цвет прогресса дорожки */
+    &_active {
+      background-image: url('../../assets/icons/audioplayer-play-icon-active.svg');
     }
+  }
 
-    &::-webkit-media-controls-current-time-display,
-    &::-webkit-media-controls-time-remaining-display {
-      color: #303a3d;
-      font-family: Manrope;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
+  &__time-counter {
+    width: 67px;
+    height: 19px;
+    color: #303a3d;
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &__progress-bar {
+    background-color: #fcbe13;
+    height: 4px;
+    position: absolute;
+    left: 127px;
+  }
+
+  &__timeline {
+    width: 521px;
+    height: 4px;
+    background-color: #d9d9d9;
+  }
+
+  &__volume-button {
+    width: 22px;
+    height: 22px;
+    background-image: url('../../assets/icons/audioplayer-volume-icon.svg');
+    border: none;
+    background-color: transparent;
+  }
+
+  &__more-button {
+    width: 22px;
+    height: 22px;
+    background-image: url('../../assets/icons/audioplayer-more-icon.svg');
+    border: none;
+    background-color: transparent;
   }
 }

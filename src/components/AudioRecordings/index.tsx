@@ -2,21 +2,7 @@ import React from 'react';
 
 import './AudioRecordings.scss';
 import { AudioPlayer } from '../AudioPlayer';
-
-const audioItems = [
-  {
-    url: 'https://cloud.mail.ru/public/3HFG/NhYbZd2GD',
-    title: 'Анатолий Тепляков "Спеши на меня наглядеться". Исп. Марина Заитова 1',
-  },
-  {
-    url: 'https://cloud.mail.ru/public/ASym/34Ckk5d8c',
-    title: 'Анатолий Тепляков "Спеши на меня наглядеться". Исп. Марина Заитова 2',
-  },
-  {
-    url: 'https://cloud.mail.ru/public/VUVp/LhpJGdSC5',
-    title: 'Анатолий Тепляков "Спеши на меня наглядеться". Исп. Марина Заитова 3',
-  },
-];
+import { audioItems } from '../../utils/audioItems';
 
 export const AudioRecordings: React.FC = () => {
   return (
@@ -25,7 +11,6 @@ export const AudioRecordings: React.FC = () => {
         <li key={index}>
           <h2 className='audio-recordings__item-title'>{audioItem.title}</h2>
           <AudioPlayer src={audioItem.url} />
-          {/* <audio className='audio-recordings__item-audio' src={audioItem.url} controls></audio> */}
         </li>
       ))}
     </ul>

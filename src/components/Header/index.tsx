@@ -1,4 +1,13 @@
-import { BreadCrumbs, ButtonTypeEnum, Logo, MailLink, MainMenu, Search, SearchButton, VKLink } from '../../components';
+import {
+  BreadCrumbs,
+  ButtonTypeEnum,
+  Logo,
+  MailLink,
+  MainMenu,
+  SearchForm,
+  SearchButton,
+  VKLink,
+} from '../../components';
 import { useDispatch } from 'react-redux';
 import './Header.scss';
 import { setCloseSearch, setIsSearchOpen } from '../../redux/searchSlice/slice';
@@ -10,7 +19,9 @@ export const Header: React.FC = () => {
   const { pathname } = useLocation();
 
   React.useEffect(() => {
-    dispatch(setCloseSearch());
+    if (pathname !== '/searchresults') {
+      dispatch(setCloseSearch());
+    }
   }, [pathname, dispatch]);
 
   return (
@@ -24,8 +35,8 @@ export const Header: React.FC = () => {
           <MailLink />
         </div>
       </div>
-      <Search />
-      {pathname !== '/' && <BreadCrumbs />}
+      <SearchForm />
+      {pathname !== '/' && pathname !== '/searchresults' && <BreadCrumbs />}
     </header>
   );
 };

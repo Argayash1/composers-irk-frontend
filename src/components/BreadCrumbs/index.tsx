@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './BreadCrumbs.scss';
 import { newsArray } from '../../utils/newsArray';
-import { projectArray } from '../../utils/projectsArray';
+import { projectsArray } from '../../utils/projectsArray';
 import { membersArray } from '../../utils/membersArray';
 import { menuItems } from '../MainMenu';
 import { compareBySurname } from '../../utils/utils';
@@ -52,7 +52,7 @@ export const BreadCrumbs: React.FC = () => {
   const itemsArray: Item[] = pathname.includes('news')
     ? newsArray
     : pathname.includes('projects')
-    ? projectArray
+    ? projectsArray
     : pathname.includes('unionmembers')
     ? membersArraySortedBySurname
     : pathname.includes('aboutus')

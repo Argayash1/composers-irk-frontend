@@ -1,5 +1,5 @@
 import React from 'react';
-import { projectArray } from '../utils/projectsArray';
+import { projectsArray } from '../utils/projectsArray';
 import { ProjectBlock } from '../components/ProjectBlock';
 import { PageTitle, menuItems } from '../components';
 
@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
     <main className='projects'>
       <PageTitle name={menuItems[3].name} />
       <ul className='projects__list'>
-        {projectArray.map((project, index) => (
+        {projectsArray.map((project, index) => (
           <li key={index}>
             <ProjectBlock index={index} {...project} />
           </li>

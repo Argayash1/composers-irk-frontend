@@ -1,6 +1,7 @@
 .footer {
   background: #303a3d;
   padding: 35px 118px 65px 85px;
+  margin-top: auto; /*для того, чтобы прибить футер к низу (сделать sticky footer) */
 
   &__columns {
     display: flex;

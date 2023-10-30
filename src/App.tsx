@@ -17,6 +17,7 @@ import FullProject from './pages/FullProject';
 import FullUnionMemberInfo from './pages/FullUnionMemberInfo';
 import FullVideo from './pages/FullVideo';
 import FullArticle from './pages/FullArticle';
+import SearchResults from './pages/SearchResults';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='aboutus/:id' element={<FullArticle />} />
         <Route path='reports' element={<Reports />} />
         <Route path='contacts' element={<Contacts />} />
+        <Route path='searchresults' element={<SearchResults />} />
       </Route>
     </Routes>
   );

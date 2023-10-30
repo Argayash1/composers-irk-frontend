@@ -18,12 +18,16 @@ export const searchSlice = createSlice({
       state.searchValue = '';
     },
 
+    setOpenSearch: (state) => {
+      state.isSearchOpen = true;
+    },
+
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
   },
 });
 
-export const { setIsSearchOpen, setCloseSearch, setSearchValue } = searchSlice.actions;
+export const { setIsSearchOpen, setOpenSearch, setCloseSearch, setSearchValue } = searchSlice.actions;
 
 export default searchSlice.reducer;

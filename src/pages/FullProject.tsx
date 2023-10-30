@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CTA, PageTitle, SharePanel } from '../components';
-import { projectArray } from '../utils/projectsArray';
+import { projectsArray } from '../utils/projectsArray';
 
 const FullProject: React.FC = () => {
   const [news, setNews] = React.useState<{ imageUrl: string; title: string; description: string }>();
@@ -10,7 +10,7 @@ const FullProject: React.FC = () => {
   const { id } = useParams();
 
   React.useEffect(() => {
-    const newsObject = projectArray[Number(id)];
+    const newsObject = projectsArray[Number(id)];
     setNews(newsObject);
   }, [id]);
 

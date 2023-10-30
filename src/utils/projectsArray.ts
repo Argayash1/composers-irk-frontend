@@ -1,5 +1,5 @@
 import sunIrkutsk from '../assets/images/projects-sun-Irkutsk.png';
-export const projectArray = [
+export const projectsArray = [
   {
     imageUrl: sunIrkutsk,
     title: 'Конкурс "Солнечный Иркутск"',

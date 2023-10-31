@@ -1,8 +1,8 @@
 import React from 'react';
-import { PageTitle, SearchResult } from '../components';
+import { PageTitle, Pagination, SearchResult } from '../components';
 import { projectsArray } from '../utils/projectsArray';
 
-const SearchResults = () => {
+const SearchResults: React.FC = () => {
   return (
     <main className='search-results'>
       <section>
@@ -17,6 +17,9 @@ const SearchResults = () => {
             </li>
           ))}
         </ul>
+      </section>
+      <section>
+        <Pagination />
       </section>
     </main>
   );

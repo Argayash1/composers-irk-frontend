@@ -1,0 +1,30 @@
+.pagination {
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  &__page-number {
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 20.8px */
+    margin-right: 35px;
+    cursor: pointer;
+
+    &_active {
+      width: 25px;
+      height: 25px;
+      color: #fff;
+      background-color: #fcbe13;
+      border-radius: 50%;
+      display: inline-block;
+      text-align: center;
+      margin-right: 25px;
+    }
+  }
+}

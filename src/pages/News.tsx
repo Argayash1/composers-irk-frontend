@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewsContainer, PageTitle, menuItems } from '../components';
+import { NewsContainer, PageTitle, Pagination, menuItems } from '../components';
 
 const News: React.FC = () => {
   React.useEffect(() => {
@@ -10,6 +10,7 @@ const News: React.FC = () => {
     <main className='news'>
       <PageTitle name={menuItems[1].name} />
       <NewsContainer place='news' />
+      <Pagination />
     </main>
   );
 };

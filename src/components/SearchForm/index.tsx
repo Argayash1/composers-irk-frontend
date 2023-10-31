@@ -16,9 +16,32 @@ export const SearchForm: React.FC = () => {
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const handleSearсhByAllSite = (e: React.FormEvent<HTMLFormElement>) => {
+  type MyObject = {
+    [key: string]: Array<{ [key: string]: string | number }>;
+  };
+
+  const handleSearchByAllSite = (e: React.FormEvent<HTMLFormElement>, obj: MyObject, searchString: string) => {
     e.preventDefault();
-    navigate('/searchresults');
+
+    for (let key in obj) {
+      if (Array.isArray(obj[key])) {
+        let array = obj[key];
+        for (let i = 0; i < array.length; i++) {
+          for (let prop in array[i]) {
+            const value = array[i][prop];
+            if (
+              (typeof value === 'string' && value.includes(searchString)) ||
+              (typeof value === 'number' && value.toString().includes(searchString))
+            ) {
+              navigate('/searchresults');
+              return array[i];
+            }
+          }
+        }
+      }
+    }
+
+    return null;
   };
 
   const handleClearSearchBar = () => {
@@ -39,14 +62,19 @@ export const SearchForm: React.FC = () => {
 
   return (
     <section className={`search ${isSearchOpen ? 'search_is_opened' : ''}`}>
-      <form className='search__form' action='' onSubmit={handleSearсhByAllSite}>
+      {/* @ts-ignore */}
+      <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, allArrays, searchValue)}>
         <input
           className='search__input'
-          type='text'
+          type='search'
           value={searchValue || ''}
+          name='search'
+          id='search'
           onChange={handleChange}
           placeholder='Введите запрос'
+          autoComplete='off'
           ref={inputRef}
+          required
         />
         <div className='search__buttons'>
           <SearchButton type={ButtonTypeEnum.SUBMIT} />

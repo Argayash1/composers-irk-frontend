@@ -1,6 +1,6 @@
 import React from 'react';
 import { membersArray } from '../utils/membersArray';
-import { PageTitle, UnionMemberBlock, menuItems } from '../components';
+import { PageTitle, Pagination, UnionMemberBlock, menuItems } from '../components';
 import { compareBySurname } from '../utils/utils';
 
 const UnionMembers: React.FC = () => {
@@ -20,6 +20,7 @@ const UnionMembers: React.FC = () => {
           </li>
         ))}
       </ul>
+      <Pagination />
     </main>
   );
 };

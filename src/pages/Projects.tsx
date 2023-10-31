@@ -1,7 +1,7 @@
 import React from 'react';
 import { projectsArray } from '../utils/projectsArray';
 import { ProjectBlock } from '../components/ProjectBlock';
-import { PageTitle, menuItems } from '../components';
+import { PageTitle, Pagination, menuItems } from '../components';
 
 const Projects: React.FC = () => {
   React.useEffect(() => {
@@ -18,6 +18,7 @@ const Projects: React.FC = () => {
           </li>
         ))}
       </ul>
+      <Pagination />
     </main>
   );
 };

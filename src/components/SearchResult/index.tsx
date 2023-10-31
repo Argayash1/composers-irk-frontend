@@ -1,5 +1,4 @@
 import React from 'react';
-import { projectsArray } from '../../utils/projectsArray';
 import './SearchResult.scss';
 
 type SearchResultProps = {

@@ -25,3 +25,4 @@ export * from './AudioPlayer';
 export * from './Overlay';
 export * from './Heading';
 export * from './SearchResult';
+export * from './Pagination';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewsContainer, OurHistory, PageTitle, Tabs, menuItems } from '../components';
+import { NewsContainer, OurHistory, PageTitle, Pagination, Tabs, menuItems } from '../components';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
@@ -19,6 +19,7 @@ export const AboutUs: React.FC = () => {
       <PageTitle name={menuItems[7].name} />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={category} />
       {category === 0 ? <NewsContainer place='aboutus' /> : <OurHistory />}
+      {category === 0 && <Pagination />}
     </main>
   );
 };

@@ -28,7 +28,7 @@ const FullNews: React.FC = () => {
       <img className='full-news__image' src={news.imageUrl} alt='' />
       <p className='full-news__text'>{news.newsText}</p>
       {isSharePanelOpen ? (
-        <SharePanel onClick={hadleToggleSharePanel} />
+        <SharePanel itemTitle={news.title} onClick={hadleToggleSharePanel} />
       ) : (
         <CTA linkText='Поделиться' onClick={hadleToggleSharePanel} />
       )}

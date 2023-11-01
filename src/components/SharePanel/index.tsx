@@ -7,31 +7,40 @@ import WAIcon from '../../assets/icons/share-pannel-whatsapp-icon.svg';
 import closeIcon from '../../assets/icons/share-pannel-close-icon.svg';
 import './SharePanel.scss';
 
-const buttonItems = [
-  { image: VkIcon },
-  { image: TGIcon },
-  { image: twitterIcon },
-  { image: OkIcon },
-  { image: WAIcon },
-  { image: closeIcon },
-];
-
 type SharePanelProps = {
+  itemTitle: string;
   onClick: () => void;
 };
 
-export const SharePanel: React.FC<SharePanelProps> = ({ onClick }) => {
+export const SharePanel: React.FC<SharePanelProps> = ({ itemTitle, onClick }) => {
+  const currentUrl = window.location.href;
+
+  const buttonItems = [
+    { image: VkIcon, link: `https://vk.com/share.php?url={${currentUrl}}` },
+    { image: TGIcon, link: `https://t.me/share/url?url=${currentUrl}&text=${itemTitle}` },
+    { image: twitterIcon, link: `https://twitter.com/intent/tweet?url=${currentUrl}&text=${itemTitle}` },
+    { image: OkIcon, link: `https://connect.ok.ru/offer?url=${currentUrl}&title=${itemTitle}` },
+    { image: WAIcon, link: `whatsapp://send?text=${itemTitle}` },
+    { image: closeIcon },
+  ];
+
   return (
     <ul className='share-panel'>
       {buttonItems.map((buttonItem, index) => (
         <li key={index}>
-          <button
-            style={{
-              backgroundImage: `url(${buttonItem.image})`,
-            }}
-            className='share-panel__button'
-            onClick={onClick}
-          ></button>
+          {index === buttonItems.length - 1 ? (
+            <button
+              style={{
+                backgroundImage: `url(${buttonItem.image})`,
+              }}
+              className='share-panel__button'
+              onClick={onClick}
+            ></button>
+          ) : (
+            <a href={buttonItem.link} className='share-panel__link' onClick={onClick}>
+              <img src={buttonItem.image} alt='' />
+            </a>
+          )}
         </li>
       ))}
     </ul>

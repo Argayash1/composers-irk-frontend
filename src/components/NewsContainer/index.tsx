@@ -1,27 +1,32 @@
 import React from 'react';
 import { NewsBlock } from '../../components';
-import { newsArray } from '../../utils/newsArray';
 import './NewsContainer.scss';
 import { articlesArray } from '../../utils/articlesArray';
+import { News } from '../../redux/news/types';
 
 type NewsContainerProps = {
   place?: string;
+  itemsArray?: News[];
 };
 
-export const NewsContainer: React.FC<NewsContainerProps> = ({ place }) => {
-  const slicedNewsArray = newsArray.slice(0, 6);
+export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray }) => {
+  const slicedNewsArray = itemsArray && itemsArray.slice(0, 6);
 
-  const slicedNews = slicedNewsArray.map((news, index) => (
-    <li key={index}>
-      <NewsBlock index={index} {...news} />
-    </li>
-  ));
+  const slicedNews =
+    slicedNewsArray &&
+    slicedNewsArray.map((news, index) => (
+      <li key={index}>
+        <NewsBlock index={index} {...news} />
+      </li>
+    ));
 
-  const news = newsArray.map((news, index) => (
-    <li key={index}>
-      <NewsBlock index={index} {...news} />
-    </li>
-  ));
+  const news =
+    itemsArray &&
+    itemsArray.map((news, index) => (
+      <li key={index}>
+        <NewsBlock index={index} {...news} />
+      </li>
+    ));
 
   const articles = articlesArray.map((article, index) => (
     <li key={index}>

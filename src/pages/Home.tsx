@@ -1,10 +1,22 @@
 import React from 'react';
 import { BrandBanner, CTA, NewsContainer, PageTitle, menuItems } from '../components';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../redux/store';
+import { selectNewsData } from '../redux/news/selectors';
+import { fetchNews } from '../redux/news/asyncActions';
 
 const Home: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const { items } = useSelector(selectNewsData);
+
   React.useEffect(() => {
     document.title = 'ИООО "Союз композиторов"';
   }, []);
+
+  React.useEffect(() => {
+    dispatch(fetchNews());
+  }, [dispatch]);
 
   return (
     <main className='home'>
@@ -13,7 +25,7 @@ const Home: React.FC = () => {
         <PageTitle name={menuItems[1].name} place='main' />
         <CTA linkText='Все новости' path='/news' borderColor='grey' />
       </div>
-      <NewsContainer />
+      <NewsContainer itemsArray={items} />
     </main>
   );
 };

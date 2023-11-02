@@ -20,10 +20,12 @@
     height: 22px;
     background-image: url('../../assets/icons/audioplayer-play-icon.svg');
     background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
     border: none;
 
     &_active {
-      background-image: url('../../assets/icons/audioplayer-play-icon-active.svg');
+      background-image: url('../../assets/icons/audioplayer-pause-icon.svg');
     }
   }
 

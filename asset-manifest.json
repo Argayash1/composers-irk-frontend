@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/composers-irk-frontend/static/css/main.dd1bc744.css",
-    "main.js": "/composers-irk-frontend/static/js/main.cc24db7f.js",
+    "main.css": "/composers-irk-frontend/static/css/main.a2724219.css",
+    "main.js": "/composers-irk-frontend/static/js/main.9050a5e4.js",
     "static/js/787.2cd87504.chunk.js": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js",
     "static/media/11.mp3": "/composers-irk-frontend/static/media/11.5c188e9a94240ae1c28b.mp3",
     "static/media/12.mp3": "/composers-irk-frontend/static/media/12.0bd4443234382f2aa2d9.mp3",
@@ -67,16 +67,16 @@
     "static/media/search-icon-hover.svg": "/composers-irk-frontend/static/media/search-icon-hover.f9d0c654920fcf85b9e2.svg",
     "static/media/search-icon.svg": "/composers-irk-frontend/static/media/search-icon.aafa29228512a0293ab7.svg",
     "static/media/score-image.svg": "/composers-irk-frontend/static/media/score-image.abbfa15f4b63f10288ca.svg",
-    "static/media/audioplayer-play-icon-active.svg": "/composers-irk-frontend/static/media/audioplayer-play-icon-active.c90ea1b6abf65d5a6fd0.svg",
     "static/media/audioplayer-play-icon.svg": "/composers-irk-frontend/static/media/audioplayer-play-icon.81dc9b8f4fd7f4befff7.svg",
     "static/media/report-popup-close-button.svg": "/composers-irk-frontend/static/media/report-popup-close-button.25939e1d6a03366c017a.svg",
+    "static/media/audioplayer-pause-icon.svg": "/composers-irk-frontend/static/media/audioplayer-pause-icon.fedad230292cfac89849.svg",
     "static/media/share-pannel-close-icon.svg": "/composers-irk-frontend/static/media/share-pannel-close-icon.8dd6296da60c89fa0fe971eb977a1379.svg",
-    "main.dd1bc744.css.map": "/composers-irk-frontend/static/css/main.dd1bc744.css.map",
-    "main.cc24db7f.js.map": "/composers-irk-frontend/static/js/main.cc24db7f.js.map",
+    "main.a2724219.css.map": "/composers-irk-frontend/static/css/main.a2724219.css.map",
+    "main.9050a5e4.js.map": "/composers-irk-frontend/static/js/main.9050a5e4.js.map",
     "787.2cd87504.chunk.js.map": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd1bc744.css",
-    "static/js/main.cc24db7f.js"
+    "static/css/main.a2724219.css",
+    "static/js/main.9050a5e4.js"
   ]
 }

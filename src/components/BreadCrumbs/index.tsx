@@ -74,7 +74,7 @@ export const BreadCrumbs: React.FC = () => {
           </li>
           {pathnames.map((pathname, index) =>
             index === pathnames.length - 1 ? (
-              <li className='bread-crumbs__list-item bread-crumbs__list-item_margin-top_big' key={index}>
+              <li className='bread-crumbs__list-item' key={index}>
                 {pathnames.length === 2
                   ? itemsArray[Number(pathname)].title ||
                     `${itemsArray[Number(pathname)].surname} ${itemsArray[Number(pathname)].name}`

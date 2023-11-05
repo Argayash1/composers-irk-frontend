@@ -1,6 +1,5 @@
 import React from 'react';
 import './Overlay.scss';
-import { useEffect } from 'react';
 
 type OverLayProps = {
   children: React.ReactNode;
@@ -9,7 +8,7 @@ type OverLayProps = {
 };
 
 export const Overlay: React.FC<OverLayProps> = ({ children, isOpen, onClose }) => {
-  useEffect(() => {
+  React.useEffect(() => {
     function handleEscapeKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
         onClose();

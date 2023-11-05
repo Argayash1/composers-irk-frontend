@@ -2,7 +2,7 @@
   position: relative;
 
   &__container {
-    width: 730px;
+    max-width: 730px;
     height: 52px;
     display: flex;
     align-items: center;
@@ -23,6 +23,7 @@
     background-repeat: no-repeat;
     background-position: center;
     border: none;
+    cursor: pointer;
 
     &_active {
       background-image: url('../../assets/icons/audioplayer-pause-icon.svg');
@@ -51,14 +52,30 @@
     width: 521px;
     height: 4px;
     background-color: #d9d9d9;
+    transition: width 0.3s linear;
+
+    &_type_volume {
+      width: 0;
+    }
+
+    &_hovered {
+      width: 110px;
+    }
+  }
+
+  &__volume-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
   &__volume-button {
     width: 22px;
     height: 22px;
     background-image: url('../../assets/icons/audioplayer-volume-icon.svg');
-    border: none;
     background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
 
   &__more-button {
@@ -67,5 +84,67 @@
     background-image: url('../../assets/icons/audioplayer-more-icon.svg');
     border: none;
     background-color: transparent;
+    cursor: pointer;
+
+    &_active {
+      background-image: url('../../assets/icons/audioplayer-more-icon-active.svg');
+    }
+  }
+
+  &__more-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 15px;
+    right: 35px;
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: all 0.2s linear;
+
+    &_is_opened {
+      visibility: visible;
+      opacity: 1;
+      width: 140px;
+      height: 40px;
+    }
+  }
+
+  &__more-menu-main {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    &_is_opened {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__more-menu-params {
+    padding: 0;
+    margin: 0;
+    visibility: hidden;
+    opacity: 0;
+    list-style-type: none;
+
+    &_is_opened {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__more-menu-button {
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #fff;
+    text-align: left;
+    cursor: pointer;
   }
 }

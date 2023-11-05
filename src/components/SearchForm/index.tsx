@@ -49,6 +49,11 @@ export const SearchForm: React.FC = () => {
     inputRef.current?.focus();
   };
 
+  const handleCloseSearchBar = () => {
+    dispatch(setIsSearchOpen());
+    dispatch(setSearchValue(''));
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchValue(e.target.value));
   };
@@ -81,7 +86,7 @@ export const SearchForm: React.FC = () => {
           {searchValue && <CloseButton onClick={handleClearSearchBar} />}
         </div>
       </form>
-      <CloseButton onClick={() => dispatch(setIsSearchOpen())} />
+      <CloseButton onClick={handleCloseSearchBar} />
     </section>
   );
 };

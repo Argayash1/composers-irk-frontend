@@ -1,11 +1,13 @@
 .bread-crumbs {
   background-color: #fff;
   padding: 20px 0 0 85px;
+
   &__list {
     list-style: none;
     margin: 0;
     padding: 12px 0;
     display: flex;
+    align-items: center;
     gap: 20px;
   }
 
@@ -16,16 +18,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: 125%; /* 20px */
-
-    &_margin-top_big {
-      margin-top: 3.6px;
-    }
   }
 
   &__list-item_link {
     text-decoration: none;
     display: inline-block;
-    color: #282f30;
+    color: #fcbe13;
   }
 
   &__span {

@@ -38,9 +38,11 @@
     line-height: 125%;
     box-sizing: border-box;
     padding: 0 71px 0 10px;
+
     &:focus {
       outline: 1px solid #303a3d;
     }
+
     &::placeholder {
       color: #bdbdbd;
       font-family: Manrope;
@@ -48,6 +50,12 @@
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+    }
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      appearance: none;
+      display: none;
     }
   }
 

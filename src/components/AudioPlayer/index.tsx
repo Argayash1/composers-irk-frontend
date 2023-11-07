@@ -175,7 +175,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           {handleChangeSecondsToMinutesAndSeconds(currentDuration)}/
           {handleChangeSecondsToMinutesAndSeconds(totalDuration)}
         </span>
-        <div className='audio-player__progress-bar' ref={customTrackRef} style={progressBarStyle}></div>
+        <div className='audio-player__progress-bar-container'>
+          <div className='audio-player__progress-bar' ref={customTrackRef} style={progressBarStyle}></div>
+          <button className='audio-player__progress-bar-button'></button>
+        </div>
+
         <div className='audio-player__timeline'></div>
         <div className='audio-player__volume-container'>
           <div

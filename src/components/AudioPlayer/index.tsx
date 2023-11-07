@@ -12,6 +12,7 @@ type ButtonClick = MouseEvent & {
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
+  const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
   const customTrackRef = React.useRef<HTMLDivElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const menuRef = React.useRef<HTMLDivElement>(null);
@@ -29,10 +30,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   };
 
   const handleDownload = () => {
-    const audioPlayer = audioRef.current;
-    if (audioPlayer) {
-      audioPlayer.setAttribute('download', 'audio.mp3'); // Устанавливаем имя файла для сохранения
-      audioPlayer.click(); // Запускаем скачивание аудиотрека
+    const audioPlayerLink = audioLinkRef.current;
+    if (audioPlayerLink) {
+      audioPlayerLink.click(); // Запускаем скачивание аудиотрека
     }
   };
 
@@ -160,7 +160,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
 
   return (
     <div className='audio-player'>
-      <audio className='audio-player__item-audio' ref={audioRef} src={src} controls></audio>
+      <audio className='audio-player__item-audio' ref={audioRef} src={src} controls>
+        Ваш браузер не поддерживает встроенное аудио. Попробуйте скачать его
+        <a href={src} ref={audioLinkRef} download>
+          по ссылке
+        </a>
+      </audio>
       <div className='audio-player__container'>
         <button
           className={`audio-player__play-button ${isPlaying ? 'audio-player__play-button_active' : ''}`}

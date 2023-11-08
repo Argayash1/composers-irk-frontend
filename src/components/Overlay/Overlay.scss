@@ -19,4 +19,9 @@
     visibility: visible;
     opacity: 1;
   }
+
+  &_place_burger {
+    height: 100vh;
+    position: fixed;
+  }
 }

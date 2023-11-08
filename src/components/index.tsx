@@ -26,3 +26,5 @@ export * from './Overlay';
 export * from './Heading';
 export * from './SearchResult';
 export * from './Pagination';
+export * from './BurgerOpenButton';
+export * from './HeaderIcons';

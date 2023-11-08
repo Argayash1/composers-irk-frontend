@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainMenu.scss';
 import { NavLink } from 'react-router-dom';
+import { CloseButton } from '../CloseButton';
 export const menuItems = [
   { name: 'Главная', path: '/' },
   { name: 'Новости', path: '/news' },
@@ -13,14 +14,36 @@ export const menuItems = [
   { name: 'Контакты', path: '/contacts' },
 ];
 
-export const MainMenu: React.FC = () => {
+type MainMenuProps = {
+  place: string;
+  isOpen?: boolean;
+  onClose?: () => void;
+};
+
+export const MainMenu: React.FC<MainMenuProps> = ({ place, isOpen, onClose }) => {
   return (
-    <nav className='main-menu'>
-      <ul className='main-menu__list'>
+    <nav
+      className={`main-menu ${place === 'header' ? 'main-menu_place_header' : ''} ${
+        place === 'burger' ? 'main-menu_place_burger' : ''
+      } ${isOpen ? 'main-menu_is_opened' : ''}`}
+    >
+      {place === 'burger' && <CloseButton onClick={onClose} place='burger' />}
+      <ul className={`main-menu__list ${place === 'burger' ? 'main-menu__list_place_burger' : ''}`}>
         {menuItems.map((item, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            onClick={() => {
+              if (onClose) {
+                onClose();
+              }
+            }}
+          >
             <NavLink
-              className={({ isActive }) => `main-menu__list-link ${isActive ? 'main-menu__list-link_active' : ''}`}
+              className={({ isActive }) =>
+                `main-menu__list-link ${isActive ? 'main-menu__list-link_active' : ''} ${
+                  place === 'burger' ? 'main-menu__list-link_place_burger' : ''
+                }`
+              }
               to={item.path}
             >
               {item.name}

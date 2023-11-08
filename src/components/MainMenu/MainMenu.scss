@@ -1,11 +1,42 @@
 .main-menu {
   margin-left: 43px;
+
+  &_place_header {
+    @media screen and (max-width: 1220px) {
+      display: none;
+    }
+  }
+
+  &_place_burger {
+    position: absolute;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    margin-left: 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 21.14px 39.5px 0 35px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s linear;
+  }
+
+  &_is_opened {
+    right: 0;
+  }
+
   &__list {
     display: flex;
     list-style: none;
     gap: 24px;
     margin: 0;
     padding: 0;
+
+    &_place_burger {
+      flex-direction: column;
+      gap: 32px;
+    }
+
     &-link {
       text-decoration: none;
       color: #282f30;
@@ -23,6 +54,10 @@
       &_active {
         font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
         color: #fcbe13;
+      }
+
+      &_place_burger {
+        line-height: 1.3;
       }
     }
   }

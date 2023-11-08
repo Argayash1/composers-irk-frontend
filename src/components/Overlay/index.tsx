@@ -5,9 +5,10 @@ type OverLayProps = {
   children: React.ReactNode;
   isOpen: boolean;
   onClose: () => void;
+  place?: string;
 };
 
-export const Overlay: React.FC<OverLayProps> = ({ children, isOpen, onClose }) => {
+export const Overlay: React.FC<OverLayProps> = ({ children, isOpen, onClose, place }) => {
   React.useEffect(() => {
     function handleEscapeKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
@@ -28,7 +29,10 @@ export const Overlay: React.FC<OverLayProps> = ({ children, isOpen, onClose }) =
   }
 
   return (
-    <section className={`overlay ${isOpen ? 'overlay_is_opened' : ''}`} onMouseDown={closeAllPopupsByClickOnOverlay}>
+    <section
+      className={`overlay ${isOpen ? 'overlay_is_opened' : ''} ${place === 'burger' ? 'overlay_place_burger' : ''}`}
+      onMouseDown={closeAllPopupsByClickOnOverlay}
+    >
       {children}
     </section>
   );

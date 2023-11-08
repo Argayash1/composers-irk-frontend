@@ -1,7 +1,7 @@
 .mail-link {
   padding: 0;
   margin: 0;
-  cursor: pointer;
+  display: inline-block;
 
   &__icon {
     background-image: url('../../assets/icons/mail-Icon.svg');
@@ -10,6 +10,12 @@
     width: 20px;
     height: 17px;
     transition: background-image 0.3s linear;
+
+    @media screen and (max-width: 1220px) {
+      width: 18px;
+      height: 14.4px;
+    }
+
     &:hover {
       background-image: url('../../assets/icons/mail-Icon-hover.svg');
     }

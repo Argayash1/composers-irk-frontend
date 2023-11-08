@@ -11,6 +11,7 @@ type NewsContainerProps = {
 
 export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray }) => {
   const slicedNewsArray = itemsArray && itemsArray.slice(0, 6);
+  const screenWisth = document.documentElement.clientWidth;
 
   const slicedNews =
     slicedNewsArray &&
@@ -34,12 +35,16 @@ export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray 
     </li>
   ));
 
-  const newsContainerListClassName = `news-container__news-list ${
-    place === 'news' ? 'news-container__news-list_place_news' : ''
-  }${place === 'aboutus' ? 'news-container__news-list_place_aboutus' : ''} `;
+  const newsContainerListClassName = `news-container__news-list  ${
+    screenWisth < 1280 ? 'news-container__news-list_gap_tablet' : ''
+  }`;
 
   return (
-    <section className='news-container'>
+    <section
+      className={`news-container ${place === 'news' ? 'news-container_place_news' : ''}${
+        place === 'aboutus' ? 'news-container_place_aboutus' : ''
+      }`}
+    >
       <ul className={newsContainerListClassName}>
         {place === 'news' ? news : place === 'aboutus' ? articles : slicedNews}
       </ul>

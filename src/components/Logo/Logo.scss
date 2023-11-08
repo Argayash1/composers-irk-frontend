@@ -9,6 +9,12 @@
   &__image {
     width: 31px;
     height: 38px;
+
+    @media screen and (max-width: 1220px) {
+      width: 25.289px;
+      height: 31px;
+    }
+
     &_place_main {
       width: 110.132px;
       height: 135px;
@@ -26,6 +32,10 @@
     text-transform: uppercase;
     margin: 3px 0 0 10px;
     padding: 0;
+
+    @media screen and (max-width: 1220px) {
+      font-size: 10px;
+    }
 
     &_color_white {
       color: #fff;

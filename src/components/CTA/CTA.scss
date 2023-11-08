@@ -20,6 +20,15 @@
   backdrop-filter: blur(6px);
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
+  @media screen and (max-width: 1170px) {
+    width: 216px;
+    height: 35px;
+    font-size: 14px;
+    line-height: 130%; /* 18.2px */
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
   &:hover {
     color: #fff;
     background: #fcbe13;

@@ -1,8 +1,13 @@
 .close-button {
   background-color: #fff;
+  background: transparent;
   border: none;
   padding: 0;
   margin: 0;
-  background: transparent;
   cursor: pointer;
+
+  &_place_burger {
+    align-self: flex-end;
+    margin-bottom: 26px;
+  }
 }

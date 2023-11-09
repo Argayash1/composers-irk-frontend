@@ -2,6 +2,7 @@ import musicWorldOfJanKrul from '../assets/images/about-us-article-music-world-o
 
 export const articlesArray = [
   {
+    id: '0',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '01.01.2023',
     title: 'Музыкальный мир Яна Круля',
@@ -29,6 +30,7 @@ export const articlesArray = [
     ],
   },
   {
+    id: '1',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '01.01.2023',
     title: 'Музыкальный мир Яна Круля',
@@ -56,6 +58,7 @@ export const articlesArray = [
     ],
   },
   {
+    id: '2',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '01.01.2023',
     title: 'Музыкальный мир Яна Круля',
@@ -83,6 +86,7 @@ export const articlesArray = [
     ],
   },
   {
+    id: '3',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '01.01.2023',
     title: 'Музыкальный мир Яна Круля',
@@ -110,6 +114,7 @@ export const articlesArray = [
     ],
   },
   {
+    id: '4',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '01.01.2023',
     title: 'Музыкальный мир Яна Круля',
@@ -137,6 +142,7 @@ export const articlesArray = [
     ],
   },
   {
+    id: '5',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '01.01.2023',
     title: 'Музыкальный мир Яна Круля',

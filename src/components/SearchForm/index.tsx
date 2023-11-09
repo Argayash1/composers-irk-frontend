@@ -2,12 +2,17 @@ import React from 'react';
 import { SearchButton, CloseButton, ButtonTypeEnum } from '..';
 import './SearchForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsSearchOpen, setSearchValue } from '../../redux/searchSlice/slice';
+import { setToggleSearch, setSearchValue, setSearchResults } from '../../redux/searchSlice/slice';
 import { useNavigate } from 'react-router-dom';
 import { newsArray } from '../../utils/newsArray';
 import { membersArray } from '../../utils/membersArray';
 import { articlesArray } from '../../utils/articlesArray';
 import { projectsArray } from '../../utils/projectsArray';
+import { compareBySurname } from '../../utils/utils';
+
+interface CombinedArrayObject {
+  [key: string]: string | string[];
+}
 
 export const SearchForm: React.FC = () => {
   const { searchValue, isSearchOpen } = useSelector((state: any) => state.search);
@@ -16,32 +21,34 @@ export const SearchForm: React.FC = () => {
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  type MyObject = {
-    [key: string]: Array<{ [key: string]: string | number }>;
-  };
+  const membersArraySortedBySurname = membersArray.sort(compareBySurname);
 
-  const handleSearchByAllSite = (e: React.FormEvent<HTMLFormElement>, obj: MyObject, searchString: string) => {
+  const composers = membersArraySortedBySurname.map((member, index) => ({ ...member, id: String(index) }));
+
+  const combinedArray: CombinedArrayObject[] = [...newsArray, ...composers, ...articlesArray, ...projectsArray];
+
+  const handleSearchByAllSite = (e: React.FormEvent<HTMLFormElement>, query: string) => {
     e.preventDefault();
 
-    for (let key in obj) {
-      if (Array.isArray(obj[key])) {
-        let array = obj[key];
-        for (let i = 0; i < array.length; i++) {
-          for (let prop in array[i]) {
-            const value = array[i][prop];
-            if (
-              (typeof value === 'string' && value.includes(searchString)) ||
-              (typeof value === 'number' && value.toString().includes(searchString))
-            ) {
-              navigate('/searchresults');
-              return array[i];
-            }
+    if (searchValue) {
+      const results: CombinedArrayObject[] = combinedArray.filter((obj) => {
+        return Object.values(obj).some((value) => {
+          if (typeof value === 'string') {
+            return value.toLowerCase().includes(query.toLowerCase());
           }
-        }
-      }
+
+          if (Array.isArray(value)) {
+            return value.some((item) => typeof item === 'string' && item.toLowerCase().includes(query.toLowerCase()));
+          }
+
+          return false;
+        });
+      });
+
+      dispatch(setSearchResults(results));
     }
 
-    return null;
+    navigate('/searchresults');
   };
 
   const handleClearSearchBar = () => {
@@ -50,7 +57,7 @@ export const SearchForm: React.FC = () => {
   };
 
   const handleCloseSearchBar = () => {
-    dispatch(setIsSearchOpen());
+    dispatch(setToggleSearch());
     dispatch(setSearchValue(''));
   };
 
@@ -58,17 +65,9 @@ export const SearchForm: React.FC = () => {
     dispatch(setSearchValue(e.target.value));
   };
 
-  const allArrays = {
-    newsArray,
-    membersArray,
-    projectsArray,
-    articlesArray,
-  };
-
   return (
     <section className={`search ${isSearchOpen ? 'search_is_opened' : ''}`}>
-      {/* @ts-ignore */}
-      <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, allArrays, searchValue)}>
+      <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
         <input
           className='search__input'
           type='search'

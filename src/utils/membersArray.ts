@@ -8,6 +8,7 @@ import yevdokimove from '../assets/images/union-members-yevdokimova.jpg';
 import tcaher from '../assets/images/union-members-tsaher.jpg';
 
 export type UnionMember = {
+  id: string;
   imageUrl: string;
   surname: string;
   name: string;
@@ -22,6 +23,7 @@ export type UnionMember = {
 
 export const membersArray: UnionMember[] = [
   {
+    id: '0',
     imageUrl: krivoshein,
     surname: 'Кривошеин',
     name: 'Анатолий Григорьевич',
@@ -54,6 +56,7 @@ export const membersArray: UnionMember[] = [
   },
 
   {
+    id: '1',
     imageUrl: krivoshein,
     surname: 'Шевченко',
     name: 'Анатолий Михайлович',
@@ -79,6 +82,7 @@ export const membersArray: UnionMember[] = [
     ],
   },
   {
+    id: '2',
     imageUrl: krul,
     surname: 'Круль',
     name: 'Ян Леонидович',
@@ -101,6 +105,7 @@ export const membersArray: UnionMember[] = [
     ],
   },
   {
+    id: '3',
     imageUrl: shekin,
     surname: 'Шекин',
     name: 'Василий Азикович',
@@ -140,6 +145,7 @@ export const membersArray: UnionMember[] = [
     ],
   },
   {
+    id: '4',
     imageUrl: starodubtsev,
     surname: 'Стародубцев',
     name: 'Аркадий Викторович',
@@ -165,6 +171,7 @@ export const membersArray: UnionMember[] = [
     ],
   },
   {
+    id: '5',
     imageUrl: yakushenko,
     surname: 'Якушенко',
     name: 'Евгений Николаевич',
@@ -186,6 +193,7 @@ export const membersArray: UnionMember[] = [
     ],
   },
   {
+    id: '6',
     imageUrl: kuznetcova,
     surname: 'Кузнецова',
     name: 'Анастасия Игоревна',
@@ -204,6 +212,7 @@ export const membersArray: UnionMember[] = [
     ],
   },
   {
+    id: '7',
     imageUrl: krivoshein,
     surname: 'Коханая',
     name: 'Анна Игоревна',
@@ -216,6 +225,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '8',
     imageUrl: krivoshein,
     surname: 'Волченко',
     name: 'Владимир Георгиевич',
@@ -228,6 +238,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '9',
     imageUrl: krivoshein,
     surname: 'Григоруцэ',
     name: 'Дечебал Георгиевич',
@@ -240,6 +251,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '10',
     imageUrl: krivoshein,
     surname: 'Лапис',
     name: 'Михаил Израилевич',
@@ -252,6 +264,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '11',
     imageUrl: krivoshein,
     surname: 'Токарская',
     name: 'Марина Николаевна',
@@ -264,6 +277,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '12',
     imageUrl: krivoshein,
     surname: 'Тепляков',
     name: 'Анатолий Иннокентьевич',
@@ -276,6 +290,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '13',
     imageUrl: krivoshein,
     surname: 'Халтанова',
     name: 'Лариса Константиновна',
@@ -288,6 +303,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '14',
     imageUrl: yevdokimove,
     surname: 'Евдокимова',
     name: 'Ирина Андреевна ',
@@ -319,8 +335,8 @@ export const membersArray: UnionMember[] = [
       '«Стихия» для театра «Чудак» (реж. Л. В. Беспрозванный).',
     ],
   },
-
   {
+    id: '15',
     imageUrl: yevdokimove,
     surname: 'Горбовская',
     name: 'Ольга Олеговна ',
@@ -343,6 +359,7 @@ export const membersArray: UnionMember[] = [
     works: ['asasa'],
   },
   {
+    id: '16',
     imageUrl: tcaher,
     surname: 'Цахер',
     name: 'Изольда Оскаровна',
@@ -365,6 +382,7 @@ export const membersArray: UnionMember[] = [
     ],
   },
   {
+    id: '17',
     imageUrl: yevdokimove,
     surname: 'Пухнаревич',
     name: 'Лидия Михайловна',

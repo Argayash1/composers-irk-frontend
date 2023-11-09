@@ -1,7 +1,7 @@
 import { BreadCrumbs, Logo, MainMenu, SearchForm, HeaderIcons } from '../../components';
 import { useDispatch } from 'react-redux';
 import './Header.scss';
-import { setCloseSearch, setIsSearchOpen } from '../../redux/searchSlice/slice';
+import { setCloseSearch, setToggleSearch } from '../../redux/searchSlice/slice';
 import { useLocation } from 'react-router-dom';
 import React from 'react';
 import { BurgerMenu } from '../BurgerMenu';
@@ -9,7 +9,20 @@ import { BurgerMenu } from '../BurgerMenu';
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const [isBurgerMenuOpen, setisBurgerMenuOpen] = React.useState<boolean>(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    function handleAutoCloseMenu() {
+      window.onresize = () => {
+        setIsBurgerMenuOpen(false);
+      };
+    }
+
+    if (isBurgerMenuOpen) {
+      window.addEventListener('resize', handleAutoCloseMenu);
+      return () => window.removeEventListener('resize', handleAutoCloseMenu);
+    }
+  }, [isBurgerMenuOpen]);
 
   React.useEffect(() => {
     if (pathname !== '/searchresults') {
@@ -23,10 +36,10 @@ export const Header: React.FC = () => {
         <Logo />
         <MainMenu place='header' />
         <HeaderIcons
-          onSearchClick={() => dispatch(setIsSearchOpen())}
-          onBurgerButtonClick={() => setisBurgerMenuOpen(true)}
+          onSearchClick={() => dispatch(setToggleSearch())}
+          onBurgerButtonClick={() => setIsBurgerMenuOpen(true)}
         />
-        <BurgerMenu isOpen={isBurgerMenuOpen} onClose={() => setisBurgerMenuOpen(false)} />
+        <BurgerMenu isOpen={isBurgerMenuOpen} onClose={() => setIsBurgerMenuOpen(false)} />
       </div>
       <SearchForm />
       {pathname !== '/' && pathname !== '/searchresults' && <BreadCrumbs />}

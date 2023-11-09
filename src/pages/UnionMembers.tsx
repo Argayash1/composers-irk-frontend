@@ -16,7 +16,7 @@ const UnionMembers: React.FC = () => {
       <ul className='union-members__list'>
         {membersArraySortedBySurname.map((member, index) => (
           <li key={index}>
-            <UnionMemberBlock index={index} {...member} />
+            <UnionMemberBlock index={Number(index)} {...member} />
           </li>
         ))}
       </ul>

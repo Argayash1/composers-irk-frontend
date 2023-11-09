@@ -11,7 +11,7 @@ type NewsContainerProps = {
 
 export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray }) => {
   const slicedNewsArray = itemsArray && itemsArray.slice(0, 6);
-  const screenWisth = document.documentElement.clientWidth;
+  const screenWidth = document.documentElement.clientWidth;
 
   const slicedNews =
     slicedNewsArray &&
@@ -36,7 +36,7 @@ export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray 
   ));
 
   const newsContainerListClassName = `news-container__news-list  ${
-    screenWisth < 1280 ? 'news-container__news-list_gap_tablet' : ''
+    screenWidth < 1280 ? 'news-container__news-list_gap_tablet' : ''
   }`;
 
   return (

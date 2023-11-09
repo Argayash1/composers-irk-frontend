@@ -1,16 +1,38 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+type Item = {
+  imageUrl?: string;
+  title?: string;
+  name?: string;
+  surname?: string;
+  profession?: string;
+  biography?: string[];
+  description?: string;
+  newsText?: string;
+};
+
+interface SearchSliceState {
+  isSearchOpen: boolean;
+  searchValue: string;
+  searchResults: Item[];
+}
+
+const initialState: SearchSliceState = {
   isSearchOpen: false,
   searchValue: '',
+  searchResults: [],
 };
 
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    setIsSearchOpen: (state) => {
+    setToggleSearch: (state) => {
       state.isSearchOpen = !state.isSearchOpen;
+    },
+
+    setOpenSearch: (state) => {
+      state.isSearchOpen = true;
     },
 
     setCloseSearch: (state) => {
@@ -18,16 +40,16 @@ export const searchSlice = createSlice({
       state.searchValue = '';
     },
 
-    setOpenSearch: (state) => {
-      state.isSearchOpen = true;
-    },
-
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
+    },
+
+    setSearchResults(state, action: PayloadAction<Item[]>) {
+      state.searchResults = action.payload;
     },
   },
 });
 
-export const { setIsSearchOpen, setOpenSearch, setCloseSearch, setSearchValue } = searchSlice.actions;
+export const { setToggleSearch, setOpenSearch, setCloseSearch, setSearchValue, setSearchResults } = searchSlice.actions;
 
 export default searchSlice.reducer;

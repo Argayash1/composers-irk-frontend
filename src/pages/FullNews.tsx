@@ -1,17 +1,27 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { newsArray } from '../utils/newsArray';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, PageTitle, SharePanel } from '../components';
+import axios from 'axios';
 
 const FullNews: React.FC = () => {
   const [news, setNews] = React.useState<{ imageUrl: string; title: string; newsText: string; createdAt: string }>();
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    const newsObject = newsArray[Number(id)];
-    setNews(newsObject);
-  }, [id]);
+    async function fetchNews() {
+      try {
+        const { data } = await axios.get('https://64e36310bac46e480e78b878.mockapi.io/news/' + id);
+        setNews(data);
+      } catch (err) {
+        console.log(err);
+        navigate('/');
+      }
+    }
+
+    fetchNews();
+  }, [id, navigate]);
 
   if (!news) {
     return <>Загрузка новости...</>;

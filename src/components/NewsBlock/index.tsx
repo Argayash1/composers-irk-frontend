@@ -5,15 +5,17 @@ import { Link } from 'react-router-dom';
 import { handleScrollToTop } from '../../utils/utils';
 
 type NewsBlockProps = {
+  id: string;
   imageUrl: string;
   createdAt: string;
   title: string;
   newsText?: string;
   articleDescription?: string;
-  index: number;
+  index?: number;
 };
 
 export const NewsBlock: React.FC<NewsBlockProps> = ({
+  id,
   imageUrl,
   createdAt,
   title,
@@ -21,7 +23,7 @@ export const NewsBlock: React.FC<NewsBlockProps> = ({
   articleDescription,
   index,
 }) => {
-  const fullNewsPath = `/news/${index}`;
+  const fullNewsPath = `/news/${id}`;
   const fullArticlePath = `/aboutus/${index}`;
 
   return (

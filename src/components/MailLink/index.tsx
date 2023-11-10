@@ -7,7 +7,7 @@ type MailLinkProps = {
 
 export const MailLink: React.FC<MailLinkProps> = ({ place }) => {
   return (
-    <a className='mail-link' href='mailto:example@example.com' target='_blank' rel='noreferrer'>
+    <a className='mail-link' href='mailto:composersirk@mail.ru' target='_blank' rel='noreferrer'>
       <svg
         className={`mail-link__icon ${place === 'footer' ? 'mail-link__icon_place_footer' : ''}`}
         width='20'

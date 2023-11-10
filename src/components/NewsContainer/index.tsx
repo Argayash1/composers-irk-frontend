@@ -17,7 +17,7 @@ export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray 
     slicedNewsArray &&
     slicedNewsArray.map((news, index) => (
       <li key={index}>
-        <NewsBlock index={index} {...news} />
+        <NewsBlock {...news} />
       </li>
     ));
 
@@ -25,7 +25,7 @@ export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray 
     itemsArray &&
     itemsArray.map((news, index) => (
       <li key={index}>
-        <NewsBlock index={index} {...news} />
+        <NewsBlock {...news} />
       </li>
     ));
 

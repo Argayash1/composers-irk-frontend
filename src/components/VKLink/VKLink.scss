@@ -4,28 +4,24 @@
   display: inline-block;
 
   &__icon {
-    background-image: url('../../assets/icons/vk-icon.svg');
-    width: 17px;
-    height: 17px;
-    transition: background-image 0.3s linear;
-
-    @media screen and (max-width: 1220px) {
-      width: 18px;
-      height: 18px;
+    path {
+      fill: #62767c;
+      stroke: #62767c;
+      transition: all 0.3s linear;
     }
 
-    &:hover {
-      background-image: url('../../assets/icons/vk-icon-hover.svg');
+    &:hover path {
+      fill: #fcbe13;
+      stroke: #fcbe13;
     }
-  }
 
-  &__icon_place_footer {
-    background-image: url('../../assets/icons/vk-icon-footer.svg');
-    width: 20px;
-    height: 20px;
+    &_place_footer {
+      width: 20px;
+      height: 20px;
 
-    &:hover {
-      background-image: url('../../assets/icons/vk-icon-footer-hover.svg');
+      path {
+        fill: white;
+      }
     }
   }
 }

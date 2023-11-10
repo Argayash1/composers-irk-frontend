@@ -6,9 +6,7 @@
   padding: 0;
   margin: 0;
   background: transparent;
-  background-image: url('../../assets/icons/search-icon.svg');
   cursor: pointer;
-  transition: background-image 0.3s linear;
   display: inline-block;
 
   @media screen and (max-width: 1220px) {
@@ -17,8 +15,13 @@
   }
 
   &_place_header {
-    &:hover {
-      background-image: url('../../assets/icons/search-icon-hover.svg');
+    svg path {
+      stroke: #62767c;
+      transition: stroke 0.3s linear;
+    }
+
+    &:hover svg path {
+      stroke: #fcbe13;
     }
   }
 }

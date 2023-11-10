@@ -21,11 +21,16 @@ export const SearchForm: React.FC = () => {
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const membersArraySortedBySurname = membersArray.sort(compareBySurname);
+  const membersArraySortedBySurname = membersArray
+    .sort(compareBySurname)
+    .map((member, index) => ({ ...member, id: String(index) }));
 
-  const composers = membersArraySortedBySurname.map((member, index) => ({ ...member, id: String(index) }));
-
-  const combinedArray: CombinedArrayObject[] = [...newsArray, ...composers, ...articlesArray, ...projectsArray];
+  const combinedArray: CombinedArrayObject[] = [
+    ...newsArray,
+    ...membersArraySortedBySurname,
+    ...articlesArray,
+    ...projectsArray,
+  ];
 
   const handleSearchByAllSite = (e: React.FormEvent<HTMLFormElement>, query: string) => {
     e.preventDefault();
@@ -59,6 +64,7 @@ export const SearchForm: React.FC = () => {
   const handleCloseSearchBar = () => {
     dispatch(setToggleSearch());
     dispatch(setSearchValue(''));
+    dispatch(setSearchResults([]));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

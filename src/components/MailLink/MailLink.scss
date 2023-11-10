@@ -4,29 +4,27 @@
   display: inline-block;
 
   &__icon {
-    background-image: url('../../assets/icons/mail-Icon.svg');
-    background-size: cover;
-    background-position: 0 0;
-    width: 20px;
-    height: 17px;
-    transition: background-image 0.3s linear;
-
     @media screen and (max-width: 1220px) {
       width: 18px;
       height: 14.4px;
     }
 
-    &:hover {
-      background-image: url('../../assets/icons/mail-Icon-hover.svg');
+    path {
+      stroke: #62767c;
+      transition: stroke 0.3s linear;
     }
-  }
 
-  &__icon_place_footer {
-    background-image: url('../../assets/icons/mail-Icon-footer.svg');
-    width: 23px;
-    height: 19px;
-    &:hover {
-      background-image: url('../../assets/icons/mail-Icon-footer-hover.svg');
+    &:hover path {
+      stroke: #fcbe13;
+    }
+
+    &_place_footer {
+      width: 24px;
+      height: 20px;
+
+      path {
+        stroke: white;
+      }
     }
   }
 }

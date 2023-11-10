@@ -1,4 +1,22 @@
 .pagination {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-family: Manrope;
+
+  &__button {
+    color: #fcbe13;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 23.4px */
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+
   &__list {
     list-style-type: none;
     margin: 0;
@@ -6,25 +24,40 @@
     display: flex;
   }
 
-  &__page-number {
+  &__list-item {
+    margin-right: 25px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__page-number-button {
     color: #282f30;
-    font-family: Manrope;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 25px; /* Фиксированная высота строки */
-    margin-right: 35px;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
     cursor: pointer;
+    transition: color 0.3s linear;
+
+    &:not(.pagination__page-number-button_active):hover {
+      color: #fcbe13;
+    }
 
     &_active {
-      width: 25px;
-      height: 25px;
       color: #fff;
       background-color: #fcbe13;
-      border-radius: 100%;
-      display: inline-block;
       text-align: center;
-      margin-right: 25px;
+      transition: none;
     }
   }
 }

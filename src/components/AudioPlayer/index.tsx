@@ -20,8 +20,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const [progress, setProgress] = React.useState<number>(0);
   const [isPlaying, setPlaying] = React.useState<boolean>(false);
   const [totalDuration, setTotalDuration] = React.useState<number>(0);
+  const [isTimelineContainerHovered, setIsTimelineContainerHovered] = React.useState<boolean>(false);
   const [currentDuration, setCurrentDuration] = React.useState<number>(0);
-  const [isHovered, setIsHovered] = React.useState<boolean>(false);
+  const [isVolumeLineHovered, setIsVolumeLineHovered] = React.useState<boolean>(false);
+  const [isVolumeContainerHovered, setIsVolumeContainerHovered] = React.useState<boolean>(false);
   const [isMoreMenuOpen, setIsMoreMenuOpen] = React.useState<boolean>(false);
   const [isSpeedParamsOpen, setIsSpeedParamsOpen] = React.useState<boolean>(false);
 
@@ -175,23 +177,46 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           {handleChangeSecondsToMinutesAndSeconds(currentDuration)}/
           {handleChangeSecondsToMinutesAndSeconds(totalDuration)}
         </span>
-        <div className='audio-player__progress-bar-container'>
-          <div className='audio-player__progress-bar' ref={customTrackRef} style={progressBarStyle}></div>
-          <button className='audio-player__progress-bar-button'></button>
+        <div
+          className='audio-player__timeline-container'
+          onMouseEnter={() => setIsTimelineContainerHovered(true)}
+          onMouseLeave={() => setIsTimelineContainerHovered(false)}
+        >
+          <div className='audio-player__progress-bar-container'>
+            <div className='audio-player__progress-bar' ref={customTrackRef} style={progressBarStyle}></div>
+            <button
+              className={`audio-player__progress-bar-button ${
+                isTimelineContainerHovered ? 'audio-player__progress-bar-button_active' : ''
+              }`}
+            ></button>
+          </div>
+          <div className='audio-player__timeline'></div>
         </div>
 
-        <div className='audio-player__timeline'></div>
-        <div className='audio-player__volume-container'>
+        <div
+          className='audio-player__volume-container'
+          onMouseEnter={() => setIsVolumeContainerHovered(true)}
+          onMouseLeave={() => setIsVolumeContainerHovered(false)}
+        >
           <div
-            className={`audio-player__timeline audio-player__timeline_type_volume ${
-              isHovered ? 'audio-player__timeline_hovered' : ''
-            }`}
-          ></div>
-          <button
-            className='audio-player__volume-button'
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          ></button>
+            className='audio-player__timeline-container audio-player__timeline-container_type_volume'
+            onMouseEnter={() => setIsVolumeLineHovered(true)}
+            onMouseLeave={() => setIsVolumeLineHovered(false)}
+          >
+            <div
+              className={`audio-player__timeline audio-player__timeline_type_volume ${
+                isVolumeContainerHovered ? 'audio-player__timeline_hovered' : ''
+              }`}
+            ></div>
+          </div>
+          <div className='audio-player__volume-progress-bar-container'>
+            <button
+              className={`audio-player__progress-bar-button ${
+                isVolumeLineHovered ? 'audio-player__progress-bar-button_active' : ''
+              }`}
+            ></button>
+          </div>
+          <button className='audio-player__volume-button'></button>
         </div>
         <button
           title='дополнительные параметры'

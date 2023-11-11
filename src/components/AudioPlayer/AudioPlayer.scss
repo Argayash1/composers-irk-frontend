@@ -54,20 +54,39 @@
   }
 
   &__progress-bar-button {
+    visibility: hidden;
+    opacity: 0;
     background-color: #fcbe13;
-    border-radius: 50%;
+    border-radius: 100%;
     border: none;
-    height: 10px;
-    width: 10px;
+    height: 12px;
+    width: 12px;
     margin: 0;
     padding: 0;
+    transition: visibility 0.2s linear, opacity 0.2s linear;
+
+    &_active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__timeline-container {
+    width: 521px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+
+    &_type_volume {
+      width: fit-content;
+    }
   }
 
   &__timeline {
-    width: 521px;
+    width: 100%;
     height: 4px;
     background-color: #d9d9d9;
-    transition: width 0.3s linear;
+    transition: all 0.3s linear;
 
     &_type_volume {
       width: 0;
@@ -75,13 +94,20 @@
 
     &_hovered {
       width: 110px;
+      margin-right: 12px;
     }
   }
 
   &__volume-container {
     display: flex;
     align-items: center;
-    gap: 12px;
+    height: 22px;
+  }
+
+  &__volume-progress-bar-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
   }
 
   &__volume-button {
@@ -91,6 +117,8 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
   }
 
   &__more-button {

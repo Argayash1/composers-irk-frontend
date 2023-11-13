@@ -17,9 +17,7 @@ const SearchResults: React.FC = () => {
         <PageTitle name='Результаты поиска' />
         {searchResults.length === 0 ? (
           <p className='search-results__no-results-text'>
-            {`${
-              !searchValue ? 'Запрос должен включать хотя бы один символ.' : 'К сожалению, ничего не нашлось. '
-            } Попробуйте изменить Ваш запрос.`}
+            {`${'К сожалению, ничего не нашлось. '} Попробуйте изменить Ваш запрос.`}
           </p>
         ) : (
           <ul className='search-results__list'>

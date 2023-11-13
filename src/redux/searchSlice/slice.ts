@@ -16,6 +16,7 @@ interface SearchSliceState {
   isSearchOpen: boolean;
   searchValue: string;
   searchResults: Item[];
+  errorText: string;
 }
 
 const initialState: SearchSliceState = {
@@ -23,18 +24,20 @@ const initialState: SearchSliceState = {
   isSearchOpen: false,
   searchValue: '',
   searchResults: [],
+  errorText: '',
 };
 
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    setCurrentPage: (state, action) => {
+    setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
     },
 
     setToggleSearch: (state) => {
       state.isSearchOpen = !state.isSearchOpen;
+      state.errorText = '';
     },
 
     setOpenSearch: (state) => {
@@ -53,10 +56,21 @@ export const searchSlice = createSlice({
     setSearchResults(state, action: PayloadAction<Item[]>) {
       state.searchResults = action.payload;
     },
+
+    setErrorText(state, action: PayloadAction<string>) {
+      state.errorText = action.payload;
+    },
   },
 });
 
-export const { setCurrentPage, setToggleSearch, setOpenSearch, setCloseSearch, setSearchValue, setSearchResults } =
-  searchSlice.actions;
+export const {
+  setCurrentPage,
+  setToggleSearch,
+  setOpenSearch,
+  setCloseSearch,
+  setSearchValue,
+  setSearchResults,
+  setErrorText,
+} = searchSlice.actions;
 
 export default searchSlice.reducer;

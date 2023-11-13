@@ -9,7 +9,9 @@ type CloseButtonProps = {
 export const CloseButton: React.FC<CloseButtonProps> = ({ onClick, place }) => {
   return (
     <button
-      className={`close-button ${place === 'burger' ? 'close-button_place_burger' : ''}`}
+      className={`close-button ${place === 'burger' ? 'close-button_place_burger' : ''} ${
+        place === 'search' ? 'close-button_place_search' : ''
+      }`}
       type='button'
       onClick={onClick}
     >

@@ -22,6 +22,11 @@
     padding: 65px 85px 50px;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 1262px) {
+      padding-right: 39px;
+      padding-left: 39px;
+    }
   }
 }
 

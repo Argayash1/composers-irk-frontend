@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchButton, CloseButton, ButtonTypeEnum } from '..';
 import './SearchForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToggleSearch, setSearchValue, setSearchResults } from '../../redux/searchSlice/slice';
+import { setToggleSearch, setSearchValue, setSearchResults, setErrorText } from '../../redux/searchSlice/slice';
 import { useNavigate } from 'react-router-dom';
 import { newsArray } from '../../utils/newsArray';
 import { unionMembersArray } from '../../utils/membersArray';
@@ -15,7 +15,7 @@ export interface CombinedArrayObject {
 }
 
 export const SearchForm: React.FC = () => {
-  const { searchValue, isSearchOpen } = useSelector((state: RootState) => state.search);
+  const { searchValue, isSearchOpen, errorText } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ export const SearchForm: React.FC = () => {
     e.preventDefault();
 
     if (searchValue) {
+      dispatch(setErrorText(''));
       const results: CombinedArrayObject[] = combinedArray.filter((obj) => {
         return Object.values(obj).some((value) => {
           if (typeof value === 'string') {
@@ -42,9 +43,10 @@ export const SearchForm: React.FC = () => {
       });
 
       dispatch(setSearchResults(results));
+      navigate('/searchresults');
+    } else {
+      dispatch(setErrorText('Запрос должен включать хотя бы один символ.'));
     }
-
-    navigate('/searchresults');
   };
 
   const handleClearSearchBar = () => {
@@ -56,6 +58,7 @@ export const SearchForm: React.FC = () => {
     dispatch(setToggleSearch());
     dispatch(setSearchValue(''));
     dispatch(setSearchResults([]));
+    dispatch(setErrorText(''));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,24 +68,27 @@ export const SearchForm: React.FC = () => {
   return (
     <section className={`search ${isSearchOpen ? 'search_is_opened' : ''}`}>
       <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
-        <input
-          className='search__input'
-          type='search'
-          value={searchValue || ''}
-          name='search'
-          id='search'
-          onChange={handleChange}
-          placeholder='Введите запрос'
-          autoComplete='off'
-          ref={inputRef}
-          required
-        />
+        <label htmlFor='search' className='search__label'>
+          <input
+            className={`search__input ${errorText ? 'search__input_type_error' : ''}`}
+            type='search'
+            value={searchValue || ''}
+            name='search'
+            id='search'
+            onChange={handleChange}
+            placeholder='Введите запрос'
+            autoComplete='off'
+            ref={inputRef}
+            required
+          />
+          <span className='search__error'>{errorText}</span>
+        </label>
         <div className='search__buttons'>
           <SearchButton type={ButtonTypeEnum.SUBMIT} />
           {searchValue && <CloseButton onClick={handleClearSearchBar} />}
         </div>
       </form>
-      <CloseButton onClick={handleCloseSearchBar} />
+      <CloseButton onClick={handleCloseSearchBar} place='search' />
     </section>
   );
 };

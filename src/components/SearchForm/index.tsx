@@ -5,32 +5,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setToggleSearch, setSearchValue, setSearchResults } from '../../redux/searchSlice/slice';
 import { useNavigate } from 'react-router-dom';
 import { newsArray } from '../../utils/newsArray';
-import { membersArray } from '../../utils/membersArray';
+import { unionMembersArray } from '../../utils/membersArray';
 import { articlesArray } from '../../utils/articlesArray';
 import { projectsArray } from '../../utils/projectsArray';
-import { compareBySurname } from '../../utils/utils';
+import { RootState } from '../../redux/store';
 
-interface CombinedArrayObject {
+export interface CombinedArrayObject {
   [key: string]: string | string[];
 }
 
 export const SearchForm: React.FC = () => {
-  const { searchValue, isSearchOpen } = useSelector((state: any) => state.search);
+  const { searchValue, isSearchOpen } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const membersArraySortedBySurname = membersArray
-    .sort(compareBySurname)
-    .map((member, index) => ({ ...member, id: String(index) }));
-
-  const combinedArray: CombinedArrayObject[] = [
-    ...newsArray,
-    ...membersArraySortedBySurname,
-    ...articlesArray,
-    ...projectsArray,
-  ];
+  const combinedArray: CombinedArrayObject[] = [...newsArray, ...unionMembersArray, ...articlesArray, ...projectsArray];
 
   const handleSearchByAllSite = (e: React.FormEvent<HTMLFormElement>, query: string) => {
     e.preventDefault();

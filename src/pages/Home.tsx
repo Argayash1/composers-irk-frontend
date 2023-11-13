@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    dispatch(fetchNews());
+    dispatch(fetchNews(1));
   }, [dispatch]);
 
   return (

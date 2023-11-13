@@ -12,12 +12,14 @@ type Item = {
 };
 
 interface SearchSliceState {
+  currentPage: number;
   isSearchOpen: boolean;
   searchValue: string;
   searchResults: Item[];
 }
 
 const initialState: SearchSliceState = {
+  currentPage: 1,
   isSearchOpen: false,
   searchValue: '',
   searchResults: [],
@@ -27,6 +29,10 @@ export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+
     setToggleSearch: (state) => {
       state.isSearchOpen = !state.isSearchOpen;
     },
@@ -50,6 +56,7 @@ export const searchSlice = createSlice({
   },
 });
 
-export const { setToggleSearch, setOpenSearch, setCloseSearch, setSearchValue, setSearchResults } = searchSlice.actions;
+export const { setCurrentPage, setToggleSearch, setOpenSearch, setCloseSearch, setSearchValue, setSearchResults } =
+  searchSlice.actions;
 
 export default searchSlice.reducer;

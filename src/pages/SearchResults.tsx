@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle, Pagination, SearchResult } from '../components';
+import { CombinedArrayObject, PageTitle, Pagination, SearchResult } from '../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenSearch } from '../redux/searchSlice/slice';
 
@@ -23,8 +23,7 @@ const SearchResults: React.FC = () => {
           </p>
         ) : (
           <ul className='search-results__list'>
-            {/*@ts-ignore*/}
-            {searchResults.map((searchResult, index) => (
+            {searchResults.map((searchResult: CombinedArrayObject, index: number) => (
               <li key={index}>
                 <SearchResult
                   title={searchResult.title || searchResult.surname + ' ' + searchResult.name}

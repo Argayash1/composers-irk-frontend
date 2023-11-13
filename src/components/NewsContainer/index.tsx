@@ -3,6 +3,8 @@ import { NewsBlock } from '../../components';
 import './NewsContainer.scss';
 import { articlesArray } from '../../utils/articlesArray';
 import { News } from '../../redux/news/types';
+import { useSelector } from 'react-redux';
+import { selectCurrentPage } from '../../redux/searchSlice/selectors';
 
 type NewsContainerProps = {
   place?: string;
@@ -12,6 +14,9 @@ type NewsContainerProps = {
 export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray }) => {
   const slicedNewsArray = itemsArray && itemsArray.slice(0, 6);
   const screenWidth = document.documentElement.clientWidth;
+  const currentPage = useSelector(selectCurrentPage);
+  const firstItem = currentPage * 6 - 6;
+  const lastItam = currentPage * 6;
 
   const slicedNews =
     slicedNewsArray &&
@@ -29,9 +34,9 @@ export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray 
       </li>
     ));
 
-  const articles = articlesArray.map((article, index) => (
+  const articles = articlesArray.slice(firstItem, lastItam).map((article, index) => (
     <li key={index}>
-      <NewsBlock index={index} {...article} />
+      <NewsBlock {...article} />
     </li>
   ));
 

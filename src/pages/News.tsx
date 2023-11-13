@@ -4,19 +4,21 @@ import { useAppDispatch } from '../redux/store';
 import { fetchNews } from '../redux/news/asyncActions';
 import { useSelector } from 'react-redux';
 import { selectNewsData } from '../redux/news/selectors';
+import { selectCurrentPage } from '../redux/searchSlice/selectors';
 
 const News: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const { items } = useSelector(selectNewsData);
+  const currentPage = useSelector(selectCurrentPage);
 
   React.useEffect(() => {
     document.title = 'Новости';
   }, []);
 
   React.useEffect(() => {
-    dispatch(fetchNews());
-  }, [dispatch]);
+    dispatch(fetchNews(currentPage));
+  }, [dispatch, currentPage]);
 
   return (
     <main className='news'>

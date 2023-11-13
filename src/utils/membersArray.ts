@@ -21,7 +21,7 @@ export type UnionMember = {
   links?: string[];
 };
 
-export const membersArray: UnionMember[] = [
+export const unionMembersArray: UnionMember[] = [
   {
     id: '0',
     imageUrl: krivoshein,

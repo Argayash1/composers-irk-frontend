@@ -2,11 +2,10 @@ import React from 'react';
 import './SearchResult.scss';
 import { Link } from 'react-router-dom';
 
-type SearchResultProps = {
-  title: string;
-  description: string;
+interface SearchResultProps {
+  [key: string]: string | string[];
   path: string;
-};
+}
 
 export const SearchResult: React.FC<SearchResultProps> = ({ title, description, path }) => {
   return (

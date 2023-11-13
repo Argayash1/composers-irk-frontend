@@ -6,11 +6,10 @@ import './BreadCrumbs.scss';
 
 import { newsArray } from '../../utils/newsArray';
 import { projectsArray } from '../../utils/projectsArray';
-import { membersArray } from '../../utils/membersArray';
+import { unionMembersArray } from '../../utils/membersArray';
 import { iFrameItemsArray } from '../VideoRecordings';
 import { articlesArray } from '../../utils/articlesArray';
 import { menuItems } from '../MainMenu';
-import { compareBySurname } from '../../utils/utils';
 
 export const BreadCrumbs: React.FC = () => {
   const { pathname } = useLocation();
@@ -29,6 +28,7 @@ export const BreadCrumbs: React.FC = () => {
   }
 
   type Item = {
+    id?: string;
     imageUrl?: string;
     title?: string;
     name?: string;
@@ -50,14 +50,12 @@ export const BreadCrumbs: React.FC = () => {
     contacts: menuItems[8].name,
   };
 
-  const membersArraySortedBySurname = membersArray.sort(compareBySurname);
-
   const itemsArray: Item[] = pathname.includes('news')
     ? newsArray
     : pathname.includes('projects')
     ? projectsArray
     : pathname.includes('unionmembers')
-    ? membersArraySortedBySurname
+    ? unionMembersArray
     : pathname.includes('aboutus')
     ? articlesArray
     : iFrameItemsArray;

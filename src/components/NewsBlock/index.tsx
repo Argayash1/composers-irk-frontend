@@ -24,7 +24,7 @@ export const NewsBlock: React.FC<NewsBlockProps> = ({
   index,
 }) => {
   const fullNewsPath = `/news/${id}`;
-  const fullArticlePath = `/aboutus/${index}`;
+  const fullArticlePath = `/aboutus/${id}`;
 
   return (
     <div className='news-block'>

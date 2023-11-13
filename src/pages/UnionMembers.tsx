@@ -1,10 +1,16 @@
 import React from 'react';
-import { membersArray } from '../utils/membersArray';
+import { unionMembersArray } from '../utils/membersArray';
 import { PageTitle, Pagination, UnionMemberBlock, menuItems } from '../components';
 import { compareBySurname } from '../utils/utils';
+import { useSelector } from 'react-redux';
+import { selectCurrentPage } from '../redux/searchSlice/selectors';
 
 const UnionMembers: React.FC = () => {
-  const membersArraySortedBySurname = membersArray.sort(compareBySurname);
+  const currentPage = useSelector(selectCurrentPage);
+  const firstItem = currentPage * 12 - 12;
+  const lastItam = currentPage * 12;
+
+  const membersArraySortedBySurnameAndSliced = [...unionMembersArray].sort(compareBySurname).slice(firstItem, lastItam);
 
   React.useEffect(() => {
     document.title = 'Состав';
@@ -14,9 +20,9 @@ const UnionMembers: React.FC = () => {
     <main className='union-members'>
       <PageTitle name={`${menuItems[2].name} ИООО Союза композиторов`} />
       <ul className='union-members__list'>
-        {membersArraySortedBySurname.map((member, index) => (
+        {membersArraySortedBySurnameAndSliced.map((member, index) => (
           <li key={index}>
-            <UnionMemberBlock index={Number(index)} {...member} />
+            <UnionMemberBlock {...member} />
           </li>
         ))}
       </ul>

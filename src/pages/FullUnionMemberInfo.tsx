@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CTA, PageTitle, Tabs } from '../components';
-import { membersArray } from '../utils/membersArray';
+import { unionMembersArray } from '../utils/membersArray';
 import { allScores } from './Scores';
-import { compareBySurname } from '../utils/utils';
 import { TextContent } from '../components/TextContent';
 
 const FullUnionMemberInfo: React.FC = () => {
+  console.log(unionMembersArray);
   const [unionMember, setUnionMember] = React.useState<{
     imageUrl: string;
     surname: string;
@@ -24,8 +24,7 @@ const FullUnionMemberInfo: React.FC = () => {
   const { id } = useParams();
 
   React.useEffect(() => {
-    const membersArraySortedBySurname = membersArray.sort(compareBySurname);
-    const memberObject = membersArraySortedBySurname[Number(id)];
+    const memberObject = unionMembersArray[Number(id)];
     setUnionMember(memberObject);
   }, [id]);
 

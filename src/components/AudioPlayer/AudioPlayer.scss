@@ -15,17 +15,6 @@
     top: 0;
   }
 
-  &__time-counter {
-    width: 67px;
-    height: 19px;
-    color: #303a3d;
-    font-family: Manrope;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-
   &__progress-bar-container {
     position: absolute;
     left: 127px;
@@ -93,101 +82,5 @@
     position: absolute;
     display: flex;
     align-items: center;
-  }
-
-  &__volume-button {
-    width: 22px;
-    height: 22px;
-    background-image: url('../../assets/icons/audioplayer-volume-icon.svg');
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__more-button {
-    width: 22px;
-    height: 22px;
-    background-image: url('../../assets/icons/audioplayer-more-icon.svg');
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-
-    &_active {
-      background-image: url('../../assets/icons/audioplayer-more-icon-active.svg');
-    }
-  }
-
-  &__more-menu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 15px;
-    right: 35px;
-    visibility: hidden;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    transition: all 0.2s linear;
-
-    &_is_opened {
-      visibility: visible;
-      opacity: 1;
-      width: 235px;
-      height: 80px;
-    }
-  }
-
-  &__more-menu-main {
-    display: none;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-
-    &_is_opened {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-  &__more-menu-params {
-    padding: 0;
-    margin: 0;
-    visibility: hidden;
-    opacity: 0;
-    list-style-type: none;
-
-    &_is_opened {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
-  &__more-menu-button {
-    border: none;
-    box-sizing: border-box;
-    padding: 0 0 0 8px;
-    width: 100%;
-    height: 40px;
-    color: #000;
-    font-family: Manrope;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 125%; /* 17.5px */
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    background-color: #fafafa;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #f8e2a6;
-    }
   }
 }

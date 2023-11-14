@@ -9,7 +9,7 @@ type TimeCounterProps = {
 
 export const TimeCounter: React.FC<TimeCounterProps> = ({ currentDuration, totalDuration }) => {
   return (
-    <span className='audio-player__time-counter'>
+    <span className='time-counter'>
       {handleChangeSecondsToMinutesAndSeconds(currentDuration)}/{handleChangeSecondsToMinutesAndSeconds(totalDuration)}
     </span>
   );

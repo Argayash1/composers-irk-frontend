@@ -28,3 +28,8 @@ export * from './SearchResult';
 export * from './Pagination';
 export * from './BurgerOpenButton';
 export * from './HeaderIcons';
+export * from './PlayButton';
+export * from './TimeCounter';
+export * from './MoreButton';
+export * from './MoreMenu';
+export * from './VolumeButton';

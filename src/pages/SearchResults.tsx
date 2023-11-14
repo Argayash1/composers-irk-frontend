@@ -2,9 +2,10 @@ import React from 'react';
 import { CombinedArrayObject, PageTitle, Pagination, SearchResult } from '../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenSearch } from '../redux/searchSlice/slice';
+import { RootState } from '../redux/store';
 
 const SearchResults: React.FC = () => {
-  const { searchResults, searchValue } = useSelector((state: any) => state.search);
+  const { searchResults } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
 
   React.useEffect(() => {

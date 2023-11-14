@@ -1,0 +1,17 @@
+.more-button {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  svg g path {
+    transition: fill 0.3s linear;
+  }
+
+  &:hover {
+    svg g path {
+      fill: #fcbe13;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './AudioPlayer.scss';
-import { handleChangeSecondsToMinutesAndSeconds } from '../../utils/utils';
+import { MoreButton, PlayButton, TimeCounter, MoreMenu, VolumeButton } from '../../components';
 
 type AudioPlayerProps = {
   src: string;
@@ -8,6 +8,17 @@ type AudioPlayerProps = {
 
 type ButtonClick = MouseEvent & {
   composedPath: Node[];
+};
+
+export type MenuItem = {
+  name: string;
+  onClick: () => void;
+  icon: React.SVGProps<SVGElement>;
+};
+
+export type ParamsMenuItem = {
+  name: string;
+  onClick: () => void;
 };
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
@@ -26,6 +37,22 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const [isVolumeContainerHovered, setIsVolumeContainerHovered] = React.useState<boolean>(false);
   const [isMoreMenuOpen, setIsMoreMenuOpen] = React.useState<boolean>(false);
   const [isSpeedParamsOpen, setIsSpeedParamsOpen] = React.useState<boolean>(false);
+  const [previousVolume, setPreviousVolume] = React.useState<number>(1);
+  const [isMuted, setIsmuted] = React.useState<boolean>(false);
+
+  const handleMuteButtonClick = () => {
+    const audioPlayer = audioRef.current;
+    if (audioPlayer) {
+      if (audioPlayer.volume === 0) {
+        audioPlayer.volume = previousVolume; // Восстановить прежний уровень громкости
+        setIsmuted(false);
+      } else {
+        setPreviousVolume(audioPlayer.volume); // Сохранить текущий уровень громкости
+        audioPlayer.volume = 0; // Установить уровень громкости на 0
+        setIsmuted(true);
+      }
+    }
+  };
 
   const handleToggleSpeedParams = () => {
     setIsSpeedParamsOpen(!isSpeedParamsOpen);
@@ -143,12 +170,47 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const progressBarWidth = progress * (maxProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
   const progressBarStyle = { width: `${progressBarWidth}px` }; // Стиль с новой шириной
 
-  const mainMenuItems = [
-    { name: 'Скачать', onClick: handleDownload },
-    { name: 'Скорость воспроизведения', onClick: handleToggleSpeedParams },
+  const menuItems: MenuItem[] = [
+    {
+      name: 'Скачать',
+      onClick: handleDownload,
+      icon: (
+        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
+          <path
+            d='M5 17.5H15M10 2.5V14.1667M10 14.1667L14.1667 10M10 14.1667L5.83333 10'
+            stroke='#303A3D'
+            strokeWidth='1.66667'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+        </svg>
+      ),
+    },
+    {
+      name: 'Скорость воспроизведения',
+      onClick: handleToggleSpeedParams,
+      icon: (
+        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
+          <path
+            d='M2.5 10C2.5 14.1421 5.85786 17.5 10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10Z'
+            stroke='#303A3D'
+            strokeWidth='1.66667'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+          <path
+            d='M8.33333 12.5V7.5L12.5 10L8.33333 12.5Z'
+            stroke='#303A3D'
+            strokeWidth='1.66667'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+        </svg>
+      ),
+    },
   ];
 
-  const paramsMenuItems = [
+  const paramsMenuItems: ParamsMenuItem[] = [
     { name: 'Параметры', onClick: handleToggleSpeedParams },
     { name: '0,25', onClick: () => handleChangePlaybackSpeed(0.25) },
     { name: '0,5', onClick: () => handleChangePlaybackSpeed(0.5) },
@@ -169,14 +231,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
         </a>
       </audio>
       <div className='audio-player__container'>
-        <button
-          className={`audio-player__play-button ${isPlaying ? 'audio-player__play-button_active' : ''}`}
-          onClick={togglePlay}
-        ></button>
-        <span className='audio-player__time-counter'>
-          {handleChangeSecondsToMinutesAndSeconds(currentDuration)}/
-          {handleChangeSecondsToMinutesAndSeconds(totalDuration)}
-        </span>
+        <PlayButton onClick={togglePlay} isPlaying={isPlaying} />
+        <TimeCounter currentDuration={currentDuration} totalDuration={totalDuration} />
         <div
           className='audio-player__timeline-container'
           onMouseEnter={() => setIsTimelineContainerHovered(true)}
@@ -216,45 +272,16 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
               }`}
             ></button>
           </div>
-          <button className='audio-player__volume-button'></button>
+          <VolumeButton onClick={handleMuteButtonClick} isMuted={isMuted} />
         </div>
-        <button
-          title='дополнительные параметры'
-          onClick={handleOpenMoreMenu}
-          ref={buttonRef}
-          className={`audio-player__more-button ${isMoreMenuOpen ? 'audio-player__more-button_active' : ''}`}
-        ></button>
-        <div
+        <MoreButton onClick={handleOpenMoreMenu} ref={buttonRef} />
+        <MoreMenu
+          isMoreMenuOpen={isMoreMenuOpen}
+          isSpeedParamsOpen={isSpeedParamsOpen}
+          menuItems={menuItems}
+          paramsMenuItems={paramsMenuItems}
           ref={menuRef}
-          className={`audio-player__more-menu ${isMoreMenuOpen ? 'audio-player__more-menu_is_opened' : ''}`}
-        >
-          <ul
-            className={`audio-player__more-menu-main ${
-              !isSpeedParamsOpen ? 'audio-player__more-menu-main_is_opened' : ''
-            }`}
-          >
-            {mainMenuItems.map((mainMenuItem, index) => (
-              <li key={index}>
-                <button onClick={mainMenuItem.onClick} className='audio-player__more-menu-button'>
-                  {mainMenuItem.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-          <ul
-            className={`audio-player__more-menu-params ${
-              isSpeedParamsOpen ? 'audio-player__more-menu-params_is_opened' : ''
-            }`}
-          >
-            {paramsMenuItems.map((paramMenuItem, index) => (
-              <li key={index}>
-                <button onClick={paramMenuItem.onClick} className='audio-player__more-menu-button'>
-                  {paramMenuItem.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        />
       </div>
     </div>
   );

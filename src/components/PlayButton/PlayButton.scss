@@ -1,0 +1,35 @@
+.play-button {
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+
+  &__play-icon {
+    g path {
+      transition: fill 0.3s linear;
+    }
+
+    &:hover {
+      g path {
+        fill: #fcbe13;
+      }
+    }
+  }
+
+  &__pause-icon {
+    padding: 4px;
+
+    rect {
+      transition: fill 0.3s linear;
+    }
+
+    &:hover {
+      rect {
+        fill: #fcbe13;
+      }
+    }
+  }
+}

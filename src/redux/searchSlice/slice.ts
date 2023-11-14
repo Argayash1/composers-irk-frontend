@@ -35,11 +35,6 @@ export const searchSlice = createSlice({
       state.currentPage = action.payload;
     },
 
-    setToggleSearch: (state) => {
-      state.isSearchOpen = !state.isSearchOpen;
-      state.errorText = '';
-    },
-
     setOpenSearch: (state) => {
       state.isSearchOpen = true;
     },
@@ -47,6 +42,8 @@ export const searchSlice = createSlice({
     setCloseSearch: (state) => {
       state.isSearchOpen = false;
       state.searchValue = '';
+      state.errorText = '';
+      state.searchResults = [];
     },
 
     setSearchValue(state, action: PayloadAction<string>) {
@@ -63,14 +60,7 @@ export const searchSlice = createSlice({
   },
 });
 
-export const {
-  setCurrentPage,
-  setToggleSearch,
-  setOpenSearch,
-  setCloseSearch,
-  setSearchValue,
-  setSearchResults,
-  setErrorText,
-} = searchSlice.actions;
+export const { setCurrentPage, setOpenSearch, setCloseSearch, setSearchValue, setSearchResults, setErrorText } =
+  searchSlice.actions;
 
 export default searchSlice.reducer;

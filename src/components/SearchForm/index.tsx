@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchButton, CloseButton, ButtonTypeEnum } from '..';
 import './SearchForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToggleSearch, setSearchValue, setSearchResults, setErrorText } from '../../redux/searchSlice/slice';
+import { setSearchValue, setSearchResults, setErrorText, setCloseSearch } from '../../redux/searchSlice/slice';
 import { useNavigate } from 'react-router-dom';
 import { newsArray } from '../../utils/newsArray';
 import { unionMembersArray } from '../../utils/membersArray';
@@ -54,13 +54,6 @@ export const SearchForm: React.FC = () => {
     inputRef.current?.focus();
   };
 
-  const handleCloseSearchBar = () => {
-    dispatch(setToggleSearch());
-    dispatch(setSearchValue(''));
-    dispatch(setSearchResults([]));
-    dispatch(setErrorText(''));
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchValue(e.target.value));
   };
@@ -88,7 +81,7 @@ export const SearchForm: React.FC = () => {
           {searchValue && <CloseButton onClick={handleClearSearchBar} />}
         </div>
       </form>
-      <CloseButton onClick={handleCloseSearchBar} place='search' />
+      <CloseButton onClick={() => dispatch(setCloseSearch())} place='search' />
     </section>
   );
 };

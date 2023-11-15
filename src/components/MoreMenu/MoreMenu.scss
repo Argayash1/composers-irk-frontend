@@ -63,10 +63,22 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    background-repeat: no-repeat;
     cursor: pointer;
 
     &:hover {
       background-color: #f8e2a6;
     }
+
+    &_type_params {
+      padding-left: 12px;
+    }
+  }
+
+  &__button-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
   }
 }

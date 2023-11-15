@@ -1,6 +1,8 @@
 import React from 'react';
 import './AudioPlayer.scss';
 import { MoreButton, PlayButton, TimeCounter, MoreMenu, VolumeButton } from '../../components';
+import downloadIcon from '../../assets/icons/more-menu-download-icon.svg';
+import speedIcon from '../../assets/icons/more-menu-speed-icon.svg';
 
 type AudioPlayerProps = {
   src: string;
@@ -13,7 +15,7 @@ type ButtonClick = MouseEvent & {
 export type MenuItem = {
   name: string;
   onClick: () => void;
-  icon: React.SVGProps<SVGElement>;
+  icon: string;
 };
 
 export type ParamsMenuItem = {
@@ -174,39 +176,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
     {
       name: 'Скачать',
       onClick: handleDownload,
-      icon: (
-        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
-          <path
-            d='M5 17.5H15M10 2.5V14.1667M10 14.1667L14.1667 10M10 14.1667L5.83333 10'
-            stroke='#303A3D'
-            strokeWidth='1.66667'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-        </svg>
-      ),
+      icon: downloadIcon,
     },
     {
       name: 'Скорость воспроизведения',
       onClick: handleToggleSpeedParams,
-      icon: (
-        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
-          <path
-            d='M2.5 10C2.5 14.1421 5.85786 17.5 10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10Z'
-            stroke='#303A3D'
-            strokeWidth='1.66667'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-          <path
-            d='M8.33333 12.5V7.5L12.5 10L8.33333 12.5Z'
-            stroke='#303A3D'
-            strokeWidth='1.66667'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-        </svg>
-      ),
+      icon: speedIcon,
     },
   ];
 

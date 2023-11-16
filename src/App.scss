@@ -166,7 +166,7 @@
 }
 
 .scores {
-  padding: 60px 85px 197px;
+  padding: 60px 85px 0;
 
   &__list {
     list-style: none;
@@ -297,7 +297,7 @@
 .contacts {
   display: flex;
   flex-direction: column;
-  padding: 60px 84px 355px 85px;
+  padding: 60px 84px 0 85px;
 
   &__list {
     list-style-type: none;

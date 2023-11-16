@@ -2,31 +2,29 @@ import React from 'react';
 import './ContactItem.scss';
 
 type ContactItemProps = {
-  iconUrl: string;
+  svgIconElement?: React.ReactNode;
+  iconUrl?: string;
   text: string;
-  altText: string;
   place?: string;
 };
 
-export const ContactItem: React.FC<ContactItemProps> = ({ iconUrl, text, altText, place }) => {
-  const hrefProperty = text.includes('@') ? `mailto: ${text}` : `https://${text}`;
+export const ContactItem: React.FC<ContactItemProps> = ({ iconUrl, text, place, svgIconElement }) => {
+  const hrefProperty = text.includes('@') ? `mailto: ${text}` : text.includes('+') ? `tel:${text}` : `https://${text}`;
   const contactItemTextClassName = `contact-item__text ${
     place === 'contacts' ? 'contact-item__text_place_contacts' : ''
   }`;
+  const contactItemIconClassName = `contact-item__icon ${
+    place === 'contacts' ? 'contact-item__icon_place_contacts' : ''
+  }`;
 
   return (
-    <>
-      {text.includes('@') || text.includes('/') ? (
-        <a className='contact-item' href={hrefProperty}>
-          <img src={iconUrl} alt={altText} />
-          <p className={contactItemTextClassName}>{text}</p>
-        </a>
+    <a className='contact-item' href={hrefProperty}>
+      {place === 'contacts' ? (
+        <div className={contactItemIconClassName} style={{ backgroundImage: `url(${iconUrl})` }} />
       ) : (
-        <div className='contact-item'>
-          <img src={iconUrl} alt={altText} />
-          <p className={contactItemTextClassName}>{text}</p>
-        </div>
+        svgIconElement
       )}
-    </>
+      <p className={contactItemTextClassName}>{text}</p>
+    </a>
   );
 };

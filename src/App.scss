@@ -166,7 +166,7 @@
 }
 
 .scores {
-  padding: 60px 85px 731px;
+  padding: 60px 85px 197px;
 
   &__list {
     list-style: none;
@@ -181,10 +181,10 @@
     text-decoration: none;
     color: #000;
     font-family: Manrope;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
-    font-weight: 700;
-    line-height: 110%; /* 22px */
+    font-weight: 500;
+    line-height: 140%; /* 22px */
     display: flex;
     gap: 22px;
   }
@@ -297,22 +297,31 @@
 .contacts {
   display: flex;
   flex-direction: column;
-  padding: 60px 84px 467px 85px;
+  padding: 60px 84px 355px 85px;
 
   &__list {
     list-style-type: none;
     display: grid;
-    grid-template-columns: 204px 227px;
-    gap: 35px 172px;
-    margin: 0 0 70px;
-    padding: 0;
-  }
-
-  &__iframe {
-    width: 100%;
-    height: 370px;
+    grid-template-columns: 247px 147px;
+    gap: 35px 198px;
     margin: 0;
     padding: 0;
+    font-size: 0;
+  }
+
+  &__list-item {
+    &:first-of-type {
+      margin-top: 20px;
+    }
+
+    &:nth-child(3) {
+      margin-bottom: 9.06px;
+    }
+
+    &:last-of-type {
+      grid-column: 2/3;
+      grid-row: 1/4;
+    }
   }
 }
 

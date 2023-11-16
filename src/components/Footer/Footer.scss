@@ -90,4 +90,12 @@
     padding: 0;
     color: #fff;
   }
+
+  &__contact-item {
+    &:nth-child(3):hover {
+      a svg path {
+        fill: #fcbe13;
+      }
+    }
+  }
 }

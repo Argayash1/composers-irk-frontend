@@ -1,20 +1,46 @@
 .contact-item {
   display: flex;
   text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease-in-out;
+
+  svg path {
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: #fcbe13;
+
+    svg path {
+      stroke: #fcbe13;
+    }
+  }
 
   &__text {
     margin: 0 0 0 15px;
-    color: #fff;
     padding: 0;
     font-family: Manrope;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 125%; /* 20px */
+    display: block;
 
     &_place_contacts {
       margin-left: 20px;
       color: #303a3d;
+      font-size: 18px;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+
+    &_place_contacts {
+      width: 25px;
+      height: 25px;
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/composers-irk-frontend/static/css/main.bb72ed90.css",
-    "main.js": "/composers-irk-frontend/static/js/main.3a7a6bd5.js",
+    "main.css": "/composers-irk-frontend/static/css/main.d3395bf5.css",
+    "main.js": "/composers-irk-frontend/static/js/main.d22b65de.js",
     "static/js/787.2cd87504.chunk.js": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js",
     "static/media/11.mp3": "/composers-irk-frontend/static/media/11.5c188e9a94240ae1c28b.mp3",
     "static/media/12.mp3": "/composers-irk-frontend/static/media/12.0bd4443234382f2aa2d9.mp3",
@@ -44,28 +44,24 @@
     "static/media/share-pannel-whatsapp-icon.svg": "/composers-irk-frontend/static/media/share-pannel-whatsapp-icon.bd954591c6829093328d992dcb3b23b4.svg",
     "static/media/share-pannel-odnoclassniki-icon.svg": "/composers-irk-frontend/static/media/share-pannel-odnoclassniki-icon.30a8e68a919dcf7898b2cccae0188165.svg",
     "static/media/phone-icon-contacts.svg": "/composers-irk-frontend/static/media/phone-icon-contacts.ae02e2218e5b567496035c71f21c3673.svg",
-    "static/media/contacts-phone.svg": "/composers-irk-frontend/static/media/contacts-phone.a3966049f54f6df7ab8d3a40287f6474.svg",
     "static/media/share-pannel-vk-icon.svg": "/composers-irk-frontend/static/media/share-pannel-vk-icon.712a46b37377a027bf1330496e837e9c.svg",
     "static/media/share-pannel-telegram-icon.svg": "/composers-irk-frontend/static/media/share-pannel-telegram-icon.9cb524a75f7ed4cc1ce51b90b5013148.svg",
     "static/media/share-pannel-twitter-icon.svg": "/composers-irk-frontend/static/media/share-pannel-twitter-icon.e109f90a34bac42932721c782e9b8d52.svg",
-    "static/media/contacts-mail.svg": "/composers-irk-frontend/static/media/contacts-mail.bab2bbd15207d2fe900f89def22ec6f2.svg",
     "static/media/mail-icon-contacts.svg": "/composers-irk-frontend/static/media/mail-icon-contacts.318cdf07579f86602d66b0c52db3f3e4.svg",
     "static/media/vk-icon-contacts.svg": "/composers-irk-frontend/static/media/vk-icon-contacts.958dc6760fce677a095f5c93ef3ccea0.svg",
     "index.html": "/composers-irk-frontend/index.html",
-    "static/media/adress-icon-contacts.svg": "/composers-irk-frontend/static/media/adress-icon-contacts.9e0524844c4be3717d476c8908406502.svg",
-    "static/media/contacts-adress.svg": "/composers-irk-frontend/static/media/contacts-adress.b50303b4ee5c505242682a560120df1f.svg",
     "static/media/more-menu-speed-icon.svg": "/composers-irk-frontend/static/media/more-menu-speed-icon.6d0180260f53a62bf35dc9e6a40ba661.svg",
     "static/media/header-burger-open-button.svg": "/composers-irk-frontend/static/media/header-burger-open-button.67de2b273fbf14cf7803.svg",
     "static/media/score-image.svg": "/composers-irk-frontend/static/media/score-image.abbfa15f4b63f10288ca.svg",
     "static/media/more-menu-download-icon.svg": "/composers-irk-frontend/static/media/more-menu-download-icon.d1c47bd0f921091e781dee98778001f4.svg",
     "static/media/report-popup-close-button.svg": "/composers-irk-frontend/static/media/report-popup-close-button.25939e1d6a03366c017a.svg",
     "static/media/share-pannel-close-icon.svg": "/composers-irk-frontend/static/media/share-pannel-close-icon.8dd6296da60c89fa0fe971eb977a1379.svg",
-    "main.bb72ed90.css.map": "/composers-irk-frontend/static/css/main.bb72ed90.css.map",
-    "main.3a7a6bd5.js.map": "/composers-irk-frontend/static/js/main.3a7a6bd5.js.map",
+    "main.d3395bf5.css.map": "/composers-irk-frontend/static/css/main.d3395bf5.css.map",
+    "main.d22b65de.js.map": "/composers-irk-frontend/static/js/main.d22b65de.js.map",
     "787.2cd87504.chunk.js.map": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb72ed90.css",
-    "static/js/main.3a7a6bd5.js"
+    "static/css/main.d3395bf5.css",
+    "static/js/main.d22b65de.js"
   ]
 }

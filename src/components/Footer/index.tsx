@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-import { Logo, VKLink, MailLink, ContactItem } from '../../components';
+import { Logo, ContactItem } from '../../components';
 import { Link } from 'react-router-dom';
 import { menuItems } from '../MainMenu';
 import { handleScrollToTop } from '../../utils/utils';
@@ -74,14 +74,6 @@ export const Footer: React.FC = () => {
       <div className='footer__columns'>
         <div className='footer__column footer__column_type_first'>
           <Logo place='footer' />
-          <ul className='footer__social-icons'>
-            <li>
-              <VKLink place='footer' />
-            </li>
-            <li>
-              <MailLink place='footer' />
-            </li>
-          </ul>
           <p className='footer__author'>&copy;&nbsp; М. Толстова, Я. Зильберман, {new Date().getFullYear()}</p>
         </div>
         <div className='footer__column footer__column_type_second'>

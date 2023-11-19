@@ -42,6 +42,44 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const [previousVolume, setPreviousVolume] = React.useState<number>(1);
   const [isMuted, setIsmuted] = React.useState<boolean>(false);
 
+  const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+    const audioPlayer = audioRef.current;
+    // Получаем информацию о положении курсора относительно полосы времени
+    if (audioPlayer) {
+      if (event.buttons !== 1) {
+        return;
+      }
+      const timelineContainer = event.currentTarget;
+      const timelineContainerRect = timelineContainer.getBoundingClientRect();
+      const offsetX = event.clientX - timelineContainerRect.left;
+
+      // Вычисляем новый прогресс воспроизведения на основе смещения
+      const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
+
+      // Устанавливаем новый прогресс воспроизведения и обновляем полосу прогресса
+      setProgress(newProgress);
+
+      // Вычисляем новую позицию текущего времени на основе нового прогресса
+      const newCurrentTime = (newProgress / 100) * totalDuration;
+      audioPlayer.currentTime = newCurrentTime;
+    }
+  };
+
+  const handleProgressBarDragStart = () => {
+    // При начале перетаскивания сохраняем информацию о текущем положении курсора
+    setIsTimelineContainerHovered(false);
+  };
+
+  const handleProgressBarDragEnd = () => {
+    const audioPlayer = audioRef.current;
+    if (audioPlayer) {
+      if (isPlaying) {
+        // Если воспроизведение активно, запускаем его
+        audioPlayer.play();
+      }
+    }
+  };
+
   const handleMuteButtonClick = () => {
     const audioPlayer = audioRef.current;
     if (audioPlayer) {
@@ -212,9 +250,17 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           className='audio-player__timeline-container'
           onMouseEnter={() => setIsTimelineContainerHovered(true)}
           onMouseLeave={() => setIsTimelineContainerHovered(false)}
+          onMouseDown={handleProgressBarDragStart}
+          onMouseMove={handleProgressBarDrag}
+          onMouseUp={handleProgressBarDragEnd}
         >
           <div className='audio-player__progress-bar-container'>
-            <div className='audio-player__progress-bar' ref={customTrackRef} style={progressBarStyle}></div>
+            <div
+              className='audio-player__progress-bar'
+              ref={customTrackRef}
+              style={progressBarStyle}
+              onMouseDown={handleProgressBarDragStart}
+            ></div>
             <button
               className={`audio-player__progress-bar-button ${
                 isTimelineContainerHovered ? 'audio-player__progress-bar-button_active' : ''
@@ -223,7 +269,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           </div>
           <div className='audio-player__timeline'></div>
         </div>
-
         <div
           className='audio-player__volume-container'
           onMouseEnter={() => setIsVolumeContainerHovered(true)}

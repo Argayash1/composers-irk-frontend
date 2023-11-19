@@ -1,6 +1,7 @@
 import React from 'react';
-import { PageTitle, iFrameItemsArray } from '../components';
+import { PageTitle } from '../components';
 import { useParams } from 'react-router-dom';
+import { iFramesArray } from '../utils/iframesArray';
 
 const FullVideo: React.FC = () => {
   const [video, setVideo] = React.useState<{ iFrameUrl: string; title: string }>();
@@ -8,7 +9,7 @@ const FullVideo: React.FC = () => {
   const { id } = useParams();
 
   React.useEffect(() => {
-    const videoObject = iFrameItemsArray[Number(id)];
+    const videoObject = iFramesArray[Number(id)];
     setVideo(videoObject);
   }, [id]);
 

@@ -30,14 +30,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({ place, isOpen, onClose }) =>
       {place === 'burger' && <CloseButton onClick={onClose} place='burger' />}
       <ul className={`main-menu__list ${place === 'burger' ? 'main-menu__list_place_burger' : ''}`}>
         {menuItems.map((item, index) => (
-          <li
-            key={index}
-            onClick={() => {
-              if (onClose) {
-                onClose();
-              }
-            }}
-          >
+          <li key={index}>
             <NavLink
               className={({ isActive }) =>
                 `main-menu__list-link ${isActive ? 'main-menu__list-link_active' : ''} ${
@@ -45,6 +38,11 @@ export const MainMenu: React.FC<MainMenuProps> = ({ place, isOpen, onClose }) =>
                 }`
               }
               to={item.path}
+              onClick={() => {
+                if (onClose) {
+                  onClose();
+                }
+              }}
             >
               {item.name}
             </NavLink>

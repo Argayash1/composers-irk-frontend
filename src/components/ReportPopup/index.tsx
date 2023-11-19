@@ -1,6 +1,7 @@
 import React from 'react';
 import { Overlay } from '../Overlay';
 import './ReportPopup.scss';
+import { CloseButton } from '../CloseButton';
 
 type ReportPopupProps = {
   isOpen: boolean;
@@ -13,7 +14,7 @@ export const ReportPopup: React.FC<ReportPopupProps> = ({ isOpen, onClose, image
   return (
     <Overlay isOpen={isOpen} onClose={onClose}>
       <div className='report-popup'>
-        <button className='report-popup__button' onClick={onClose}></button>
+        <CloseButton onClick={onClose} place='popup' />
         <img className='report-popup__image' src={imageUrl} alt={altText} />
       </div>
     </Overlay>

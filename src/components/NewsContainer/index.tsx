@@ -20,22 +20,22 @@ export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray 
 
   const slicedNews =
     slicedNewsArray &&
-    slicedNewsArray.map((news, index) => (
-      <li key={index}>
+    slicedNewsArray.map((news) => (
+      <li key={news.id}>
         <NewsBlock {...news} />
       </li>
     ));
 
   const news =
     itemsArray &&
-    itemsArray.map((news, index) => (
-      <li key={index}>
+    itemsArray.map((news) => (
+      <li key={news.id}>
         <NewsBlock {...news} />
       </li>
     ));
 
-  const articles = articlesArray.slice(firstItem, lastItam).map((article, index) => (
-    <li key={index}>
+  const articles = articlesArray.slice(firstItem, lastItam).map((article) => (
+    <li key={article.id}>
       <NewsBlock {...article} />
     </li>
   ));

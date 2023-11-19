@@ -7,7 +7,7 @@ import './BreadCrumbs.scss';
 import { newsArray } from '../../utils/newsArray';
 import { projectsArray } from '../../utils/projectsArray';
 import { unionMembersArray } from '../../utils/membersArray';
-import { iFrameItemsArray } from '../VideoRecordings';
+import { iFramesArray } from '../../utils/iframesArray';
 import { articlesArray } from '../../utils/articlesArray';
 import { menuItems } from '../MainMenu';
 
@@ -58,7 +58,7 @@ export const BreadCrumbs: React.FC = () => {
     ? unionMembersArray
     : pathname.includes('aboutus')
     ? articlesArray
-    : iFrameItemsArray;
+    : iFramesArray;
 
   return (
     <nav className='bread-crumbs'>

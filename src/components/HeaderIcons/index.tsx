@@ -11,20 +11,20 @@ type HeaderIconsProps = {
 };
 
 export const HeaderIcons: React.FC<HeaderIconsProps> = ({ onSearchClick, onBurgerButtonClick }) => {
+  const headerIconsItems = [
+    <SearchButton type={ButtonTypeEnum.BUTTON} onClick={onSearchClick} />,
+    <VKLink />,
+    <MailLink />,
+    <BurgerOpenButton onClick={onBurgerButtonClick} />,
+  ];
+
   return (
     <ul className='header-icons'>
-      <li className='header-icons__item'>
-        <SearchButton type={ButtonTypeEnum.BUTTON} onClick={onSearchClick} />
-      </li>
-      <li className='header-icons__item'>
-        <VKLink />
-      </li>
-      <li className='header-icons__item'>
-        <MailLink />
-      </li>
-      <li className='header-icons__item'>
-        <BurgerOpenButton onClick={onBurgerButtonClick} />
-      </li>
+      {headerIconsItems.map((headerIconsItem, index) => (
+        <li className='header-icons__item' key={index}>
+          {headerIconsItem}
+        </li>
+      ))}
     </ul>
   );
 };

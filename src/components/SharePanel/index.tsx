@@ -16,18 +16,18 @@ export const SharePanel: React.FC<SharePanelProps> = ({ itemTitle, onClick }) =>
   const currentUrl = window.location.href;
 
   const buttonItems = [
-    { image: VkIcon, link: `https://vk.com/share.php?url={${currentUrl}}` },
-    { image: TGIcon, link: `https://t.me/share/url?url=${currentUrl}&text=${itemTitle}` },
-    { image: twitterIcon, link: `https://twitter.com/intent/tweet?url=${currentUrl}&text=${itemTitle}` },
-    { image: OkIcon, link: `https://connect.ok.ru/offer?url=${currentUrl}&title=${itemTitle}` },
-    { image: WAIcon, link: `whatsapp://send?text=${itemTitle}` },
-    { image: closeIcon },
+    { id: 0, image: VkIcon, link: `https://vk.com/share.php?url={${currentUrl}}` },
+    { id: 1, image: TGIcon, link: `https://t.me/share/url?url=${currentUrl}&text=${itemTitle}` },
+    { id: 2, image: twitterIcon, link: `https://twitter.com/intent/tweet?url=${currentUrl}&text=${itemTitle}` },
+    { id: 3, image: OkIcon, link: `https://connect.ok.ru/offer?url=${currentUrl}&title=${itemTitle}` },
+    { id: 4, image: WAIcon, link: `whatsapp://send?text=${itemTitle}` },
+    { id: 5, image: closeIcon },
   ];
 
   return (
     <ul className='share-panel'>
       {buttonItems.map((buttonItem, index) => (
-        <li key={index}>
+        <li key={buttonItem.id}>
           {index === buttonItems.length - 1 ? (
             <button
               style={{

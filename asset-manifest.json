@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/composers-irk-frontend/static/css/main.3deca05c.css",
-    "main.js": "/composers-irk-frontend/static/js/main.00993de9.js",
+    "main.css": "/composers-irk-frontend/static/css/main.167e1572.css",
+    "main.js": "/composers-irk-frontend/static/js/main.6bbb5cba.js",
     "static/js/787.2cd87504.chunk.js": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js",
     "static/media/11.mp3": "/composers-irk-frontend/static/media/11.5c188e9a94240ae1c28b.mp3",
     "static/media/12.mp3": "/composers-irk-frontend/static/media/12.0bd4443234382f2aa2d9.mp3",
@@ -54,14 +54,15 @@
     "static/media/header-burger-open-button.svg": "/composers-irk-frontend/static/media/header-burger-open-button.67de2b273fbf14cf7803.svg",
     "static/media/score-image.svg": "/composers-irk-frontend/static/media/score-image.abbfa15f4b63f10288ca.svg",
     "static/media/more-menu-download-icon.svg": "/composers-irk-frontend/static/media/more-menu-download-icon.d1c47bd0f921091e781dee98778001f4.svg",
+    "static/media/search-close-button.svg": "/composers-irk-frontend/static/media/search-close-button.fb6872d26cafa9eec19c.svg",
     "static/media/report-popup-close-button.svg": "/composers-irk-frontend/static/media/report-popup-close-button.25939e1d6a03366c017a.svg",
     "static/media/share-pannel-close-icon.svg": "/composers-irk-frontend/static/media/share-pannel-close-icon.8dd6296da60c89fa0fe971eb977a1379.svg",
-    "main.3deca05c.css.map": "/composers-irk-frontend/static/css/main.3deca05c.css.map",
-    "main.00993de9.js.map": "/composers-irk-frontend/static/js/main.00993de9.js.map",
+    "main.167e1572.css.map": "/composers-irk-frontend/static/css/main.167e1572.css.map",
+    "main.6bbb5cba.js.map": "/composers-irk-frontend/static/js/main.6bbb5cba.js.map",
     "787.2cd87504.chunk.js.map": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3deca05c.css",
-    "static/js/main.00993de9.js"
+    "static/css/main.167e1572.css",
+    "static/js/main.6bbb5cba.js"
   ]
 }

@@ -24,6 +24,11 @@
     text-decoration: none;
     display: inline-block;
     color: #909da1;
+    transition: color 0.2s linear;
+
+    &:hover {
+      color: #b4bec1;
+    }
   }
 
   &__span {

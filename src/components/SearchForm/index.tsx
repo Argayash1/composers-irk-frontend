@@ -59,29 +59,31 @@ export const SearchForm: React.FC = () => {
   };
 
   return (
-    <section className={`search ${isSearchOpen ? 'search_is_opened' : ''}`}>
-      <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
-        <label htmlFor='search' className='search__label'>
-          <input
-            className={`search__input ${errorText ? 'search__input_type_error' : ''}`}
-            type='search'
-            value={searchValue || ''}
-            name='search'
-            id='search'
-            onChange={handleChange}
-            placeholder='Введите запрос'
-            autoComplete='off'
-            ref={inputRef}
-            required
-          />
-          <span className='search__error'>{errorText}</span>
-        </label>
-        <div className='search__buttons'>
-          <SearchButton type={ButtonTypeEnum.SUBMIT} />
-          {searchValue && <CloseButton onClick={handleClearSearchBar} />}
-        </div>
-      </form>
-      <CloseButton onClick={() => dispatch(setCloseSearch())} place='search' />
+    <section className={`search`}>
+      <div className={`search__container ${isSearchOpen ? 'search__container_is_opened' : ''}`}>
+        <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
+          <label htmlFor='search' className='search__label'>
+            <input
+              className={`search__input ${errorText ? 'search__input_type_error' : ''}`}
+              type='search'
+              value={searchValue || ''}
+              name='search'
+              id='search'
+              onChange={handleChange}
+              placeholder='Введите запрос'
+              autoComplete='off'
+              ref={inputRef}
+              required
+            />
+            <span className='search__error'>{errorText}</span>
+          </label>
+          <div className='search__buttons'>
+            <SearchButton type={ButtonTypeEnum.SUBMIT} />
+            {searchValue && <CloseButton onClick={handleClearSearchBar} />}
+          </div>
+        </form>
+        <CloseButton onClick={() => dispatch(setCloseSearch())} place='search' />
+      </div>
     </section>
   );
 };

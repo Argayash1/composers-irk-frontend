@@ -42,6 +42,11 @@
     text-transform: uppercase;
     margin: 3px 0 0 10px;
     padding: 0;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: #62767c;
+    }
 
     @media screen and (max-width: 1220px) {
       font-size: 10px;

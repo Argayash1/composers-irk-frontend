@@ -2,8 +2,12 @@
   display: flex;
   text-decoration: none;
 
-  &_margin-bottom_big {
+  &_place_footer {
     margin-bottom: 49px;
+
+    &:hover .logo__title_place_footer {
+      color: #fcbe13;
+    }
   }
 
   &__image {
@@ -43,8 +47,9 @@
       font-size: 10px;
     }
 
-    &_color_white {
+    &_place_footer {
       color: #fff;
+      transition: color 0.3s ease-in-out;
     }
   }
 }

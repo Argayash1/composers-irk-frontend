@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/composers-irk-frontend/static/css/main.167e1572.css",
-    "main.js": "/composers-irk-frontend/static/js/main.b752649d.js",
+    "main.css": "/composers-irk-frontend/static/css/main.abbbd543.css",
+    "main.js": "/composers-irk-frontend/static/js/main.2119150e.js",
     "static/js/787.2cd87504.chunk.js": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js",
     "static/media/11.mp3": "/composers-irk-frontend/static/media/11.5c188e9a94240ae1c28b.mp3",
     "static/media/12.mp3": "/composers-irk-frontend/static/media/12.0bd4443234382f2aa2d9.mp3",
@@ -13,6 +13,7 @@
     "static/media/news-sun-Irkutsk-2.jpg": "/composers-irk-frontend/static/media/news-sun-Irkutsk-2.82a3d75c4d9f14919a7d.jpg",
     "static/media/projects-sun-Irkutsk.png": "/composers-irk-frontend/static/media/projects-sun-Irkutsk.4cbf2d662163cb7f76ef.png",
     "static/media/Helvetica.woff": "/composers-irk-frontend/static/media/Helvetica.967c07100e27e9f1d9c6.woff",
+    "static/media/grigoruce.jpg": "/composers-irk-frontend/static/media/grigoruce.dee0a6d6ccdba7c834b0.jpg",
     "static/media/news-krivoshein-certificate.jpg": "/composers-irk-frontend/static/media/news-krivoshein-certificate.d6286b622cec76fa0b29.jpg",
     "static/media/Inter-SemiBold.woff?v=3.19": "/composers-irk-frontend/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
     "static/media/Inter-Medium.woff": "/composers-irk-frontend/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
@@ -25,14 +26,20 @@
     "static/media/union-members-kuznetsova.jpg": "/composers-irk-frontend/static/media/union-members-kuznetsova.33832c9ddf2a5f4f1f2a.jpg",
     "static/media/union-members-yakushenko.jpg": "/composers-irk-frontend/static/media/union-members-yakushenko.9e4f3c99433bb165a0d2.jpg",
     "static/media/union-members-starodubtsev.jpeg": "/composers-irk-frontend/static/media/union-members-starodubtsev.0a95682a27c4d19fd539.jpeg",
+    "static/media/teplyakov.jpg": "/composers-irk-frontend/static/media/teplyakov.deb1b941d2c8096780f9.jpg",
+    "static/media/shevchenko.jpg": "/composers-irk-frontend/static/media/shevchenko.8151b45ff37fc24010f5.jpg",
+    "static/media/kohanaya.jpg": "/composers-irk-frontend/static/media/kohanaya.8a8f781a393fdb094b40.jpg",
+    "static/media/haltanova.jpg": "/composers-irk-frontend/static/media/haltanova.7d783ee3246dc6aea9bc.jpg",
     "static/media/union-members-shekin.jpg": "/composers-irk-frontend/static/media/union-members-shekin.fa1f01d6273eecba311a.jpg",
     "static/media/union-members-yevdokimova.jpg": "/composers-irk-frontend/static/media/union-members-yevdokimova.1ef7598d9c91d3cc1710.jpg",
+    "static/media/puhnarevich.jpg": "/composers-irk-frontend/static/media/puhnarevich.dba20889dd257aa06387.jpg",
     "static/media/Roboto.woff": "/composers-irk-frontend/static/media/Roboto.59d18e163bfcd0607572.woff",
     "static/media/report.jpg": "/composers-irk-frontend/static/media/report.19ae3788e9a5aee77950.jpg",
     "static/media/Roboto.woff2": "/composers-irk-frontend/static/media/Roboto.806e04d8241d87f99a68.woff2",
     "static/media/logo-place-brand-banner.png": "/composers-irk-frontend/static/media/logo-place-brand-banner.2089c4a67645673a1ea0.png",
     "static/media/union-members-krul.png": "/composers-irk-frontend/static/media/union-members-krul.bae03522cf6a17e5b331.png",
     "static/media/union-members-tsaher.jpg": "/composers-irk-frontend/static/media/union-members-tsaher.f171b310daca1df4f714.jpg",
+    "static/media/tokarskaya.jpg": "/composers-irk-frontend/static/media/tokarskaya.456a55d3afd98baea338.jpg",
     "static/media/Manrope-Regular.woff": "/composers-irk-frontend/static/media/Manrope-Regular.2b135e5ff0bae6f7c20e.woff",
     "static/media/Manrope-SemiBold.woff": "/composers-irk-frontend/static/media/Manrope-SemiBold.b9a59792aa7186dd8f78.woff",
     "static/media/Manrope-Medium.woff": "/composers-irk-frontend/static/media/Manrope-Medium.0b1d9219581a7c8bd6ac.woff",
@@ -41,6 +48,8 @@
     "static/media/Manrope-Bold.woff2": "/composers-irk-frontend/static/media/Manrope-Bold.3ce997ec777b05c93854.woff2",
     "static/media/Manrope-Regular.woff2": "/composers-irk-frontend/static/media/Manrope-Regular.7e4f44e2725c4c314be0.woff2",
     "static/media/Manrope-SemiBold.woff2": "/composers-irk-frontend/static/media/Manrope-SemiBold.d050d77ab6d83ee023d5.woff2",
+    "static/media/gorbovskaya.jpg": "/composers-irk-frontend/static/media/gorbovskaya.c748c7ce5b4509346ff3.jpg",
+    "static/media/volchenko.jpg": "/composers-irk-frontend/static/media/volchenko.e278d7cc91d2b6c21980.jpg",
     "static/media/share-pannel-whatsapp-icon.svg": "/composers-irk-frontend/static/media/share-pannel-whatsapp-icon.bd954591c6829093328d992dcb3b23b4.svg",
     "static/media/share-pannel-odnoclassniki-icon.svg": "/composers-irk-frontend/static/media/share-pannel-odnoclassniki-icon.30a8e68a919dcf7898b2cccae0188165.svg",
     "static/media/phone-icon-contacts.svg": "/composers-irk-frontend/static/media/phone-icon-contacts.ae02e2218e5b567496035c71f21c3673.svg",
@@ -57,12 +66,12 @@
     "static/media/search-close-button.svg": "/composers-irk-frontend/static/media/search-close-button.fb6872d26cafa9eec19c.svg",
     "static/media/report-popup-close-button.svg": "/composers-irk-frontend/static/media/report-popup-close-button.25939e1d6a03366c017a.svg",
     "static/media/share-pannel-close-icon.svg": "/composers-irk-frontend/static/media/share-pannel-close-icon.8dd6296da60c89fa0fe971eb977a1379.svg",
-    "main.167e1572.css.map": "/composers-irk-frontend/static/css/main.167e1572.css.map",
-    "main.b752649d.js.map": "/composers-irk-frontend/static/js/main.b752649d.js.map",
+    "main.abbbd543.css.map": "/composers-irk-frontend/static/css/main.abbbd543.css.map",
+    "main.2119150e.js.map": "/composers-irk-frontend/static/js/main.2119150e.js.map",
     "787.2cd87504.chunk.js.map": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.167e1572.css",
-    "static/js/main.b752649d.js"
+    "static/css/main.abbbd543.css",
+    "static/js/main.2119150e.js"
   ]
 }

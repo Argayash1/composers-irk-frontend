@@ -4,7 +4,9 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 50px;
+  display: flex;
+  flex-direction: column;
 
   &__item-title {
     color: #282f30;

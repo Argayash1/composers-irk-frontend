@@ -199,7 +199,7 @@
 .media {
   display: flex;
   flex-direction: column;
-  padding: 60px 85px 482px;
+  padding: 60px 85px 120px;
 }
 
 .full-video {
@@ -247,7 +247,8 @@
 .reports {
   display: flex;
   flex-direction: column;
-  padding: 60px 0 0 85px;
+  padding: 60px 0 14px 85px;
+
   &__image {
     width: 825px;
     height: 1167px;

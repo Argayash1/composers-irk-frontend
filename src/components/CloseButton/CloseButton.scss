@@ -13,6 +13,11 @@
 
   &_place_search {
     margin-top: 26px;
+    transition: opacity 0.3s linear;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &_place_burger {

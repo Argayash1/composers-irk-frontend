@@ -3,6 +3,7 @@ import './AudioPlayer.scss';
 import { MoreButton, PlayButton, TimeCounter, MoreMenu, VolumeButton } from '../../components';
 import downloadIcon from '../../assets/icons/more-menu-download-icon.svg';
 import speedIcon from '../../assets/icons/more-menu-speed-icon.svg';
+import { TimelineContainer } from '../TimelineContainer';
 
 type AudioPlayerProps = {
   src: string;
@@ -200,6 +201,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
         !_event.composedPath().includes(menuRef.current)
       ) {
         setIsMoreMenuOpen(false);
+        setIsSpeedParamsOpen(false);
       }
     };
     document.body.addEventListener('click', handleClickOutside);
@@ -237,7 +239,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
 
   return (
     <div className='audio-player'>
-      <audio className='audio-player__item-audio' ref={audioRef} src={src} controls>
+      <audio className='audio-player__item-audio' ref={audioRef} src={src}>
         Ваш браузер не поддерживает встроенное аудио. Попробуйте скачать его
         <a href={src} ref={audioLinkRef} download>
           по ссылке
@@ -246,49 +248,36 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       <div className='audio-player__container'>
         <PlayButton onClick={togglePlay} isPlaying={isPlaying} />
         <TimeCounter currentDuration={currentDuration} totalDuration={totalDuration} />
+        <TimelineContainer
+          onHover={() => setIsTimelineContainerHovered(true)}
+          onDisHover={() => setIsTimelineContainerHovered(false)}
+          onDragStart={handleProgressBarDragStart}
+          onDrag={handleProgressBarDrag}
+          onDragEnd={handleProgressBarDragEnd}
+          isHovered={isTimelineContainerHovered}
+          progressBarStyle={progressBarStyle}
+          ref={customTrackRef}
+        />
         <div
-          className='audio-player__timeline-container'
-          onMouseEnter={() => setIsTimelineContainerHovered(true)}
-          onMouseLeave={() => setIsTimelineContainerHovered(false)}
-          onMouseDown={handleProgressBarDragStart}
-          onMouseMove={handleProgressBarDrag}
-          onMouseUp={handleProgressBarDragEnd}
-        >
-          <div className='audio-player__progress-bar-container'>
-            <div
-              className='audio-player__progress-bar'
-              ref={customTrackRef}
-              style={progressBarStyle}
-              onMouseDown={handleProgressBarDragStart}
-            ></div>
-            <button
-              className={`audio-player__progress-bar-button ${
-                isTimelineContainerHovered ? 'audio-player__progress-bar-button_active' : ''
-              }`}
-            ></button>
-          </div>
-          <div className='audio-player__timeline'></div>
-        </div>
-        <div
-          className='audio-player__volume-container'
+          className='volume-container'
           onMouseEnter={() => setIsVolumeContainerHovered(true)}
           onMouseLeave={() => setIsVolumeContainerHovered(false)}
         >
           <div
-            className='audio-player__timeline-container audio-player__timeline-container_type_volume'
+            className='volume-container__volumeline-container'
             onMouseEnter={() => setIsVolumeLineHovered(true)}
             onMouseLeave={() => setIsVolumeLineHovered(false)}
           >
             <div
-              className={`audio-player__timeline audio-player__timeline_type_volume ${
-                isVolumeContainerHovered ? 'audio-player__timeline_hovered' : ''
+              className={`volume-container__volumeline ${
+                isVolumeContainerHovered ? 'volume-container__volumeline_hovered' : ''
               }`}
             ></div>
           </div>
-          <div className='audio-player__volume-progress-bar-container'>
+          <div className='volume-container__volume-progress-bar-container'>
             <button
-              className={`audio-player__progress-bar-button ${
-                isVolumeLineHovered ? 'audio-player__progress-bar-button_active' : ''
+              className={`volume-container__volume-progress-bar-button ${
+                isVolumeLineHovered ? 'volume-container__volume-progress-bar-button_active' : ''
               }`}
             ></button>
           </div>

@@ -12,7 +12,12 @@ type MoreMenuProps = {
 export const MoreMenu = React.forwardRef<HTMLDivElement, MoreMenuProps>((props, ref) => {
   const { isMoreMenuOpen, isSpeedParamsOpen, menuItems, paramsMenuItems } = props;
   return (
-    <div ref={ref} className={`more-menu ${isMoreMenuOpen ? 'more-menu_is_opened' : ''}`}>
+    <div
+      ref={ref}
+      className={`more-menu ${isMoreMenuOpen ? 'more-menu_is_opened' : ''} ${
+        isSpeedParamsOpen ? 'more-menu_type_speed-params' : ''
+      }`}
+    >
       <ul className={`more-menu__main ${!isSpeedParamsOpen ? 'more-menu__main_is_opened' : ''}`}>
         {menuItems.map((menuItem, index) => (
           <li key={index}>

@@ -8,13 +8,21 @@
   opacity: 0;
   width: 0;
   height: 0;
-  transition: all 0.2s linear;
+  transition: none;
 
   &_is_opened {
     visibility: visible;
     opacity: 1;
     width: 235px;
     height: 80px;
+    transition: all 0.2s linear;
+  }
+
+  &_type_speed-params {
+    width: 115px;
+    height: 200px;
+    overflow-y: auto;
+    transition: none;
   }
 
   &__main {
@@ -35,7 +43,6 @@
     visibility: hidden;
     opacity: 0;
     list-style-type: none;
-    z-index: 10;
 
     &_is_opened {
       visibility: visible;
@@ -71,6 +78,7 @@
     }
 
     &_type_params {
+      height: 32px;
       padding-left: 12px;
     }
   }

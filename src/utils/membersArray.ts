@@ -1,11 +1,21 @@
 import krivoshein from '../assets/images/union-members-krivoshein.png';
+import shevchenko from '../assets/images/shevchenko.jpg';
 import krul from '../assets/images/union-members-krul.png';
 import shekin from '../assets/images/union-members-shekin.jpg';
 import starodubtsev from '../assets/images/union-members-starodubtsev.jpeg';
 import yakushenko from '../assets/images/union-members-yakushenko.jpg';
 import kuznetcova from '../assets/images/union-members-kuznetsova.jpg';
+import kohanaya from '../assets/images/kohanaya.jpg';
+import volchenko from '../assets/images/volchenko.jpg';
+import grigoruce from '../assets/images/grigoruce.jpg';
+import lapis from '../assets/images/lapis.jpg';
+import tokarskaya from '../assets/images/tokarskaya.jpg';
+import teplyakov from '../assets/images/teplyakov.jpg';
+import haltanova from '../assets/images/haltanova.jpg';
 import yevdokimove from '../assets/images/union-members-yevdokimova.jpg';
+import gorbovskaya from '../assets/images/gorbovskaya.jpg';
 import tcaher from '../assets/images/union-members-tsaher.jpg';
+import puhnarevich from '../assets/images/puhnarevich.jpg';
 
 export type UnionMember = {
   id: string;
@@ -57,7 +67,7 @@ export const unionMembersArray: UnionMember[] = [
 
   {
     id: '1',
-    imageUrl: krivoshein,
+    imageUrl: shevchenko,
     surname: 'Шевченко',
     name: 'Анатолий Михайлович',
     profession: 'Композитор',
@@ -213,7 +223,7 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '7',
-    imageUrl: krivoshein,
+    imageUrl: kohanaya,
     surname: 'Коханая',
     name: 'Анна Игоревна',
     profession: 'Композитор',
@@ -226,7 +236,7 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '8',
-    imageUrl: krivoshein,
+    imageUrl: volchenko,
     surname: 'Волченко',
     name: 'Владимир Георгиевич',
     profession: 'Композитор',
@@ -239,7 +249,7 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '9',
-    imageUrl: krivoshein,
+    imageUrl: grigoruce,
     surname: 'Григоруцэ',
     name: 'Дечебал Георгиевич',
     profession: 'Композитор',
@@ -252,7 +262,7 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '10',
-    imageUrl: krivoshein,
+    imageUrl: lapis,
     surname: 'Лапис',
     name: 'Михаил Израилевич',
     profession: 'Композитор',
@@ -265,10 +275,10 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '11',
-    imageUrl: krivoshein,
+    imageUrl: tokarskaya,
     surname: 'Токарская',
     name: 'Марина Николаевна',
-    profession: 'Композитор',
+    profession: 'Музыковед',
     biography: [
       'Кривошеин Анатолий Григорьевич родился 27 июля 1956 года в г. Иркутске. Музыкой начал заниматься с 9-ти лет, поступив в 1965 году в Детскую музыкальную школу №1, которую окончил в 1971 году. В 1975 году окончил Иркутское училище искусств, в 1980 году окончил музыкальный факультет Иркутского Государственного педагогического института.С 1976 года является руководителем Вокально-инструментального ансамбля «Братья», который стал лауреатом всероссийских и городских конкурсов. С 1984 по 1986 год работал директором Дворца культуры им.Ю.Гагарина Иркутского авиационного завода. С 1992 по 2001 год работал художественным руководителем ансамбля русских народных инструментов «Сибирская мозаика» при комитете по культуре Иркутской области . С 2003 года до выхода на пенсию в 2013 году возглавлял студию звукозаписи во Дворце культуры им.Ю.Гагарина. В 2005 году стал членом Иркутской областной общественной организации «Союз композиторов», в 2009 году избран ответственным секретарём Иркутской областной общественной организации «Союз композиторов». Является постоянным участником всех концертов, проводимых Союзом композиторов в городах и сёлах Иркутской области, четыре года подряд ездил в составе гастрольной бригады Театра юного зрителя им.А.Вампилова в Проекте «Сияние России», где выступал с сольными концертами перед жителями Иркутской области.',
     ],
@@ -278,7 +288,7 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '12',
-    imageUrl: krivoshein,
+    imageUrl: teplyakov,
     surname: 'Тепляков',
     name: 'Анатолий Иннокентьевич',
     profession: 'Композитор',
@@ -291,7 +301,7 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '13',
-    imageUrl: krivoshein,
+    imageUrl: haltanova,
     surname: 'Халтанова',
     name: 'Лариса Константиновна',
     profession: 'Композитор',
@@ -337,7 +347,7 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '15',
-    imageUrl: yevdokimove,
+    imageUrl: gorbovskaya,
     surname: 'Горбовская',
     name: 'Ольга Олеговна ',
     profession: 'Композитор',
@@ -383,10 +393,10 @@ export const unionMembersArray: UnionMember[] = [
   },
   {
     id: '17',
-    imageUrl: yevdokimove,
+    imageUrl: puhnarevich,
     surname: 'Пухнаревич',
     name: 'Лидия Михайловна',
-    profession: 'Композитор',
+    profession: 'Музыковед',
     biography: [
       'Кривошеин Анатолий Григорьевич родился 27 июля 1956 года в г. Иркутске. Музыкой начал заниматься с 9-ти лет, поступив в 1965 году в Детскую музыкальную школу №1, которую окончил в 1971 году. В 1975 году окончил Иркутское училище искусств, в 1980 году окончил музыкальный факультет Иркутского Государственного педагогического института.С 1976 года является руководителем Вокально-инструментального ансамбля «Братья», который стал лауреатом всероссийских и городских конкурсов. С 1984 по 1986 год работал директором Дворца культуры им.Ю.Гагарина Иркутского авиационного завода. С 1992 по 2001 год работал художественным руководителем ансамбля русских народных инструментов «Сибирская мозаика» при комитете по культуре Иркутской области . С 2003 года до выхода на пенсию в 2013 году возглавлял студию звукозаписи во Дворце культуры им.Ю.Гагарина. В 2005 году стал членом Иркутской областной общественной организации «Союз композиторов», в 2009 году избран ответственным секретарём Иркутской областной общественной организации «Союз композиторов». Является постоянным участником всех концертов, проводимых Союзом композиторов в городах и сёлах Иркутской области, четыре года подряд ездил в составе гастрольной бригады Театра юного зрителя им.А.Вампилова в Проекте «Сияние России», где выступал с сольными концертами перед жителями Иркутской области.',
     ],

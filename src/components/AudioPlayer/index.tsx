@@ -259,28 +259,32 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           ref={customTrackRef}
         />
         <div
-          className='volume-container'
+          className='volumeline-container'
           onMouseEnter={() => setIsVolumeContainerHovered(true)}
           onMouseLeave={() => setIsVolumeContainerHovered(false)}
         >
+          <div className='volumeline-container__progress-bar-container'>
+            <div className='volumeline-container__progress-bar'></div>
+            <button
+              className={`volumeline-container__progress-bar-button ${
+                isVolumeLineHovered ? 'volumeline-container__progress-bar-button_active' : ''
+              }`}
+            ></button>
+          </div>
           <div
-            className='volume-container__volumeline-container'
+            className={`volumeline-container__volumeline-wrapper ${
+              isVolumeContainerHovered ? 'volumeline-container__volumeline-wrapper_hovered' : ''
+            }`}
             onMouseEnter={() => setIsVolumeLineHovered(true)}
             onMouseLeave={() => setIsVolumeLineHovered(false)}
           >
             <div
-              className={`volume-container__volumeline ${
-                isVolumeContainerHovered ? 'volume-container__volumeline_hovered' : ''
+              className={`volumeline-container__volumeline ${
+                isVolumeContainerHovered ? 'volumeline-container__volumeline_hovered' : ''
               }`}
             ></div>
           </div>
-          <div className='volume-container__volume-progress-bar-container'>
-            <button
-              className={`volume-container__volume-progress-bar-button ${
-                isVolumeLineHovered ? 'volume-container__volume-progress-bar-button_active' : ''
-              }`}
-            ></button>
-          </div>
+
           <VolumeButton onClick={handleMuteButtonClick} isMuted={isMuted} />
         </div>
         <MoreButton onClick={handleOpenMoreMenu} ref={buttonRef} />

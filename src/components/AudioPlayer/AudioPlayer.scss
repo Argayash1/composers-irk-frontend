@@ -13,38 +13,23 @@
   }
 }
 
-.volume-container {
+.volumeline-container {
   display: flex;
   align-items: center;
   height: 22px;
 
-  &__volumeline-container {
-    width: fit-content;
-    height: 22px;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  &__volumeline {
-    width: 0;
-    height: 4px;
-    background-color: #d9d9d9;
-    transition: all 0.3s linear;
-
-    &_hovered {
-      width: 110px;
-      margin-right: 12px;
-    }
-  }
-
-  &__volume-progress-bar-container {
+  &__progress-bar-container {
     position: absolute;
     display: flex;
     align-items: center;
   }
 
-  &__volume-progress-bar-button {
+  &__progress-bar {
+    background-color: #fcbe13;
+    height: 4px;
+  }
+
+  &__progress-bar-button {
     visibility: hidden;
     opacity: 0;
     background-color: #fcbe13;
@@ -59,6 +44,29 @@
     &_active {
       visibility: visible;
       opacity: 1;
+    }
+  }
+
+  &__volumeline-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    transition: margin 0.3s linear;
+
+    &_hovered {
+      margin-right: 12px;
+    }
+  }
+
+  &__volumeline {
+    width: 0;
+    height: 4px;
+    background-color: #d9d9d9;
+    transition: all 0.3s linear;
+
+    &_hovered {
+      width: 110px;
     }
   }
 }

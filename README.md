@@ -1,4 +1,4 @@
-# Frontend cайта Иркутской областной общественной организацияи «Союз композиторов»
+# Frontend cайта Иркутской областной общественной организации «Союз композиторов»
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

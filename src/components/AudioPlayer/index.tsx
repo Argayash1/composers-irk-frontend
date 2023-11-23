@@ -30,6 +30,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const customTrackRef = React.useRef<HTMLDivElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const menuRef = React.useRef<HTMLDivElement>(null);
+  const volumeRef = React.useRef<HTMLDivElement>(null);
+  const isChangeVolume = React.useRef<boolean>(false);
 
   const [progress, setProgress] = React.useState<number>(0);
   const [isPlaying, setPlaying] = React.useState<boolean>(false);
@@ -42,6 +44,30 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const [isSpeedParamsOpen, setIsSpeedParamsOpen] = React.useState<boolean>(false);
   const [previousVolume, setPreviousVolume] = React.useState<number>(1);
   const [isMuted, setIsmuted] = React.useState<boolean>(false);
+  const [volume, setVolume] = React.useState<number>(100);
+
+  const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+    const audioPlayer = audioRef.current;
+
+    if (audioPlayer) {
+      if (event.buttons !== 1) {
+        return;
+      }
+
+      isChangeVolume.current = true;
+
+      const volumelineContainer = event.currentTarget;
+      const volumelineContainerRect = volumelineContainer.getBoundingClientRect();
+      const offsetX = event.clientX - volumelineContainerRect.left;
+
+      const newProgress = (offsetX / volumelineContainer.offsetWidth) * 100;
+      const clampedVolume = Math.max(0, Math.min(newProgress, 100));
+
+      audioPlayer.volume = clampedVolume / 100;
+
+      setVolume(clampedVolume);
+    }
+  };
 
   const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
     const audioPlayer = audioRef.current;
@@ -208,9 +234,25 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
     return () => document.body.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const maxProgressBarWidth = 521; // Максимальная ширина полосы воспроизведения
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const _event = event as ButtonClick;
+      if (volumeRef.current && !_event.composedPath().includes(volumeRef.current)) {
+        setIsVolumeContainerHovered(false);
+        isChangeVolume.current = false;
+      }
+    };
+    document.body.addEventListener('click', handleClickOutside);
+    return () => document.body.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  const maxProgressBarWidth = !isVolumeContainerHovered ? 521 : 390; // Максимальная ширина полосы воспроизведения
   const progressBarWidth = progress * (maxProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
   const progressBarStyle = { width: `${progressBarWidth}px` }; // Стиль с новой шириной
+
+  const maxVolumeProgressBarWidth = 110;
+  const volumeProgressBarWidth = volume * (maxVolumeProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
+  const volumeProgressBarStyle = !isVolumeContainerHovered ? { width: 0 } : { width: `${volumeProgressBarWidth}px` }; // Стиль с новой шириной
 
   const menuItems: MenuItem[] = [
     {
@@ -255,13 +297,15 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           onDrag={handleProgressBarDrag}
           onDragEnd={handleProgressBarDragEnd}
           isHovered={isTimelineContainerHovered}
+          isVolumeContainerHovered={isVolumeContainerHovered}
           progressBarStyle={progressBarStyle}
           ref={customTrackRef}
         />
         <div
           className='volumeline-container'
           onMouseEnter={() => setIsVolumeContainerHovered(true)}
-          onMouseLeave={() => setIsVolumeContainerHovered(false)}
+          onMouseLeave={() => !isChangeVolume.current && setIsVolumeContainerHovered(false)}
+          ref={volumeRef}
         >
           <div
             className={`volumeline-container__volumeline-wrapper ${
@@ -269,9 +313,15 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
             }`}
             onMouseEnter={() => setIsVolumeLineHovered(true)}
             onMouseLeave={() => setIsVolumeLineHovered(false)}
+            onMouseMove={handleVolumeProgressBarDrag}
           >
             <div className='volumeline-container__progress-bar-container'>
-              <div className='volumeline-container__progress-bar'></div>
+              <div
+                className={`volumeline-container__progress-bar ${
+                  isChangeVolume.current ? 'volumeline-container__progress-bar_animation_inactive' : ''
+                }`}
+                style={volumeProgressBarStyle}
+              ></div>
               <button
                 className={`volumeline-container__progress-bar-button ${
                   isVolumeLineHovered ? 'volumeline-container__progress-bar-button_active' : ''

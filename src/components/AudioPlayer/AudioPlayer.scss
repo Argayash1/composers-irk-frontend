@@ -27,6 +27,11 @@
   &__progress-bar {
     background-color: #fcbe13;
     height: 4px;
+    transition: width 0.3s linear;
+
+    &_animation_inactive {
+      transition: none;
+    }
   }
 
   &__progress-bar-button {
@@ -53,7 +58,6 @@
     align-items: center;
     width: fit-content;
     transition: margin 0.3s linear;
-    border: 1px solid red;
 
     &_hovered {
       margin-right: 12px;

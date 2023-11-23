@@ -12,15 +12,19 @@ type TimelineContainerProps = {
   onDrag: (event: React.MouseEvent<HTMLDivElement>) => void;
   onDragEnd: () => void;
   isHovered: boolean;
+  isVolumeContainerHovered: boolean;
   progressBarStyle: ProgressBarStyleType;
 };
 
 export const TimelineContainer = React.forwardRef<HTMLDivElement, TimelineContainerProps>((props, ref) => {
-  const { onHover, onDisHover, onDragStart, onDrag, onDragEnd, isHovered, progressBarStyle } = props;
+  const { onHover, onDisHover, onDragStart, onDrag, onDragEnd, isHovered, isVolumeContainerHovered, progressBarStyle } =
+    props;
 
   return (
     <div
-      className='timeline-container'
+      className={`timeline-container ${
+        isVolumeContainerHovered ? 'timeline-container_width_volumeline-container-hover' : ''
+      }`}
       onMouseEnter={onHover}
       onMouseLeave={onDisHover}
       onMouseDown={onDragStart}

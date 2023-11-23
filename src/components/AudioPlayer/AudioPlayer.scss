@@ -53,6 +53,7 @@
     align-items: center;
     width: fit-content;
     transition: margin 0.3s linear;
+    border: 1px solid red;
 
     &_hovered {
       margin-right: 12px;

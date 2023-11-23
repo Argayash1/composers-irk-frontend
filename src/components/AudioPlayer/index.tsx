@@ -263,14 +263,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           onMouseEnter={() => setIsVolumeContainerHovered(true)}
           onMouseLeave={() => setIsVolumeContainerHovered(false)}
         >
-          <div className='volumeline-container__progress-bar-container'>
-            <div className='volumeline-container__progress-bar'></div>
-            <button
-              className={`volumeline-container__progress-bar-button ${
-                isVolumeLineHovered ? 'volumeline-container__progress-bar-button_active' : ''
-              }`}
-            ></button>
-          </div>
           <div
             className={`volumeline-container__volumeline-wrapper ${
               isVolumeContainerHovered ? 'volumeline-container__volumeline-wrapper_hovered' : ''
@@ -278,6 +270,14 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
             onMouseEnter={() => setIsVolumeLineHovered(true)}
             onMouseLeave={() => setIsVolumeLineHovered(false)}
           >
+            <div className='volumeline-container__progress-bar-container'>
+              <div className='volumeline-container__progress-bar'></div>
+              <button
+                className={`volumeline-container__progress-bar-button ${
+                  isVolumeLineHovered ? 'volumeline-container__progress-bar-button_active' : ''
+                }`}
+              ></button>
+            </div>
             <div
               className={`volumeline-container__volumeline ${
                 isVolumeContainerHovered ? 'volumeline-container__volumeline_hovered' : ''

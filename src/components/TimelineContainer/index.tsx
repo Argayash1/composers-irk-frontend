@@ -1,7 +1,7 @@
 import React from 'react';
 import './TimelineContainer.scss';
 
-type ProgressBarStyleType = {
+export type ProgressBarStyleType = {
   width: string;
 };
 

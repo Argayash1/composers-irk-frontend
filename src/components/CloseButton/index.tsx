@@ -2,7 +2,7 @@ import React from 'react';
 import './CloseButton.scss';
 
 type CloseButtonProps = {
-  onClick?: () => void;
+  onClick: () => void;
   place?: string;
 };
 

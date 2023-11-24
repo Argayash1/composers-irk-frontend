@@ -1,9 +1,15 @@
 import React from 'react';
 import './AudioPlayer.scss';
-import { MoreButton, PlayButton, TimeCounter, MoreMenu, VolumeButton } from '../../components';
+import {
+  PlayButton,
+  TimeCounter,
+  TimelineContainer,
+  VolumelineContainer,
+  MoreButton,
+  MoreMenu,
+} from '../../components';
 import downloadIcon from '../../assets/icons/more-menu-download-icon.svg';
 import speedIcon from '../../assets/icons/more-menu-speed-icon.svg';
-import { TimelineContainer } from '../TimelineContainer';
 
 type AudioPlayerProps = {
   src: string;
@@ -252,7 +258,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
 
   const maxVolumeProgressBarWidth = 110;
   const volumeProgressBarWidth = volume * (maxVolumeProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
-  const volumeProgressBarStyle = !isVolumeContainerHovered ? { width: 0 } : { width: `${volumeProgressBarWidth}px` }; // Стиль с новой шириной
+  const volumeProgressBarStyle = !isVolumeContainerHovered ? { width: '0' } : { width: `${volumeProgressBarWidth}px` }; // Стиль с новой шириной
 
   const menuItems: MenuItem[] = [
     {
@@ -301,42 +307,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           progressBarStyle={progressBarStyle}
           ref={customTrackRef}
         />
-        <div
-          className='volumeline-container'
-          onMouseEnter={() => setIsVolumeContainerHovered(true)}
-          onMouseLeave={() => !isChangeVolume.current && setIsVolumeContainerHovered(false)}
+        <VolumelineContainer
+          onHover={() => setIsVolumeContainerHovered(true)}
+          onDisHover={() => !isChangeVolume.current && setIsVolumeContainerHovered(false)}
+          onVolumeLineHover={() => setIsVolumeLineHovered(true)}
+          onVolumeLineDisHover={() => setIsVolumeLineHovered(false)}
+          onDrag={handleVolumeProgressBarDrag}
+          onMuteButtonClick={handleMuteButtonClick}
+          volumeProgressBarStyle={volumeProgressBarStyle}
+          isVolumeContainerHovered={isVolumeContainerHovered}
+          isVolumeLineHovered={isVolumeLineHovered}
+          isChangeVolume={isChangeVolume.current}
+          isMuted={isMuted}
           ref={volumeRef}
-        >
-          <div
-            className={`volumeline-container__volumeline-wrapper ${
-              isVolumeContainerHovered ? 'volumeline-container__volumeline-wrapper_hovered' : ''
-            }`}
-            onMouseEnter={() => setIsVolumeLineHovered(true)}
-            onMouseLeave={() => setIsVolumeLineHovered(false)}
-            onMouseMove={handleVolumeProgressBarDrag}
-          >
-            <div className='volumeline-container__progress-bar-container'>
-              <div
-                className={`volumeline-container__progress-bar ${
-                  isChangeVolume.current ? 'volumeline-container__progress-bar_animation_inactive' : ''
-                }`}
-                style={volumeProgressBarStyle}
-              ></div>
-              <button
-                className={`volumeline-container__progress-bar-button ${
-                  isVolumeLineHovered ? 'volumeline-container__progress-bar-button_active' : ''
-                }`}
-              ></button>
-            </div>
-            <div
-              className={`volumeline-container__volumeline ${
-                isVolumeContainerHovered ? 'volumeline-container__volumeline_hovered' : ''
-              }`}
-            ></div>
-          </div>
-
-          <VolumeButton onClick={handleMuteButtonClick} isMuted={isMuted} />
-        </div>
+        />
         <MoreButton onClick={handleOpenMoreMenu} ref={buttonRef} />
         <MoreMenu
           isMoreMenuOpen={isMoreMenuOpen}

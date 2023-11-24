@@ -33,3 +33,5 @@ export * from './TimeCounter';
 export * from './MoreButton';
 export * from './MoreMenu';
 export * from './VolumeButton';
+export * from './TimelineContainer';
+export * from './VolumelineContainer';

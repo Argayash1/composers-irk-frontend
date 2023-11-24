@@ -21,13 +21,19 @@ type MainMenuProps = {
 };
 
 export const MainMenu: React.FC<MainMenuProps> = ({ place, isOpen, onClose }) => {
+  const handleCloseBurgerMenu = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <nav
       className={`main-menu ${place === 'header' ? 'main-menu_place_header' : ''} ${
         place === 'burger' ? 'main-menu_place_burger' : ''
       } ${isOpen ? 'main-menu_is_opened' : ''}`}
     >
-      {place === 'burger' && <CloseButton onClick={onClose} place='burger' />}
+      {place === 'burger' && <CloseButton onClick={handleCloseBurgerMenu} place='burger' />}
       <ul className={`main-menu__list ${place === 'burger' ? 'main-menu__list_place_burger' : ''}`}>
         {menuItems.map((item, index) => (
           <li key={index}>
@@ -38,11 +44,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({ place, isOpen, onClose }) =>
                 }`
               }
               to={item.path}
-              onClick={() => {
-                if (onClose) {
-                  onClose();
-                }
-              }}
+              onClick={handleCloseBurgerMenu}
             >
               {item.name}
             </NavLink>

@@ -1,0 +1,35 @@
+.progress-bar-container {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+
+  &__progress-bar {
+    background-color: #fcbe13;
+    height: 4px;
+
+    &_animation_active {
+      transition: width 0.3s linear;
+    }
+  }
+
+  &__progress-bar-button {
+    position: absolute;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fcbe13;
+    border-radius: 100%;
+    border: none;
+    height: 12px;
+    width: 12px;
+    margin: 0;
+    padding: 0;
+    transition: visibility 0.2s linear, opacity 0.2s linear;
+
+    &_active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

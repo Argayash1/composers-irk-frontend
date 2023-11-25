@@ -2,6 +2,7 @@ import React from 'react';
 import { VolumeButton } from '../VolumeButton';
 import { ProgressBarStyleType } from '../TimelineContainer';
 import './VolumelineContainer.scss';
+import { ProgressBarContainer } from '../ProgressBarContainer';
 
 type VolumelineContainerProps = {
   onHover: () => void;
@@ -42,26 +43,18 @@ export const VolumelineContainer = React.forwardRef<HTMLDivElement, VolumelineCo
         onMouseLeave={onVolumeLineDisHover}
         onMouseMove={onDrag}
       >
-        <div className='volumeline-container__progress-bar-container'>
-          <div
-            className={`volumeline-container__progress-bar ${
-              isChangeVolume ? 'volumeline-container__progress-bar_animation_inactive' : ''
-            }`}
-            style={volumeProgressBarStyle}
-          ></div>
-          <button
-            className={`volumeline-container__progress-bar-button ${
-              isVolumeLineHovered ? 'volumeline-container__progress-bar-button_active' : ''
-            }`}
-          ></button>
-        </div>
+        <ProgressBarContainer
+          progressBarStyle={volumeProgressBarStyle}
+          isChangeVolume={isChangeVolume}
+          isLineHovered={isVolumeLineHovered}
+          type='volume'
+        />
         <div
           className={`volumeline-container__volumeline ${
             isVolumeContainerHovered ? 'volumeline-container__volumeline_hovered' : ''
           }`}
         ></div>
       </div>
-
       <VolumeButton onClick={onMuteButtonClick} isMuted={isMuted} />
     </div>
   );

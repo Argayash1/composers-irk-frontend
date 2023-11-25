@@ -1,5 +1,6 @@
 import React from 'react';
 import './TimelineContainer.scss';
+import { ProgressBarContainer } from '../ProgressBarContainer';
 
 export type ProgressBarStyleType = {
   width: string;
@@ -8,7 +9,6 @@ export type ProgressBarStyleType = {
 type TimelineContainerProps = {
   onHover: () => void;
   onDisHover: () => void;
-  onDragStart: () => void;
   onDrag: (event: React.MouseEvent<HTMLDivElement>) => void;
   onDragEnd: () => void;
   isHovered: boolean;
@@ -17,9 +17,7 @@ type TimelineContainerProps = {
 };
 
 export const TimelineContainer = React.forwardRef<HTMLDivElement, TimelineContainerProps>((props, ref) => {
-  const { onHover, onDisHover, onDragStart, onDrag, onDragEnd, isHovered, isVolumeContainerHovered, progressBarStyle } =
-    props;
-
+  const { onHover, onDisHover, onDrag, onDragEnd, isHovered, isVolumeContainerHovered, progressBarStyle } = props;
   return (
     <div
       className={`timeline-container ${
@@ -27,23 +25,11 @@ export const TimelineContainer = React.forwardRef<HTMLDivElement, TimelineContai
       }`}
       onMouseEnter={onHover}
       onMouseLeave={onDisHover}
-      onMouseDown={onDragStart}
       onMouseMove={onDrag}
       onMouseUp={onDragEnd}
+      ref={ref}
     >
-      <div className='timeline-container__progress-bar-container'>
-        <div
-          className='timeline-container__progress-bar'
-          ref={ref}
-          style={progressBarStyle}
-          onMouseDown={onDragStart}
-        ></div>
-        <button
-          className={`timeline-container__progress-bar-button ${
-            isHovered ? 'timeline-container__progress-bar-button_active' : ''
-          }`}
-        ></button>
-      </div>
+      <ProgressBarContainer progressBarStyle={progressBarStyle} isLineHovered={isHovered} />
       <div className='timeline-container__timeline'></div>
     </div>
   );

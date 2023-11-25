@@ -1,41 +1,8 @@
 .volumeline-container {
+  height: 22px;
   display: flex;
   align-items: center;
-  height: 22px;
-
-  &__progress-bar-container {
-    position: absolute;
-    display: flex;
-    align-items: center;
-  }
-
-  &__progress-bar {
-    background-color: #fcbe13;
-    height: 4px;
-    transition: width 0.3s linear;
-
-    &_animation_inactive {
-      transition: none;
-    }
-  }
-
-  &__progress-bar-button {
-    visibility: hidden;
-    opacity: 0;
-    background-color: #fcbe13;
-    border-radius: 100%;
-    border: none;
-    height: 12px;
-    width: 12px;
-    margin: 0;
-    padding: 0;
-    transition: visibility 0.2s linear, opacity 0.2s linear;
-
-    &_active {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
+  position: relative;
 
   &__volumeline-wrapper {
     height: 100%;

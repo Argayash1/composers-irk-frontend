@@ -33,11 +33,12 @@ export type ParamsMenuItem = {
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
-  const customTrackRef = React.useRef<HTMLDivElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const menuRef = React.useRef<HTMLDivElement>(null);
   const volumeRef = React.useRef<HTMLDivElement>(null);
+  const timeLineRef = React.useRef<HTMLDivElement>(null);
   const isChangeVolume = React.useRef<boolean>(false);
+  const isChangeTime = React.useRef<boolean>(false);
 
   const [progress, setProgress] = React.useState<number>(0);
   const [isPlaying, setPlaying] = React.useState<boolean>(false);
@@ -82,6 +83,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       if (event.buttons !== 1) {
         return;
       }
+
+      isChangeTime.current = true;
+
       const timelineContainer = event.currentTarget;
       const timelineContainerRect = timelineContainer.getBoundingClientRect();
       const offsetX = event.clientX - timelineContainerRect.left;
@@ -96,11 +100,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       const newCurrentTime = (newProgress / 100) * totalDuration;
       audioPlayer.currentTime = newCurrentTime;
     }
-  };
-
-  const handleProgressBarDragStart = () => {
-    // При начале перетаскивания сохраняем информацию о текущем положении курсора
-    setIsTimelineContainerHovered(false);
   };
 
   const handleProgressBarDragEnd = () => {
@@ -245,7 +244,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       const _event = event as ButtonClick;
       if (volumeRef.current && !_event.composedPath().includes(volumeRef.current)) {
         setIsVolumeContainerHovered(false);
+        setIsVolumeLineHovered(false);
         isChangeVolume.current = false;
+      }
+    };
+    document.body.addEventListener('click', handleClickOutside);
+    return () => document.body.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const _event = event as ButtonClick;
+      if (timeLineRef.current && !_event.composedPath().includes(timeLineRef.current)) {
+        setIsTimelineContainerHovered(false);
+        isChangeTime.current = false;
       }
     };
     document.body.addEventListener('click', handleClickOutside);
@@ -298,20 +310,19 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
         <TimeCounter currentDuration={currentDuration} totalDuration={totalDuration} />
         <TimelineContainer
           onHover={() => setIsTimelineContainerHovered(true)}
-          onDisHover={() => setIsTimelineContainerHovered(false)}
-          onDragStart={handleProgressBarDragStart}
+          onDisHover={() => !isChangeTime.current && setIsTimelineContainerHovered(false)}
           onDrag={handleProgressBarDrag}
           onDragEnd={handleProgressBarDragEnd}
           isHovered={isTimelineContainerHovered}
           isVolumeContainerHovered={isVolumeContainerHovered}
           progressBarStyle={progressBarStyle}
-          ref={customTrackRef}
+          ref={timeLineRef}
         />
         <VolumelineContainer
           onHover={() => setIsVolumeContainerHovered(true)}
           onDisHover={() => !isChangeVolume.current && setIsVolumeContainerHovered(false)}
           onVolumeLineHover={() => setIsVolumeLineHovered(true)}
-          onVolumeLineDisHover={() => setIsVolumeLineHovered(false)}
+          onVolumeLineDisHover={() => !isChangeVolume.current && setIsVolumeLineHovered(false)}
           onDrag={handleVolumeProgressBarDrag}
           onMuteButtonClick={handleMuteButtonClick}
           volumeProgressBarStyle={volumeProgressBarStyle}

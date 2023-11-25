@@ -35,3 +35,4 @@ export * from './MoreMenu';
 export * from './VolumeButton';
 export * from './TimelineContainer';
 export * from './VolumelineContainer';
+export * from './ProgressBarContainer';

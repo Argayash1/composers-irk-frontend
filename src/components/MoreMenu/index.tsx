@@ -1,16 +1,45 @@
 import React from 'react';
 import { MenuItem, ParamsMenuItem } from '../AudioPlayer';
 import './MoreMenu.scss';
+import downloadIcon from '../../assets/icons/more-menu-download-icon.svg';
+import speedIcon from '../../assets/icons/more-menu-speed-icon.svg';
 
 type MoreMenuProps = {
+  onToggleSpeedParams: () => void;
+  onChangePlaybackSpeed: (speed: number) => void;
+  onDownLoad: () => void;
   isMoreMenuOpen: boolean;
   isSpeedParamsOpen: boolean;
-  menuItems: MenuItem[];
-  paramsMenuItems: ParamsMenuItem[];
 };
 
 export const MoreMenu = React.forwardRef<HTMLDivElement, MoreMenuProps>((props, ref) => {
-  const { isMoreMenuOpen, isSpeedParamsOpen, menuItems, paramsMenuItems } = props;
+  const { onToggleSpeedParams, onChangePlaybackSpeed, onDownLoad, isMoreMenuOpen, isSpeedParamsOpen } = props;
+
+  const menuItems: MenuItem[] = [
+    {
+      name: 'Скачать',
+      onClick: onDownLoad,
+      icon: downloadIcon,
+    },
+    {
+      name: 'Скорость воспроизведения',
+      onClick: onToggleSpeedParams,
+      icon: speedIcon,
+    },
+  ];
+
+  const paramsMenuItems: ParamsMenuItem[] = [
+    { name: 'Параметры', onClick: onToggleSpeedParams },
+    { name: '0,25', onClick: () => onChangePlaybackSpeed(0.25) },
+    { name: '0,5', onClick: () => onChangePlaybackSpeed(0.5) },
+    { name: '0,75', onClick: () => onChangePlaybackSpeed(0.75) },
+    { name: 'Обычный', onClick: () => onChangePlaybackSpeed(1) },
+    { name: '1,25', onClick: () => onChangePlaybackSpeed(1.25) },
+    { name: '1,5', onClick: () => onChangePlaybackSpeed(1.5) },
+    { name: '1,75', onClick: () => onChangePlaybackSpeed(1.75) },
+    { name: '2', onClick: () => onChangePlaybackSpeed(2) },
+  ];
+
   return (
     <div
       ref={ref}

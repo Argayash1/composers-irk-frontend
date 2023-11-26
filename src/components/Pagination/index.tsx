@@ -17,18 +17,18 @@ export const Pagination: React.FC = () => {
         </button>
       )}
       <ul className='pagination__list'>
-        {pageNumbers.map((pageNumber, index) => (
+        {pageNumbers.map((page, index) => (
           <li
             key={index}
-            className={`pagination__list-item ${currentPage === pageNumber ? 'pagination__list-item_active' : ''}`}
+            className={`pagination__list-item ${currentPage === page ? 'pagination__list-item_active' : ''}`}
           >
             <button
               className={`pagination__page-number-button ${
-                currentPage === pageNumber ? 'pagination__page-number-button_active' : ''
+                currentPage === page ? 'pagination__page-number-button_active' : ''
               }`}
-              onClick={() => dispatch(setCurrentPage(pageNumber))}
+              onClick={() => dispatch(setCurrentPage(page))}
             >
-              {pageNumber}
+              {page}
             </button>
           </li>
         ))}

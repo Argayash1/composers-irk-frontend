@@ -8,14 +8,12 @@ import {
   MoreButton,
   MoreMenu,
 } from '../../components';
-import downloadIcon from '../../assets/icons/more-menu-download-icon.svg';
-import speedIcon from '../../assets/icons/more-menu-speed-icon.svg';
 
 type AudioPlayerProps = {
   src: string;
 };
 
-type ButtonClick = MouseEvent & {
+export type ButtonClick = MouseEvent & {
   composedPath: Node[];
 };
 
@@ -35,23 +33,28 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const menuRef = React.useRef<HTMLDivElement>(null);
-  const volumeRef = React.useRef<HTMLDivElement>(null);
-  const timeLineRef = React.useRef<HTMLDivElement>(null);
   const isChangeVolume = React.useRef<boolean>(false);
-  const isChangeTime = React.useRef<boolean>(false);
 
   const [progress, setProgress] = React.useState<number>(0);
   const [isPlaying, setPlaying] = React.useState<boolean>(false);
   const [totalDuration, setTotalDuration] = React.useState<number>(0);
-  const [isTimelineContainerHovered, setIsTimelineContainerHovered] = React.useState<boolean>(false);
   const [currentDuration, setCurrentDuration] = React.useState<number>(0);
-  const [isVolumeLineHovered, setIsVolumeLineHovered] = React.useState<boolean>(false);
   const [isVolumeContainerHovered, setIsVolumeContainerHovered] = React.useState<boolean>(false);
   const [isMoreMenuOpen, setIsMoreMenuOpen] = React.useState<boolean>(false);
   const [isSpeedParamsOpen, setIsSpeedParamsOpen] = React.useState<boolean>(false);
   const [previousVolume, setPreviousVolume] = React.useState<number>(1);
   const [isMuted, setIsmuted] = React.useState<boolean>(false);
   const [volume, setVolume] = React.useState<number>(100);
+  const [isChangeTime, setIsChangeTime] = React.useState<boolean>(false);
+
+  const handleDishoverVolumeContainer = () => {
+    setIsVolumeContainerHovered(false);
+    isChangeVolume.current = false;
+  };
+
+  const handlToggleChangeTime = () => {
+    setIsChangeTime(false);
+  };
 
   const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
     const audioPlayer = audioRef.current;
@@ -84,7 +87,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
         return;
       }
 
-      isChangeTime.current = true;
+      setIsChangeTime(true);
 
       const timelineContainer = event.currentTarget;
       const timelineContainerRect = timelineContainer.getBoundingClientRect();
@@ -239,31 +242,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
     return () => document.body.removeEventListener('click', handleClickOutside);
   }, []);
 
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const _event = event as ButtonClick;
-      if (volumeRef.current && !_event.composedPath().includes(volumeRef.current)) {
-        setIsVolumeContainerHovered(false);
-        setIsVolumeLineHovered(false);
-        isChangeVolume.current = false;
-      }
-    };
-    document.body.addEventListener('click', handleClickOutside);
-    return () => document.body.removeEventListener('click', handleClickOutside);
-  }, []);
-
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const _event = event as ButtonClick;
-      if (timeLineRef.current && !_event.composedPath().includes(timeLineRef.current)) {
-        setIsTimelineContainerHovered(false);
-        isChangeTime.current = false;
-      }
-    };
-    document.body.addEventListener('click', handleClickOutside);
-    return () => document.body.removeEventListener('click', handleClickOutside);
-  }, []);
-
   const maxProgressBarWidth = !isVolumeContainerHovered ? 521 : 390; // Максимальная ширина полосы воспроизведения
   const progressBarWidth = progress * (maxProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
   const progressBarStyle = { width: `${progressBarWidth}px` }; // Стиль с новой шириной
@@ -271,31 +249,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const maxVolumeProgressBarWidth = 110;
   const volumeProgressBarWidth = volume * (maxVolumeProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
   const volumeProgressBarStyle = !isVolumeContainerHovered ? { width: '0' } : { width: `${volumeProgressBarWidth}px` }; // Стиль с новой шириной
-
-  const menuItems: MenuItem[] = [
-    {
-      name: 'Скачать',
-      onClick: handleDownload,
-      icon: downloadIcon,
-    },
-    {
-      name: 'Скорость воспроизведения',
-      onClick: handleToggleSpeedParams,
-      icon: speedIcon,
-    },
-  ];
-
-  const paramsMenuItems: ParamsMenuItem[] = [
-    { name: 'Параметры', onClick: handleToggleSpeedParams },
-    { name: '0,25', onClick: () => handleChangePlaybackSpeed(0.25) },
-    { name: '0,5', onClick: () => handleChangePlaybackSpeed(0.5) },
-    { name: '0,75', onClick: () => handleChangePlaybackSpeed(0.75) },
-    { name: 'Обычный', onClick: () => handleChangePlaybackSpeed(1) },
-    { name: '1,25', onClick: () => handleChangePlaybackSpeed(1.25) },
-    { name: '1,5', onClick: () => handleChangePlaybackSpeed(1.5) },
-    { name: '1,75', onClick: () => handleChangePlaybackSpeed(1.75) },
-    { name: '2', onClick: () => handleChangePlaybackSpeed(2) },
-  ];
 
   return (
     <div className='audio-player'>
@@ -309,35 +262,31 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
         <PlayButton onClick={togglePlay} isPlaying={isPlaying} />
         <TimeCounter currentDuration={currentDuration} totalDuration={totalDuration} />
         <TimelineContainer
-          onHover={() => setIsTimelineContainerHovered(true)}
-          onDisHover={() => !isChangeTime.current && setIsTimelineContainerHovered(false)}
           onDrag={handleProgressBarDrag}
           onDragEnd={handleProgressBarDragEnd}
-          isHovered={isTimelineContainerHovered}
+          onToggleChangeTime={handlToggleChangeTime}
           isVolumeContainerHovered={isVolumeContainerHovered}
           progressBarStyle={progressBarStyle}
-          ref={timeLineRef}
+          isChangeTime={isChangeTime}
         />
         <VolumelineContainer
           onHover={() => setIsVolumeContainerHovered(true)}
           onDisHover={() => !isChangeVolume.current && setIsVolumeContainerHovered(false)}
-          onVolumeLineHover={() => setIsVolumeLineHovered(true)}
-          onVolumeLineDisHover={() => !isChangeVolume.current && setIsVolumeLineHovered(false)}
+          onDisHoverVolumeContainer={handleDishoverVolumeContainer}
           onDrag={handleVolumeProgressBarDrag}
           onMuteButtonClick={handleMuteButtonClick}
           volumeProgressBarStyle={volumeProgressBarStyle}
           isVolumeContainerHovered={isVolumeContainerHovered}
-          isVolumeLineHovered={isVolumeLineHovered}
           isChangeVolume={isChangeVolume.current}
           isMuted={isMuted}
-          ref={volumeRef}
         />
         <MoreButton onClick={handleOpenMoreMenu} ref={buttonRef} />
         <MoreMenu
+          onToggleSpeedParams={handleToggleSpeedParams}
+          onChangePlaybackSpeed={handleChangePlaybackSpeed}
+          onDownLoad={handleDownload}
           isMoreMenuOpen={isMoreMenuOpen}
           isSpeedParamsOpen={isSpeedParamsOpen}
-          menuItems={menuItems}
-          paramsMenuItems={paramsMenuItems}
           ref={menuRef}
         />
       </div>

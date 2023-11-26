@@ -3,7 +3,6 @@ import './ProgressBarContainer.scss';
 import { ProgressBarStyleType } from '../TimelineContainer';
 
 type ProgressBarContainerProps = {
-  onDragStart?: () => void;
   isChangeVolume?: boolean;
   progressBarStyle: ProgressBarStyleType;
   isLineHovered: boolean;
@@ -11,7 +10,6 @@ type ProgressBarContainerProps = {
 };
 
 export const ProgressBarContainer: React.FC<ProgressBarContainerProps> = ({
-  onDragStart,
   isChangeVolume,
   progressBarStyle,
   isLineHovered,

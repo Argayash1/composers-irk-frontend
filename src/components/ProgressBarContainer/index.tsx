@@ -1,6 +1,9 @@
 import React from 'react';
 import './ProgressBarContainer.scss';
-import { ProgressBarStyleType } from '../TimelineContainer';
+
+type ProgressBarStyleType = {
+  width: string;
+};
 
 type ProgressBarContainerProps = {
   isChangeVolume?: boolean;

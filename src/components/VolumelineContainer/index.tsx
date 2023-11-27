@@ -1,6 +1,5 @@
 import React from 'react';
 import { VolumeButton } from '../VolumeButton';
-import { ProgressBarStyleType } from '../TimelineContainer';
 import './VolumelineContainer.scss';
 import { ProgressBarContainer } from '../ProgressBarContainer';
 import { ButtonClick } from '../AudioPlayer';
@@ -11,7 +10,7 @@ type VolumelineContainerProps = {
   onDisHoverVolumeContainer: () => void;
   onDrag: (event: React.MouseEvent<HTMLDivElement>) => void;
   onMuteButtonClick: () => void;
-  volumeProgressBarStyle: ProgressBarStyleType;
+  volume: number;
   isVolumeContainerHovered: boolean;
   isChangeVolume: boolean;
   isMuted: boolean;
@@ -23,7 +22,7 @@ export const VolumelineContainer: React.FC<VolumelineContainerProps> = ({
   onDisHoverVolumeContainer,
   onDrag,
   onMuteButtonClick,
-  volumeProgressBarStyle,
+  volume,
   isVolumeContainerHovered,
   isChangeVolume,
   isMuted,
@@ -31,6 +30,10 @@ export const VolumelineContainer: React.FC<VolumelineContainerProps> = ({
   const volumeRef = React.useRef<HTMLDivElement>(null);
 
   const [isVolumeLineHovered, setIsVolumeLineHovered] = React.useState<boolean>(false);
+
+  const maxVolumeProgressBarWidth = 110;
+  const volumeProgressBarWidth = volume * (maxVolumeProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
+  const volumeProgressBarStyle = !isVolumeContainerHovered ? { width: '0' } : { width: `${volumeProgressBarWidth}px` }; // Стиль с новой шириной
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

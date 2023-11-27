@@ -17,17 +17,6 @@ export type ButtonClick = MouseEvent & {
   composedPath: Node[];
 };
 
-export type MenuItem = {
-  name: string;
-  onClick: () => void;
-  icon: string;
-};
-
-export type ParamsMenuItem = {
-  name: string;
-  onClick: () => void;
-};
-
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
@@ -242,14 +231,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
     return () => document.body.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const maxProgressBarWidth = !isVolumeContainerHovered ? 521 : 390; // Максимальная ширина полосы воспроизведения
-  const progressBarWidth = progress * (maxProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
-  const progressBarStyle = { width: `${progressBarWidth}px` }; // Стиль с новой шириной
-
-  const maxVolumeProgressBarWidth = 110;
-  const volumeProgressBarWidth = volume * (maxVolumeProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
-  const volumeProgressBarStyle = !isVolumeContainerHovered ? { width: '0' } : { width: `${volumeProgressBarWidth}px` }; // Стиль с новой шириной
-
   return (
     <div className='audio-player'>
       <audio className='audio-player__item-audio' ref={audioRef} src={src}>
@@ -266,8 +247,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           onDragEnd={handleProgressBarDragEnd}
           onToggleChangeTime={handlToggleChangeTime}
           isVolumeContainerHovered={isVolumeContainerHovered}
-          progressBarStyle={progressBarStyle}
           isChangeTime={isChangeTime}
+          progress={progress}
         />
         <VolumelineContainer
           onHover={() => setIsVolumeContainerHovered(true)}
@@ -275,7 +256,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           onDisHoverVolumeContainer={handleDishoverVolumeContainer}
           onDrag={handleVolumeProgressBarDrag}
           onMuteButtonClick={handleMuteButtonClick}
-          volumeProgressBarStyle={volumeProgressBarStyle}
+          volume={volume}
           isVolumeContainerHovered={isVolumeContainerHovered}
           isChangeVolume={isChangeVolume.current}
           isMuted={isMuted}

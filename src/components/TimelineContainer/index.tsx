@@ -3,17 +3,13 @@ import './TimelineContainer.scss';
 import { ProgressBarContainer } from '../ProgressBarContainer';
 import { ButtonClick } from '../AudioPlayer';
 
-export type ProgressBarStyleType = {
-  width: string;
-};
-
 type TimelineContainerProps = {
   onDrag: (event: React.MouseEvent<HTMLDivElement>) => void;
   onDragEnd: () => void;
   onToggleChangeTime: () => void;
   isVolumeContainerHovered: boolean;
-  progressBarStyle: ProgressBarStyleType;
   isChangeTime: boolean;
+  progress: number;
 };
 
 export const TimelineContainer: React.FC<TimelineContainerProps> = ({
@@ -21,12 +17,16 @@ export const TimelineContainer: React.FC<TimelineContainerProps> = ({
   onDragEnd,
   onToggleChangeTime,
   isVolumeContainerHovered,
-  progressBarStyle,
   isChangeTime,
+  progress,
 }) => {
   const timeLineRef = React.useRef<HTMLDivElement>(null);
 
   const [isTimelineContainerHovered, setIsTimelineContainerHovered] = React.useState<boolean>(false);
+
+  const maxProgressBarWidth = !isVolumeContainerHovered ? 521 : 390; // Максимальная ширина полосы воспроизведения
+  const progressBarWidth = progress * (maxProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
+  const progressBarStyle = { width: `${progressBarWidth}px` }; // Стиль с новой шириной
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

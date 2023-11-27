@@ -1,8 +1,18 @@
 import React from 'react';
-import { MenuItem, ParamsMenuItem } from '../AudioPlayer';
 import './MoreMenu.scss';
 import downloadIcon from '../../assets/icons/more-menu-download-icon.svg';
 import speedIcon from '../../assets/icons/more-menu-speed-icon.svg';
+
+type MenuItem = {
+  name: string;
+  onClick: () => void;
+  icon: string;
+};
+
+type ParamsMenuItem = {
+  name: string;
+  onClick: () => void;
+};
 
 type MoreMenuProps = {
   onToggleSpeedParams: () => void;

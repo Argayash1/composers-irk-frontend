@@ -1,18 +1,31 @@
 .logo {
   display: flex;
   text-decoration: none;
+  font-size: 0;
+  margin-bottom: 10px;
+  padding: 0;
 
   &_place_footer {
-    margin-bottom: 49px;
-
     &:hover .logo__title_place_footer {
       color: #fcbe13;
     }
   }
 
+  &_place_brand-banner {
+    margin-right: 164px;
+    margin-bottom: 0;
+    display: inline-block;
+
+    // @media screen and (max-width: 1255px) {
+    //   margin-right: 98px;
+    // }
+  }
+
   &__image {
     width: 31px;
     height: 38px;
+    font-size: 0;
+    display: inline-block;
 
     @media screen and (max-width: 1220px) {
       width: 25.289px;
@@ -22,13 +35,16 @@
     &_place_main {
       width: 175.395px;
       height: 215px;
-      margin-right: 164px;
+
+      @media screen and (max-width: 1255px) {
+        width: 98px;
+        height: 120.129px;
+      }
     }
 
     &_place_contacts {
       width: 142px;
       height: 174.065px;
-      display: inline-block;
     }
   }
 
@@ -50,6 +66,7 @@
 
     @media screen and (max-width: 1220px) {
       font-size: 10px;
+      margin-top: 1px;
     }
 
     &_place_footer {

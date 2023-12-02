@@ -10,7 +10,13 @@ type LogoProps = {
 
 export const Logo: React.FC<LogoProps> = ({ place }) => {
   return (
-    <Link to='/' className={`logo ${place === 'footer' ? 'logo_place_footer' : ''} `} onClick={handleScrollToTop}>
+    <Link
+      to='/'
+      className={`logo ${place === 'footer' ? 'logo_place_footer' : ''} ${
+        place === 'brand-banner' ? 'logo_place_brand-banner' : ''
+      }`}
+      onClick={handleScrollToTop}
+    >
       <img
         className={`logo__image ${place === 'brand-banner' ? 'logo__image_place_main' : ''} ${
           place === 'contacts' ? 'logo__image_place_contacts' : ''

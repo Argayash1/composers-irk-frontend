@@ -18,6 +18,10 @@
 .home {
   padding-bottom: 122px;
 
+  @media screen and (max-width: 1170px) {
+    padding-bottom: 90px;
+  }
+
   &__title-container {
     padding: 65px 85px 50px;
     display: flex;
@@ -26,6 +30,11 @@
     @media screen and (max-width: 1262px) {
       padding-right: 39px;
       padding-left: 39px;
+    }
+
+    @media screen and (max-width: 1170px) {
+      padding-top: 40px;
+      padding-bottom: 42px;
     }
   }
 }

@@ -37,7 +37,7 @@ export const SharePanel: React.FC<SharePanelProps> = ({ itemTitle, onClick }) =>
               onClick={onClick}
             ></button>
           ) : (
-            <a href={buttonItem.link} className='share-panel__link' onClick={onClick}>
+            <a href={buttonItem.link} className='share-panel__link' onClick={() => setTimeout(onClick, 1000)}>
               <img src={buttonItem.image} alt='' />
             </a>
           )}

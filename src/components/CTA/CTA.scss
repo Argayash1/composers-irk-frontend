@@ -48,6 +48,10 @@
     &:active {
       background-color: #4d5e63;
     }
+
+    @media screen and (max-width: 1170px) {
+      width: 157px;
+    }
   }
 
   &_grid-column_23 {

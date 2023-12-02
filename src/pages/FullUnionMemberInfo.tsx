@@ -6,7 +6,6 @@ import { allScores } from './Scores';
 import { TextContent } from '../components/TextContent';
 
 const FullUnionMemberInfo: React.FC = () => {
-  console.log(unionMembersArray);
   const [unionMember, setUnionMember] = React.useState<{
     imageUrl: string;
     surname: string;

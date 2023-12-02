@@ -3,6 +3,12 @@
   padding: 35px 118px 65px 85px;
   margin-top: auto; /*для того, чтобы прибить футер к низу (сделать sticky footer) */
 
+  @media screen and (max-width: 1262px) {
+    padding-right: 58px;
+    padding-left: 37px;
+    padding-bottom: 60px;
+  }
+
   &__columns {
     display: flex;
   }
@@ -37,7 +43,7 @@
   }
 
   &__author {
-    margin: 25px 0 0;
+    margin: 0;
     padding: 0;
     color: #fff;
     font-family: 'Manrope';

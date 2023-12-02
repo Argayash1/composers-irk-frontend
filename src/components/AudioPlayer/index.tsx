@@ -118,10 +118,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
     }
   };
 
-  const handleToggleSpeedParams = () => {
-    setIsSpeedParamsOpen(!isSpeedParamsOpen);
-  };
-
   const handleDownload = () => {
     const audioPlayerLink = audioLinkRef.current;
     if (audioPlayerLink) {
@@ -145,6 +141,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       setIsSpeedParamsOpen(false);
       setIsMoreMenuOpen(true);
     }
+  };
+
+  const handleToggleSpeedParams = () => {
+    setIsSpeedParamsOpen(!isSpeedParamsOpen);
   };
 
   const handleTimeUpdate = () => {

@@ -8,8 +8,13 @@
   font-weight: 700;
   line-height: 105%; /* 37.8px */
 
+  @media screen and (max-width: 1170px) {
+    font-size: 22px;
+  }
+
   &_place_main {
-    margin: 5px 0 0;
+    margin-top: 5px;
+    margin-bottom: 0;
   }
 
   &_place_full-news {

@@ -4,6 +4,11 @@
   display: inline-block;
 
   &__icon {
+    @media screen and (max-width: 1220px) {
+      width: 18px;
+      height: 18px;
+    }
+
     path {
       transition: all 0.3s linear;
     }

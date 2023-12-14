@@ -2,6 +2,8 @@
   padding: 0 85px;
   box-sizing: border-box;
 
+  // border: 1px solid red;
+
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
     padding-left: 39px;
@@ -23,16 +25,21 @@
     list-style: none;
     gap: 70px 30px;
 
-    @media screen and (max-width: 1279px) {
-      gap: 70px 21px;
+    @media screen and (max-width: 1262px) {
+      justify-items: center;
     }
 
-    @media screen and (max-width: 1170px) {
-      grid-template-columns: repeat(3, (minmax(217px, 1fr)));
+    @media screen and (max-width: 1169px) {
+      grid-template-columns: repeat(3, (minmax(216px, 1fr)));
+      row-gap: 45px;
     }
 
     &_gap_tablet {
-      gap: 70px 21px;
+      column-gap: 21px;
     }
   }
+
+  // &__news-list-item {
+  //   border: 1px solid red;
+  // }
 }

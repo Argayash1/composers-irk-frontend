@@ -20,7 +20,11 @@ export const NewsBlock = ({ id, imageUrl, createdAt, title, newsText, articleDes
 
   return (
     <div className='news-block'>
-      <Link to={articleDescription ? fullArticlePath : fullNewsPath} onClick={handleScrollToTop}>
+      <Link
+        to={articleDescription ? fullArticlePath : fullNewsPath}
+        className='news-block__link'
+        onClick={handleScrollToTop}
+      >
         <img src={imageUrl} alt='' className='news-block__image' />
       </Link>
       <span className='news-block__date'>{createdAt}</span>

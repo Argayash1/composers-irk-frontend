@@ -21,7 +21,7 @@ export const NewsContainer = ({ place, itemsArray }: NewsContainerProps) => {
   const slicedNews =
     slicedNewsArray &&
     slicedNewsArray.map((news) => (
-      <li key={news.id}>
+      <li key={news.id} className='news-container__news-list-item'>
         <NewsBlock {...news} />
       </li>
     ));
@@ -29,13 +29,13 @@ export const NewsContainer = ({ place, itemsArray }: NewsContainerProps) => {
   const news =
     itemsArray &&
     itemsArray.map((news) => (
-      <li key={news.id}>
+      <li key={news.id} className='news-container__news-list-item'>
         <NewsBlock {...news} />
       </li>
     ));
 
   const articles = articlesArray.slice(firstItem, lastItam).map((article) => (
-    <li key={article.id}>
+    <li key={article.id} className='news-container__news-list-item'>
       <NewsBlock {...article} />
     </li>
   ));

@@ -1,0 +1,25 @@
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  margin: 27px 0 0;
+  padding: 0;
+  color: #fff;
+
+  @media screen and (max-width: 1126px) {
+    margin-top: 25px;
+    gap: 12px;
+  }
+
+  &__item {
+    @media screen and (max-width: 1126px) {
+    }
+
+    &:nth-child(3):hover {
+      a svg path {
+        fill: #fcbe13;
+      }
+    }
+  }
+}

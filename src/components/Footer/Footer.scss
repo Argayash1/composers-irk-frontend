@@ -26,6 +26,10 @@
     &_type_second {
       margin-right: 141px;
       justify-content: start;
+
+      @media screen and (max-width: 1126px) {
+        margin-right: 60px;
+      }
     }
 
     &_type_third {
@@ -51,6 +55,11 @@
     font-style: normal;
     font-weight: 400;
     line-height: 125%;
+
+    @media screen and (max-width: 1126px) {
+      font-size: 10px;
+      line-height: 130%; /* 13px */
+    }
   }
 
   &__menu-heading {
@@ -62,6 +71,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: 125%;
+
+    @media screen and (max-width: 1126px) {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 120%;
+    }
   }
 
   &__menu-items {
@@ -71,6 +86,12 @@
     list-style: none;
     margin: 30px 0 0;
     padding: 0;
+
+    @media screen and (max-width: 1126px) {
+      margin-top: 25px;
+      grid-template-columns: 49px 50px 54px;
+      gap: 15px 31px;
+    }
   }
 
   &__menu-item-link {
@@ -86,23 +107,10 @@
     &:hover {
       color: #fcbe13;
     }
-  }
 
-  &__contact-items {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    list-style: none;
-    margin: 27px 0 0;
-    padding: 0;
-    color: #fff;
-  }
-
-  &__contact-item {
-    &:nth-child(3):hover {
-      a svg path {
-        fill: #fcbe13;
-      }
+    @media screen and (max-width: 1126px) {
+      font-size: 12px;
+      line-height: 130%; /* 15.6px */
     }
   }
 }

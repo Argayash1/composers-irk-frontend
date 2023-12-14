@@ -10,6 +10,7 @@ export * from './MailLink';
 export * from './CTA';
 export * from './Footer';
 export * from './ContactItem';
+export * from './ContactsList';
 export * from './NewsBlock';
 export * from './NewsContainer';
 export * from './UnionMemberBlock';

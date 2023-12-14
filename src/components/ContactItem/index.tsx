@@ -24,6 +24,7 @@ export const ContactItem = ({ iconUrl, text, place, svgIconElement }: ContactIte
       ) : (
         svgIconElement
       )}
+
       <p className={contactItemTextClassName}>{text}</p>
     </a>
   );

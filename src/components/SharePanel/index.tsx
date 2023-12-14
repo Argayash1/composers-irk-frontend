@@ -12,7 +12,7 @@ type SharePanelProps = {
   onClick: () => void;
 };
 
-export const SharePanel: React.FC<SharePanelProps> = ({ itemTitle, onClick }) => {
+export const SharePanel = ({ itemTitle, onClick }: SharePanelProps) => {
   const currentUrl = window.location.href;
 
   const buttonItems = [

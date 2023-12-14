@@ -11,7 +11,7 @@ type NewsContainerProps = {
   itemsArray?: News[];
 };
 
-export const NewsContainer: React.FC<NewsContainerProps> = ({ place, itemsArray }) => {
+export const NewsContainer = ({ place, itemsArray }: NewsContainerProps) => {
   const slicedNewsArray = itemsArray && itemsArray.slice(0, 6);
   const screenWidth = document.documentElement.clientWidth;
   const currentPage = useSelector(selectCurrentPage);

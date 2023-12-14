@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, PageTitle, SharePanel } from '../components';
 import axios from 'axios';
 
-const FullNews: React.FC = () => {
+const FullNews = () => {
   const [news, setNews] = React.useState<{ imageUrl: string; title: string; newsText: string; createdAt: string }>();
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState(false);
   const { id } = useParams();

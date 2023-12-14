@@ -5,7 +5,7 @@ import { useAppDispatch } from '../redux/store';
 import { selectNewsData } from '../redux/news/selectors';
 import { fetchNews } from '../redux/news/asyncActions';
 
-const Home: React.FC = () => {
+const Home = () => {
   const dispatch = useAppDispatch();
 
   const { items } = useSelector(selectNewsData);

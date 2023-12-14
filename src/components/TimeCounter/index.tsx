@@ -7,7 +7,7 @@ type TimeCounterProps = {
   totalDuration: number;
 };
 
-export const TimeCounter: React.FC<TimeCounterProps> = ({ currentDuration, totalDuration }) => {
+export const TimeCounter = ({ currentDuration, totalDuration }: TimeCounterProps) => {
   return (
     <span className='time-counter'>
       {handleChangeSecondsToMinutesAndSeconds(currentDuration)}/{handleChangeSecondsToMinutesAndSeconds(totalDuration)}

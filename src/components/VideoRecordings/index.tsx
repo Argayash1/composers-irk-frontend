@@ -3,14 +3,14 @@ import './VideoRecordings.scss';
 import { Link } from 'react-router-dom';
 import { iFramesArray } from '../../utils/iframesArray';
 
-export const VideoRecordings: React.FC = () => {
+export const VideoRecordings = () => {
   return (
     <ul className='video-recordings'>
       {iFramesArray.map((iFrameItem) => (
         <li key={iFrameItem.id} className='video-recordings__item'>
           <iframe
             className='video-recordings__iframe'
-            src={iFrameItem.iFrameUrl}
+            src={iFrameItem.iframeUrl}
             allowFullScreen
             title={iFrameItem.title}
           ></iframe>

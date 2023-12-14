@@ -6,7 +6,7 @@ type PageTitleProps = {
   place?: string;
 };
 
-export const PageTitle: React.FC<PageTitleProps> = ({ name, place }) => {
+export const PageTitle = ({ name, place }: PageTitleProps) => {
   const pageTitleClassName = `page-title ${place === 'main' ? 'page-title_place_main' : ''} ${
     place === 'full-news' ? 'page-title_place_full-news' : ''
   }`;

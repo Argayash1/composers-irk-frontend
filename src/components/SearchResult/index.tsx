@@ -7,7 +7,7 @@ interface SearchResultProps {
   path: string;
 }
 
-export const SearchResult: React.FC<SearchResultProps> = ({ title, description, path }) => {
+export const SearchResult = ({ title, description, path }: SearchResultProps) => {
   return (
     <Link to={path} className='search-result'>
       <h2 className='search-result__title'>{title}</h2>

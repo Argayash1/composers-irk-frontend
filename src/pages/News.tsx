@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectNewsData } from '../redux/news/selectors';
 import { selectCurrentPage } from '../redux/searchSlice/selectors';
 
-const News: React.FC = () => {
+const News = () => {
   const dispatch = useAppDispatch();
 
   const { items } = useSelector(selectNewsData);

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { CTA, PageTitle, SharePanel } from '../components';
 import { projectsArray } from '../utils/projectsArray';
 
-const FullProject: React.FC = () => {
+const FullProject = () => {
   const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string }>();
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState(false);
 

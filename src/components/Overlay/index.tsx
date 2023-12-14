@@ -8,7 +8,7 @@ type OverLayProps = {
   place?: string;
 };
 
-export const Overlay: React.FC<OverLayProps> = ({ children, isOpen, onClose, place }) => {
+export const Overlay = ({ children, isOpen, onClose, place }: OverLayProps) => {
   React.useEffect(() => {
     function handleEscapeKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {

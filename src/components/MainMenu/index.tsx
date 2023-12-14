@@ -20,7 +20,7 @@ type MainMenuProps = {
   onClose?: () => void;
 };
 
-export const MainMenu: React.FC<MainMenuProps> = ({ place, isOpen, onClose }) => {
+export const MainMenu = ({ place, isOpen, onClose }: MainMenuProps) => {
   const handleCloseBurgerMenu = () => {
     if (onClose) {
       onClose();

@@ -5,7 +5,7 @@ import { selectCurrentPage } from '../../redux/searchSlice/selectors';
 import { setCurrentPage } from '../../redux/searchSlice/slice';
 const pageNumbers = [1, 2, 3, 4, 5, 6, 7];
 
-export const Pagination: React.FC = () => {
+export const Pagination = () => {
   const currentPage = useSelector(selectCurrentPage);
   const dispatch = useDispatch();
 

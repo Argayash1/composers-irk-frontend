@@ -14,7 +14,7 @@ export interface CombinedArrayObject {
   [key: string]: string | string[];
 }
 
-export const SearchForm: React.FC = () => {
+export const SearchForm = () => {
   const { searchValue, isSearchOpen, errorText } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();

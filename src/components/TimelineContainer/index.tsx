@@ -12,14 +12,14 @@ type TimelineContainerProps = {
   progress: number;
 };
 
-export const TimelineContainer: React.FC<TimelineContainerProps> = ({
+export const TimelineContainer = ({
   onDrag,
   onDragEnd,
   onToggleChangeTime,
   isVolumeContainerHovered,
   isChangeTime,
   progress,
-}) => {
+}: TimelineContainerProps) => {
   const timeLineRef = React.useRef<HTMLDivElement>(null);
 
   const [isTimelineContainerHovered, setIsTimelineContainerHovered] = React.useState<boolean>(false);

@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Crumb: React.FC = () => {
+export const Crumb = () => {
   return <div>Crumb</div>;
 };

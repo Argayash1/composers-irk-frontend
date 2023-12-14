@@ -6,7 +6,7 @@ type VolumeButtonProps = {
   isMuted: boolean;
 };
 
-export const VolumeButton: React.FC<VolumeButtonProps> = ({ onClick, isMuted }) => {
+export const VolumeButton = ({ onClick, isMuted }: VolumeButtonProps) => {
   return (
     <button onClick={onClick} className='volume-button'>
       {isMuted ? (

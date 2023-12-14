@@ -10,7 +10,7 @@ const contactsData = [
   { iconUrl: vk, text: 'vk.com/unioncomposers', altText: 'VK' },
 ];
 
-export const Contacts: React.FC = () => {
+export const Contacts = () => {
   React.useEffect(() => {
     document.title = 'Контакты';
   }, []);

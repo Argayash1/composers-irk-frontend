@@ -12,12 +12,12 @@ type ProgressBarContainerProps = {
   type?: string;
 };
 
-export const ProgressBarContainer: React.FC<ProgressBarContainerProps> = ({
+export const ProgressBarContainer = ({
   isChangeVolume,
   progressBarStyle,
   isLineHovered,
   type,
-}) => {
+}: ProgressBarContainerProps) => {
   return (
     <div className='progress-bar-container'>
       <div

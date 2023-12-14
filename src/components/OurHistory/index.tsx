@@ -1,7 +1,7 @@
 import React from 'react';
 import './OurHistory.scss';
 
-export const OurHistory: React.FC = () => {
+export const OurHistory = () => {
   return (
     <div className='our-history'>
       <h2 className='our-history__title'>ИООО «Союз композиторов России»</h2>

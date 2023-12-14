@@ -16,7 +16,7 @@ type VolumelineContainerProps = {
   isMuted: boolean;
 };
 
-export const VolumelineContainer: React.FC<VolumelineContainerProps> = ({
+export const VolumelineContainer = ({
   onHover,
   onDisHover,
   onDisHoverVolumeContainer,
@@ -26,7 +26,7 @@ export const VolumelineContainer: React.FC<VolumelineContainerProps> = ({
   isVolumeContainerHovered,
   isChangeVolume,
   isMuted,
-}) => {
+}: VolumelineContainerProps) => {
   const volumeRef = React.useRef<HTMLDivElement>(null);
 
   const [isVolumeLineHovered, setIsVolumeLineHovered] = React.useState<boolean>(false);

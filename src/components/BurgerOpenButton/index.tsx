@@ -5,6 +5,6 @@ type BurgerOpenButtonProps = {
   onClick: () => void;
 };
 
-export const BurgerOpenButton: React.FC<BurgerOpenButtonProps> = ({ onClick }) => {
+export const BurgerOpenButton = ({ onClick }: BurgerOpenButtonProps) => {
   return <button onClick={onClick} className='burger-open-button'></button>;
 };

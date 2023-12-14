@@ -10,7 +10,7 @@ type ReportPopupProps = {
   altText: string;
 };
 
-export const ReportPopup: React.FC<ReportPopupProps> = ({ isOpen, onClose, imageUrl, altText }) => {
+export const ReportPopup = ({ isOpen, onClose, imageUrl, altText }: ReportPopupProps) => {
   return (
     <Overlay isOpen={isOpen} onClose={onClose}>
       <div className='report-popup'>

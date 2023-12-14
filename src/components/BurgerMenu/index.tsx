@@ -7,7 +7,7 @@ type BurgerMenuProps = {
   onClose: () => void;
 };
 
-export const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onClose }) => {
+export const BurgerMenu = ({ isOpen, onClose }: BurgerMenuProps) => {
   return (
     <Overlay isOpen={isOpen} onClose={onClose} place='burger'>
       <MainMenu place='burger' isOpen={isOpen} onClose={onClose} />

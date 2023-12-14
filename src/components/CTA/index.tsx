@@ -10,7 +10,7 @@ type CTAProps = {
   onClick?: () => void;
 };
 
-export const CTA: React.FC<CTAProps> = ({ linkText, path, borderColor, onClick }) => {
+export const CTA = ({ linkText, path, borderColor, onClick }: CTAProps) => {
   return (
     <>
       {!path ? (

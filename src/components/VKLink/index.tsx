@@ -5,7 +5,7 @@ type VKLinkProps = {
   place?: string;
 };
 
-export const VKLink: React.FC<VKLinkProps> = ({ place }) => {
+export const VKLink = ({ place }: VKLinkProps) => {
   return (
     <a className='vk-link' href='https://vk.com/public170806854' target='_blank' rel='noreferrer'>
       <svg

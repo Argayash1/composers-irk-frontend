@@ -14,15 +14,7 @@ type NewsBlockProps = {
   index?: number;
 };
 
-export const NewsBlock: React.FC<NewsBlockProps> = ({
-  id,
-  imageUrl,
-  createdAt,
-  title,
-  newsText,
-  articleDescription,
-  index,
-}) => {
+export const NewsBlock = ({ id, imageUrl, createdAt, title, newsText, articleDescription, index }: NewsBlockProps) => {
   const fullNewsPath = `/news/${id}`;
   const fullArticlePath = `/aboutus/${id}`;
 

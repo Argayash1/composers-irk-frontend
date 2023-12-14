@@ -3,7 +3,7 @@ import { Tabs, PageTitle, AudioRecordings, VideoRecordings, menuItems, Paginatio
 
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 
-const Media: React.FC = () => {
+const Media = () => {
   const [mediaCategory, setMediaCategory] = React.useState(0);
 
   const handleChangeMediaCategory = (index: number) => {

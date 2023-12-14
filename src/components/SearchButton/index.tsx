@@ -11,7 +11,7 @@ type SearchButtonProps = {
   onClick?: () => void;
 };
 
-export const SearchButton: React.FC<SearchButtonProps> = ({ type, onClick }) => {
+export const SearchButton = ({ type, onClick }: SearchButtonProps) => {
   return (
     <button
       className={`search-button ${type === 'button' ? 'search-button_place_header' : ''}`}

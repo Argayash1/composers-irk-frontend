@@ -5,7 +5,7 @@ import { PageTitle, Pagination, menuItems } from '../components';
 import { useSelector } from 'react-redux';
 import { selectCurrentPage } from '../redux/searchSlice/selectors';
 
-const Projects: React.FC = () => {
+const Projects = () => {
   const currentPage = useSelector(selectCurrentPage);
   const firstItem = currentPage * 4 - 4;
   const lastItam = currentPage * 4;

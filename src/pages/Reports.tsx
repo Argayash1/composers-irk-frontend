@@ -5,7 +5,7 @@ import { ReportPopup } from '../components/ReportPopup';
 
 const tabNames = ['Всё отчёты', 'Отчёты-2023', 'Отчёт-2022', 'Отчёты-2021'];
 
-const Reports: React.FC = () => {
+const Reports = () => {
   const [reportYear, setReportYear] = React.useState<number>(0);
   const [isReportPopupOpen, setReportPopupOpen] = React.useState<boolean>(false);
 

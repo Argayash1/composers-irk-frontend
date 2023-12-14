@@ -6,7 +6,7 @@ type PlayButtonProps = {
   onClick: () => void;
 };
 
-export const PlayButton: React.FC<PlayButtonProps> = ({ isPlaying, onClick }) => {
+export const PlayButton = ({ isPlaying, onClick }: PlayButtonProps) => {
   return (
     <button className='play-button' onClick={onClick}>
       {!isPlaying ? (

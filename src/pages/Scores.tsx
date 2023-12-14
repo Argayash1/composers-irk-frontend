@@ -12,7 +12,7 @@ export const allScores = [
 const pianoScores = allScores.filter((score) => score.category === 'piano');
 const vocalScores = allScores.filter((score) => score.category === 'voice');
 
-const Scores: React.FC = () => {
+const Scores = () => {
   const [scoreCategory, setScoreCategory] = React.useState(0);
 
   const handleChangeScoreCategory = (index: number) => {

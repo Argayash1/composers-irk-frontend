@@ -9,7 +9,7 @@ type ProjectBlockProps = {
   index: number;
 };
 
-export const ProjectBlock: React.FC<ProjectBlockProps> = ({ imageUrl, title, description, index }) => {
+export const ProjectBlock = ({ imageUrl, title, description, index }: ProjectBlockProps) => {
   return (
     <div className='project-block'>
       <img className='project-block__image' src={imageUrl} alt={title} />

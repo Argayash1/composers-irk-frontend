@@ -11,7 +11,7 @@ import { iFramesArray } from '../../utils/iframesArray';
 import { articlesArray } from '../../utils/articlesArray';
 import { menuItems } from '../MainMenu';
 
-export const BreadCrumbs: React.FC = () => {
+export const BreadCrumbs = () => {
   const { pathname } = useLocation();
   const pathnames = pathname.split('/').filter((pathname) => pathname);
 

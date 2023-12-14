@@ -6,7 +6,7 @@ type TextContentProps = {
   textArray: string[];
 };
 
-export const TextContent: React.FC<TextContentProps> = ({ textArray }) => {
+export const TextContent = ({ textArray }: TextContentProps) => {
   return (
     <ul className='text-content'>
       {textArray.map((item, index) => {

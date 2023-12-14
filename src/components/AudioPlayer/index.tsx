@@ -17,7 +17,7 @@ export type ButtonClick = MouseEvent & {
   composedPath: Node[];
 };
 
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
+export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);

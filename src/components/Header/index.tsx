@@ -7,7 +7,7 @@ import React from 'react';
 import { BurgerMenu } from '../BurgerMenu';
 import { RootState } from '../../redux/store';
 
-export const Header: React.FC = () => {
+export const Header = () => {
   const { isSearchOpen } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
   const { pathname } = useLocation();

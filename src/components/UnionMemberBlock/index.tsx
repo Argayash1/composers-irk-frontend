@@ -10,7 +10,7 @@ type UnionMemberProps = {
   profession: string;
 };
 
-export const UnionMemberBlock: React.FC<UnionMemberProps> = ({ id, imageUrl, surname, name, profession }) => {
+export const UnionMemberBlock = ({ id, imageUrl, surname, name, profession }: UnionMemberProps) => {
   return (
     <div className='union-member'>
       <Link to={`/unionmembers/${id}`} className='union-member__link'>

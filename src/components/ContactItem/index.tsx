@@ -8,7 +8,7 @@ type ContactItemProps = {
   place?: string;
 };
 
-export const ContactItem: React.FC<ContactItemProps> = ({ iconUrl, text, place, svgIconElement }) => {
+export const ContactItem = ({ iconUrl, text, place, svgIconElement }: ContactItemProps) => {
   const hrefProperty = text.includes('@') ? `mailto: ${text}` : text.includes('+') ? `tel:${text}` : `https://${text}`;
   const contactItemTextClassName = `contact-item__text ${
     place === 'contacts' ? 'contact-item__text_place_contacts' : ''

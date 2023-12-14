@@ -5,7 +5,7 @@ type MailLinkProps = {
   place?: string;
 };
 
-export const MailLink: React.FC<MailLinkProps> = ({ place }) => {
+export const MailLink = ({ place }: MailLinkProps) => {
   return (
     <a className='mail-link' href='mailto:composersirk@mail.ru' target='_blank' rel='noreferrer'>
       <svg

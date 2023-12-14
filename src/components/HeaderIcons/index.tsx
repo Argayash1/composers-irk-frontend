@@ -10,7 +10,7 @@ type HeaderIconsProps = {
   onBurgerButtonClick: () => void;
 };
 
-export const HeaderIcons: React.FC<HeaderIconsProps> = ({ onSearchClick, onBurgerButtonClick }) => {
+export const HeaderIcons = ({ onSearchClick, onBurgerButtonClick }: HeaderIconsProps) => {
   const headerIconsItems = [
     <SearchButton type={ButtonTypeEnum.BUTTON} onClick={onSearchClick} />,
     <VKLink />,

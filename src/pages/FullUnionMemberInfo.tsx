@@ -5,7 +5,7 @@ import { unionMembersArray } from '../utils/membersArray';
 import { allScores } from './Scores';
 import { TextContent } from '../components/TextContent';
 
-const FullUnionMemberInfo: React.FC = () => {
+const FullUnionMemberInfo = () => {
   const [unionMember, setUnionMember] = React.useState<{
     imageUrl: string;
     surname: string;

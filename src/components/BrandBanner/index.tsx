@@ -2,7 +2,7 @@ import React from 'react';
 import { Logo } from '../Logo';
 import './BrandBanner.scss';
 
-export const BrandBanner: React.FC = () => {
+export const BrandBanner = () => {
   return (
     <section className='brand-banner'>
       <p className='brand-banner__subtitle'>Иркутская областная общественная организация </p>

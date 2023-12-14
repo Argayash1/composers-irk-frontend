@@ -8,7 +8,7 @@ type LogoProps = {
   place?: string;
 };
 
-export const Logo: React.FC<LogoProps> = ({ place }) => {
+export const Logo = ({ place }: LogoProps) => {
   return (
     <Link
       to='/'

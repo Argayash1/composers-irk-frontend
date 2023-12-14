@@ -5,7 +5,7 @@ type HeadingProps = {
   text: string;
 };
 
-export const Heading: React.FC<HeadingProps> = ({ level, text }) => {
+export const Heading = ({ level, text }: HeadingProps) => {
   const headingLevelMapping: Record<number, JSX.Element> = {
     2: <h2>{text}</h2>,
     3: <h3>{text}</h3>,

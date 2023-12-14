@@ -7,7 +7,7 @@ type TabsProps = {
   onChangeTab: (index: number) => void;
 };
 
-export const Tabs: React.FC<TabsProps> = ({ tabNamesArray, value, onChangeTab }) => {
+export const Tabs = ({ tabNamesArray, value, onChangeTab }: TabsProps) => {
   return (
     <ul className='tabs'>
       {tabNamesArray.map((tabName, index) => (

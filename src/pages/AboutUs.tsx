@@ -3,7 +3,7 @@ import { NewsContainer, OurHistory, PageTitle, Pagination, Tabs, menuItems } fro
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
-export const AboutUs: React.FC = () => {
+export const AboutUs = () => {
   const [category, setCategory] = React.useState(0);
 
   const handleChangeCategory = (index: number) => {

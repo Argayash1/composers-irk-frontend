@@ -17,13 +17,15 @@ const footerMenuItems = [
   menuItems[8],
 ];
 
+const footerAuthorText = '\u00A9\u00A0 М. Толстова, Я. Зильберман, ' + new Date().getFullYear();
+
 export const Footer = () => {
   return (
     <footer className='footer'>
       <div className='footer__columns'>
         <div className='footer__column footer__column_type_first'>
           <Logo place='footer' />
-          <p className='footer__author'>&copy;&nbsp;М. Толстова, Я. Зильберман,&nbsp;{new Date().getFullYear()}</p>
+          <p className='footer__author'>{footerAuthorText}</p>
         </div>
         <div className='footer__column footer__column_type_second'>
           <h3 className='footer__menu-heading'>Меню</h3>
@@ -43,6 +45,9 @@ export const Footer = () => {
           <h3 className='footer__menu-heading'>Контакты</h3>
           <ContactsList />
         </div>
+      </div>
+      <div className='footer__column footer__column_type_fourth'>
+        <p className='footer__author footer__author_type_shown'>{footerAuthorText}</p>
       </div>
     </footer>
   );

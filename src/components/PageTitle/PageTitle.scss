@@ -12,6 +12,11 @@
     font-size: 22px;
   }
 
+  @media screen and (max-width: 1169px) {
+    font-size: 20px;
+    line-height: 120%;
+  }
+
   &_place_main {
     margin-top: 5px;
     margin-bottom: 0;

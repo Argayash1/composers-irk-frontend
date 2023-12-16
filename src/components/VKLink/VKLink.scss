@@ -3,6 +3,10 @@
   margin: 0;
   display: inline-block;
 
+  @media screen and (max-width: 436px) {
+    display: none;
+  }
+
   &__icon {
     @media screen and (max-width: 1220px) {
       width: 18px;

@@ -10,6 +10,16 @@
     padding: 0 85px 0 86px;
     transition: height 0.3s ease-in-out, visibility 0.1s ease-in-out, opacity 0.3s ease-in-out;
 
+    @media screen and (max-width: 1262px) {
+      padding-right: 39px;
+      padding-left: 38px;
+    }
+
+    @media screen and (max-width: 1262px) {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
     &_is_opened {
       visibility: visible;
       height: 83px;
@@ -26,9 +36,18 @@
     justify-content: space-between;
     position: relative;
     margin-top: 18px;
+
+    @media screen and (max-width: 1126px) {
+      width: 393px;
+    }
+
+    @media screen and (max-width: 436px) {
+      width: 290px;
+    }
   }
 
   &__label {
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -36,7 +55,7 @@
   }
 
   &__input {
-    width: 473px;
+    width: 100%;
     height: 35px;
     border: none;
     outline: 1px solid #62767c;

@@ -9,6 +9,13 @@
       width: 12px;
       height: 12px;
     }
+
+    @media screen and (max-width: 436px) {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
   }
 
   svg path {
@@ -37,6 +44,12 @@
       font-size: 12px;
       line-height: 130%;
       margin-left: 9px;
+    }
+
+    @media screen and (max-width: 436px) {
+      font-size: 14px;
+      line-height: normal;
+      margin-left: 15px;
     }
 
     &_place_contacts {

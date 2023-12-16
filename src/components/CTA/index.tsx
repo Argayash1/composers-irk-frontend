@@ -2,6 +2,7 @@ import React from 'react';
 import './CTA.scss';
 import { Link } from 'react-router-dom';
 import { handleScrollToTop } from '../../utils/utils';
+import { ButtonTypeEnum } from '../SearchButton';
 
 type CTAProps = {
   linkText?: string;
@@ -10,11 +11,36 @@ type CTAProps = {
   onClick?: () => void;
 };
 
-export const CTA = ({ linkText, path, borderColor, onClick }: CTAProps) => {
+export const CTA = ({ linkText = 'Подробнее', path, borderColor, onClick }: CTAProps) => {
+  const [windowWidth, setWindowWidth] = React.useState(window.screen.width);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.screen.width);
+    };
+
+    let timeoutId: NodeJS.Timeout;
+
+    const delayedHandleResize = () => {
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        handleResize();
+      }, 1000);
+    };
+
+    window.addEventListener('resize', delayedHandleResize);
+
+    return () => {
+      window.removeEventListener('resize', delayedHandleResize);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <>
       {!path ? (
-        <button className='cta' onClick={onClick}>
+        <button className='cta' type={ButtonTypeEnum.BUTTON} onClick={onClick}>
           {linkText}
         </button>
       ) : (
@@ -25,7 +51,7 @@ export const CTA = ({ linkText, path, borderColor, onClick }: CTAProps) => {
           } `}
           onClick={handleScrollToTop}
         >
-          {linkText ? linkText : 'Подробнее'}
+          {borderColor === 'grey' && windowWidth <= 546 ? '' : linkText}
         </Link>
       )}
     </>

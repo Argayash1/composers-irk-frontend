@@ -9,6 +9,10 @@
     &:hover .logo__title_place_footer {
       color: #fcbe13;
     }
+
+    @media screen and (max-width: 726px) {
+      margin-bottom: 0;
+    }
   }
 
   &_place_brand-banner {
@@ -16,9 +20,13 @@
     margin-bottom: 0;
     display: inline-block;
 
-    // @media screen and (max-width: 1255px) {
-    //   margin-right: 98px;
-    // }
+    @media screen and (max-width: 950px) {
+      margin-right: 98px;
+    }
+
+    @media screen and (max-width: 637px) {
+      margin-right: 53.51px;
+    }
   }
 
   &__image {
@@ -39,6 +47,11 @@
       @media screen and (max-width: 1255px) {
         width: 98px;
         height: 120.129px;
+      }
+
+      @media screen and (max-width: 720px) {
+        width: 81.579px;
+        height: 100px;
       }
     }
 
@@ -67,6 +80,10 @@
     @media screen and (max-width: 1126px) {
       font-size: 10px;
       margin-top: 1px;
+    }
+
+    @media screen and (max-width: 436px) {
+      font-size: 12px;
     }
 
     &_place_footer {

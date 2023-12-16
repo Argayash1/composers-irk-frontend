@@ -12,10 +12,12 @@
     gap: 12px;
   }
 
-  &__item {
-    @media screen and (max-width: 1126px) {
-    }
+  @media screen and (max-width: 436px) {
+    margin-top: 30px;
+    gap: 20px;
+  }
 
+  &__item {
     &:nth-child(3):hover {
       a svg path {
         fill: #fcbe13;

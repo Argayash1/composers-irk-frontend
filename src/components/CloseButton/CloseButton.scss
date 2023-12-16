@@ -15,6 +15,10 @@
     margin-top: 26px;
     transition: opacity 0.3s linear;
 
+    @media screen and (max-width: 454px) {
+      display: none;
+    }
+
     &:hover {
       opacity: 0.8;
     }

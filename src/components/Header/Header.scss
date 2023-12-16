@@ -14,5 +14,10 @@
       padding-left: 40px;
       padding-right: 39px;
     }
+
+    @media screen and (max-width: 546px) {
+      padding-right: 25px;
+      padding-left: 25px;
+    }
   }
 }

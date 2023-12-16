@@ -1,6 +1,6 @@
 .burger-open-button {
-  width: 30px;
-  height: 22px;
+  width: 28px;
+  height: 20px;
   background-image: url('../../assets/icons/header-burger-open-button.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -13,5 +13,9 @@
 
   @media screen and (max-width: 1126px) {
     display: inline-block;
+  }
+
+  @media screen and (max-width: 436px) {
+    margin-left: 0;
   }
 }

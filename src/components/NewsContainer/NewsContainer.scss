@@ -2,11 +2,14 @@
   padding: 0 85px;
   box-sizing: border-box;
 
-  // border: 1px solid red;
-
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
     padding-left: 39px;
+  }
+
+  @media screen and (max-width: 638px) {
+    padding-right: 25px;
+    padding-left: 25px;
   }
 
   &_place_news {
@@ -34,12 +37,12 @@
       row-gap: 45px;
     }
 
+    @media screen and (max-width: 767px) {
+      grid-template-columns: repeat(auto-fit, (minmax(270px, 1fr)));
+    }
+
     &_gap_tablet {
       column-gap: 21px;
     }
   }
-
-  // &__news-list-item {
-  //   border: 1px solid red;
-  // }
 }

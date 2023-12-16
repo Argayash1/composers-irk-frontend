@@ -22,6 +22,10 @@
     padding-bottom: 90px;
   }
 
+  @media screen and (max-width: 638px) {
+    padding-bottom: 60px;
+  }
+
   &__title-container {
     padding: 65px 85px 50px;
     display: flex;
@@ -35,6 +39,10 @@
     @media screen and (max-width: 1169px) {
       padding-top: 40px;
       padding-bottom: 42px;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding: 40px 19px 20px 25px;
     }
   }
 }
@@ -356,3 +364,7 @@
     gap: 50px;
   }
 }
+
+// * {
+//   border: 1px solid red;
+// }

@@ -20,6 +20,10 @@
   }
 
   &_place_header {
+    @media screen and (max-width: 436px) {
+      display: none;
+    }
+
     svg path {
       transition: stroke 0.3s linear;
     }

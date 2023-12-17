@@ -18,7 +18,7 @@ const UnionMembers: React.FC = () => {
 
   return (
     <main className='union-members'>
-      <PageTitle name={`${menuItems[2].name} ИООО Союза композиторов`} />
+      <PageTitle name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' />
       <ul className='union-members__list'>
         {membersArraySortedBySurnameAndSliced.map((member, index) => (
           <li key={index}>

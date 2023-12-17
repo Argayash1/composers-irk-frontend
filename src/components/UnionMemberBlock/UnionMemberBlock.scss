@@ -4,6 +4,14 @@
 
   &__link {
     height: 270px;
+
+    @media screen and (max-width: 891px) {
+      height: 232px;
+    }
+
+    @media screen and (max-width: 482px) {
+      height: 142px;
+    }
   }
 
   &__image {
@@ -12,9 +20,29 @@
     object-fit: cover;
     object-position: top;
 
+    @media screen and (max-width: 891px) {
+      width: 217px;
+      height: 217px;
+    }
+
+    @media screen and (max-width: 482px) {
+      width: 137px;
+      height: 137px;
+    }
+
     &:hover {
       width: 270px;
       height: 270px;
+
+      @media screen and (max-width: 891px) {
+        width: 232px;
+        height: 232px;
+      }
+
+      @media screen and (max-width: 482px) {
+        width: 142px;
+        height: 142px;
+      }
     }
   }
 
@@ -29,6 +57,21 @@
     padding: 0;
     width: 255px;
     min-height: 44px;
+
+    @media screen and (max-width: 891px) {
+      font-size: 16px;
+      line-height: 120%; /* 19.2px */
+      width: 217px;
+      min-height: 37px;
+    }
+
+    @media screen and (max-width: 482px) {
+      font-size: 12px;
+      line-height: normal;
+      width: 137px;
+      min-height: 34px;
+      margin-bottom: 5px;
+    }
   }
 
   &__profession {
@@ -41,5 +84,17 @@
     margin: 0;
     padding: 0;
     min-height: 46px;
+
+    @media screen and (max-width: 891px) {
+      font-size: 14px;
+      line-height: 120%; /* 16.8px */
+      min-height: 37px;
+    }
+
+    @media screen and (max-width: 482px) {
+      font-size: 11px;
+      line-height: normal;
+      min-height: 29px;
+    }
   }
 }

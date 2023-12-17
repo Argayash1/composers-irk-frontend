@@ -10,7 +10,7 @@ type PageTitleProps = {
 export const PageTitle = ({ name, place }: PageTitleProps) => {
   const pageTitleClassName = `page-title ${place === 'main' ? 'page-title_place_main' : ''} ${
     place === 'full-news' ? 'page-title_place_full-news' : ''
-  }`;
+  } ${place === 'union-members' ? 'page-title_place_union-members' : ''}`;
 
   return (
     <section>

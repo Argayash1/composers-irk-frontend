@@ -12,6 +12,10 @@
     font-size: 22px;
   }
 
+  @media screen and (max-width: 546px) {
+    font-size: 20px;
+  }
+
   &_place_main {
     margin-top: 5px;
     margin-bottom: 0;
@@ -26,6 +30,16 @@
 
     @media screen and (max-width: 572px) {
       font-size: 20px;
+    }
+  }
+
+  &_place_union-members {
+    @media screen and (max-width: 891px) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 436px) {
+      margin-bottom: 31px;
     }
   }
 }

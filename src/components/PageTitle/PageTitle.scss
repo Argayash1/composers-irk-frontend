@@ -12,11 +12,6 @@
     font-size: 22px;
   }
 
-  @media screen and (max-width: 1169px) {
-    font-size: 20px;
-    line-height: 120%;
-  }
-
   &_place_main {
     margin-top: 5px;
     margin-bottom: 0;
@@ -24,5 +19,13 @@
 
   &_place_full-news {
     margin-bottom: 30px;
+
+    @media screen and (max-width: 1126px) {
+      margin-bottom: 25px;
+    }
+
+    @media screen and (max-width: 572px) {
+      font-size: 20px;
+    }
   }
 }

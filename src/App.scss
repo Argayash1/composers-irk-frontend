@@ -68,11 +68,50 @@
 
 .full-news {
   padding: 60px 85px 120px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 90px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 10px;
+  }
 
   &__date {
-    margin: 0 0 38px;
+    margin: 0 0 40px;
     padding: 0;
     display: inline-block;
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 24px */
+
+    @media screen and (max-width: 1169px) {
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 1126px) {
+      margin-bottom: 30px;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding-left: 15px;
+    }
+
+    @media screen and (max-width: 436px) {
+      margin-bottom: 20px;
+    }
   }
 
   &__image {
@@ -80,10 +119,24 @@
     height: 600px;
     object-fit: cover;
     object-position: top -100px right 0;
+
+    @media screen and (max-width: 1188px) {
+      width: 690px;
+      height: 373px;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 270px;
+      height: 158.143px;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding-left: 15px;
+    }
   }
 
   &__text {
-    margin: 40px 0 70px;
+    margin: 40px 0 60px;
     padding: 0;
     color: #282f30;
     font-family: Manrope;
@@ -91,6 +144,24 @@
     font-style: normal;
     font-weight: 400;
     line-height: 130%; /* 23.4px */
+
+    @media screen and (max-width: 1126px) {
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding-left: 15px;
+    }
+
+    @media screen and (max-width: 572px) {
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 436px) {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
   }
 }
 

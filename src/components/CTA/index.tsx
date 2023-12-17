@@ -40,13 +40,13 @@ export const CTA = ({ linkText = 'Подробнее', path, borderColor, onClic
   return (
     <>
       {!path ? (
-        <button className='cta' type={ButtonTypeEnum.BUTTON} onClick={onClick}>
+        <button className='cta cta_type_button' type={ButtonTypeEnum.BUTTON} onClick={onClick}>
           {linkText}
         </button>
       ) : (
         <Link
           to={path}
-          className={`cta ${borderColor === 'grey' ? 'cta_border_grey' : ''} ${
+          className={`cta cta_type_link ${borderColor === 'grey' ? 'cta_border_grey' : ''} ${
             path === '/projects' || path === '/scores' ? 'cta_grid-column_23' : ''
           } `}
           onClick={handleScrollToTop}

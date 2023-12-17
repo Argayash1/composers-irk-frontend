@@ -4,6 +4,10 @@
   gap: 40px;
   font-family: Manrope;
 
+  @media screen and (max-width: 1126px) {
+    display: none;
+  }
+
   &__button {
     color: #fcbe13;
     font-size: 18px;

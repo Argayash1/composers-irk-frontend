@@ -1,5 +1,6 @@
 import React from 'react';
 import './PageTitle.scss';
+import { ArrowLink } from '../ArrowLink';
 
 type PageTitleProps = {
   name: string;
@@ -12,12 +13,12 @@ export const PageTitle = ({ name, place }: PageTitleProps) => {
   }`;
 
   return (
-    <>
+    <section>
       {place === 'main' ? (
         <h2 className={pageTitleClassName}>{name}</h2>
       ) : (
         <h1 className={pageTitleClassName}>{name}</h1>
       )}
-    </>
+    </section>
   );
 };

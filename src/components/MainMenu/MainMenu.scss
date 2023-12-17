@@ -19,10 +19,40 @@
     display: flex;
     flex-direction: column;
     transition: right 0.3s linear;
+
+    @media screen and (max-width: 546px) {
+      width: 235px;
+      right: -235px;
+    }
   }
 
   &_is_opened {
     right: 0;
+  }
+
+  &__search-link {
+    text-decoration: none;
+    color: #282f30;
+    margin-bottom: 32px;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+
+    &:active {
+      color: #62767c;
+
+      svg path {
+        stroke: #62767c;
+      }
+    }
+
+    svg {
+      margin-right: 10px;
+    }
   }
 
   &__list {

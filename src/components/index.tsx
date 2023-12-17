@@ -37,3 +37,4 @@ export * from './VolumeButton';
 export * from './TimelineContainer';
 export * from './VolumelineContainer';
 export * from './ProgressBarContainer';
+export * from './ArrowLink';

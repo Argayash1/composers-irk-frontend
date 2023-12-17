@@ -12,7 +12,7 @@ type HeaderIconsProps = {
 
 export const HeaderIcons = ({ onSearchClick, onBurgerButtonClick }: HeaderIconsProps) => {
   const headerIconsItems = [
-    <SearchButton type={ButtonTypeEnum.BUTTON} onClick={onSearchClick} />,
+    <SearchButton type={ButtonTypeEnum.BUTTON} onClick={onSearchClick} place='header' />,
     <VKLink />,
     <MailLink />,
     <BurgerOpenButton onClick={onBurgerButtonClick} />,

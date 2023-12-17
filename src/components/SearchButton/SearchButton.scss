@@ -7,7 +7,7 @@
   margin: 0;
   background: transparent;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
 
   @media screen and (max-width: 1220px) {
     width: 20px;
@@ -31,5 +31,25 @@
     &:hover svg path {
       stroke: #fcbe13;
     }
+  }
+
+  &_place_burger {
+    width: 100%;
+    margin-bottom: 32px;
+    display: none;
+
+    @media screen and (max-width: 436px) {
+      display: flex;
+    }
+  }
+
+  &__text {
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 10px;
   }
 }

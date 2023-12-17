@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-import { Logo, ContactsList } from '../../components';
+import { ContactsList, Logo } from '../../components';
 import { Link } from 'react-router-dom';
 import { menuItems } from '../MainMenu';
 import { handleScrollToTop } from '../../utils/utils';

@@ -8,13 +8,16 @@ export enum ButtonTypeEnum {
 
 type SearchButtonProps = {
   type: ButtonTypeEnum;
+  place?: string;
   onClick?: () => void;
 };
 
-export const SearchButton = ({ type, onClick }: SearchButtonProps) => {
+export const SearchButton = ({ type, place, onClick }: SearchButtonProps) => {
   return (
     <button
-      className={`search-button ${type === 'button' ? 'search-button_place_header' : ''}`}
+      className={`search-button ${place === 'header' ? 'search-button_place_header' : ''} ${
+        place === 'burger' ? 'search-button_place_burger' : ''
+      }`}
       type={type}
       onClick={onClick}
     >

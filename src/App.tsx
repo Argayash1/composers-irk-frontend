@@ -18,6 +18,7 @@ import FullUnionMemberInfo from './pages/FullUnionMemberInfo';
 import FullVideo from './pages/FullVideo';
 import FullArticle from './pages/FullArticle';
 import SearchResults from './pages/SearchResults';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='reports' element={<Reports />} />
         <Route path='contacts' element={<Contacts />} />
         <Route path='searchresults' element={<SearchResults />} />
+        <Route path='search' element={<Search />} />
       </Route>
     </Routes>
   );

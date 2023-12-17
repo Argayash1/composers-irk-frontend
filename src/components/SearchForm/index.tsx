@@ -14,7 +14,11 @@ export interface CombinedArrayObject {
   [key: string]: string | string[];
 }
 
-export const SearchForm = () => {
+type SearchFormProps = {
+  place?: string;
+};
+
+export const SearchForm = ({ place }: SearchFormProps) => {
   const { searchValue, isSearchOpen, errorText } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -60,7 +64,7 @@ export const SearchForm = () => {
 
   return (
     <section className='search'>
-      <div className={`search__container ${isSearchOpen ? 'search__container_is_opened' : ''}`}>
+      <div className={`search__container ${isSearchOpen || place === 'search' ? 'search__container_is_opened' : ''}`}>
         <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
           <label htmlFor='search' className='search__label'>
             <input

@@ -59,13 +59,13 @@ const FullUnionMemberInfo = () => {
   return (
     <main className='full-union-member'>
       <PageTitle name={`${unionMember.surname} ${unionMember.name}`} place='full-union-member' />
-      <div className='full-union-member__container'>
+      <section className='full-union-member__container'>
         <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />
         <p className='full-union-member__short-biography'>{unionMember.shortBiography}</p>
         {unionMember.profession === 'Композитор' && hasComposerScoreOnSite && (
           <CTA linkText='Ноты композитора' borderColor='grey' path='/scores' />
         )}
-      </div>
+      </section>
       <Tabs tabNamesArray={tabNames} value={сategory} onChangeTab={handleChangeCategory} />
       <TextContent textArray={unionMemberData[сategory]} place='full-union-member' />
     </main>

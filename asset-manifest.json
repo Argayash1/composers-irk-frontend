@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/composers-irk-frontend/static/css/main.0b6e274b.css",
-    "main.js": "/composers-irk-frontend/static/js/main.9e637c1f.js",
+    "main.css": "/composers-irk-frontend/static/css/main.d3e438ee.css",
+    "main.js": "/composers-irk-frontend/static/js/main.80519c28.js",
     "static/js/787.2cd87504.chunk.js": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js",
     "static/media/11.mp3": "/composers-irk-frontend/static/media/11.5c188e9a94240ae1c28b.mp3",
     "static/media/12.mp3": "/composers-irk-frontend/static/media/12.0bd4443234382f2aa2d9.mp3",
@@ -67,12 +67,12 @@
     "static/media/report-popup-close-button.svg": "/composers-irk-frontend/static/media/report-popup-close-button.25939e1d6a03366c017a.svg",
     "static/media/share-pannel-close-icon.svg": "/composers-irk-frontend/static/media/share-pannel-close-icon.8dd6296da60c89fa0fe971eb977a1379.svg",
     "static/media/cta-arrow-button.svg": "/composers-irk-frontend/static/media/cta-arrow-button.012147a84aa7d46b0410.svg",
-    "main.0b6e274b.css.map": "/composers-irk-frontend/static/css/main.0b6e274b.css.map",
-    "main.9e637c1f.js.map": "/composers-irk-frontend/static/js/main.9e637c1f.js.map",
+    "main.d3e438ee.css.map": "/composers-irk-frontend/static/css/main.d3e438ee.css.map",
+    "main.80519c28.js.map": "/composers-irk-frontend/static/js/main.80519c28.js.map",
     "787.2cd87504.chunk.js.map": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0b6e274b.css",
-    "static/js/main.9e637c1f.js"
+    "static/css/main.d3e438ee.css",
+    "static/js/main.80519c28.js"
   ]
 }

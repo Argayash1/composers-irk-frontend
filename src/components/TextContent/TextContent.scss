@@ -1,15 +1,37 @@
 .text-content {
   list-style-type: none;
-  margin: 0;
+  margin: 40px 0 0;
   padding: 0;
 
+  @media screen and (max-width: 1164px) {
+    margin-bottom: 30px;
+  }
+
+  &_place_full-union-member {
+    max-width: 885px;
+
+    @media screen and (max-width: 960px) {
+      max-width: 651px;
+    }
+  }
+
   &__paragraph {
+    margin: 0 0 1em;
     color: #282f30;
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
+
+    @media screen and (max-width: 1164px) {
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 622px) {
+      font-size: 14px;
+      line-height: normal;
+    }
 
     &_font_bold {
       font-weight: 700;

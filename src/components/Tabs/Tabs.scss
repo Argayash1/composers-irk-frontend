@@ -4,6 +4,11 @@
   padding: 0;
   display: flex;
   gap: 5px;
+  overflow-x: auto;
+
+  @media screen and (max-width: 622px) {
+    gap: 4px;
+  }
 
   &__button {
     border: none;
@@ -20,6 +25,19 @@
     line-height: 125%; /* 20px */
     margin: 0;
     padding: 0;
+
+    @media screen and (max-width: 1164px) {
+      width: 175px;
+      height: 40px;
+      font-size: 14px;
+      line-height: 120%; /* 16.8px */
+    }
+
+    @media screen and (max-width: 622px) {
+      width: 174.4px;
+      font-size: 12px;
+      line-height: normal;
+    }
 
     &_active {
       background: #f8e2a6;

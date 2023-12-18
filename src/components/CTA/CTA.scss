@@ -44,6 +44,7 @@
 
   &_border_grey {
     border: 2px solid #62767c;
+
     &:hover {
       color: #fff;
       background: #62767c;
@@ -85,5 +86,23 @@
 
   &_grid-column_23 {
     grid-column: 2/3;
+  }
+
+  &_place_full-union-member {
+    width: 255px;
+
+    @media screen and (max-width: 1169px) {
+      width: 217px;
+      height: 35px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+
+    @media screen and (max-width: 622px) {
+      width: 270px;
+      height: 45px;
+      padding-top: 10px;
+      margin: 0 auto;
+    }
   }
 }

@@ -49,8 +49,8 @@ const FullUnionMemberInfo = () => {
       unionMemberData.push(unionMember.awards);
     }
     if (unionMember.links) {
-      unionMemberData.push(unionMember.links);
       tabNames.push('Ссылки');
+      unionMemberData.push(unionMember.links);
     }
   }
 
@@ -58,7 +58,7 @@ const FullUnionMemberInfo = () => {
 
   return (
     <main className='full-union-member'>
-      <PageTitle name={`${unionMember.surname} ${unionMember.name}`} />
+      <PageTitle name={`${unionMember.surname} ${unionMember.name}`} place='full-union-member' />
       <div className='full-union-member__container'>
         <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />
         <p className='full-union-member__short-biography'>{unionMember.shortBiography}</p>
@@ -67,7 +67,7 @@ const FullUnionMemberInfo = () => {
         )}
       </div>
       <Tabs tabNamesArray={tabNames} value={сategory} onChangeTab={handleChangeCategory} />
-      <TextContent textArray={unionMemberData[сategory]} />
+      <TextContent textArray={unionMemberData[сategory]} place='full-union-member' />
     </main>
   );
 };

@@ -18,7 +18,7 @@ const Projects = () => {
 
   return (
     <main className='projects'>
-      <PageTitle name={menuItems[3].name} />
+      <PageTitle name={menuItems[3].name} place='projects' />
       <ul className='projects__list'>
         {slicedProjectsArray.map((project, index) => (
           <li key={index}>

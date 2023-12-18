@@ -42,4 +42,10 @@
       margin-bottom: 31px;
     }
   }
+
+  &_place_projects {
+    @media screen and (max-width: 900px) {
+      margin-bottom: 40px;
+    }
+  }
 }

@@ -10,7 +10,6 @@
   font-weight: 500;
   line-height: 125%;
   display: inline-block;
-  text-align: center;
   box-sizing: border-box;
   padding: 13px 0;
   margin: 0;
@@ -70,6 +69,7 @@
 
   &_type_link {
     text-decoration: none;
+    text-align: center;
   }
 
   &_type_button {
@@ -82,10 +82,6 @@
     @media screen and (max-width: 546px) {
       margin-left: 15px;
     }
-  }
-
-  &_grid-column_23 {
-    grid-column: 2/3;
   }
 
   &_place_full-union-member {

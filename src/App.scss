@@ -168,6 +168,21 @@
 .projects {
   padding: 60px 87px 120px 85px;
 
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+
   &__list {
     list-style: none;
     margin: 0 0 92px;
@@ -175,6 +190,14 @@
     display: flex;
     flex-direction: column;
     gap: 85px;
+
+    @media screen and (max-width: 1126px) {
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+      gap: 50px;
+    }
   }
 }
 

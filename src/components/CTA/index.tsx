@@ -46,9 +46,9 @@ export const CTA = ({ linkText = 'Подробнее', path, borderColor, onClic
       ) : (
         <Link
           to={path}
-          className={`cta cta_type_link ${borderColor === 'grey' ? 'cta_border_grey' : ''} ${
-            path === '/projects' || path === '/scores' ? 'cta_grid-column_23' : ''
-          } ${path === '/scores' ? 'cta_place_full-union-member' : ''}`}
+          className={`cta cta_type_link ${borderColor === 'grey' ? 'cta_border_grey' : ''}  ${
+            path === '/scores' || path.includes('projects') ? 'cta_place_full-union-member' : ''
+          }`}
           onClick={handleScrollToTop}
         >
           {borderColor === 'grey' && windowWidth <= 546 ? '' : linkText}

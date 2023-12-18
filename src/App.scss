@@ -180,7 +180,7 @@
 
   @media screen and (max-width: 546px) {
     padding-right: 25px;
-    padding-left: 25px;
+    padding-left: 10px;
   }
 
   &__list {
@@ -197,6 +197,10 @@
 
     @media screen and (max-width: 900px) {
       gap: 50px;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding-left: 15px;
     }
   }
 }

@@ -48,4 +48,14 @@
       margin-bottom: 40px;
     }
   }
+
+  &_place_full-project {
+    @media screen and (max-width: 1180px) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 767px) {
+      margin-bottom: 25px;
+    }
+  }
 }

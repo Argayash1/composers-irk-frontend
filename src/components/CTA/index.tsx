@@ -8,10 +8,11 @@ type CTAProps = {
   linkText?: string;
   path?: string;
   borderColor?: string;
+  place?: string;
   onClick?: () => void;
 };
 
-export const CTA = ({ linkText = 'Подробнее', path, borderColor, onClick }: CTAProps) => {
+export const CTA = ({ linkText = 'Подробнее', path, borderColor, place, onClick }: CTAProps) => {
   const [windowWidth, setWindowWidth] = React.useState(window.screen.width);
 
   React.useEffect(() => {
@@ -40,7 +41,11 @@ export const CTA = ({ linkText = 'Подробнее', path, borderColor, onClic
   return (
     <>
       {!path ? (
-        <button className='cta cta_type_button' type={ButtonTypeEnum.BUTTON} onClick={onClick}>
+        <button
+          className={`cta cta_type_button ${place === 'full-project' ? 'cta_place_full-project' : ''}`}
+          type={ButtonTypeEnum.BUTTON}
+          onClick={onClick}
+        >
           {linkText}
         </button>
       ) : (

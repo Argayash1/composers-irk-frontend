@@ -101,4 +101,10 @@
       margin: 0 auto;
     }
   }
+
+  &_place_full-project {
+    @media screen and (max-width: 546px) {
+      margin-left: 0;
+    }
+  }
 }

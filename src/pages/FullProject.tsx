@@ -24,14 +24,14 @@ const FullProject = () => {
 
   return (
     <main className='full-project'>
-      <PageTitle name={project.title} />
+      <PageTitle name={project.title} place='full-project' />
       <section className='full-project__container'>
         <img className='full-project__image' src={project.imageUrl} alt='' />
         <p className='full-project__text'>{project.description}</p>
         {isSharePanelOpen ? (
           <SharePanel itemTitle={project.title} onClick={hadleToggleSharePanel} />
         ) : (
-          <CTA linkText='Поделиться' onClick={hadleToggleSharePanel} />
+          <CTA linkText='Поделиться' onClick={hadleToggleSharePanel} place='full-project' />
         )}
       </section>
     </main>

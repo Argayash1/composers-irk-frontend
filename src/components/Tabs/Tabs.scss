@@ -10,6 +10,12 @@
     gap: 4px;
   }
 
+  &_place_scores {
+    @media screen and (max-width: 546px) {
+      margin-left: 5px;
+    }
+  }
+
   &__button {
     border: none;
     border-radius: 5px;

@@ -9,11 +9,11 @@ type TabsProps = {
 
 export const Tabs = ({ tabNamesArray, value, onChangeTab }: TabsProps) => {
   return (
-    <ul className='tabs'>
+    <ul className={`tabs ${tabNamesArray.includes('Все ноты') ? 'tabs_place_scores' : ''}`}>
       {tabNamesArray.map((tabName, index) => (
         <li key={index}>
           <button
-            className={`tabs__button ${value === index ? 'tabs__button_active' : ''}`}
+            className={`tabs__button ${value === index ? 'tabs__button_active' : ''} `}
             onClick={() => onChangeTab(index)}
           >
             {tabName}

@@ -423,13 +423,38 @@
 .scores {
   padding: 60px 85px 120px;
 
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 10px;
+  }
+
   &__list {
     list-style: none;
-    margin: 51px 0 0;
+    margin: 50px 0 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 40px;
+
+    @media screen and (max-width: 1164px) {
+      margin-top: 40px;
+      gap: 25px;
+    }
+
+    @media screen and (max-width: 622px) {
+      margin-top: 25px;
+      gap: 30px;
+    }
   }
 
   &__link {
@@ -441,20 +466,58 @@
     font-weight: 500;
     line-height: 140%; /* 22px */
     display: flex;
-    gap: 22px;
+    gap: 20px;
+
+    @media screen and (max-width: 1164px) {
+      font-size: 16px;
+      line-height: 130%; /* 20.8px */
+      gap: 13.5px;
+    }
+
+    @media screen and (max-width: 546px) {
+      line-height: normal;
+      padding-left: 5px;
+    }
   }
 
   &__link-image {
     background-image: url('./assets/icons/score-image.svg');
+    background-size: cover;
     width: 19px;
     height: 22px;
+
+    @media screen and (max-width: 1164px) {
+      margin-top: 4px;
+      width: 14.25px;
+      height: 16.5px;
+    }
+
+    @media screen and (max-width: 546px) {
+      width: 12.667px;
+      height: 14.667px;
+    }
   }
 }
 
 .media {
   display: flex;
   flex-direction: column;
-  padding: 60px 85px 120px;
+  padding: 60px 85px 170px;
+
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 10px;
+  }
 }
 
 .full-video {

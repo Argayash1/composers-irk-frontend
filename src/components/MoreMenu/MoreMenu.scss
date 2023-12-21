@@ -9,6 +9,10 @@
   width: 0;
   height: 0;
   transition: none;
+  border-radius: 6px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 
   &_is_opened {
     visibility: visible;
@@ -18,35 +22,9 @@
     transition: all 0.2s linear;
   }
 
-  &_type_speed-params {
-    width: 115px;
-    height: 200px;
-    overflow-y: auto;
-    transition: none;
-  }
-
-  &__main {
-    display: none;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-
-    &_is_opened {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-  &__params {
-    padding: 0;
-    margin: 0;
-    visibility: hidden;
-    opacity: 0;
-    list-style-type: none;
-
-    &_is_opened {
-      visibility: visible;
-      opacity: 1;
+  &__item:nth-of-type(2) {
+    .more-menu__button {
+      border-radius: 0 0 6px 6px;
     }
   }
 
@@ -72,14 +50,14 @@
     gap: 8px;
     background-repeat: no-repeat;
     cursor: pointer;
+    border-radius: 6px 6px 0 0;
+
+    @media screen and (max-width: 612px) {
+      line-height: normal;
+    }
 
     &:hover {
       background-color: #f8e2a6;
-    }
-
-    &_type_params {
-      height: 32px;
-      padding-left: 12px;
     }
   }
 

@@ -24,6 +24,14 @@
 
     &_hovered {
       width: 110px;
+
+      @media screen and (max-width: 810px) {
+        width: 70.5px;
+      }
+
+      @media screen and (max-width: 612px) {
+        width: 19.2px;
+      }
     }
   }
 }

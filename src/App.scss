@@ -502,7 +502,7 @@
 .media {
   display: flex;
   flex-direction: column;
-  padding: 60px 85px 170px;
+  padding: 60px 85px 120px;
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -511,12 +511,11 @@
 
   @media screen and (max-width: 1169px) {
     padding-top: 45px;
-    padding-bottom: 100px;
+    padding-bottom: 170px;
   }
 
   @media screen and (max-width: 546px) {
-    padding-right: 25px;
-    padding-left: 10px;
+    padding: 24px 15px 106px 10px;
   }
 }
 

@@ -33,6 +33,7 @@ export * from './PlayButton';
 export * from './TimeCounter';
 export * from './MoreButton';
 export * from './MoreMenu';
+export * from './SpeedParamsMenu';
 export * from './VolumeButton';
 export * from './TimelineContainer';
 export * from './VolumelineContainer';

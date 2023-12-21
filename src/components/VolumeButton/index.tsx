@@ -20,8 +20,8 @@ export const VolumeButton = ({ onClick, isMuted }: VolumeButtonProps) => {
         >
           <g clipPath='url(#clip0_510_1168)'>
             <path
-              fill-rule='evenodd'
-              clip-rule='evenodd'
+              fillRule='evenodd'
+              clipRule='evenodd'
               d='M16 3.00176C16 2.18839 15.0806 1.71527 14.4188 2.18803L9 6.05857H6C4.89543 6.05857 4 6.954 4 8.05857V14.0586C4 15.1631 4.89543 16.0586 6 16.0586H6.22832L16 8.45838V3.00176ZM16 10.9921L9.25332 16.2395L14.4188 19.9291C15.0806 20.4019 16 19.9288 16 19.1154V10.9921Z'
               fill='#303A3D'
             />

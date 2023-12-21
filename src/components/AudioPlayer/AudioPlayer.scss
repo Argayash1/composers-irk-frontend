@@ -1,4 +1,7 @@
 .audio-player {
+  display: flex;
+  flex-direction: column;
+
   &__container {
     max-width: 730px;
     height: 52px;
@@ -10,5 +13,14 @@
     background-color: #fafafa;
     border-radius: 6px;
     position: relative;
+
+    @media screen and (max-width: 810px) {
+      max-width: 533px;
+      height: 40px;
+    }
+
+    @media screen and (max-width: 612px) {
+      max-width: 290px;
+    }
   }
 }

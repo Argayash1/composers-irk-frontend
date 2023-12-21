@@ -8,6 +8,19 @@
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: 1164px) {
+    margin-top: 40px;
+    gap: 35px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: 25px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-left: 5px;
+  }
+
   &__item-title {
     color: #282f30;
     font-family: Inter;
@@ -17,5 +30,15 @@
     line-height: 130%; /* 23.4px */
     margin: 0 0 25px;
     padding: 0;
+
+    @media screen and (max-width: 1164px) {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
   }
 }

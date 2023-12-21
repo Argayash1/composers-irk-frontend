@@ -4,10 +4,10 @@ import { Tabs, PageTitle, AudioRecordings, VideoRecordings, menuItems, Paginatio
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 
 const Media = () => {
-  const [mediaCategory, setMediaCategory] = React.useState(0);
+  const [category, setCategory] = React.useState<number>(0);
 
   const handleChangeMediaCategory = (index: number) => {
-    setMediaCategory(index);
+    setCategory(index);
   };
 
   React.useEffect(() => {
@@ -16,10 +16,10 @@ const Media = () => {
 
   return (
     <main className='media'>
-      <PageTitle name={menuItems[5].name} />
-      <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeMediaCategory} value={mediaCategory} />
-      {mediaCategory === 0 ? <AudioRecordings /> : <VideoRecordings />}
-      {mediaCategory === 1 && <Pagination />}
+      <PageTitle name={menuItems[5].name} place='media' />
+      <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeMediaCategory} value={category} />
+      {category === 0 ? <AudioRecordings /> : <VideoRecordings />}
+      {category === 1 && <Pagination />}
     </main>
   );
 };

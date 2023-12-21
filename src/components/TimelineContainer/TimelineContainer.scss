@@ -6,6 +6,14 @@
   position: relative;
   cursor: pointer;
 
+  @media screen and (max-width: 810px) {
+    width: 334px;
+  }
+
+  @media screen and (max-width: 612px) {
+    width: 91px;
+  }
+
   &_width_volumeline-container-hover {
     max-width: 521px;
   }
@@ -14,6 +22,7 @@
     width: 100%;
     height: 4px;
     background-color: #d9d9d9;
+    border-radius: 200px;
     transition: all 0.3s linear;
 
     &_type_volume {

@@ -24,7 +24,12 @@ export const TimelineContainer = ({
 
   const [isTimelineContainerHovered, setIsTimelineContainerHovered] = React.useState<boolean>(false);
 
-  const maxProgressBarWidth = !isVolumeContainerHovered ? 521 : 390; // Максимальная ширина полосы воспроизведения
+  const screenWidth = window.screen.width;
+  const fullProgressBarWidth =
+    screenWidth > 810 ? 521 : screenWidth <= 810 && screenWidth > 612 ? 334 : screenWidth <= 612 ? 91 : 0;
+  const smallProgressBarWidth =
+    screenWidth > 810 ? 390 : screenWidth <= 810 && screenWidth > 612 ? 250 : screenWidth <= 612 ? 68 : 0;
+  const maxProgressBarWidth = !isVolumeContainerHovered ? fullProgressBarWidth : smallProgressBarWidth; // Максимальная ширина полосы воспроизведения
   const progressBarWidth = progress * (maxProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
   const progressBarStyle = { width: `${progressBarWidth}px` }; // Стиль с новой шириной
 

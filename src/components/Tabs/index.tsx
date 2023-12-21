@@ -8,8 +8,12 @@ type TabsProps = {
 };
 
 export const Tabs = ({ tabNamesArray, value, onChangeTab }: TabsProps) => {
+  const tabsClassName = `tabs ${
+    tabNamesArray.includes('Все ноты') || tabNamesArray.includes('Аудиозаписи') ? 'tabs_place_scores' : ''
+  }`;
+
   return (
-    <ul className={`tabs ${tabNamesArray.includes('Все ноты') ? 'tabs_place_scores' : ''}`}>
+    <ul className={tabsClassName}>
       {tabNamesArray.map((tabName, index) => (
         <li key={index}>
           <button

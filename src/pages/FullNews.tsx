@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const FullNews = () => {
   const [news, setNews] = React.useState<{ imageUrl: string; title: string; newsText: string; createdAt: string }>();
-  const [isSharePanelOpen, setIsSharePanelOpen] = React.useState(false);
+  const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
   const { id } = useParams();
   const navigate = useNavigate();
 

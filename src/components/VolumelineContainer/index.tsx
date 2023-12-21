@@ -31,7 +31,9 @@ export const VolumelineContainer = ({
 
   const [isVolumeLineHovered, setIsVolumeLineHovered] = React.useState<boolean>(false);
 
-  const maxVolumeProgressBarWidth = 110;
+  const screenWidth = window.screen.width;
+  const maxVolumeProgressBarWidth =
+    screenWidth > 810 ? 110 : screenWidth <= 810 && screenWidth > 612 ? 70.5 : screenWidth <= 612 ? 19.2 : 0;
   const volumeProgressBarWidth = volume * (maxVolumeProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
   const volumeProgressBarStyle = !isVolumeContainerHovered ? { width: '0' } : { width: `${volumeProgressBarWidth}px` }; // Стиль с новой шириной
 

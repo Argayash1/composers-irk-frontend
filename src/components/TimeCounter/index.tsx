@@ -10,7 +10,8 @@ type TimeCounterProps = {
 export const TimeCounter = ({ currentDuration, totalDuration }: TimeCounterProps) => {
   return (
     <span className='time-counter'>
-      {handleChangeSecondsToMinutesAndSeconds(currentDuration)}/{handleChangeSecondsToMinutesAndSeconds(totalDuration)}
+      {handleChangeSecondsToMinutesAndSeconds(currentDuration)}&nbsp;/&nbsp;
+      {handleChangeSecondsToMinutesAndSeconds(totalDuration)}
     </span>
   );
 };

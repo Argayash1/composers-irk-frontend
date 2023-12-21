@@ -7,6 +7,7 @@ import {
   VolumelineContainer,
   MoreButton,
   MoreMenu,
+  SpeedParamsMenu,
 } from '../../components';
 
 type AudioPlayerProps = {
@@ -21,7 +22,8 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
-  const menuRef = React.useRef<HTMLDivElement>(null);
+  const menuRef = React.useRef<HTMLUListElement>(null);
+  const speedParamsMenuRef = React.useRef<HTMLUListElement>(null);
   const isChangeVolume = React.useRef<boolean>(false);
 
   const [progress, setProgress] = React.useState<number>(0);
@@ -145,6 +147,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
 
   const handleToggleSpeedParams = () => {
     setIsSpeedParamsOpen(!isSpeedParamsOpen);
+    setIsMoreMenuOpen(!isMoreMenuOpen);
   };
 
   const handleTimeUpdate = () => {
@@ -220,8 +223,10 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
       if (
         buttonRef.current &&
         menuRef.current &&
+        speedParamsMenuRef.current &&
         !_event.composedPath().includes(buttonRef.current) &&
-        !_event.composedPath().includes(menuRef.current)
+        !_event.composedPath().includes(menuRef.current) &&
+        !_event.composedPath().includes(speedParamsMenuRef.current)
       ) {
         setIsMoreMenuOpen(false);
         setIsSpeedParamsOpen(false);
@@ -233,7 +238,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
 
   return (
     <div className='audio-player'>
-      <audio className='audio-player__item-audio' ref={audioRef} src={src}>
+      <audio ref={audioRef} src={src}>
         Ваш браузер не поддерживает встроенное аудио. Попробуйте скачать его
         <a href={src} ref={audioLinkRef} download>
           по ссылке
@@ -264,11 +269,15 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
         <MoreButton onClick={handleOpenMoreMenu} ref={buttonRef} />
         <MoreMenu
           onToggleSpeedParams={handleToggleSpeedParams}
-          onChangePlaybackSpeed={handleChangePlaybackSpeed}
           onDownLoad={handleDownload}
           isMoreMenuOpen={isMoreMenuOpen}
-          isSpeedParamsOpen={isSpeedParamsOpen}
           ref={menuRef}
+        />
+        <SpeedParamsMenu
+          isSpeedParamsOpen={isSpeedParamsOpen}
+          onChangePlaybackSpeed={handleChangePlaybackSpeed}
+          onToggleSpeedParams={handleToggleSpeedParams}
+          ref={speedParamsMenuRef}
         />
       </div>
     </div>

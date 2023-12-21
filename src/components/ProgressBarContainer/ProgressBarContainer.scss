@@ -7,6 +7,7 @@
   &__progress-bar {
     background-color: #fcbe13;
     height: 4px;
+    border-radius: 200px;
 
     &_animation_active {
       transition: width 0.3s linear;

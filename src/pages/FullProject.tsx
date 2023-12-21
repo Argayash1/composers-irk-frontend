@@ -5,7 +5,7 @@ import { projectsArray } from '../utils/projectsArray';
 
 const FullProject = () => {
   const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string }>();
-  const [isSharePanelOpen, setIsSharePanelOpen] = React.useState(false);
+  const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
 
   const { id } = useParams();
 

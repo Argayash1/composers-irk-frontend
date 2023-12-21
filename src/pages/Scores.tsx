@@ -13,7 +13,7 @@ const pianoScores = allScores.filter((score) => score.category === 'piano');
 const vocalScores = allScores.filter((score) => score.category === 'voice');
 
 const Scores = () => {
-  const [scoreCategory, setScoreCategory] = React.useState(0);
+  const [scoreCategory, setScoreCategory] = React.useState<number>(0);
 
   const handleChangeScoreCategory = (index: number) => {
     setScoreCategory(index);

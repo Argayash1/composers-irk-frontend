@@ -1,10 +1,31 @@
 .video-recordings {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, 540px);
+  grid-template-columns: repeat(2, minmax(540px, 1fr));
   gap: 60px 29px;
   margin: 50px 0 92px;
   padding: 0;
+
+  @media screen and (max-width: 1187px) {
+    grid-template-columns: repeat(2, minmax(335px, 1fr));
+    gap: 40px 19px;
+    justify-items: center;
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media screen and (max-width: 546px) {
+    box-sizing: border-box;
+    padding-left: 5.54px;
+    margin-top: 30px;
+  }
 
   &__item {
     display: flex;
@@ -14,6 +35,17 @@
   &__iframe {
     width: 540px;
     height: 303px;
+    border: none;
+
+    @media screen and (max-width: 1187px) {
+      width: 335px;
+      height: 188.089px;
+    }
+
+    @media screen and (max-width: 366px) {
+      width: 289.464px;
+      height: 162.421px;
+    }
   }
 
   &__item-link {
@@ -21,7 +53,7 @@
   }
 
   &__item-title {
-    width: 541px;
+    width: 540px;
     min-height: 44px;
     margin: 30px 0 15px;
     padding: 0;
@@ -31,9 +63,40 @@
     font-style: normal;
     font-weight: 700;
     line-height: 110%; /* 22px */
+
+    @media screen and (max-width: 1187px) {
+      width: 335.208px;
+      font-size: 14px;
+      line-height: 130%; /* 18.2px */
+      margin-top: 15px;
+      margin-bottom: 9px;
+      min-height: 36px;
+    }
+
+    @media screen and (max-width: 366px) {
+      width: 289.464px;
+      min-height: 38px;
+      font-size: 14px;
+      line-height: normal;
+    }
   }
 
   &__item-date {
+    color: #000;
     display: inline-block;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 15.6px */
+
+    @media screen and (max-width: 1187px) {
+      color: #282f30;
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 366px) {
+      line-height: normal;
+    }
   }
 }

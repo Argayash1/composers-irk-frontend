@@ -19,14 +19,16 @@ const Reports = () => {
 
   return (
     <main className='reports'>
-      <PageTitle name={menuItems[6].name} />
-      <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={reportYear} />
-      <img
-        className='reports__image'
-        src={reportsArray[reportYear].imageUrl}
-        alt={reportsArray[reportYear].altText}
-        onClick={() => setReportPopupOpen(true)}
-      />
+      <PageTitle name={menuItems[6].name} place='reports' />
+      <section className='reports__main-content'>
+        <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={reportYear} />
+        <img
+          className='reports__image'
+          src={reportsArray[reportYear].imageUrl}
+          alt={reportsArray[reportYear].altText}
+          onClick={() => setReportPopupOpen(true)}
+        />
+      </section>
       <ReportPopup
         isOpen={isReportPopupOpen}
         onClose={() => setReportPopupOpen(false)}

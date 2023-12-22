@@ -28,10 +28,13 @@ export const Overlay = ({ children, isOpen, onClose, place }: OverLayProps) => {
     }
   }
 
+  const pageHeight = document.documentElement.scrollHeight;
+
   return (
     <section
       className={`overlay ${isOpen ? 'overlay_is_opened' : ''} ${place === 'burger' ? 'overlay_place_burger' : ''}`}
       onMouseDown={closeAllPopupsByClickOnOverlay}
+      style={{ height: `${pageHeight}px` }}
     >
       {children}
     </section>

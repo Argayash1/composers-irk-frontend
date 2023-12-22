@@ -22,6 +22,16 @@
 
   &_place_aboutus {
     padding: 50px 0 90px;
+
+    @media screen and (max-width: 1126px) {
+      padding-top: 40px;
+      padding-bottom: 0;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding-top: 30px;
+      padding-left: 15px;
+    }
   }
 
   &__news-list {

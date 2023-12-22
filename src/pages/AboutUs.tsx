@@ -16,7 +16,7 @@ export const AboutUs = () => {
 
   return (
     <main className='about-us'>
-      <PageTitle name={menuItems[7].name} />
+      <PageTitle name={menuItems[7].name} place='aboutus' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={category} />
       {category === 0 ? <NewsContainer place='aboutus' /> : <OurHistory />}
       {category === 0 && <Pagination />}

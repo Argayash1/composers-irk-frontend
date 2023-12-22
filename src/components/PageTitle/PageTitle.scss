@@ -58,4 +58,14 @@
       margin-bottom: 25px;
     }
   }
+
+  &_place_reports {
+    @media screen and (max-width: 1164px) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 670px) {
+      margin-bottom: 25px;
+    }
+  }
 }

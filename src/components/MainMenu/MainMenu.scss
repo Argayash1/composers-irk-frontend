@@ -39,8 +39,12 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    display: flex;
     align-items: center;
+    display: none;
+
+    @media screen and (max-width: 436px) {
+      display: flex;
+    }
 
     &:active {
       color: #62767c;

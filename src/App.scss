@@ -564,13 +564,51 @@
 .reports {
   display: flex;
   flex-direction: column;
-  padding: 60px 0 14px 85px;
+  padding: 60px 0 120px 85px;
+
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 90px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding: 25px 15px 100px 10px;
+  }
+
+  &__main-content {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 546px) {
+      padding-left: 5px;
+    }
+  }
 
   &__image {
     width: 825px;
     height: 1167px;
     border: 0.516px solid #000;
-    margin: 50px 0 90px 0;
+    margin: 50px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 0;
+
+    @media screen and (max-width: 1164px) {
+      width: 592px;
+      height: 837px;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 670px) {
+      width: 290px;
+      height: 410px;
+      margin-top: 30px;
+    }
   }
 }
 
@@ -578,10 +616,40 @@
   display: flex;
   flex-direction: column;
   padding: 60px 85px 120px;
+
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 10px;
+  }
 }
 
 .full-article {
   padding: 60px 85px 120px;
+
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 10px;
+  }
 
   &__container {
     display: flex;
@@ -617,6 +685,21 @@
   flex-direction: column;
   padding: 60px 84px 0 85px;
 
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 10px;
+  }
+
   &__list {
     list-style-type: none;
     display: grid;
@@ -645,6 +728,21 @@
 
 .search-results {
   padding: 50px 85px 120px;
+
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 25px;
+    padding-left: 10px;
+  }
 
   &__no-results-text {
     color: #282f30;

@@ -13,7 +13,7 @@ export const PageTitle = ({ name, place }: PageTitleProps) => {
   } ${place === 'union-members' || place === 'full-union-member' ? 'page-title_place_union-members' : ''} ${
     place === 'projects' ? 'page-title_place_projects' : ''
   } ${place === 'full-project' || place === 'media' ? 'page-title_place_full-project' : ''} ${
-    place === 'reports' || place === 'aboutus' ? 'page-title_place_reports' : ''
+    place === 'reports' || place === 'aboutus' || place === 'full-video' ? 'page-title_place_reports' : ''
   }`;
 
   return (

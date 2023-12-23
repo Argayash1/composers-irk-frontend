@@ -1,16 +1,17 @@
 .bread-crumbs {
   background-color: #fff;
-  padding: 20px 0 0 85px;
+  padding: 20px 85px 0 85px;
 
   @media screen and (max-width: 1262px) {
     padding-left: 39px;
+    padding-right: 39px;
   }
 
   @media screen and (max-width: 1126px) {
     padding-top: 0;
   }
 
-  @media screen and (max-width: 546px) {
+  @media screen and (max-width: 711px) {
     display: none;
   }
 

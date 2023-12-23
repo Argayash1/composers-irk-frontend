@@ -522,14 +522,58 @@
 .full-video {
   display: flex;
   flex-direction: column;
-  padding: 60px 85px 326px;
+  padding: 60px 85px 120px;
+
+  @media screen and (max-width: 1262px) {
+    padding-right: 39px;
+    padding-left: 39px;
+  }
+
+  @media screen and (max-width: 1169px) {
+    padding-top: 45px;
+    padding-bottom: 175px;
+  }
+
+  @media screen and (max-width: 546px) {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 106.17px;
+  }
+
+  &__title-container {
+    @media screen and (max-width: 546px) {
+      box-sizing: border-box;
+      padding-left: 10px;
+    }
+  }
+
+  &__main-content {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 1189px) {
+      margin: 0 auto;
+    }
+  }
 
   &__iframe {
     width: 1109.945px;
     height: 622.802px;
+    border: none;
+
+    @media screen and (max-width: 1189px) {
+      width: 688.298px;
+      height: 386.451px;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 319px;
+      height: 179px;
+    }
   }
 
   &__title {
+    max-width: 1109.945px;
     margin: 40px 0 20px;
     padding: 0;
     color: #000;
@@ -538,6 +582,27 @@
     font-style: normal;
     font-weight: 700;
     line-height: 105%; /* 29.4px */
+
+    @media screen and (max-width: 1189px) {
+      max-width: 688.298px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 120%; /* 21.6px */
+    }
+
+    @media screen and (max-width: 767px) {
+      max-width: 319px;
+      margin-top: 17px;
+      margin-bottom: 6.83;
+      font-size: 14px;
+      line-height: normal;
+    }
+
+    @media screen and (max-width: 546px) {
+      box-sizing: border-box;
+      padding-left: 15px;
+    }
   }
 
   &__date {
@@ -547,6 +612,21 @@
     font-style: normal;
     font-weight: 700;
     line-height: 120%; /* 24px */
+
+    @media screen and (max-width: 1189px) {
+      font-size: 16px;
+      line-height: 130%; /* 20.8px */
+      font-weight: 400;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 546px) {
+      box-sizing: border-box;
+      padding-left: 15px;
+    }
   }
 
   &__description {
@@ -558,6 +638,19 @@
     font-style: normal;
     font-weight: 400;
     line-height: 130%; /* 20.8px */
+
+    @media screen and (max-width: 1189px) {
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 546px) {
+      box-sizing: border-box;
+      padding-left: 15px;
+    }
   }
 }
 

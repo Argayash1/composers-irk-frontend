@@ -3,34 +3,47 @@
   margin: 40px 0 0;
   padding: 0;
 
-  @media screen and (max-width: 1164px) {
-    margin-bottom: 30px;
+  &_place_about-us {
+    margin-top: 0;
   }
 
   &_place_full-union-member {
     max-width: 885px;
+
+    @media screen and (max-width: 1164px) {
+      margin-top: 30px;
+    }
 
     @media screen and (max-width: 960px) {
       max-width: 651px;
     }
   }
 
+  &__item:last-child {
+    .text-content__paragraph {
+      margin-bottom: 0;
+    }
+  }
+
   &__paragraph {
-    margin: 0 0 1em;
+    margin: 0 0 23px;
     color: #282f30;
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
+    display: inline-block;
 
     @media screen and (max-width: 1164px) {
       font-size: 16px;
+      margin-bottom: 20px;
     }
 
     @media screen and (max-width: 622px) {
       font-size: 14px;
       line-height: normal;
+      margin-bottom: 16.8px;
     }
 
     &_font_bold {

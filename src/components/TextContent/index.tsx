@@ -9,7 +9,11 @@ type TextContentProps = {
 
 export const TextContent = ({ textArray, place }: TextContentProps) => {
   return (
-    <ul className={`text-content ${place === 'full-union-member' ? 'text-content_place_full-union-member' : ''}`}>
+    <ul
+      className={`text-content ${place === 'full-union-member' ? 'text-content_place_full-union-member' : ''} ${
+        place === 'about-us' ? 'text-content_place_about-us' : ''
+      }`}
+    >
       {textArray.map((item, index) => {
         if (item.startsWith('#')) {
           const matchResult = item ? item.match(/^(#+)\s/) : null;
@@ -17,7 +21,7 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
           const headerText = item.replace(/^(#+)\s/, '');
 
           return (
-            <li key={index}>
+            <li key={index} className='text-content__item'>
               <Heading level={level} text={headerText} />
             </li>
           );
@@ -26,7 +30,7 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
           const paragraphtext = isInterviewerQuestion ? item.replace('< ', '') : item;
 
           return (
-            <li key={index}>
+            <li key={index} className='text-content__item'>
               <p
                 className={`text-content__paragraph ${
                   isInterviewerQuestion ? 'text-content__paragraph_font_bold' : ''

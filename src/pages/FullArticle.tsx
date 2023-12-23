@@ -26,12 +26,12 @@ const FullArticle = () => {
 
   return (
     <main className='full-article'>
-      <PageTitle name={article.title} place='full-data' />
+      <PageTitle name={article.title} place='full-article' />
       <div className='full-article__container'>
         <img className='full-article__image' src={article.imageUrl} alt='' />
         <p className='full-article__description'>{article.articleDescription}</p>
       </div>
-      <TextContent textArray={article.articleText} />
+      <TextContent textArray={article.articleText} place='full-article' />
     </main>
   );
 };

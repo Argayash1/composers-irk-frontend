@@ -12,7 +12,7 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
     <ul
       className={`text-content ${place === 'full-union-member' ? 'text-content_place_full-union-member' : ''} ${
         place === 'about-us' ? 'text-content_place_about-us' : ''
-      }`}
+      } ${place === 'full-article' ? 'text-content_place_full-article' : ''}`}
     >
       {textArray.map((item, index) => {
         if (item.startsWith('#')) {

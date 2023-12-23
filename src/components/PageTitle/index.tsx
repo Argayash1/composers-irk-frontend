@@ -14,7 +14,7 @@ export const PageTitle = ({ name, place }: PageTitleProps) => {
     place === 'projects' ? 'page-title_place_projects' : ''
   } ${place === 'full-project' || place === 'media' ? 'page-title_place_full-project' : ''} ${
     place === 'reports' || place === 'aboutus' || place === 'full-video' ? 'page-title_place_reports' : ''
-  }`;
+  } ${place === 'full-article' ? 'page-title_place_full-article' : ''}`;
 
   return (
     <section>

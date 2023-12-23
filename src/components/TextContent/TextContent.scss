@@ -19,6 +19,19 @@
     }
   }
 
+  &_place_full-article {
+    max-width: 950px;
+
+    @media screen and (max-width: 1028px) {
+      max-width: 651px;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding-left: 15px;
+      margin-top: 20px;
+    }
+  }
+
   &__item:last-child {
     .text-content__paragraph {
       margin-bottom: 0;

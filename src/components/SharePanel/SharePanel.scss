@@ -6,6 +6,15 @@
   gap: 15px;
   height: 50px;
   align-items: center;
+  font-size: 0;
+
+  @media screen and (max-width: 1164px) {
+    height: 45px;
+  }
+
+  @media screen and (max-width: 546px) {
+    margin-left: 15px;
+  }
 
   &__button {
     border: none;

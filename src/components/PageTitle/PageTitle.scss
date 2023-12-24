@@ -78,4 +78,13 @@
       margin-bottom: 30px;
     }
   }
+
+  &_place_search-results {
+    display: none;
+
+    @media screen and (max-width: 436px) {
+      display: block;
+      margin-bottom: 7px;
+    }
+  }
 }

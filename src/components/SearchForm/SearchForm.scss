@@ -1,6 +1,21 @@
 .search {
   background-color: #fff;
 
+  &_place_header {
+    @media screen and (max-width: 436px) {
+      display: none;
+    }
+  }
+
+  &_place_search-results {
+    display: none;
+
+    @media screen and (max-width: 436px) {
+      display: block;
+      margin-bottom: 14px;
+    }
+  }
+
   &__container {
     visibility: hidden;
     opacity: 0;
@@ -16,6 +31,11 @@
     }
 
     @media screen and (max-width: 1262px) {
+      padding-right: 39px;
+      padding-left: 47px;
+    }
+
+    @media screen and (max-width: 546px) {
       padding-right: 15px;
       padding-left: 15px;
     }

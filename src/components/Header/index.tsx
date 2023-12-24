@@ -48,7 +48,7 @@ export const Header = () => {
         <HeaderIcons onSearchClick={handleToggleSearch} onBurgerButtonClick={() => setIsBurgerMenuOpen(true)} />
         <BurgerMenu isOpen={isBurgerMenuOpen} onClose={() => setIsBurgerMenuOpen(false)} />
       </div>
-      <SearchForm />
+      <SearchForm place='header' />
       {pathname !== '/' && pathname !== '/searchresults' && pathname !== '/search' && <BreadCrumbs />}
     </header>
   );

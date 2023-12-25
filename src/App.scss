@@ -1,6 +1,6 @@
 .page {
-  background: #fff;
-  color: #000;
+  background: var(--main-background-color);
+  color: var(--default-text-color);
   font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
@@ -90,7 +90,7 @@
     margin: 0 0 40px;
     padding: 0;
     display: inline-block;
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: Manrope;
     font-size: 20px;
     font-style: normal;
@@ -138,7 +138,7 @@
   &__text {
     margin: 40px 0 60px;
     padding: 0;
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
@@ -254,7 +254,7 @@
   &__text {
     margin: 40px 0 70px;
     padding: 0;
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
@@ -391,7 +391,7 @@
   &__short-biography {
     margin: 0 0 40px 0;
     padding: 0;
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
@@ -459,7 +459,7 @@
 
   &__link {
     text-decoration: none;
-    color: #000;
+    color: var(--default-text-color);
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
@@ -576,7 +576,7 @@
     max-width: 1109.945px;
     margin: 40px 0 20px;
     padding: 0;
-    color: #000;
+    color: var(--default-text-color);
     font-family: 'Manrope';
     font-size: 28px;
     font-style: normal;
@@ -606,7 +606,7 @@
   }
 
   &__date {
-    color: #000;
+    color: var(--default-text-color);
     font-family: 'Manrope';
     font-size: 20px;
     font-style: normal;
@@ -630,7 +630,7 @@
   }
 
   &__description {
-    color: #000;
+    color: var(--default-text-color);
 
     /* Text medium Web */
     font-family: Manrope;
@@ -685,7 +685,7 @@
   &__image {
     width: 825px;
     height: 1167px;
-    border: 0.516px solid #000;
+    border: 0.516px solid var(--main-border-color);
     margin: 50px 0 0;
     padding: 0;
     box-sizing: border-box;
@@ -788,7 +788,7 @@
   &__description {
     margin: 0;
     padding: o;
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
@@ -881,7 +881,7 @@
   }
 
   &__title {
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: Manrope;
     font-size: 28px;
     font-style: normal;
@@ -903,7 +903,7 @@
   }
 
   &__no-results-text {
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: Manrope;
     font-size: 20px;
     font-style: normal;

@@ -21,7 +21,7 @@
   }
 
   &__subtitle {
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 28px;
     font-style: normal;
@@ -44,7 +44,7 @@
   }
 
   &__title {
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 40px;
     font-style: normal;

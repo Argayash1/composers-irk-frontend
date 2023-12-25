@@ -1,5 +1,5 @@
 .bread-crumbs {
-  background-color: #fff;
+  background-color: var(--main-background-color);
   padding: 20px 85px 0 85px;
 
   @media screen and (max-width: 1262px) {
@@ -30,7 +30,7 @@
   }
 
   &__list-item {
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: 'Manrope';
     font-size: 14px;
     font-style: normal;
@@ -45,17 +45,17 @@
   &__list-item_link {
     text-decoration: none;
     display: inline-block;
-    color: #909da1;
+    color: var(--crumb-link-color);
     transition: color 0.2s linear;
 
     &:hover {
-      color: #b4bec1;
+      color: var(--crumb-link-hover-color);
     }
   }
 
   &__span {
     margin-left: 20px;
-    color: #282f30;
+    color: var(--main-text-color);
     font-family: 'Roboto';
     font-size: 18px;
     font-style: normal;

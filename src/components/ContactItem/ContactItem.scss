@@ -1,7 +1,7 @@
 .contact-item {
   display: flex;
   text-decoration: none;
-  color: #fff;
+  color: var(--footer-text-color);
   transition: color 0.3s ease-in-out;
 
   @media screen and (max-width: 1126px) {
@@ -23,10 +23,10 @@
   }
 
   &:hover {
-    color: #fcbe13;
+    color: var(--active-link-color);
 
     svg path {
-      stroke: #fcbe13;
+      stroke: var(--active-link-color);
     }
   }
 

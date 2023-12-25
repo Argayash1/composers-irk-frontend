@@ -87,7 +87,7 @@
 
       &_active {
         font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
-        color: #fcbe13;
+        color: var(--active-link-color);
       }
 
       &_place_burger {

@@ -68,7 +68,11 @@ export const SearchForm = ({ place }: SearchFormProps) => {
         place === 'search-results' ? 'search_place_search-results' : ''
       }`}
     >
-      <div className={`search__container ${isSearchOpen || place === 'search' ? 'search__container_is_opened' : ''}`}>
+      <div
+        className={`search__container ${isSearchOpen || place === 'search' ? 'search__container_is_opened' : ''} ${
+          place === 'search-results' ? 'search__container_place_search-results' : ''
+        }`}
+      >
         <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
           <label htmlFor='search' className='search__label'>
             <input

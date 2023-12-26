@@ -56,15 +56,6 @@
     @media screen and (max-width: 1169px) {
       width: 157px;
     }
-
-    @media screen and (max-width: 546px) {
-      width: 24px;
-      height: 24px;
-      background-image: url('../../assets/icons/cta-arrow-button.svg');
-      background-repeat: no-repeat;
-      background-position: center;
-      border: none;
-    }
   }
 
   &_type_link {
@@ -81,6 +72,12 @@
 
     @media screen and (max-width: 546px) {
       margin-left: 15px;
+    }
+  }
+
+  &_place_main {
+    @media screen and (max-width: 712px) {
+      display: none;
     }
   }
 

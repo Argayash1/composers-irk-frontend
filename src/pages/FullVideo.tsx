@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle } from '../components';
+import { TitleContainer } from '../components';
 import { useParams } from 'react-router-dom';
 import { iFramesArray } from '../utils/iframesArray';
 
@@ -20,7 +20,7 @@ const FullVideo = () => {
   return (
     <main className='full-video'>
       <section className='full-video__title-container'>
-        <PageTitle name='Медиа' place='full-video' />
+        <TitleContainer name='Медиа' place='full-video' path='/media' />
       </section>
       <section className='full-video__main-content'>
         <iframe className='full-video__iframe' src={video.iframeUrl} allowFullScreen title={video.title}></iframe>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { unionMembersArray } from '../utils/membersArray';
-import { PageTitle, Pagination, UnionMemberBlock, menuItems } from '../components';
+import { TitleContainer, Pagination, UnionMemberBlock, menuItems } from '../components';
 import { compareBySurname } from '../utils/utils';
 import { useSelector } from 'react-redux';
 import { selectCurrentPage } from '../redux/searchSlice/selectors';
@@ -18,7 +18,7 @@ const UnionMembers: React.FC = () => {
 
   return (
     <main className='union-members'>
-      <PageTitle name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' />
+      <TitleContainer name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' path='/' />
       <ul className='union-members__list'>
         {membersArraySortedBySurnameAndSliced.map((member, index) => (
           <li key={index}>

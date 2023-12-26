@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { CTA, PageTitle, SharePanel } from '../components';
+import { CTA, TitleContainer, SharePanel } from '../components';
 import axios from 'axios';
 
 const FullNews = () => {
@@ -33,7 +33,7 @@ const FullNews = () => {
 
   return (
     <main className='full-news'>
-      <PageTitle name={news.title} place='full-news' />
+      <TitleContainer name={news.title} place='full-news' path='/news' />
       <span className='full-news__date'>{news.createdAt}</span>
       <img className='full-news__image' src={news.imageUrl} alt='' />
       <p className='full-news__text'>{news.newsText}</p>

@@ -52,6 +52,7 @@ export const TimelineContainer = ({
       }`}
       onMouseEnter={() => setIsTimelineContainerHovered(true)}
       onMouseLeave={() => !isChangeTime && setIsTimelineContainerHovered(false)}
+      // onTouchMove={onDrag}
       onMouseMove={onDrag}
       onMouseUp={onDragEnd}
       ref={timeLineRef}

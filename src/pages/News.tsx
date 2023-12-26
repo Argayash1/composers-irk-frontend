@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewsContainer, PageTitle, Pagination, menuItems } from '../components';
+import { NewsContainer, TitleContainer, Pagination, menuItems } from '../components';
 import { useAppDispatch } from '../redux/store';
 import { fetchNews } from '../redux/news/asyncActions';
 import { useSelector } from 'react-redux';
@@ -22,7 +22,7 @@ const News = () => {
 
   return (
     <main className='news'>
-      <PageTitle name={menuItems[1].name} />
+      <TitleContainer name={menuItems[1].name} path='/' />
       <NewsContainer place='news' itemsArray={items} />
       <Pagination />
     </main>

@@ -13,31 +13,6 @@ type CTAProps = {
 };
 
 export const CTA = ({ linkText = 'Подробнее', path, borderColor, place, onClick }: CTAProps) => {
-  const [windowWidth, setWindowWidth] = React.useState(window.screen.width);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.screen.width);
-    };
-
-    let timeoutId: NodeJS.Timeout;
-
-    const delayedHandleResize = () => {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        handleResize();
-      }, 1000);
-    };
-
-    window.addEventListener('resize', delayedHandleResize);
-
-    return () => {
-      window.removeEventListener('resize', delayedHandleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
   return (
     <>
       {!path ? (
@@ -52,11 +27,11 @@ export const CTA = ({ linkText = 'Подробнее', path, borderColor, place,
         <Link
           to={path}
           className={`cta cta_type_link ${borderColor === 'grey' ? 'cta_border_grey' : ''}  ${
-            path === '/scores' || path.includes('projects') ? 'cta_place_full-union-member' : ''
-          }`}
+            place === 'main' ? 'cta_place_main' : ''
+          }${path === '/scores' || path.includes('projects') ? 'cta_place_full-union-member' : ''}`}
           onClick={handleScrollToTop}
         >
-          {borderColor === 'grey' && windowWidth <= 546 ? '' : linkText}
+          {linkText}
         </Link>
       )}
     </>

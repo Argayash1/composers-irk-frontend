@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { CTA, PageTitle, SharePanel } from '../components';
+import { CTA, TitleContainer, SharePanel } from '../components';
 import { projectsArray } from '../utils/projectsArray';
 
 const FullProject = () => {
@@ -24,7 +24,7 @@ const FullProject = () => {
 
   return (
     <main className='full-project'>
-      <PageTitle name={project.title} place='full-project' />
+      <TitleContainer name={project.title} place='full-project' path='/projects' />
       <section className='full-project__container'>
         <img className='full-project__image' src={project.imageUrl} alt='' />
         <p className='full-project__text'>{project.description}</p>

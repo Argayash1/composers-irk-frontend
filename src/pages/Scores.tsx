@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle, Tabs, menuItems } from '../components';
+import { TitleContainer, Tabs, menuItems } from '../components';
 
 const tabNames = ['Все ноты', 'Вокал', 'Фортепиано'];
 
@@ -27,7 +27,7 @@ const Scores = () => {
 
   return (
     <main className='scores'>
-      <PageTitle name={menuItems[4].name} />
+      <TitleContainer name={menuItems[4].name} path='/' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeScoreCategory} value={scoreCategory} />
       <ul className='scores__list'>
         {scoreItems.map((scoreItem, index) => (

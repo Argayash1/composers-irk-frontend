@@ -1,0 +1,129 @@
+.title-container {
+  display: flex;
+
+  &_place_main {
+    @media screen and (max-width: 712px) {
+      width: 100%;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+  }
+
+  &__page-title {
+    margin: 0 0 50px;
+    padding: 0;
+    color: #282f30;
+    font-family: Manrope;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%; /* 37.8px */
+
+    @media screen and (max-width: 1169px) {
+      font-size: 22px;
+    }
+
+    @media screen and (max-width: 546px) {
+      font-size: 20px;
+    }
+
+    &_place_main {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    &_place_full-news {
+      margin-bottom: 30px;
+
+      @media screen and (max-width: 1126px) {
+        margin-bottom: 25px;
+      }
+
+      @media screen and (max-width: 572px) {
+        font-size: 20px;
+      }
+    }
+
+    &_place_union-members {
+      @media screen and (max-width: 891px) {
+        margin-bottom: 40px;
+      }
+
+      @media screen and (max-width: 436px) {
+        margin-bottom: 31px;
+      }
+    }
+
+    &_place_projects {
+      @media screen and (max-width: 900px) {
+        margin-bottom: 40px;
+      }
+    }
+
+    &_place_full-project {
+      @media screen and (max-width: 1180px) {
+        margin-bottom: 40px;
+      }
+
+      @media screen and (max-width: 767px) {
+        margin-bottom: 25px;
+      }
+    }
+
+    &_place_reports {
+      @media screen and (max-width: 1164px) {
+        margin-bottom: 40px;
+      }
+
+      @media screen and (max-width: 670px) {
+        margin-bottom: 25px;
+      }
+    }
+
+    &_place_full-article {
+      @media screen and (max-width: 1164px) {
+        margin-bottom: 40px;
+      }
+
+      @media screen and (max-width: 670px) {
+        margin-bottom: 30px;
+      }
+    }
+
+    &_place_search-results {
+      display: none;
+
+      @media screen and (max-width: 436px) {
+        display: block;
+        margin-bottom: 7px;
+      }
+    }
+
+    &_place_search {
+      margin-bottom: 7px;
+    }
+  }
+
+  &__arrow-link {
+    transition: stroke 0.3s ease-in-out;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    display: none;
+
+    @media screen and (max-width: 712px) {
+      display: block;
+    }
+
+    &_place_main {
+      margin-right: 0;
+      transform: rotate(180deg);
+    }
+
+    &:active {
+      svg path {
+        stroke: #62767c;
+      }
+    }
+  }
+}

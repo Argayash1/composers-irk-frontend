@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { CTA, PageTitle, Tabs } from '../components';
+import { CTA, TitleContainer, Tabs } from '../components';
 import { unionMembersArray } from '../utils/membersArray';
 import { allScores } from './Scores';
 import { TextContent } from '../components/TextContent';
@@ -58,7 +58,11 @@ const FullUnionMemberInfo = () => {
 
   return (
     <main className='full-union-member'>
-      <PageTitle name={`${unionMember.surname} ${unionMember.name}`} place='full-union-member' />
+      <TitleContainer
+        name={`${unionMember.surname} ${unionMember.name}`}
+        place='full-union-member'
+        path='/union-members'
+      />
       <section className='full-union-member__container'>
         <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />
         <p className='full-union-member__short-biography'>{unionMember.shortBiography}</p>

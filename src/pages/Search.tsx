@@ -1,11 +1,11 @@
 import React from 'react';
-import { PageTitle, SearchForm } from '../components';
+import { TitleContainer, SearchForm } from '../components';
 
 const Search = () => {
   return (
     <main className='search-page'>
       <section className='search-page__title-container'>
-        <PageTitle name='Поиск' place='search' />
+        <TitleContainer name='Поиск' place='search' path='/' />
       </section>
       <section>
         <SearchForm place='search' />

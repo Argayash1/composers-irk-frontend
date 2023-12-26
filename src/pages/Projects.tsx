@@ -1,7 +1,7 @@
 import React from 'react';
 import { projectsArray } from '../utils/projectsArray';
 import { ProjectBlock } from '../components/ProjectBlock';
-import { PageTitle, Pagination, menuItems } from '../components';
+import { TitleContainer, Pagination, menuItems } from '../components';
 import { useSelector } from 'react-redux';
 import { selectCurrentPage } from '../redux/searchSlice/selectors';
 
@@ -18,7 +18,7 @@ const Projects = () => {
 
   return (
     <main className='projects'>
-      <PageTitle name={menuItems[3].name} place='projects' />
+      <TitleContainer name={menuItems[3].name} place='projects' path='/' />
       <ul className='projects__list'>
         {slicedProjectsArray.map((project, index) => (
           <li key={index}>

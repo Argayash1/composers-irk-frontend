@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, PageTitle, AudioRecordings, VideoRecordings, menuItems, Pagination } from '../components';
+import { Tabs, TitleContainer, AudioRecordings, VideoRecordings, menuItems, Pagination } from '../components';
 
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 
@@ -16,7 +16,7 @@ const Media = () => {
 
   return (
     <main className='media'>
-      <PageTitle name={menuItems[5].name} place='media' />
+      <TitleContainer name={menuItems[5].name} place='media' path='/' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeMediaCategory} value={category} />
       {category === 0 ? <AudioRecordings /> : <VideoRecordings />}
       {category === 1 && <Pagination />}

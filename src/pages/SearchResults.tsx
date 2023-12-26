@@ -1,5 +1,5 @@
 import React from 'react';
-import { CombinedArrayObject, PageTitle, Pagination, SearchForm, SearchResult } from '../components';
+import { CombinedArrayObject, TitleContainer, Pagination, SearchForm, SearchResult } from '../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenSearch } from '../redux/searchSlice/slice';
 import { RootState } from '../redux/store';
@@ -15,7 +15,7 @@ const SearchResults: React.FC = () => {
   return (
     <main className='search-results'>
       <section>
-        <PageTitle name='Поиск' place='search-results' />
+        <TitleContainer name='Поиск' place='search-results' path='/' />
         <SearchForm place='search-results' />
         <h2 className='search-results__title'>Результаты поиска</h2>
         {searchResults.length === 0 ? (

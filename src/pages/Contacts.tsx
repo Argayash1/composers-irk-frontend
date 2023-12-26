@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactItem, Logo, PageTitle, menuItems } from '../components';
+import { ContactItem, Logo, TitleContainer, menuItems } from '../components';
 import phone from '../assets/icons/phone-icon-contacts.svg';
 import email from '../assets/icons/mail-icon-contacts.svg';
 import vk from '../assets/icons/vk-icon-contacts.svg';
@@ -17,7 +17,7 @@ export const Contacts = () => {
 
   return (
     <main className='contacts'>
-      <PageTitle name={menuItems[8].name} />
+      <TitleContainer name={menuItems[8].name} path='/' />
       <ul className='contacts__list'>
         {contactsData.map((contact, index) => (
           <li key={index} className='contacts__list-item'>

@@ -18,6 +18,12 @@ export type ButtonClick = MouseEvent & {
   composedPath: Node[];
 };
 
+function isTouchEvent(
+  event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+): event is React.TouchEvent<HTMLDivElement> {
+  return 'touches' in event;
+}
+
 export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);

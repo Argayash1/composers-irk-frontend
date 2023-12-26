@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle, Tabs, menuItems } from '../components';
+import { TitleContainer, Tabs, menuItems } from '../components';
 import { reportsArray } from '../utils/reportsArray';
 import { ReportPopup } from '../components/ReportPopup';
 
@@ -19,7 +19,7 @@ const Reports = () => {
 
   return (
     <main className='reports'>
-      <PageTitle name={menuItems[6].name} place='reports' />
+      <TitleContainer name={menuItems[6].name} place='reports' path='/' />
       <section className='reports__main-content'>
         <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={reportYear} />
         <img

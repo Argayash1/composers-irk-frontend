@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrandBanner, CTA, NewsContainer, PageTitle, menuItems } from '../components';
+import { BrandBanner, CTA, NewsContainer, TitleContainer, menuItems } from '../components';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
 import { selectNewsData } from '../redux/news/selectors';
@@ -22,8 +22,8 @@ const Home = () => {
     <main className='home'>
       <BrandBanner />
       <div className='home__title-container'>
-        <PageTitle name={menuItems[1].name} place='main' />
-        <CTA linkText='Все новости' path='/news' borderColor='grey' />
+        <TitleContainer name={menuItems[1].name} place='main' path='/news' />
+        <CTA linkText='Все новости' path='/news' borderColor='grey' place='main' />
       </div>
       <NewsContainer itemsArray={items} />
     </main>

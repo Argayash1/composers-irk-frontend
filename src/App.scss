@@ -56,7 +56,6 @@
 }
 
 .news {
-  // margin: 0 auto;
   box-sizing: border-box;
   max-width: 1280px;
   padding: 60px 85px 120px;
@@ -187,10 +186,13 @@
 }
 
 .union-members {
-  // max-width: 1280px;
-  // margin: 0 auto;
-  // box-sizing: border-box;
+  width: 1280px;
+  box-sizing: border-box;
   padding: 60px 85px 90px;
+
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+  }
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -213,7 +215,6 @@
   }
 
   &__list {
-    // max-width: 1280px;
     margin: 0 0 90px;
     padding: 0;
     list-style: none;

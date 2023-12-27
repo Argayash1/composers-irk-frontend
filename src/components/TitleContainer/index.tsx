@@ -24,7 +24,7 @@ export const TitleContainer = ({ name, path, place }: PageTitleProps) => {
   } ${place === 'search' ? 'title-container__page-title_place_search' : ''}`;
 
   return (
-    <div className={`title-container ${place === 'main' ? 'title-container_place_main' : ''}`}>
+    <section className={`title-container ${place === 'main' ? 'title-container_place_main' : ''}`}>
       <Link
         to={path}
         className={`title-container__arrow-link ${place === 'main' ? 'title-container__arrow-link_place_main' : ''}`}
@@ -44,6 +44,6 @@ export const TitleContainer = ({ name, path, place }: PageTitleProps) => {
       ) : (
         <h1 className={pageTitleClassName}>{name}</h1>
       )}
-    </div>
+    </section>
   );
 };

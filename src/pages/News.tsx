@@ -22,11 +22,9 @@ const News = () => {
 
   return (
     <main className='news'>
-      {/* <div className='news__wrapper'> */}
       <TitleContainer name={menuItems[1].name} path='/' />
       <NewsContainer place='news' itemsArray={items} />
       <Pagination />
-      {/* </div> */}
     </main>
   );
 };

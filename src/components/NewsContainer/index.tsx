@@ -46,9 +46,9 @@ export const NewsContainer = ({ place, itemsArray }: NewsContainerProps) => {
 
   return (
     <section
-      className={`news-container ${place === 'news' ? 'news-container_place_news' : ''}${
-        place === 'aboutus' ? 'news-container_place_aboutus' : ''
-      }`}
+      className={`news-container ${place === 'main' ? 'news-container_place_main' : ''} ${
+        place === 'news' ? 'news-container_place_news' : ''
+      }${place === 'aboutus' ? 'news-container_place_aboutus' : ''}`}
     >
       <ul className={newsContainerListClassName}>
         {place === 'news' ? news : place === 'aboutus' ? articles : slicedNews}

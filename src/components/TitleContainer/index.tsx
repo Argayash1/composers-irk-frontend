@@ -1,6 +1,7 @@
 import React from 'react';
 import './TitleContainer.scss';
 import { Link } from 'react-router-dom';
+import { CTA } from '../CTA';
 
 type PageTitleProps = {
   name: string;
@@ -24,10 +25,12 @@ export const TitleContainer = ({ name, path, place }: PageTitleProps) => {
   } ${place === 'search' ? 'title-container__page-title_place_search' : ''}`;
 
   return (
-    <section className={`title-container ${place === 'main' ? 'title-container_place_main' : ''}`}>
+    <section className={`title-container ${place === 'main' ? 'title-container_place_main' : ''} `}>
       <Link
         to={path}
-        className={`title-container__arrow-link ${place === 'main' ? 'title-container__arrow-link_place_main' : ''}`}
+        className={`title-container__arrow-link ${place === 'main' ? 'title-container__arrow-link_place_main' : ''} ${
+          place === 'search-results' ? 'title-container__arrow-link_place_search-results' : ''
+        }`}
       >
         <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
           <path
@@ -44,6 +47,7 @@ export const TitleContainer = ({ name, path, place }: PageTitleProps) => {
       ) : (
         <h1 className={pageTitleClassName}>{name}</h1>
       )}
+      {place === 'main' && <CTA linkText='Все новости' path='/news' borderColor='grey' place='main' />}
     </section>
   );
 };

@@ -2,11 +2,6 @@
   background-color: var(--main-background-color);
   padding: 20px 0 0;
 
-  @media screen and (max-width: 1262px) {
-    padding-left: 39px;
-    padding-right: 39px;
-  }
-
   @media screen and (max-width: 1126px) {
     padding-top: 0;
   }
@@ -26,6 +21,11 @@
     gap: 20px;
     height: 58px;
 
+    @media screen and (max-width: 1262px) {
+      padding-left: 39px;
+      padding-right: 39px;
+    }
+
     @media screen and (max-width: 1126px) {
       padding-top: 15px;
       padding-bottom: 15px;
@@ -43,6 +43,15 @@
 
     @media screen and (max-width: 1126px) {
       font-size: 12px;
+    }
+
+    &:last-of-type {
+      padding-top: 2px;
+      box-sizing: border-box;
+
+      @media screen and (max-width: 1126px) {
+        padding-top: 0;
+      }
     }
   }
 

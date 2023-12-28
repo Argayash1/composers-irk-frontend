@@ -1,3 +1,5 @@
+@import './assets/styles/mixins/page-flex-container';
+
 .page {
   background: var(--main-background-color);
   color: var(--default-text-color);
@@ -7,15 +9,9 @@
 
   &__content {
     min-width: 320px;
-    // max-width: 1280px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-  }
-
-  &__centered {
-    display: flex;
-    justify-content: center;
   }
 }
 
@@ -30,39 +26,10 @@
   @media screen and (max-width: 638px) {
     padding-bottom: 60px;
   }
-
-  &__title-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    padding: 65px 85px 50px;
-    display: flex;
-    justify-content: space-between;
-
-    @media screen and (max-width: 1262px) {
-      padding-right: 39px;
-      padding-left: 39px;
-    }
-
-    @media screen and (max-width: 1169px) {
-      padding-top: 40px;
-      padding-bottom: 42px;
-    }
-
-    @media screen and (max-width: 546px) {
-      padding: 40px 19px 20px 25px;
-    }
-  }
 }
 
 .news {
-  box-sizing: border-box;
-  max-width: 1280px;
-  padding: 60px 85px 120px;
-
-  @media screen and (max-width: 1280px) {
-    width: 100%;
-  }
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -78,18 +45,10 @@
     padding-right: 25px;
     padding-left: 10px;
   }
-
-  &__wrapper {
-    max-width: 1280px;
-  }
 }
 
 .full-news {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 85px 120px;
-  display: flex;
-  flex-direction: column;
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -186,13 +145,7 @@
 }
 
 .union-members {
-  width: 1280px;
-  box-sizing: border-box;
-  padding: 60px 85px 90px;
-
-  @media screen and (max-width: 1280px) {
-    width: 100%;
-  }
+  @include page-flex-container(60px, 85px, 90px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -244,9 +197,7 @@
 }
 
 .full-union-member {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 85px 200px;
+  @include page-flex-container(60px, 85px, 200px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -336,11 +287,7 @@
 }
 
 .projects {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 87px 120px 85px;
-  display: flex;
-  flex-direction: column;
+  @include page-flex-container(60px, 87px, 120px, 85px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -380,9 +327,7 @@
 }
 
 .full-project {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 85px 120px;
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -455,9 +400,7 @@
 }
 
 .scores {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 85px 120px;
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -536,11 +479,7 @@
 }
 
 .media {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 60px 85px 120px;
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -558,11 +497,7 @@
 }
 
 .full-video {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 60px 85px 120px;
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -671,8 +606,6 @@
 
   &__description {
     color: var(--default-text-color);
-
-    /* Text medium Web */
     font-family: Manrope;
     font-size: 16px;
     font-style: normal;
@@ -695,11 +628,7 @@
 }
 
 .reports {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 60px 0 120px 85px;
+  @include page-flex-container(60px, 0, 120px, 85px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -748,11 +677,7 @@
 }
 
 .about-us {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 60px 85px 120px;
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -771,9 +696,7 @@
 }
 
 .full-article {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 85px 120px;
+  @include page-flex-container(60px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -863,11 +786,7 @@
 }
 
 .contacts {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 60px 84px 0 85px;
+  @include page-flex-container(60px, 84px, 0, 85px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -911,9 +830,7 @@
 }
 
 .search-results {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 50px 85px 120px;
+  @include page-flex-container(50px, 85px, 120px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -985,7 +902,6 @@
 
 .search-page {
   max-width: 1280px;
-  margin: 0 auto;
   padding-top: 24px;
   padding-bottom: 100px;
 

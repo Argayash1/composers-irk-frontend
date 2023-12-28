@@ -6,9 +6,6 @@
   height: 480px;
   box-sizing: border-box;
   padding-top: 55px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
 
   @media screen and (max-width: 1220px) {
     height: 280px;
@@ -18,6 +15,14 @@
   @media screen and (max-width: 720px) {
     height: 237px;
     padding-top: 20px;
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   &__subtitle {

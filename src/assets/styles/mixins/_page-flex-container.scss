@@ -1,0 +1,12 @@
+@mixin page-flex-container($top, $right, $bottom, $left: null) {
+  max-width: 1280px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: $top $right $bottom;
+  @if $left != null {
+    padding-left: $left;
+  }
+  display: flex;
+  flex-direction: column;
+}

@@ -45,9 +45,9 @@ export const Footer = () => {
           <h3 className='footer__menu-heading'>Контакты</h3>
           <ContactsList />
         </div>
-      </div>
-      <div className='footer__column footer__column_type_fourth'>
-        <p className='footer__author footer__author_type_shown'>{footerAuthorText}</p>
+        <div className='footer__column footer__column_type_fourth'>
+          <p className='footer__author footer__author_type_shown'>{footerAuthorText}</p>
+        </div>
       </div>
     </footer>
   );

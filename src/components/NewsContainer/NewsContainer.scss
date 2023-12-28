@@ -1,9 +1,5 @@
 .news-container {
   padding: 0 85px;
-  width: 100%;
-  // box-sizing: border-box;
-  // max-width: 1280px;
-  margin: 0 auto;
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -15,11 +11,15 @@
     padding-left: 25px;
   }
 
+  &_place_main {
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
   &_place_news {
-    // width: 100%;
     padding: 0 0 92px;
-    // box-sizing: content-box;
-    // margin: 0;
 
     @media screen and (max-width: 546px) {
       padding-left: 15px;
@@ -47,10 +47,11 @@
     grid-template-columns: repeat(3, (minmax(350px, 1fr)));
     list-style: none;
     gap: 70px 30px;
+    justify-items: center;
 
-    @media screen and (max-width: 1262px) {
-      justify-items: center;
-    }
+    // @media screen and (max-width: 1262px) {
+    //   justify-items: center;
+    // }
 
     @media screen and (max-width: 1169px) {
       grid-template-columns: repeat(3, (minmax(216px, 1fr)));

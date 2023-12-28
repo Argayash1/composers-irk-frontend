@@ -6,9 +6,7 @@ const MainLayout: React.FC = () => {
     <div className='page'>
       <div className='page__content'>
         <Header />
-        <div className='page__centered'>
-          <Outlet />
-        </div>
+        <Outlet />
         <Footer />
       </div>
     </div>

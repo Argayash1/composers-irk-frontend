@@ -2,10 +2,29 @@
   display: flex;
 
   &_place_main {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 65px 85px 50px;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1262px) {
+      padding-right: 39px;
+      padding-left: 39px;
+    }
+
+    @media screen and (max-width: 1169px) {
+      padding-top: 40px;
+      padding-bottom: 42px;
+    }
+
     @media screen and (max-width: 712px) {
-      width: 100%;
       flex-direction: row-reverse;
-      justify-content: space-between;
+    }
+
+    @media screen and (max-width: 546px) {
+      padding: 40px 19px 20px 25px;
     }
   }
 
@@ -118,6 +137,14 @@
     &_place_main {
       margin-right: 0;
       transform: rotate(180deg);
+    }
+
+    &_place_search-results {
+      display: none;
+
+      @media screen and (max-width: 436px) {
+        display: block;
+      }
     }
 
     &:active {

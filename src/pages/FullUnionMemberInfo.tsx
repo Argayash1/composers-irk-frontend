@@ -61,7 +61,7 @@ const FullUnionMemberInfo = () => {
       <TitleContainer
         name={`${unionMember.surname} ${unionMember.name}`}
         place='full-union-member'
-        path='/union-members'
+        path='/unionmembers'
       />
       <section className='full-union-member__container'>
         <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />

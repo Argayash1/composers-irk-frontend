@@ -2,11 +2,12 @@
   max-width: 1280px;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: $top $right $bottom;
+
   @if $left != null {
     padding-left: $left;
   }
-  display: flex;
-  flex-direction: column;
 }

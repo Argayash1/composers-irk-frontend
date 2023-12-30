@@ -1,7 +1,10 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .news-block {
   display: flex;
   flex-direction: column;
   width: 350px;
+  font-size: 0;
 
   @media screen and (max-width: 1169px) {
     width: 216px;
@@ -33,19 +36,17 @@
 
   &__date {
     color: #282f30;
-    font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 125%;
+    @include main-text-font(14, 400, 1.25);
     margin: 20px 0 15px 0;
     padding: 0;
+    min-height: 18px;
 
     @media screen and (max-width: 1169px) {
       font-size: 12px;
-      line-height: 130%; /* 15.6px */
+      line-height: 1.3; /* 15.6px */
       margin-top: 10px;
       margin-bottom: 10px;
+      min-height: 16px;
     }
 
     @media screen and (max-width: 767px) {
@@ -56,24 +57,20 @@
 
   &__title {
     color: #282f30;
-    font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+    @include main-text-font(20, 700);
     margin: 0;
     padding: 0;
     min-height: 54px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     @media screen and (max-width: 1169px) {
       font-size: 14px;
       min-height: 35px;
-      line-height: 120%; /* 16.8px */
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.2; /* 16.8px */
     }
 
     @media screen and (max-width: 767px) {
@@ -84,14 +81,10 @@
 
   &__text {
     color: #282f30;
-    font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
+    @include main-text-font(16, 400, 1.3);
     margin: 10px 0 40px 0;
     padding: 0;
-    min-height: 69px;
+    height: 69px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -102,8 +95,8 @@
       -webkit-line-clamp: 4;
       font-size: 12px;
       margin-top: 5px;
-      margin-bottom: 15px;
-      min-height: 62px;
+      margin-bottom: 18px;
+      height: 62px;
     }
 
     @media screen and (max-width: 767px) {

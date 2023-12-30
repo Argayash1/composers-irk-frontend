@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .logo {
   display: flex;
   text-decoration: none;
@@ -5,9 +7,18 @@
   margin-bottom: 10px;
   padding: 0;
 
+  @media screen and (max-width: 1126px) {
+    margin-bottom: 0;
+    align-self: center;
+  }
+
   &_place_footer {
     &:hover .logo__title_place_footer {
-      color: #fcbe13;
+      color: var(--active-link-color);
+    }
+
+    @media screen and (max-width: 1126px) {
+      align-self: flex-start;
     }
 
     @media screen and (max-width: 726px) {
@@ -19,6 +30,10 @@
     margin-right: 164px;
     margin-bottom: 0;
     display: inline-block;
+
+    @media screen and (max-width: 1126px) {
+      align-self: flex-end;
+    }
 
     @media screen and (max-width: 950px) {
       margin-right: 98px;
@@ -63,11 +78,8 @@
 
   &__title {
     color: #282f30;
-    font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+    @include main-text-font(12, 500);
+
     text-transform: uppercase;
     margin: 3px 0 0 10px;
     padding: 0;
@@ -87,7 +99,7 @@
     }
 
     &_place_footer {
-      color: #fff;
+      color: var(--footer-text-color);
       transition: color 0.3s ease-in-out;
     }
   }

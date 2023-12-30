@@ -42,7 +42,7 @@ export const Footer = () => {
           </nav>
         </div>
         <div className='footer__column footer__column_type_third'>
-          <h3 className='footer__menu-heading'>Контакты</h3>
+          <h3 className='footer__menu-heading footer__menu-heading_type_third-column'>Контакты</h3>
           <ContactsList />
         </div>
         <div className='footer__column footer__column_type_fourth'>

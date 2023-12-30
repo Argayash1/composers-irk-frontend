@@ -17,10 +17,7 @@ export interface NewsSliceState {
   status: Status; //'loading' | 'success' | 'error';
 }
 
-export type SearchPizzaParams = {
-  sortBy: string;
-  order: string;
-  category: string;
-  search: string;
-  currentPage: string;
+export type SearchNewsParams = {
+  currentPage: number;
+  limit: number;
 };

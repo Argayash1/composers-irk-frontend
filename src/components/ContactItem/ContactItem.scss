@@ -1,5 +1,8 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .contact-item {
   display: flex;
+  align-items: center;
   text-decoration: none;
   color: var(--footer-text-color);
   transition: color 0.3s ease-in-out;
@@ -33,11 +36,7 @@
   &__text {
     margin: 0 0 0 15px;
     padding: 0;
-    font-family: Manrope;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 125%; /* 20px */
+    @include main-text-font(14, 400, 1.25);
     display: block;
 
     @media screen and (max-width: 1126px) {

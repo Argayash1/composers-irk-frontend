@@ -16,6 +16,11 @@
       padding-right: 39px;
     }
 
+    @media screen and (max-width: 1126px) {
+      height: 65px;
+      align-items: flex-start;
+    }
+
     @media screen and (max-width: 546px) {
       padding-right: 25px;
       padding-left: 25px;

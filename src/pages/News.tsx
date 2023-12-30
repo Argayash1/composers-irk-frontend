@@ -12,13 +12,16 @@ const News = () => {
   const { items } = useSelector(selectNewsData);
   const currentPage = useSelector(selectCurrentPage);
 
+  const screenWidth = window.screen.width;
+  const limit = screenWidth > 638 ? 9 : 4;
+
   React.useEffect(() => {
     document.title = 'Новости';
   }, []);
 
   React.useEffect(() => {
-    dispatch(fetchNews(currentPage));
-  }, [dispatch, currentPage]);
+    dispatch(fetchNews({ currentPage, limit }));
+  }, [dispatch, currentPage, limit]);
 
   return (
     <main className='news'>

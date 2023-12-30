@@ -7,8 +7,28 @@ import { selectCurrentPage } from '../redux/searchSlice/selectors';
 
 const UnionMembers: React.FC = () => {
   const currentPage = useSelector(selectCurrentPage);
-  const firstItem = currentPage * 12 - 12;
-  const lastItam = currentPage * 12;
+
+  const handleSetCardsPerPge = (): number => {
+    const screenWidth = window.screen.width;
+
+    if (screenWidth >= 1170) {
+      return 12;
+    }
+    if (screenWidth < 1170 && screenWidth >= 767) {
+      return 9;
+    }
+
+    if (screenWidth < 767) {
+      return 8;
+    }
+
+    return 0; // или любое другое значение по умолчанию
+  };
+
+  const cardsPerPage = handleSetCardsPerPge();
+
+  const firstItem = currentPage * cardsPerPage - cardsPerPage;
+  const lastItam = currentPage * cardsPerPage;
 
   const membersArraySortedBySurnameAndSliced = [...unionMembersArray].sort(compareBySurname).slice(firstItem, lastItam);
 

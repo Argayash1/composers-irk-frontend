@@ -1,0 +1,14 @@
+@mixin main-text-font($size, $weight, $line-height: null) {
+  font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
+  $font-size: $size + px;
+  font-weight: $weight;
+  font-style: normal;
+
+  font-size: $font-size;
+
+  @if $line-height != null {
+    line-height: $line-height;
+  } @else {
+    line-height: normal;
+  }
+}

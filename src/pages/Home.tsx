@@ -15,7 +15,7 @@ const Home = () => {
   }, []);
 
   React.useEffect(() => {
-    dispatch(fetchNews(1));
+    dispatch(fetchNews({ currentPage: 1, limit: 6 }));
   }, [dispatch]);
 
   return (

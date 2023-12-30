@@ -8,10 +8,10 @@ import { fetchNews } from '../redux/news/asyncActions';
 const Home = () => {
   const dispatch = useAppDispatch();
 
-  const { items } = useSelector(selectNewsData);
+  const { items, status } = useSelector(selectNewsData);
 
   const screenWidth = window.screen.width;
-  const limit = screenWidth > 638 ? 9 : 3;
+  const limit = screenWidth > 638 ? 6 : 3;
 
   React.useEffect(() => {
     document.title = 'ИООО "Союз композиторов"';
@@ -25,7 +25,7 @@ const Home = () => {
     <main className='home'>
       <BrandBanner />
       <TitleContainer name={menuItems[1].name} place='main' path='/news' />
-      <NewsContainer itemsArray={items} place='main' />
+      <NewsContainer itemsArray={items} place='main' status={status} limit={limit} />
     </main>
   );
 };

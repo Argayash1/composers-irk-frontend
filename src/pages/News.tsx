@@ -9,7 +9,7 @@ import { selectCurrentPage } from '../redux/searchSlice/selectors';
 const News = () => {
   const dispatch = useAppDispatch();
 
-  const { items } = useSelector(selectNewsData);
+  const { items, status } = useSelector(selectNewsData);
   const currentPage = useSelector(selectCurrentPage);
 
   const screenWidth = window.screen.width;
@@ -26,7 +26,7 @@ const News = () => {
   return (
     <main className='news'>
       <TitleContainer name={menuItems[1].name} path='/' />
-      <NewsContainer place='news' itemsArray={items} />
+      <NewsContainer place='news' itemsArray={items} status={status} limit={limit} />
       <Pagination />
     </main>
   );

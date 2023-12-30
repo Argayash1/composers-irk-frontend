@@ -1,44 +1,28 @@
 import React from 'react';
-import { NewsBlock } from '../../components';
+import { NewsBlock, NewsSkeleton } from '../../components';
 import './NewsContainer.scss';
-import { articlesArray } from '../../utils/articlesArray';
-import { News } from '../../redux/news/types';
-import { useSelector } from 'react-redux';
-import { selectCurrentPage } from '../../redux/searchSlice/selectors';
+import { Article } from '../../utils/articlesArray';
+import { News, Status } from '../../redux/news/types';
 
 type NewsContainerProps = {
   place?: string;
-  itemsArray?: News[];
+  itemsArray: News[] | Article[];
+  status?: Status;
+  limit: number;
 };
 
-export const NewsContainer = ({ place, itemsArray }: NewsContainerProps) => {
-  const slicedNewsArray = itemsArray && itemsArray.slice(0, 6);
+export const NewsContainer = ({ place, itemsArray, status, limit }: NewsContainerProps) => {
   const screenWidth = document.documentElement.clientWidth;
-  const currentPage = useSelector(selectCurrentPage);
-  const firstItem = currentPage * 6 - 6;
-  const lastItam = currentPage * 6;
 
-  const slicedNews =
-    slicedNewsArray &&
-    slicedNewsArray.map((news) => (
-      <li key={news.id} className='news-container__news-list-item'>
-        <NewsBlock {...news} />
-      </li>
-    ));
-
-  const news =
+  const items =
     itemsArray &&
-    itemsArray.map((news) => (
-      <li key={news.id} className='news-container__news-list-item'>
-        <NewsBlock {...news} />
+    itemsArray.map((item) => (
+      <li key={item.id} className='news-container__news-list-item'>
+        <NewsBlock {...item} />
       </li>
     ));
 
-  const articles = articlesArray.slice(firstItem, lastItam).map((article) => (
-    <li key={article.id} className='news-container__news-list-item'>
-      <NewsBlock {...article} />
-    </li>
-  ));
+  const skeletons = [...new Array(limit)].map((_, index) => <NewsSkeleton key={index} />);
 
   const newsContainerListClassName = `news-container__news-list  ${
     screenWidth < 1280 ? 'news-container__news-list_gap_tablet' : ''
@@ -50,9 +34,7 @@ export const NewsContainer = ({ place, itemsArray }: NewsContainerProps) => {
         place === 'news' ? 'news-container_place_news' : ''
       }${place === 'aboutus' ? 'news-container_place_aboutus' : ''}`}
     >
-      <ul className={newsContainerListClassName}>
-        {place === 'news' ? news : place === 'aboutus' ? articles : slicedNews}
-      </ul>
+      <ul className={newsContainerListClassName}>{status === 'loading' ? skeletons : items}</ul>
     </section>
   );
 };

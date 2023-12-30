@@ -1,6 +1,15 @@
 import musicWorldOfJanKrul from '../assets/images/about-us-article-music-world-of-Jan-Krul.png';
 
-export const articlesArray = [
+export type Article = {
+  id: string;
+  imageUrl: string;
+  createdAt: string;
+  title: string;
+  articleDescription: string;
+  articleText: string[];
+};
+
+export const articlesArray: Article[] = [
   {
     id: '0',
     imageUrl: musicWorldOfJanKrul,

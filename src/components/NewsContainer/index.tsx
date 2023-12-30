@@ -12,7 +12,7 @@ type NewsContainerProps = {
 };
 
 export const NewsContainer = ({ place, itemsArray, status, limit }: NewsContainerProps) => {
-  const screenWidth = document.documentElement.clientWidth;
+  const clientWidth = document.documentElement.clientWidth;
 
   const items =
     itemsArray &&
@@ -25,8 +25,8 @@ export const NewsContainer = ({ place, itemsArray, status, limit }: NewsContaine
   const skeletons = [...new Array(limit)].map((_, index) => <NewsSkeleton key={index} />);
 
   const newsContainerListClassName = `news-container__news-list  ${
-    screenWidth < 1280 ? 'news-container__news-list_gap_tablet' : ''
-  }`;
+    place === 'news' ? 'news-container__news-list_place_news' : ''
+  } ${clientWidth < 1280 ? 'news-container__news-list_gap_tablet' : ''}`;
 
   return (
     <section

@@ -1,7 +1,7 @@
 .pagination {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 33px;
   font-family: Manrope;
 
   @media screen and (max-width: 1126px) {
@@ -29,10 +29,14 @@
   }
 
   &__list-item {
-    margin-right: 25px;
+    margin-right: 18px;
 
     &:last-child {
       margin-right: 0;
+    }
+
+    &_type_ellipsis {
+      margin-right: 13.5px;
     }
   }
 

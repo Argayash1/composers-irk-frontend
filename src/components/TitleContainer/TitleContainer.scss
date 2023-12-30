@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .title-container {
   display: flex;
 
@@ -32,11 +34,7 @@
     margin: 0 0 50px;
     padding: 0;
     color: #282f30;
-    font-family: Manrope;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 105%; /* 37.8px */
+    @include main-text-font(36, 700, 1.05);
 
     @media screen and (max-width: 1169px) {
       font-size: 22px;
@@ -44,11 +42,16 @@
 
     @media screen and (max-width: 546px) {
       font-size: 20px;
+      line-height: 120%; /* 24px */
     }
 
     &_place_main {
       margin-top: 5px;
       margin-bottom: 0;
+
+      @media screen and (max-width: 712px) {
+        margin-top: 0;
+      }
     }
 
     &_place_full-news {

@@ -52,11 +52,12 @@
     @media screen and (max-width: 767px) {
       margin-top: 15px;
       line-height: normal;
+      height: 16px;
     }
   }
 
   &__title {
-    color: #282f30;
+    color: var(--main-text-color);
     @include main-text-font(20, 700);
     margin: 0;
     padding: 0;
@@ -76,11 +77,12 @@
     @media screen and (max-width: 767px) {
       font-size: 16px;
       min-height: 42px;
+      line-height: 1.3;
     }
   }
 
   &__text {
-    color: #282f30;
+    color: var(--main-text-color);
     @include main-text-font(16, 400, 1.3);
     margin: 10px 0 40px 0;
     padding: 0;
@@ -101,10 +103,11 @@
 
     @media screen and (max-width: 767px) {
       -webkit-line-clamp: 3;
-      min-height: 53.229px;
+      height: 53.229px;
       font-size: 14px;
       margin-top: 10px;
       margin-bottom: 25px;
+      line-height: normal;
     }
   }
 }

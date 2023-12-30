@@ -10,13 +10,16 @@ const Home = () => {
 
   const { items } = useSelector(selectNewsData);
 
+  const screenWidth = window.screen.width;
+  const limit = screenWidth > 638 ? 9 : 3;
+
   React.useEffect(() => {
     document.title = 'ИООО "Союз композиторов"';
   }, []);
 
   React.useEffect(() => {
-    dispatch(fetchNews({ currentPage: 1, limit: 6 }));
-  }, [dispatch]);
+    dispatch(fetchNews({ currentPage: 1, limit }));
+  }, [dispatch, limit]);
 
   return (
     <main className='home'>

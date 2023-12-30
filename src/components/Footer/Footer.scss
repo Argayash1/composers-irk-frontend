@@ -115,7 +115,7 @@
   &__menu-heading {
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: var(--footer-text-color);
     @include main-text-font(18, 400, 1.25);
 
     @media screen and (max-width: 1126px) {
@@ -169,7 +169,7 @@
     transition: color 0.3s ease-in-out;
 
     &:hover {
-      color: #fcbe13;
+      color: var(--active-link-color);
     }
 
     @media screen and (max-width: 1126px) {

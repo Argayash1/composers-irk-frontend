@@ -1,4 +1,4 @@
-import { UnionMember } from './membersArray';
+import { UnionMember } from '../redux/unionMember/types';
 
 export const handleScrollToTop = () => {
   window.scrollTo(0, 0);

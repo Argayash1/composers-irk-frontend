@@ -1,7 +1,7 @@
 import { BreadCrumbs, Logo, MainMenu, SearchForm, HeaderIcons } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import './Header.scss';
-import { setOpenSearch, setCloseSearch } from '../../redux/searchSlice/slice';
+import { setOpenSearch, setCloseSearch } from '../../redux/search/slice';
 import { useLocation } from 'react-router-dom';
 import React from 'react';
 import { BurgerMenu } from '../BurgerMenu';

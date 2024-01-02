@@ -1,9 +1,8 @@
-export type News = {
+export type Project = {
   id: string;
-  title: string;
   imageUrl: string;
-  newsText: string;
-  createdAt: string;
+  title: string;
+  description: string;
 };
 
 export enum Status {
@@ -12,14 +11,14 @@ export enum Status {
   ERROR = 'error',
 }
 
-export interface NewsSliceState {
-  items: News[];
+export interface ProjectSliceState {
+  items: Project[];
   status: Status; //'loading' | 'success' | 'error';
   currentPage: number;
   limit: number;
 }
 
-export type SearchNewsParams = {
+export type SearchProjectParams = {
   currentPage: number;
   limit: number;
 };

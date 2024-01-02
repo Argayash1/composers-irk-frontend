@@ -27,34 +27,35 @@ const FullUnionMemberInfo = () => {
     setUnionMember(memberObject);
   }, [id]);
 
-  const handleChangeCategory = (index: number) => {
-    setCategory(index);
-  };
-
   if (!unionMember) {
     return <>Загрузка...</>;
   }
 
-  const tabNames = ['Биография', 'Список сочинений'];
-
   const unionMemberData: string[][] = [unionMember.biography, unionMember.works];
 
-  if (unionMember) {
-    if (unionMember.competitions) {
-      tabNames.push('Конкурсы и фестивали');
-      unionMemberData.push(unionMember.competitions);
-    }
-    if (unionMember.awards) {
-      tabNames.push('Награды');
-      unionMemberData.push(unionMember.awards);
-    }
-    if (unionMember.links) {
-      tabNames.push('Ссылки');
-      unionMemberData.push(unionMember.links);
-    }
-  }
+  const handleGenerateTabNames = () => {
+    const tabNames = ['Биография', 'Список сочинений'];
 
-  const hasComposerScoreOnSite = allScores.some((score) => score.title.includes(unionMember.surname));
+    if (unionMember) {
+      if (unionMember.competitions) {
+        tabNames.push('Конкурсы и фестивали');
+        unionMemberData.push(unionMember.competitions);
+      }
+      if (unionMember.awards) {
+        tabNames.push('Награды');
+        unionMemberData.push(unionMember.awards);
+      }
+      if (unionMember.links) {
+        tabNames.push('Ссылки');
+        unionMemberData.push(unionMember.links);
+      }
+    }
+
+    return tabNames;
+  };
+
+  const hasComposerScoresOnSite = allScores.some((score) => score.title.includes(unionMember.surname));
+  const showCTA = hasComposerScoresOnSite && unionMember.profession === 'Композитор';
 
   return (
     <main className='full-union-member'>
@@ -66,11 +67,13 @@ const FullUnionMemberInfo = () => {
       <section className='full-union-member__container'>
         <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />
         <p className='full-union-member__short-biography'>{unionMember.shortBiography}</p>
-        {unionMember.profession === 'Композитор' && hasComposerScoreOnSite && (
-          <CTA linkText='Ноты композитора' borderColor='grey' path='/scores' />
-        )}
+        {showCTA && <CTA linkText='Ноты композитора' borderColor='grey' path='/scores' />}
       </section>
-      <Tabs tabNamesArray={tabNames} value={сategory} onChangeTab={handleChangeCategory} />
+      <Tabs
+        tabNamesArray={handleGenerateTabNames()}
+        value={сategory}
+        onChangeTab={(index: number) => setCategory(index)}
+      />
       <TextContent textArray={unionMemberData[сategory]} place='full-union-member' />
     </main>
   );

@@ -1,9 +1,7 @@
-export type News = {
+export type Video = {
   id: string;
+  iframeUrl: string;
   title: string;
-  imageUrl: string;
-  newsText: string;
-  createdAt: string;
 };
 
 export enum Status {
@@ -12,14 +10,14 @@ export enum Status {
   ERROR = 'error',
 }
 
-export interface NewsSliceState {
-  items: News[];
+export interface VideoSliceState {
+  items: Video[];
   status: Status; //'loading' | 'success' | 'error';
   currentPage: number;
   limit: number;
 }
 
-export type SearchNewsParams = {
+export type SearchVideoParams = {
   currentPage: number;
   limit: number;
 };

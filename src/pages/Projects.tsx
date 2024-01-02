@@ -3,10 +3,14 @@ import { projectsArray } from '../utils/projectsArray';
 import { ProjectBlock } from '../components/ProjectBlock';
 import { TitleContainer, Pagination, menuItems } from '../components';
 import { useSelector } from 'react-redux';
-import { selectCurrentPage } from '../redux/searchSlice/selectors';
+import { useAppDispatch } from '../redux/store';
+import { selectProjectCurrentPage } from '../redux/project/selectors';
+import { setCurrentPage } from '../redux/project/slice';
 
 const Projects = () => {
-  const currentPage = useSelector(selectCurrentPage);
+  const dispatch = useAppDispatch();
+
+  const currentPage = useSelector(selectProjectCurrentPage);
   const firstItem = currentPage * 4 - 4;
   const lastItam = currentPage * 4;
 
@@ -26,7 +30,12 @@ const Projects = () => {
           </li>
         ))}
       </ul>
-      <Pagination />
+      <Pagination
+        onChangePage={(page) => dispatch(setCurrentPage(page))}
+        onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
+        onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
+        currentPage={currentPage}
+      />
     </main>
   );
 };

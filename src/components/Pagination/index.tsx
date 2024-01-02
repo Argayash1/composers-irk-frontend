@@ -1,15 +1,21 @@
 import React from 'react';
 import './Pagination.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentPage } from '../../redux/searchSlice/selectors';
-import { setCurrentPage } from '../../redux/searchSlice/slice';
 
-export const Pagination = () => {
-  const currentPage = useSelector(selectCurrentPage);
-  const dispatch = useDispatch();
+type PaginationProps = {
+  onSwitchToNextPage: () => void;
+  onSwitchToPreviousPage: () => void;
+  onChangePage: (page: number) => void;
+  currentPage: number;
+};
 
-  type PageNumber = number | string;
+export type PageNumber = number | string;
 
+export const Pagination = ({
+  onSwitchToNextPage,
+  onSwitchToPreviousPage,
+  onChangePage,
+  currentPage,
+}: PaginationProps) => {
   const handleGeneratePageNumbers = () => {
     const pageNumbers: PageNumber[] = [1, 2, 3, 4, 5, 6, 7];
     const ellipsis = '...';
@@ -50,16 +56,16 @@ export const Pagination = () => {
     return true;
   };
 
-  const handleChangePageNumber = (page: PageNumber) => {
+  const handleChangePage = (page: PageNumber) => {
     if (typeof page === 'number') {
-      dispatch(setCurrentPage(page));
+      onChangePage(page);
     }
   };
 
   return (
     <section className='pagination'>
       {currentPage > 1 && (
-        <button className='pagination__button' onClick={() => dispatch(setCurrentPage(currentPage - 1))}>
+        <button className='pagination__button' onClick={onSwitchToPreviousPage}>
           Назад
         </button>
       )}
@@ -75,7 +81,7 @@ export const Pagination = () => {
               className={`pagination__page-number-button ${
                 currentPage === page ? 'pagination__page-number-button_active' : ''
               } `}
-              onClick={() => handleChangePageNumber(page)}
+              onClick={() => handleChangePage(page)}
             >
               {page}
             </button>
@@ -83,7 +89,7 @@ export const Pagination = () => {
         ))}
       </ul>
       {currentPage < 7 && (
-        <button className='pagination__button' onClick={() => dispatch(setCurrentPage(currentPage + 1))}>
+        <button className='pagination__button' onClick={onSwitchToNextPage}>
           Вперёд
         </button>
       )}

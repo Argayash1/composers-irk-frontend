@@ -3,10 +3,14 @@ import { unionMembersArray } from '../utils/membersArray';
 import { TitleContainer, Pagination, UnionMemberBlock, menuItems } from '../components';
 import { compareBySurname } from '../utils/utils';
 import { useSelector } from 'react-redux';
-import { selectCurrentPage } from '../redux/searchSlice/selectors';
+import { setCurrentPage } from '../redux/unionMember/slice';
+import { selectUnionMemberCurrentPage } from '../redux/unionMember/selectors';
+import { useAppDispatch } from '../redux/store';
 
 const UnionMembers: React.FC = () => {
-  const currentPage = useSelector(selectCurrentPage);
+  const dispatch = useAppDispatch();
+
+  const currentPage = useSelector(selectUnionMemberCurrentPage);
 
   const handleSetCardsPerPge = (): number => {
     const screenWidth = window.screen.width;
@@ -46,7 +50,12 @@ const UnionMembers: React.FC = () => {
           </li>
         ))}
       </ul>
-      <Pagination />
+      <Pagination
+        onChangePage={(page) => dispatch(setCurrentPage(page))}
+        onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
+        onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
+        currentPage={currentPage}
+      />
     </main>
   );
 };

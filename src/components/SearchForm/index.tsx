@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchButton, CloseButton, ButtonTypeEnum } from '..';
 import './SearchForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValue, setSearchResults, setErrorText, setCloseSearch } from '../../redux/searchSlice/slice';
+import { setSearchValue, setSearchResults, setErrorText, setCloseSearch } from '../../redux/search/slice';
 import { useNavigate } from 'react-router-dom';
 import { newsArray } from '../../utils/newsArray';
 import { unionMembersArray } from '../../utils/membersArray';

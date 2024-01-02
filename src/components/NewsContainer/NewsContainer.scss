@@ -49,10 +49,6 @@
     gap: 70px 30px;
     justify-items: center;
 
-    // @media screen and (max-width: 1262px) {
-    //   justify-items: center;
-    // }
-
     @media screen and (max-width: 1169px) {
       grid-template-columns: repeat(3, (minmax(216px, 1fr)));
       row-gap: 45px;
@@ -68,6 +64,10 @@
 
     &_place_news {
       row-gap: 72px;
+    }
+
+    &-item {
+      // border: 1px solid red;
     }
   }
 }

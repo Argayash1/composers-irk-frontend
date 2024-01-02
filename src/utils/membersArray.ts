@@ -16,20 +16,7 @@ import yevdokimove from '../assets/images/union-members-yevdokimova.jpg';
 import gorbovskaya from '../assets/images/gorbovskaya.jpg';
 import tcaher from '../assets/images/union-members-tsaher.jpg';
 import puhnarevich from '../assets/images/puhnarevich.jpg';
-
-export type UnionMember = {
-  id: string;
-  imageUrl: string;
-  surname: string;
-  name: string;
-  profession: string;
-  biography: string[];
-  shortBiography: string;
-  works: string[];
-  awards?: string[];
-  competitions?: string[];
-  links?: string[];
-};
+import { UnionMember } from '../redux/unionMember/types';
 
 export const unionMembersArray: UnionMember[] = [
   {

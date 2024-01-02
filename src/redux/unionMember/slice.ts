@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { News, NewsSliceState, Status } from './types';
-import { fetchNews } from './asyncActions';
+import { UnionMember, UniomMemberSliceState, Status } from './types';
+import { fetchUnionMembers } from './asyncActions';
 
-const initialState: NewsSliceState = {
+const initialState: UniomMemberSliceState = {
   items: [],
   status: Status.LOADING,
   currentPage: 1,
   limit: 6,
 };
 
-const newsSlice = createSlice({
-  name: 'news',
+const unionMemberSlice = createSlice({
+  name: 'unionMember',
   initialState,
   reducers: {
-    setItems(state, action: PayloadAction<News[]>) {
+    setItems(state, action: PayloadAction<UnionMember[]>) {
       state.items = action.payload;
     },
 
@@ -25,23 +25,23 @@ const newsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchNews.pending, (state) => {
+    builder.addCase(fetchUnionMembers.pending, (state) => {
       state.status = Status.LOADING;
       state.items = [];
     });
 
-    builder.addCase(fetchNews.fulfilled, (state, action) => {
+    builder.addCase(fetchUnionMembers.fulfilled, (state, action) => {
       state.items = action.payload;
       state.status = Status.SUCCESS;
     });
 
-    builder.addCase(fetchNews.rejected, (state, action) => {
+    builder.addCase(fetchUnionMembers.rejected, (state, action) => {
       state.status = Status.ERROR;
       state.items = [];
     });
   },
 });
 
-export const { setItems, setCurrentPage } = newsSlice.actions;
+export const { setItems, setCurrentPage } = unionMemberSlice.actions;
 
-export default newsSlice.reducer;
+export default unionMemberSlice.reducer;

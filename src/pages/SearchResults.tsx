@@ -1,12 +1,12 @@
 import React from 'react';
 import { CombinedArrayObject, TitleContainer, Pagination, SearchForm, SearchResult } from '../components';
-import { useDispatch, useSelector } from 'react-redux';
-import { setOpenSearch } from '../redux/searchSlice/slice';
-import { RootState } from '../redux/store';
+import { useSelector } from 'react-redux';
+import { setCurrentPage, setOpenSearch } from '../redux/search/slice';
+import { RootState, useAppDispatch } from '../redux/store';
 
 const SearchResults: React.FC = () => {
-  const { searchResults } = useSelector((state: RootState) => state.search);
-  const dispatch = useDispatch();
+  const { searchResults, currentPage } = useSelector((state: RootState) => state.search);
+  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     dispatch(setOpenSearch());
@@ -51,7 +51,12 @@ const SearchResults: React.FC = () => {
       </section>
       {searchResults.length > 0 && (
         <section>
-          <Pagination />
+          <Pagination
+            onChangePage={(page) => dispatch(setCurrentPage(page))}
+            onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
+            onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
+            currentPage={currentPage}
+          />
         </section>
       )}
     </main>

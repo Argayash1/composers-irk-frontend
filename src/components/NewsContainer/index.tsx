@@ -8,10 +8,9 @@ type NewsContainerProps = {
   place?: string;
   itemsArray: News[] | Article[];
   status?: Status;
-  limit: number;
 };
 
-export const NewsContainer = ({ place, itemsArray, status, limit }: NewsContainerProps) => {
+export const NewsContainer = ({ place, itemsArray, status }: NewsContainerProps) => {
   const clientWidth = document.documentElement.clientWidth;
 
   const items = itemsArray.map((item) => (
@@ -20,7 +19,7 @@ export const NewsContainer = ({ place, itemsArray, status, limit }: NewsContaine
     </li>
   ));
 
-  const skeletons = [...new Array(limit)].map((_, index) => (
+  const skeletons = [...new Array(itemsArray.length)].map((_, index) => (
     <li key={index} className='news-container__news-list-item'>
       <NewsSkeleton />
     </li>

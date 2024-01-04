@@ -20,6 +20,7 @@ const newsSlice = createSlice({
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
     },
+
     setLimit: (state, action: PayloadAction<number>) => {
       state.limit = action.payload;
     },
@@ -27,21 +28,31 @@ const newsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchNews.pending, (state) => {
       state.status = Status.LOADING;
-      state.items = [];
     });
 
     builder.addCase(fetchNews.fulfilled, (state, action) => {
-      state.items = action.payload;
-      state.status = Status.SUCCESS;
+      const { data, screenWidth } = action.payload;
+
+      if (screenWidth > 638) {
+        state.items = data;
+        state.status = Status.SUCCESS;
+      } else {
+        console.log('Пришло:', data);
+        const newItems = data.filter((item) => !state.items.some((existingItem) => existingItem.id === item.id));
+
+        state.items = [...state.items, ...newItems];
+        state.status = Status.SUCCESS;
+        console.log('Результат', state.items);
+      }
     });
 
-    builder.addCase(fetchNews.rejected, (state, action) => {
+    builder.addCase(fetchNews.rejected, (state) => {
       state.status = Status.ERROR;
       state.items = [];
     });
   },
 });
 
-export const { setItems, setCurrentPage } = newsSlice.actions;
+export const { setItems, setCurrentPage, setLimit } = newsSlice.actions;
 
 export default newsSlice.reducer;

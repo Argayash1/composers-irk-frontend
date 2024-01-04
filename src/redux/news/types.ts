@@ -6,6 +6,11 @@ export type News = {
   createdAt: string;
 };
 
+export type NewsData = {
+  data: News[];
+  screenWidth: number;
+};
+
 export enum Status {
   LOADING = 'loading',
   SUCCESS = 'success',
@@ -22,4 +27,5 @@ export interface NewsSliceState {
 export type SearchNewsParams = {
   currentPage: number;
   limit: number;
+  screenWidth: number;
 };

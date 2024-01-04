@@ -34,7 +34,7 @@ export const AboutUs = () => {
     <main className='about-us'>
       <TitleContainer name={menuItems[7].name} place='aboutus' path='/' />
       <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={category} />
-      {category === 0 ? <NewsContainer place='aboutus' itemsArray={articles} limit={limit} /> : <OurHistory />}
+      {category === 0 ? <NewsContainer place='aboutus' itemsArray={articles} /> : <OurHistory />}
       {category === 0 && (
         <Pagination
           onChangePage={(page) => dispatch(setCurrentPage(page))}

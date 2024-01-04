@@ -8,5 +8,5 @@ export const fetchNews = createAsyncThunk<NewsData, SearchNewsParams>('news/fetc
     `https://64e36310bac46e480e78b878.mockapi.io/news?page=${currentPage}&limit=${limit}`,
   );
 
-  return { data, screenWidth };
+  return { data, screenWidth, currentPage };
 });

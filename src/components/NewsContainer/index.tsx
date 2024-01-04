@@ -29,6 +29,10 @@ export const NewsContainer = ({ place, itemsArray, status }: NewsContainerProps)
     place === 'news' ? 'news-container__news-list_place_news' : ''
   } ${clientWidth < 1280 ? 'news-container__news-list_gap_tablet' : ''}`;
 
+  React.useEffect(() => {
+    console.log(itemsArray);
+  });
+
   return (
     <section
       className={`news-container ${place === 'main' ? 'news-container_place_main' : ''} ${

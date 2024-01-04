@@ -31,18 +31,16 @@ const newsSlice = createSlice({
     });
 
     builder.addCase(fetchNews.fulfilled, (state, action) => {
-      const { data, screenWidth } = action.payload;
+      const { data, screenWidth, currentPage } = action.payload;
 
-      if (screenWidth > 638) {
-        state.items = data;
-        state.status = Status.SUCCESS;
-      } else {
-        console.log('Пришло:', data);
+      if (screenWidth <= 638 && currentPage > 1) {
         const newItems = data.filter((item) => !state.items.some((existingItem) => existingItem.id === item.id));
 
         state.items = [...state.items, ...newItems];
         state.status = Status.SUCCESS;
-        console.log('Результат', state.items);
+      } else {
+        state.items = data;
+        state.status = Status.SUCCESS;
       }
     });
 

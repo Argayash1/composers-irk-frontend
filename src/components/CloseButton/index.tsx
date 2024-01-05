@@ -1,5 +1,6 @@
 import React from 'react';
 import './CloseButton.scss';
+import clsx from 'clsx';
 
 type CloseButtonProps = {
   onClick: () => void;
@@ -9,9 +10,12 @@ type CloseButtonProps = {
 export const CloseButton = ({ onClick, place }: CloseButtonProps) => {
   return (
     <button
-      className={`close-button ${place === 'burger' ? 'close-button_place_burger' : ''} ${
-        place === 'search' ? 'close-button_place_search' : ''
-      } ${place === 'popup' ? 'close-button_place_popup' : ''}`}
+      className={clsx(
+        'close-button',
+        place === 'burger' && 'close-button_place_burger',
+        place === 'search' && 'close-button_place_search',
+        place === 'popup' && 'close-button_place_popup',
+      )}
       type='button'
       onClick={onClick}
     ></button>

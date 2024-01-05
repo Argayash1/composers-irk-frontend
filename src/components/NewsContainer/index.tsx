@@ -3,14 +3,17 @@ import { NewsBlock, NewsSkeleton } from '../../components';
 import './NewsContainer.scss';
 import { News, Status } from '../../redux/news/types';
 import { Article } from '../../redux/article/types';
+import clsx from 'clsx';
 
 type NewsContainerProps = {
   place?: string;
   itemsArray: News[] | Article[];
   status?: Status;
+  limit?: number;
+  screenWidth: number;
 };
 
-export const NewsContainer = ({ place, itemsArray, status }: NewsContainerProps) => {
+export const NewsContainer = ({ place, itemsArray, status, limit, screenWidth }: NewsContainerProps) => {
   const clientWidth = document.documentElement.clientWidth;
 
   const items = itemsArray.map((item) => (
@@ -19,27 +22,30 @@ export const NewsContainer = ({ place, itemsArray, status }: NewsContainerProps)
     </li>
   ));
 
-  const skeletons = [...new Array(itemsArray.length)].map((_, index) => (
+  const skeletons = [...new Array(limit)].map((_, index) => (
     <li key={index} className='news-container__news-list-item'>
-      <NewsSkeleton />
+      <NewsSkeleton screenWidth={screenWidth} />
     </li>
   ));
 
-  const newsContainerListClassName = `news-container__news-list  ${
-    place === 'news' ? 'news-container__news-list_place_news' : ''
-  } ${clientWidth < 1280 ? 'news-container__news-list_gap_tablet' : ''}`;
+  const newsContainerClassName = clsx(
+    'news-container',
+    place === 'main' && 'news-container_place_main',
+    place === 'news' && 'news-container_place_news',
+    place === 'aboutus' && 'news-container_place_aboutus',
+  );
 
-  React.useEffect(() => {
-    console.log(itemsArray);
-  });
+  const newsContainerListClassName = clsx(
+    'news-container__news-list',
+    place === 'news' && 'news-container__news-list_place_news',
+    clientWidth < 1280 && 'news-container__news-list_gap_tablet',
+  );
 
   return (
-    <section
-      className={`news-container ${place === 'main' ? 'news-container_place_main' : ''} ${
-        place === 'news' ? 'news-container_place_news' : ''
-      }${place === 'aboutus' ? 'news-container_place_aboutus' : ''}`}
-    >
+    <section className={newsContainerClassName}>
       <ul className={newsContainerListClassName}>{status === 'loading' ? skeletons : items}</ul>
     </section>
   );
 };
+
+// status === 'loading' ? skeletons : items

@@ -173,7 +173,7 @@
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-    gap: 40px 24px;
+    gap: 40px 30px;
 
     @media screen and (max-width: 1126px) {
       margin-bottom: 0;

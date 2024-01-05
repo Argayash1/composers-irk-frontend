@@ -57,28 +57,6 @@ const News = () => {
     dispatch(fetchNews({ currentPage, limit: handleSetLimit(), screenWidth }));
   }, [dispatch, currentPage, screenWidth]);
 
-  // const handleScroll = React.useCallback(() => {
-  //   // if (
-  //   //   screenWidth <= 1126 &&
-  //   //   !fetching &&
-  //   //   e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100
-  //   // ) {
-  //   //   setFetching(true);
-  //   //   dispatch(setCurrentPage(currentPage + 1));
-  //   //   setTimeout(() => {
-  //   //     setFetching(false);
-  //   //   }, 500);
-  //   // }
-  //   const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
-  //   if (screenWidth <= 1126 && !fetching && scrollTop + clientHeight === scrollHeight) {
-  //     setFetching(true);
-  //     dispatch(setCurrentPage(currentPage + 1));
-  //     setTimeout(() => {
-  //       setFetching(false);
-  //     }, 500);
-  //   }
-  // }, [currentPage, dispatch, fetching, screenWidth]);
-
   const handleScroll = React.useCallback(() => {
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     const scrollThreshold = 100; // Допустимая погрешность
@@ -102,7 +80,13 @@ const News = () => {
   return (
     <main className='news'>
       <TitleContainer name={menuItems[1].name} path='/' />
-      <NewsContainer place='news' itemsArray={items} status={status} />
+      <NewsContainer
+        place='news'
+        itemsArray={items}
+        status={status}
+        limit={screenWidth > 638 ? 9 : 4}
+        screenWidth={screenWidth}
+      />
       <Pagination
         onChangePage={(page) => dispatch(setCurrentPage(page))}
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}

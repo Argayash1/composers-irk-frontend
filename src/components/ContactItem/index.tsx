@@ -1,5 +1,6 @@
 import React from 'react';
 import './ContactItem.scss';
+import clsx from 'clsx';
 
 type ContactItemProps = {
   svgIconElement?: React.ReactNode;
@@ -10,22 +11,19 @@ type ContactItemProps = {
 
 export const ContactItem = ({ iconUrl, text, place, svgIconElement }: ContactItemProps) => {
   const hrefProperty = text.includes('@') ? `mailto: ${text}` : text.includes('+') ? `tel:${text}` : `https://${text}`;
-  const contactItemTextClassName = `contact-item__text ${
-    place === 'contacts' ? 'contact-item__text_place_contacts' : ''
-  }`;
-  const contactItemIconClassName = `contact-item__icon ${
-    place === 'contacts' ? 'contact-item__icon_place_contacts' : ''
-  }`;
 
   return (
     <a className='contact-item' href={hrefProperty}>
       {place === 'contacts' ? (
-        <div className={contactItemIconClassName} style={{ backgroundImage: `url(${iconUrl})` }} />
+        <div
+          className={clsx('contact-item__icon', place === 'contacts' && 'contact-item__icon_place_contacts')}
+          style={{ backgroundImage: `url(${iconUrl})` }}
+        />
       ) : (
         svgIconElement
       )}
 
-      <p className={contactItemTextClassName}>{text}</p>
+      <p className={clsx('contact-item__text', place === 'contacts' && 'contact-item__text_place_contacts')}>{text}</p>
     </a>
   );
 };

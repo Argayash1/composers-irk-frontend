@@ -61,7 +61,13 @@ const Home = () => {
     <main className='home'>
       <BrandBanner />
       <TitleContainer name={menuItems[1].name} place='main' path='/news' />
-      <NewsContainer itemsArray={items} place='main' status={status} />
+      <NewsContainer
+        itemsArray={items}
+        place='main'
+        status={status}
+        limit={screenWidth > 638 ? 6 : 3}
+        screenWidth={screenWidth}
+      />
     </main>
   );
 };

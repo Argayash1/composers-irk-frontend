@@ -8,7 +8,7 @@ type VolumelineContainerProps = {
   onHover: () => void;
   onDisHover: () => void;
   onDisHoverVolumeContainer: () => void;
-  onDrag: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onDrag: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void;
   onMuteButtonClick: () => void;
   volume: number;
   isVolumeContainerHovered: boolean;
@@ -58,6 +58,7 @@ export const VolumelineContainer = ({
         onMouseEnter={() => setIsVolumeLineHovered(true)}
         onMouseLeave={() => !isChangeVolume && setIsVolumeLineHovered(false)}
         onMouseMove={onDrag}
+        onTouchMove={onDrag}
       >
         <ProgressBarContainer
           progressBarStyle={volumeProgressBarStyle}

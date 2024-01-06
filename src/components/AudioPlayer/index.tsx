@@ -49,23 +49,53 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
     isChangeVolume.current = false;
   };
 
-  const handlToggleChangeTime = () => {
-    setIsChangeTime(false);
-  };
+  // const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+  //   const audioPlayer = audioRef.current;
 
-  const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+  //   if (audioPlayer) {
+  //     if (event.buttons !== 1) {
+  //       return;
+  //     }
+
+  //     isChangeVolume.current = true;
+
+  //     const volumelineContainer = event.currentTarget;
+  //     const volumelineContainerRect = volumelineContainer.getBoundingClientRect();
+  //     const offsetX = event.clientX - volumelineContainerRect.left;
+
+  //     const newProgress = (offsetX / volumelineContainer.offsetWidth) * 100;
+  //     const clampedVolume = Math.max(0, Math.min(newProgress, 100));
+
+  //     audioPlayer.volume = clampedVolume / 100;
+
+  //     setVolume(clampedVolume);
+  //   }
+  // };
+
+  const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     const audioPlayer = audioRef.current;
 
     if (audioPlayer) {
-      if (event.buttons !== 1) {
+      if (
+        (event as React.MouseEvent<HTMLDivElement>).buttons !== undefined &&
+        (event as React.MouseEvent<HTMLDivElement>).buttons !== 1
+      ) {
         return;
+      }
+
+      if ((event as React.TouchEvent<HTMLDivElement>).touches !== undefined) {
+        event.stopPropagation();
+        event.preventDefault();
       }
 
       isChangeVolume.current = true;
 
       const volumelineContainer = event.currentTarget;
       const volumelineContainerRect = volumelineContainer.getBoundingClientRect();
-      const offsetX = event.clientX - volumelineContainerRect.left;
+
+      const clientX =
+        'touches' in event ? (event as React.TouchEvent<HTMLDivElement>).touches[0].clientX : event.clientX;
+      const offsetX = clientX - volumelineContainerRect.left;
 
       const newProgress = (offsetX / volumelineContainer.offsetWidth) * 100;
       const clampedVolume = Math.max(0, Math.min(newProgress, 100));
@@ -256,7 +286,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
         <TimelineContainer
           onDrag={handleProgressBarDrag}
           onDragEnd={handleProgressBarDragEnd}
-          onToggleChangeTime={handlToggleChangeTime}
+          onToggleChangeTime={() => setIsChangeTime(false)}
           isVolumeContainerHovered={isVolumeContainerHovered}
           isChangeTime={isChangeTime}
           progress={progress}

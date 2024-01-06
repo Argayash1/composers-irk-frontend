@@ -9,19 +9,15 @@ const Reports = () => {
   const [reportYear, setReportYear] = React.useState<number>(0);
   const [isReportPopupOpen, setReportPopupOpen] = React.useState<boolean>(false);
 
-  const handleChangeCategory = (index: number) => {
-    setReportYear(index);
-  };
-
   React.useEffect(() => {
     document.title = 'Отчёты';
   }, []);
 
   return (
     <main className='reports'>
-      <TitleContainer name={menuItems[6].name} place='reports' path='/' />
+      <TitleContainer name={menuItems[6].name} place='reports' />
       <section className='reports__main-content'>
-        <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={reportYear} />
+        <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setReportYear(index)} value={reportYear} />
         <img
           className='reports__image'
           src={reportsArray[reportYear].imageUrl}

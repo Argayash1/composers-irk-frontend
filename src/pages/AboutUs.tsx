@@ -16,10 +16,6 @@ export const AboutUs = () => {
   const [category, setCategory] = React.useState<number>(0);
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
 
-  const handleChangeCategory = (index: number) => {
-    setCategory(index);
-  };
-
   React.useEffect(() => {
     document.title = 'Про нас';
   }, []);
@@ -55,10 +51,15 @@ export const AboutUs = () => {
 
   return (
     <main className='about-us'>
-      <TitleContainer name={menuItems[7].name} place='aboutus' path='/' />
-      <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeCategory} value={category} />
+      <TitleContainer name={menuItems[7].name} place='aboutus' />
+      <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
       {category === 0 ? (
-        <NewsContainer place='aboutus' itemsArray={articles} screenWidth={screenWidth} />
+        <NewsContainer
+          place='aboutus'
+          itemsArray={articles}
+          screenWidth={screenWidth}
+          limit={screenWidth > 638 ? 6 : 4}
+        />
       ) : (
         <OurHistory />
       )}

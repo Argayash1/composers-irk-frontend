@@ -6,11 +6,11 @@ import clsx from 'clsx';
 
 type PageTitleProps = {
   name: string;
-  path: string;
+  path?: string;
   place?: string;
 };
 
-export const TitleContainer = ({ name, path, place }: PageTitleProps) => {
+export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
   const pageTitleClass = clsx(
     'title-container__page-title',
     place === 'main' && 'title-container__page-title_place_main',

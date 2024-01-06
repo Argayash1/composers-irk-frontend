@@ -79,7 +79,7 @@ const News = () => {
 
   return (
     <main className='news'>
-      <TitleContainer name={menuItems[1].name} path='/' />
+      <TitleContainer name={menuItems[1].name} />
       <NewsContainer
         place='news'
         itemsArray={items}

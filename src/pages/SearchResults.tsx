@@ -15,7 +15,7 @@ const SearchResults: React.FC = () => {
   return (
     <main className='search-results'>
       <section>
-        <TitleContainer name='Поиск' place='search-results' path='/' />
+        <TitleContainer name='Поиск' place='search-results' />
         <SearchForm place='search-results' />
         <h2 className='search-results__title'>Результаты поиска</h2>
         {searchResults.length === 0 ? (

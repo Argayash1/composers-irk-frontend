@@ -40,3 +40,4 @@ export * from './TimelineContainer';
 export * from './VolumelineContainer';
 export * from './ProgressBarContainer';
 export * from './NewsSkeleton';
+export * from './UnionMemberSkeleton';

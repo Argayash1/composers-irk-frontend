@@ -22,7 +22,7 @@ const Projects = () => {
 
   return (
     <main className='projects'>
-      <TitleContainer name={menuItems[3].name} place='projects' path='/' />
+      <TitleContainer name={menuItems[3].name} place='projects' />
       <ul className='projects__list'>
         {slicedProjectsArray.map((project, index) => (
           <li key={index}>

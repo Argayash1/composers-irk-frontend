@@ -15,10 +15,6 @@ const vocalScores = allScores.filter((score) => score.category === 'voice');
 const Scores = () => {
   const [scoreCategory, setScoreCategory] = React.useState<number>(0);
 
-  const handleChangeScoreCategory = (index: number) => {
-    setScoreCategory(index);
-  };
-
   React.useEffect(() => {
     document.title = 'Ноты';
   }, []);
@@ -27,8 +23,8 @@ const Scores = () => {
 
   return (
     <main className='scores'>
-      <TitleContainer name={menuItems[4].name} path='/' />
-      <Tabs tabNamesArray={tabNames} onChangeTab={handleChangeScoreCategory} value={scoreCategory} />
+      <TitleContainer name={menuItems[4].name} />
+      <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setScoreCategory(index)} value={scoreCategory} />
       <ul className='scores__list'>
         {scoreItems.map((scoreItem, index) => (
           <li key={index}>

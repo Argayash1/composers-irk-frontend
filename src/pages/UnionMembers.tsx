@@ -1,6 +1,6 @@
 import React from 'react';
 import { unionMembersArray } from '../utils/membersArray';
-import { TitleContainer, Pagination, UnionMemberBlock, menuItems } from '../components';
+import { TitleContainer, Pagination, UnionMemberBlock, menuItems, UnionMemberSkeleton } from '../components';
 import { compareBySurname } from '../utils/utils';
 import { useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/unionMember/slice';
@@ -11,10 +11,32 @@ const UnionMembers: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const currentPage = useSelector(selectUnionMemberCurrentPage);
+  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    let timeoutId: NodeJS.Timeout;
+
+    const delayedHandleResize = () => {
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        handleResize();
+      }, 500);
+    };
+
+    window.addEventListener('resize', delayedHandleResize);
+
+    return () => {
+      window.removeEventListener('resize', delayedHandleResize);
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   const handleSetCardsPerPge = (): number => {
-    const screenWidth = window.screen.width;
-
     if (screenWidth >= 1170) {
       return 12;
     }
@@ -40,16 +62,22 @@ const UnionMembers: React.FC = () => {
     document.title = 'Состав';
   }, []);
 
+  const unionMembers = membersArraySortedBySurnameAndSliced.map((member, index) => (
+    <li key={index}>
+      <UnionMemberBlock {...member} />
+    </li>
+  ));
+
+  const skeletons = [...new Array(cardsPerPage)].map((_, index) => (
+    <li key={index} className='news-container__news-list-item'>
+      <UnionMemberSkeleton screenWidth={screenWidth} />
+    </li>
+  ));
+
   return (
     <main className='union-members'>
-      <TitleContainer name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' path='/' />
-      <ul className='union-members__list'>
-        {membersArraySortedBySurnameAndSliced.map((member, index) => (
-          <li key={index}>
-            <UnionMemberBlock {...member} />
-          </li>
-        ))}
-      </ul>
+      <TitleContainer name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' />
+      <ul className='union-members__list'>{unionMembers ? unionMembers : skeletons}</ul>
       <Pagination
         onChangePage={(page) => dispatch(setCurrentPage(page))}
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}

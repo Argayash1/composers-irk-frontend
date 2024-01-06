@@ -5,7 +5,7 @@ const Search = () => {
   return (
     <main className='search-page'>
       <section className='search-page__title-container'>
-        <TitleContainer name='Поиск' place='search' path='/' />
+        <TitleContainer name='Поиск' place='search' />
       </section>
       <section>
         <SearchForm place='search' />

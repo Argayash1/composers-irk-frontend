@@ -17,7 +17,7 @@ export const Contacts = () => {
 
   return (
     <main className='contacts'>
-      <TitleContainer name={menuItems[8].name} path='/' />
+      <TitleContainer name={menuItems[8].name} />
       <ul className='contacts__list'>
         {contactsData.map((contact, index) => (
           <li key={index} className='contacts__list-item'>

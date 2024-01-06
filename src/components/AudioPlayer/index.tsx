@@ -106,11 +106,14 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
     }
   };
 
-  const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     const audioPlayer = audioRef.current;
-    // Получаем информацию о положении курсора относительно полосы времени
+
     if (audioPlayer) {
-      if (event.buttons !== 1) {
+      if (
+        (event.type === 'mousemove' && 'buttons' in event && event.buttons !== 1) ||
+        (event.type === 'touchmove' && 'touches' in event && event.touches.length !== 1)
+      ) {
         return;
       }
 
@@ -118,19 +121,45 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
 
       const timelineContainer = event.currentTarget;
       const timelineContainerRect = timelineContainer.getBoundingClientRect();
-      const offsetX = event.clientX - timelineContainerRect.left;
+      const offsetX =
+        event.type === 'mousemove'
+          ? (event as React.MouseEvent<HTMLDivElement>).clientX - timelineContainerRect.left
+          : (event as React.TouchEvent<HTMLDivElement>).touches[0].clientX - timelineContainerRect.left;
 
-      // Вычисляем новый прогресс воспроизведения на основе смещения
       const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
 
-      // Устанавливаем новый прогресс воспроизведения и обновляем полосу прогресса
       setProgress(newProgress);
 
-      // Вычисляем новую позицию текущего времени на основе нового прогресса
       const newCurrentTime = (newProgress / 100) * totalDuration;
       audioPlayer.currentTime = newCurrentTime;
     }
   };
+
+  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+  //   const audioPlayer = audioRef.current;
+  //   // Получаем информацию о положении курсора относительно полосы времени
+  //   if (audioPlayer) {
+  //     if (event.buttons !== 1) {
+  //       return;
+  //     }
+
+  //     setIsChangeTime(true);
+
+  //     const timelineContainer = event.currentTarget;
+  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
+  //     const offsetX = event.clientX - timelineContainerRect.left;
+
+  //     // Вычисляем новый прогресс воспроизведения на основе смещения
+  //     const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
+
+  //     // Устанавливаем новый прогресс воспроизведения и обновляем полосу прогресса
+  //     setProgress(newProgress);
+
+  //     // Вычисляем новую позицию текущего времени на основе нового прогресса
+  //     const newCurrentTime = (newProgress / 100) * totalDuration;
+  //     audioPlayer.currentTime = newCurrentTime;
+  //   }
+  // };
 
   const handleProgressBarDragEnd = () => {
     const audioPlayer = audioRef.current;

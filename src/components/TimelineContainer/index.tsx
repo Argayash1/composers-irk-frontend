@@ -4,7 +4,7 @@ import { ProgressBarContainer } from '../ProgressBarContainer';
 import { ButtonClick } from '../AudioPlayer';
 
 type TimelineContainerProps = {
-  onDrag: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onDrag: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void;
   onDragEnd: () => void;
   onToggleChangeTime: () => void;
   isVolumeContainerHovered: boolean;
@@ -54,6 +54,7 @@ export const TimelineContainer = ({
       onMouseLeave={() => !isChangeTime && setIsTimelineContainerHovered(false)}
       // onTouchMove={onDrag}
       onMouseMove={onDrag}
+      onTouchMove={onDrag}
       onMouseUp={onDragEnd}
       ref={timeLineRef}
     >

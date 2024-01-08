@@ -12,6 +12,7 @@ import {
 
 type AudioPlayerProps = {
   src: string;
+  screenWidth: number;
 };
 
 export type ButtonClick = MouseEvent & {
@@ -24,7 +25,13 @@ function isTouchEvent(
   return 'touches' in event;
 }
 
-export const AudioPlayer = ({ src }: AudioPlayerProps) => {
+function isMouseEvent(
+  event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+): event is React.MouseEvent<HTMLDivElement> {
+  return 'buttons' in event;
+}
+
+export const AudioPlayer = ({ src, screenWidth }: AudioPlayerProps) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
@@ -49,19 +56,26 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
     isChangeVolume.current = false;
   };
 
-  // const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+  // const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
   //   const audioPlayer = audioRef.current;
 
   //   if (audioPlayer) {
-  //     if (event.buttons !== 1) {
+  //     if (isMouseEvent(event) && event.buttons !== 1) {
   //       return;
+  //     }
+
+  //     if (isTouchEvent(event)) {
+  //       event.stopPropagation();
+  //       event.preventDefault();
   //     }
 
   //     isChangeVolume.current = true;
 
   //     const volumelineContainer = event.currentTarget;
   //     const volumelineContainerRect = volumelineContainer.getBoundingClientRect();
-  //     const offsetX = event.clientX - volumelineContainerRect.left;
+
+  //     const clientX = isTouchEvent(event) ? event.touches[0].clientX : event.clientX;
+  //     const offsetX = clientX - volumelineContainerRect.left;
 
   //     const newProgress = (offsetX / volumelineContainer.offsetWidth) * 100;
   //     const clampedVolume = Math.max(0, Math.min(newProgress, 100));
@@ -72,30 +86,19 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   //   }
   // };
 
-  const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+  const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
     const audioPlayer = audioRef.current;
 
     if (audioPlayer) {
-      if (
-        (event as React.MouseEvent<HTMLDivElement>).buttons !== undefined &&
-        (event as React.MouseEvent<HTMLDivElement>).buttons !== 1
-      ) {
+      if (event.buttons !== 1) {
         return;
-      }
-
-      if ((event as React.TouchEvent<HTMLDivElement>).touches !== undefined) {
-        event.stopPropagation();
-        event.preventDefault();
       }
 
       isChangeVolume.current = true;
 
       const volumelineContainer = event.currentTarget;
       const volumelineContainerRect = volumelineContainer.getBoundingClientRect();
-
-      const clientX =
-        'touches' in event ? (event as React.TouchEvent<HTMLDivElement>).touches[0].clientX : event.clientX;
-      const offsetX = clientX - volumelineContainerRect.left;
+      const offsetX = event.clientX - volumelineContainerRect.left;
 
       const newProgress = (offsetX / volumelineContainer.offsetWidth) * 100;
       const clampedVolume = Math.max(0, Math.min(newProgress, 100));
@@ -110,10 +113,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
     const audioPlayer = audioRef.current;
 
     if (audioPlayer) {
-      if (
-        (event.type === 'mousemove' && 'buttons' in event && event.buttons !== 1) ||
-        (event.type === 'touchmove' && 'touches' in event && event.touches.length !== 1)
-      ) {
+      if ((isTouchEvent(event) && event.touches.length !== 1) || (isMouseEvent(event) && event.buttons !== 1)) {
         return;
       }
 
@@ -121,12 +121,13 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
 
       const timelineContainer = event.currentTarget;
       const timelineContainerRect = timelineContainer.getBoundingClientRect();
-      const offsetX =
-        event.type === 'mousemove'
-          ? (event as React.MouseEvent<HTMLDivElement>).clientX - timelineContainerRect.left
-          : (event as React.TouchEvent<HTMLDivElement>).touches[0].clientX - timelineContainerRect.left;
 
-      const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
+      const offsetX = isTouchEvent(event)
+        ? event.touches[0].clientX - timelineContainerRect.left
+        : event.clientX - timelineContainerRect.left;
+
+      const timelineContainerWidth = timelineContainer.offsetWidth;
+      const newProgress = (offsetX / timelineContainerWidth) * 100;
 
       setProgress(newProgress);
 
@@ -135,11 +136,11 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
     }
   };
 
-  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
   //   const audioPlayer = audioRef.current;
-  //   // Получаем информацию о положении курсора относительно полосы времени
+
   //   if (audioPlayer) {
-  //     if (event.buttons !== 1) {
+  //     if ((isTouchEvent(event) && event.touches.length !== 1) || (isMouseEvent(event) && event.buttons !== 1)) {
   //       return;
   //     }
 
@@ -147,15 +148,44 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
 
   //     const timelineContainer = event.currentTarget;
   //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
-  //     const offsetX = event.clientX - timelineContainerRect.left;
 
-  //     // Вычисляем новый прогресс воспроизведения на основе смещения
+  //     const offsetX = isTouchEvent(event)
+  //       ? event.touches[0].clientX - timelineContainerRect.left
+  //       : event.clientX - timelineContainerRect.left;
+
   //     const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
 
-  //     // Устанавливаем новый прогресс воспроизведения и обновляем полосу прогресса
   //     setProgress(newProgress);
 
-  //     // Вычисляем новую позицию текущего времени на основе нового прогресса
+  //     const newCurrentTime = (newProgress / 100) * totalDuration;
+  //     audioPlayer.currentTime = newCurrentTime;
+  //   }
+  // };
+
+  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+  //   const audioPlayer = audioRef.current;
+
+  //   if (audioPlayer) {
+  //     if (
+  //       (event.type === 'mousemove' && 'buttons' in event && event.buttons !== 1) ||
+  //       (event.type === 'touchmove' && 'touches' in event && event.touches.length !== 1)
+  //     ) {
+  //       return;
+  //     }
+
+  //     setIsChangeTime(true);
+
+  //     const timelineContainer = event.currentTarget;
+  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
+  //     const offsetX =
+  //       event.type === 'mousemove'
+  //         ? (event as React.MouseEvent<HTMLDivElement>).clientX - timelineContainerRect.left
+  //         : (event as React.TouchEvent<HTMLDivElement>).touches[0].clientX - timelineContainerRect.left;
+
+  //     const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
+
+  //     setProgress(newProgress);
+
   //     const newCurrentTime = (newProgress / 100) * totalDuration;
   //     audioPlayer.currentTime = newCurrentTime;
   //   }
@@ -319,6 +349,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
           isVolumeContainerHovered={isVolumeContainerHovered}
           isChangeTime={isChangeTime}
           progress={progress}
+          screenWidth={screenWidth}
         />
         <VolumelineContainer
           onHover={() => setIsVolumeContainerHovered(true)}
@@ -330,6 +361,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
           isVolumeContainerHovered={isVolumeContainerHovered}
           isChangeVolume={isChangeVolume.current}
           isMuted={isMuted}
+          screenWidth={screenWidth}
         />
         <MoreButton onClick={handleOpenMoreMenu} ref={buttonRef} />
         <MoreMenu

@@ -10,6 +10,7 @@ type TimelineContainerProps = {
   isVolumeContainerHovered: boolean;
   isChangeTime: boolean;
   progress: number;
+  screenWidth: number;
 };
 
 export const TimelineContainer = ({
@@ -19,19 +20,23 @@ export const TimelineContainer = ({
   isVolumeContainerHovered,
   isChangeTime,
   progress,
+  screenWidth,
 }: TimelineContainerProps) => {
   const timeLineRef = React.useRef<HTMLDivElement>(null);
 
   const [isTimelineContainerHovered, setIsTimelineContainerHovered] = React.useState<boolean>(false);
 
-  const screenWidth = window.screen.width;
+  const screenWidth1 = window.innerWidth;
+
   const fullProgressBarWidth =
-    screenWidth > 810 ? 521 : screenWidth <= 810 && screenWidth > 612 ? 334 : screenWidth <= 612 ? 91 : 0;
+    screenWidth1 > 810 ? 521 : screenWidth1 <= 810 && screenWidth1 > 612 ? 334 : screenWidth1 <= 612 ? 91 : 0;
   const smallProgressBarWidth =
-    screenWidth > 810 ? 390 : screenWidth <= 810 && screenWidth > 612 ? 250 : screenWidth <= 612 ? 68 : 0;
+    screenWidth1 > 810 ? 390 : screenWidth1 <= 810 && screenWidth1 > 612 ? 250 : screenWidth1 <= 612 ? 68 : 0;
   const maxProgressBarWidth = !isVolumeContainerHovered ? fullProgressBarWidth : smallProgressBarWidth; // Максимальная ширина полосы воспроизведения
   const progressBarWidth = progress * (maxProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
-  const progressBarStyle = { width: `${progressBarWidth}px` }; // Стиль с новой шириной
+  const progressBarStyle = {
+    width: `${progressBarWidth > maxProgressBarWidth ? maxProgressBarWidth : progressBarWidth}px`,
+  }; // Стиль с новой шириной
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,7 +57,6 @@ export const TimelineContainer = ({
       }`}
       onMouseEnter={() => setIsTimelineContainerHovered(true)}
       onMouseLeave={() => !isChangeTime && setIsTimelineContainerHovered(false)}
-      // onTouchMove={onDrag}
       onMouseMove={onDrag}
       onTouchMove={onDrag}
       onMouseUp={onDragEnd}

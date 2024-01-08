@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .main-menu {
   margin-left: 43px;
 
@@ -13,7 +15,7 @@
     width: 350px;
     height: 100%;
     margin-left: 0;
-    background-color: #fff;
+    background-color: var(--main-background-color);
     box-sizing: border-box;
     padding: 21.14px 39.5px 0 35px;
     display: flex;
@@ -34,11 +36,8 @@
     text-decoration: none;
     color: #282f30;
     margin-bottom: 32px;
-    font-family: Manrope;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+    @include main-text-font(16, 500);
+
     align-items: center;
     display: none;
 
@@ -47,10 +46,10 @@
     }
 
     &:active {
-      color: #62767c;
+      color: var(--hover-off-active-link-color);
 
       svg path {
-        stroke: #62767c;
+        stroke: var(--hover-off-active-link-color);
       }
     }
 
@@ -74,19 +73,15 @@
     &-link {
       text-decoration: none;
       color: #282f30;
-      font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 125%; /* 20px */
+      @include main-text-font(16, 400, 1.25);
+
       transition: color 0.2s ease-in-out;
 
       &:not(.main-menu__list-link_active):hover {
-        color: #62767c;
+        color: var(--hover-off-active-link-color);
       }
 
       &_active {
-        font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
         color: var(--active-link-color);
       }
 

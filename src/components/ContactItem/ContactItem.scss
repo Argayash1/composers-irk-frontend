@@ -25,11 +25,23 @@
     transition: all 0.3s ease-in-out;
   }
 
-  &:hover {
-    color: var(--active-link-color);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--active-link-color);
 
-    svg path {
-      stroke: var(--active-link-color);
+      svg path {
+        stroke: var(--active-link-color);
+      }
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      color: var(--hover-off-active-link-color);
+
+      svg path {
+        stroke: var(--hover-off-active-link-color);
+      }
     }
   }
 

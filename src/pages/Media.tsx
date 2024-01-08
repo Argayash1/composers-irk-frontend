@@ -12,16 +12,40 @@ const Media = () => {
   const currentPage = useSelector(selectVideoCurrentPage);
 
   const [category, setCategory] = React.useState<number>(0);
+  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
 
   React.useEffect(() => {
     document.title = 'Медиа';
+  }, []);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    let timeoutId: NodeJS.Timeout;
+
+    const delayedHandleResize = () => {
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        handleResize();
+      }, 300);
+    };
+
+    window.addEventListener('resize', delayedHandleResize);
+
+    return () => {
+      window.removeEventListener('resize', delayedHandleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
     <main className='media'>
       <TitleContainer name={menuItems[5].name} place='media' />
       <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
-      {category === 0 ? <AudioRecordings /> : <VideoRecordings />}
+      {category === 0 ? <AudioRecordings screenWidth={screenWidth} /> : <VideoRecordings />}
       {category === 1 && (
         <Pagination
           onChangePage={(page) => dispatch(setCurrentPage(page))}

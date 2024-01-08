@@ -7,6 +7,10 @@
   margin-bottom: 10px;
   padding: 0;
 
+  &:hover .logo__title {
+    color: #62767c;
+  }
+
   @media screen and (max-width: 1126px) {
     margin-bottom: 0;
     align-self: center;
@@ -84,10 +88,6 @@
     margin: 3px 0 0 10px;
     padding: 0;
     transition: color 0.2s ease-in-out;
-
-    &:hover {
-      color: #62767c;
-    }
 
     @media screen and (max-width: 1126px) {
       font-size: 10px;

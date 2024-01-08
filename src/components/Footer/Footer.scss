@@ -179,8 +179,16 @@
 
     transition: color 0.3s ease-in-out;
 
-    &:hover {
-      color: var(--active-link-color);
+    @media (hover: hover) {
+      &:hover {
+        color: var(--active-link-color);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        color: var(--hover-off-active-link-color);
+      }
     }
 
     @media screen and (max-width: 1126px) {

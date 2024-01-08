@@ -4,7 +4,11 @@ import './AudioRecordings.scss';
 import { AudioPlayer } from '../AudioPlayer';
 import { audioItems } from '../../utils/audioItems';
 
-export const AudioRecordings = () => {
+type AudioRecordingsProps = {
+  screenWidth: number;
+};
+
+export const AudioRecordings = ({ screenWidth }: AudioRecordingsProps) => {
   return (
     <ul className='audio-recordings'>
       {audioItems.map((audioItem, index) => (
@@ -12,7 +16,7 @@ export const AudioRecordings = () => {
           <h2 className='audio-recordings__item-title'>
             {audioItem.composer + ' ' + audioItem.title + ' ' + audioItem.performer}
           </h2>
-          <AudioPlayer src={audioItem.audioUrl} />
+          <AudioPlayer src={audioItem.audioUrl} screenWidth={screenWidth} />
         </li>
       ))}
     </ul>

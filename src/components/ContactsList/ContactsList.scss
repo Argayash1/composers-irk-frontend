@@ -5,7 +5,7 @@
   list-style: none;
   margin: 27px 0 0;
   padding: 0;
-  color: #fff;
+  color: var(--footer-text-color);
 
   @media screen and (max-width: 1126px) {
     margin-top: 25px;
@@ -20,7 +20,7 @@
   &__item {
     &:nth-child(3):hover {
       a svg path {
-        fill: #fcbe13;
+        fill: var(--active-link-color);
       }
     }
   }

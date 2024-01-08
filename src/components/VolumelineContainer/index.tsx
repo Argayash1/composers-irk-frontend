@@ -8,12 +8,13 @@ type VolumelineContainerProps = {
   onHover: () => void;
   onDisHover: () => void;
   onDisHoverVolumeContainer: () => void;
-  onDrag: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void;
+  onDrag: (event: React.MouseEvent<HTMLDivElement>) => void;
   onMuteButtonClick: () => void;
   volume: number;
   isVolumeContainerHovered: boolean;
   isChangeVolume: boolean;
   isMuted: boolean;
+  screenWidth: number;
 };
 
 export const VolumelineContainer = ({
@@ -26,12 +27,12 @@ export const VolumelineContainer = ({
   isVolumeContainerHovered,
   isChangeVolume,
   isMuted,
+  screenWidth,
 }: VolumelineContainerProps) => {
   const volumeRef = React.useRef<HTMLDivElement>(null);
 
   const [isVolumeLineHovered, setIsVolumeLineHovered] = React.useState<boolean>(false);
 
-  const screenWidth = window.screen.width;
   const maxVolumeProgressBarWidth =
     screenWidth > 810 ? 110 : screenWidth <= 810 && screenWidth > 612 ? 70.5 : screenWidth <= 612 ? 19.2 : 0;
   const volumeProgressBarWidth = volume * (maxVolumeProgressBarWidth / 100); // Вычисление ширины полосы воспроизведения с учетом прогресса
@@ -58,7 +59,6 @@ export const VolumelineContainer = ({
         onMouseEnter={() => setIsVolumeLineHovered(true)}
         onMouseLeave={() => !isChangeVolume && setIsVolumeLineHovered(false)}
         onMouseMove={onDrag}
-        onTouchMove={onDrag}
       >
         <ProgressBarContainer
           progressBarStyle={volumeProgressBarStyle}

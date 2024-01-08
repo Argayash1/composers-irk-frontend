@@ -1,0 +1,53 @@
+.union-member-skeleton {
+  width: 255px;
+  height: 370px;
+
+  @media screen and (max-width: 891px) {
+    width: 217px;
+    height: 316px;
+  }
+
+  @media screen and (max-width: 482px) {
+    width: 137px;
+    height: 210px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 255px;
+
+    @media screen and (max-width: 891px) {
+      height: 217px;
+    }
+
+    @media screen and (max-width: 482px) {
+      height: 137px;
+    }
+  }
+
+  &__name {
+    width: 100%;
+    height: 44px;
+
+    @media screen and (max-width: 891px) {
+      height: 37px;
+    }
+
+    @media screen and (max-width: 482px) {
+      height: 34px;
+    }
+  }
+
+  &__profession {
+    width: 100%;
+    height: 46px;
+
+    @media screen and (max-width: 891px) {
+      height: 37px;
+    }
+
+    @media screen and (max-width: 482px) {
+      height: 29px;
+    }
+  }
+}

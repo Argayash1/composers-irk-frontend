@@ -134,9 +134,38 @@ export const AudioPlayer = ({ src, screenWidth }: AudioPlayerProps) => {
       setProgress(newProgress);
 
       const newCurrentTime = (newProgress / 100) * totalDuration;
-      audioPlayer.currentTime = newCurrentTime;
+
+      // Используйте requestAnimationFrame для асинхронного обновления времени воспроизведения
+      requestAnimationFrame(() => {
+        audioPlayer.currentTime = newCurrentTime;
+      });
     }
   };
+
+  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+  //   const audioPlayer = audioRef.current;
+
+  //   if (audioPlayer) {
+  //     if ((isTouchEvent(event) && event.touches.length !== 1) || (isMouseEvent(event) && event.buttons !== 1)) {
+  //       return;
+  //     }
+
+  //     const timelineContainer = event.currentTarget;
+  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
+
+  //     const offsetX = isTouchEvent(event)
+  //       ? event.touches[0].clientX - timelineContainerRect.left
+  //       : event.clientX - timelineContainerRect.left;
+
+  //     const timelineContainerWidth = timelineContainer.offsetWidth;
+  //     const newProgress = (offsetX / timelineContainerWidth) * 100;
+
+  //     setProgress(newProgress);
+
+  //     const newCurrentTime = (newProgress / 100) * totalDuration;
+  //     audioPlayer.currentTime = newCurrentTime;
+  //   }
+  // };
 
   // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
   //   const audioPlayer = audioRef.current;

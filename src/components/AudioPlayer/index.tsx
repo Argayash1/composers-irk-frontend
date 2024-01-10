@@ -100,11 +100,7 @@ export const AudioPlayer = ({ src, screenWidth }: AudioPlayerProps) => {
       setProgress(newProgress);
 
       const newCurrentTime = (newProgress / 100) * totalDuration;
-
-      // Используйте requestAnimationFrame для асинхронного обновления времени воспроизведения
-      requestAnimationFrame(() => {
-        audioPlayer.currentTime = newCurrentTime;
-      });
+      audioPlayer.currentTime = newCurrentTime;
     }
   };
 

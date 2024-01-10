@@ -181,7 +181,6 @@
 
     @media screen and (max-width: 891px) {
       grid-template-columns: repeat(auto-fit, minmax(217px, 1fr));
-      gap: 30px 19px;
     }
 
     @media screen and (max-width: 546px) {
@@ -192,6 +191,10 @@
       grid-template-columns: repeat(auto-fit, minmax(137px, 1fr));
       gap: 20px 16px;
       justify-items: center;
+    }
+
+    &_gap_tablet {
+      gap: 30px 19px;
     }
   }
 }

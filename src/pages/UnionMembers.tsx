@@ -1,21 +1,24 @@
 import React from 'react';
 import { unionMembersArray } from '../utils/membersArray';
 import { TitleContainer, Pagination, UnionMemberBlock, menuItems, UnionMemberSkeleton } from '../components';
-import { compareBySurname } from '../utils/utils';
+import { compareBySurname, hasVerticalScroll } from '../utils/utils';
 import { useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/unionMember/slice';
 import { selectUnionMemberCurrentPage } from '../redux/unionMember/selectors';
 import { useAppDispatch } from '../redux/store';
+import clsx from 'clsx';
 
 const UnionMembers: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const currentPage = useSelector(selectUnionMemberCurrentPage);
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+  const [clientWidth, setClientWidth] = React.useState(document.documentElement.clientWidth);
 
   React.useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
+      setClientWidth(document.documentElement.clientWidth);
     };
 
     let timeoutId: NodeJS.Timeout;
@@ -74,10 +77,14 @@ const UnionMembers: React.FC = () => {
     </li>
   ));
 
+  const setTabletModificator = (screenWidth <= 1280 && hasVerticalScroll()) || clientWidth < 1280;
+
   return (
     <main className='union-members'>
       <TitleContainer name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' />
-      <ul className='union-members__list'>{unionMembers ? unionMembers : skeletons}</ul>
+      <ul className={clsx('union-members__list', setTabletModificator && 'union-members__list_gap_tablet')}>
+        {unionMembers ? unionMembers : skeletons}
+      </ul>
       <Pagination
         onChangePage={(page) => dispatch(setCurrentPage(page))}
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}

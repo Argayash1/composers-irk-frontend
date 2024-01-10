@@ -23,3 +23,12 @@ export const handleChangeSecondsToMinutesAndSeconds = (duration: number) => {
 
   return `${minutes}.${seconds.toString().padStart(2, '0')}`;
 };
+
+export const hasVerticalScroll = () => {
+  const pageHeight = document.body.clientHeight - document.documentElement.clientHeight;
+  if (pageHeight < 0) {
+    return true;
+  } else {
+    return false;
+  }
+};

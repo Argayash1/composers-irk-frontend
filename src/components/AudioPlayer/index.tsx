@@ -31,10 +31,6 @@ function isMouseEvent(
   return 'buttons' in event;
 }
 
-const isTouchDevice = () => {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-};
-
 export const AudioPlayer = ({ src, screenWidth }: AudioPlayerProps) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const audioLinkRef = React.useRef<HTMLAnchorElement>(null);
@@ -59,36 +55,6 @@ export const AudioPlayer = ({ src, screenWidth }: AudioPlayerProps) => {
     setIsVolumeContainerHovered(false);
     isChangeVolume.current = false;
   };
-
-  // const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-  //   const audioPlayer = audioRef.current;
-
-  //   if (audioPlayer) {
-  //     if (isMouseEvent(event) && event.buttons !== 1) {
-  //       return;
-  //     }
-
-  //     if (isTouchEvent(event)) {
-  //       event.stopPropagation();
-  //       event.preventDefault();
-  //     }
-
-  //     isChangeVolume.current = true;
-
-  //     const volumelineContainer = event.currentTarget;
-  //     const volumelineContainerRect = volumelineContainer.getBoundingClientRect();
-
-  //     const clientX = isTouchEvent(event) ? event.touches[0].clientX : event.clientX;
-  //     const offsetX = clientX - volumelineContainerRect.left;
-
-  //     const newProgress = (offsetX / volumelineContainer.offsetWidth) * 100;
-  //     const clampedVolume = Math.max(0, Math.min(newProgress, 100));
-
-  //     audioPlayer.volume = clampedVolume / 100;
-
-  //     setVolume(clampedVolume);
-  //   }
-  // };
 
   const handleVolumeProgressBarDrag = (event: React.MouseEvent<HTMLDivElement>) => {
     const audioPlayer = audioRef.current;
@@ -141,155 +107,6 @@ export const AudioPlayer = ({ src, screenWidth }: AudioPlayerProps) => {
       });
     }
   };
-
-  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-  //   const audioPlayer = audioRef.current;
-
-  //   if (audioPlayer) {
-  //     if ((isTouchEvent(event) && event.touches.length !== 1) || (isMouseEvent(event) && event.buttons !== 1)) {
-  //       return;
-  //     }
-
-  //     const timelineContainer = event.currentTarget;
-  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
-
-  //     const offsetX = isTouchEvent(event)
-  //       ? event.touches[0].clientX - timelineContainerRect.left
-  //       : event.clientX - timelineContainerRect.left;
-
-  //     const timelineContainerWidth = timelineContainer.offsetWidth;
-  //     const newProgress = (offsetX / timelineContainerWidth) * 100;
-
-  //     setProgress(newProgress);
-
-  //     const newCurrentTime = (newProgress / 100) * totalDuration;
-  //     audioPlayer.currentTime = newCurrentTime;
-  //   }
-  // };
-
-  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-  //   const audioPlayer = audioRef.current;
-  //   let animationFrameId; // Объявление переменной animationFrameId
-
-  //   if (audioPlayer) {
-  //     if ((isTouchEvent(event) && event.touches.length !== 1) || (isMouseEvent(event) && event.buttons !== 1)) {
-  //       return;
-  //     }
-
-  //     setIsChangeTime(true);
-
-  //     const timelineContainer = event.currentTarget;
-  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
-
-  //     const offsetX = isTouchEvent(event)
-  //       ? event.touches[0].clientX - timelineContainerRect.left
-  //       : event.clientX - timelineContainerRect.left;
-
-  //     const timelineContainerWidth = timelineContainer.offsetWidth;
-  //     const newProgress = (offsetX / timelineContainerWidth) * 100;
-
-  //     setProgress(newProgress);
-
-  //     const newCurrentTime = (newProgress / 100) * totalDuration;
-
-  //     if (!isTouchDevice()) {
-  //       // Обновляем время воспроизведения сразу для не-сенсорных устройств
-  //       audioPlayer.currentTime = newCurrentTime;
-  //     } else {
-  //       // Для сенсорных устройств используем requestAnimationFrame...
-  //       if (animationFrameId) {
-  //         cancelAnimationFrame(animationFrameId);
-  //       }
-
-  //       animationFrameId = requestAnimationFrame(() => {
-  //         audioPlayer.currentTime = newCurrentTime;
-  //         animationFrameId = null;
-  //       });
-  //     }
-  //   }
-  // };
-
-  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-  //   const audioPlayer = audioRef.current;
-
-  //   if (audioPlayer) {
-  //     if ((isTouchEvent(event) && event.touches.length !== 1) || (isMouseEvent(event) && event.buttons !== 1)) {
-  //       return;
-  //     }
-
-  //     setIsChangeTime(true);
-
-  //     const timelineContainer = event.currentTarget;
-  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
-
-  //     const offsetX = isTouchEvent(event)
-  //       ? event.touches[0].clientX - timelineContainerRect.left
-  //       : event.clientX - timelineContainerRect.left;
-
-  //     const timelineContainerWidth = timelineContainer.offsetWidth;
-  //     const newProgress = (offsetX / timelineContainerWidth) * 100;
-
-  //     setProgress(newProgress);
-
-  //     const newCurrentTime = (newProgress / 100) * totalDuration;
-  //     audioPlayer.currentTime = newCurrentTime;
-  //   }
-  // };
-
-  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-  //   const audioPlayer = audioRef.current;
-
-  //   if (audioPlayer) {
-  //     if ((isTouchEvent(event) && event.touches.length !== 1) || (isMouseEvent(event) && event.buttons !== 1)) {
-  //       return;
-  //     }
-
-  //     setIsChangeTime(true);
-
-  //     const timelineContainer = event.currentTarget;
-  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
-
-  //     const offsetX = isTouchEvent(event)
-  //       ? event.touches[0].clientX - timelineContainerRect.left
-  //       : event.clientX - timelineContainerRect.left;
-
-  //     const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
-
-  //     setProgress(newProgress);
-
-  //     const newCurrentTime = (newProgress / 100) * totalDuration;
-  //     audioPlayer.currentTime = newCurrentTime;
-  //   }
-  // };
-
-  // const handleProgressBarDrag = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-  //   const audioPlayer = audioRef.current;
-
-  //   if (audioPlayer) {
-  //     if (
-  //       (event.type === 'mousemove' && 'buttons' in event && event.buttons !== 1) ||
-  //       (event.type === 'touchmove' && 'touches' in event && event.touches.length !== 1)
-  //     ) {
-  //       return;
-  //     }
-
-  //     setIsChangeTime(true);
-
-  //     const timelineContainer = event.currentTarget;
-  //     const timelineContainerRect = timelineContainer.getBoundingClientRect();
-  //     const offsetX =
-  //       event.type === 'mousemove'
-  //         ? (event as React.MouseEvent<HTMLDivElement>).clientX - timelineContainerRect.left
-  //         : (event as React.TouchEvent<HTMLDivElement>).touches[0].clientX - timelineContainerRect.left;
-
-  //     const newProgress = (offsetX / timelineContainer.offsetWidth) * 100;
-
-  //     setProgress(newProgress);
-
-  //     const newCurrentTime = (newProgress / 100) * totalDuration;
-  //     audioPlayer.currentTime = newCurrentTime;
-  //   }
-  // };
 
   const handleProgressBarDragEnd = () => {
     const audioPlayer = audioRef.current;

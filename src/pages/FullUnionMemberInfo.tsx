@@ -67,7 +67,7 @@ const FullUnionMemberInfo = () => {
       <section className='full-union-member__container'>
         <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />
         <p className='full-union-member__short-biography'>{unionMember.shortBiography}</p>
-        {showCTA && <CTA linkText='Ноты композитора' borderColor='grey' path='/scores' />}
+        {showCTA && <CTA linkText='Ноты композитора' path='/scores' />}
       </section>
       <Tabs
         tabNamesArray={handleGenerateTabNames()}

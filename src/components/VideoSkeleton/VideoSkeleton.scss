@@ -1,53 +1,49 @@
 .union-member-skeleton {
-  width: 255px;
-  height: 370px;
+  width: 541px;
+  height: 413px;
 
   @media screen and (max-width: 891px) {
-    width: 217px;
-    height: 316px;
+    width: 335.8px;
+    height: 263px;
   }
 
   @media screen and (max-width: 482px) {
-    width: 137px;
-    height: 210px;
+    width: 290px;
+    height: 240px;
   }
 
-  &__image {
+  &__iframe {
     width: 100%;
-    height: 255px;
+    height: 303px;
 
     @media screen and (max-width: 891px) {
-      height: 217px;
+      height: 188px;
     }
 
     @media screen and (max-width: 482px) {
-      height: 137px;
+      height: 162.4px;
     }
   }
 
-  &__name {
+  &__title {
     width: 100%;
     height: 44px;
 
     @media screen and (max-width: 891px) {
-      height: 37px;
+      height: 36px;
     }
 
     @media screen and (max-width: 482px) {
-      height: 34px;
+      height: 38px;
     }
   }
 
   &__profession {
     width: 100%;
-    height: 46px;
+    height: 21px;
 
     @media screen and (max-width: 891px) {
-      height: 37px;
-    }
-
-    @media screen and (max-width: 482px) {
-      height: 29px;
+      height: 16px;
     }
   }
 }

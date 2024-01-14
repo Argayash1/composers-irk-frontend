@@ -32,7 +32,7 @@ export const NewsSkeleton = ({ screenWidth }: NewsSkeletonProps) => {
       <rect x='0' y={dateY} rx='0' ry='0' className='news-skeleton__date' />
       <rect x='0' y={titleY} rx='0' ry='0' className='news-skeleton__title' />
       <rect x='0' y={textY} rx='0' ry='0' className='news-skeleton__text' />
-      <rect x='0' y={buttonY} rx='0' ry='0' className='news-skeleton__button' />
+      <rect x='0' y={buttonY} rx='6' ry='6' className='news-skeleton__button' />
     </ContentLoader>
   );
 };

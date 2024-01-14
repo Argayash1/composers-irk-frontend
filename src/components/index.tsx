@@ -41,3 +41,6 @@ export * from './VolumelineContainer';
 export * from './ProgressBarContainer';
 export * from './NewsSkeleton';
 export * from './UnionMemberSkeleton';
+export * from './VideoSkeleton';
+export * from './ProjectSkeleton';
+export * from './FullNewsSkeleton';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { CTA, TitleContainer, SharePanel } from '../components';
+import { CTA, TitleContainer, SharePanel, FullNewsSkeleton } from '../components';
 import axios from 'axios';
 
 const FullNews = () => {
@@ -24,7 +24,7 @@ const FullNews = () => {
   }, [id, navigate]);
 
   if (!news) {
-    return <>Загрузка новости...</>;
+    return <FullNewsSkeleton />;
   }
 
   const hadleToggleSharePanel = () => {
@@ -40,7 +40,7 @@ const FullNews = () => {
       {isSharePanelOpen ? (
         <SharePanel itemTitle={news.title} onClick={hadleToggleSharePanel} />
       ) : (
-        <CTA linkText='Поделиться' onClick={hadleToggleSharePanel} />
+        <CTA onClick={hadleToggleSharePanel} />
       )}
     </main>
   );

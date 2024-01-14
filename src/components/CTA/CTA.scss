@@ -7,11 +7,7 @@
   height: 50px;
   color: #282f30;
   @include main-text-font(16, 500, 1.25);
-  // font-family: 'Manrope', 'Helvetica Neue', 'Arial', sans-serif;
-  // font-size: 16px;
-  // font-style: normal;
-  // font-weight: 500;
-  // line-height: 125%;
+
   display: inline-block;
   box-sizing: border-box;
   padding: 13px 0;
@@ -68,6 +64,7 @@
 
   &_type_button {
     cursor: pointer;
+    width: 255px;
 
     @media screen and (max-width: 1169px) {
       width: 217px;

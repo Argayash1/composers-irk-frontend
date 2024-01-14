@@ -31,7 +31,7 @@ const FullProject = () => {
         {isSharePanelOpen ? (
           <SharePanel itemTitle={project.title} onClick={hadleToggleSharePanel} />
         ) : (
-          <CTA linkText='Поделиться' onClick={hadleToggleSharePanel} place='full-project' />
+          <CTA onClick={hadleToggleSharePanel} place='full-project' />
         )}
       </section>
     </main>

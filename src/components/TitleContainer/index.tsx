@@ -47,7 +47,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
         </svg>
       </Link>
       {place === 'main' ? <h2 className={pageTitleClass}>{name}</h2> : <h1 className={pageTitleClass}>{name}</h1>}
-      {place === 'main' && <CTA linkText='Все новости' path='/news' borderColor='grey' place='main' />}
+      {place === 'main' && <CTA linkText='Все новости' path='/news' place='main' />}
     </section>
   );
 };

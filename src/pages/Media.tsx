@@ -45,7 +45,7 @@ const Media = () => {
     <main className='media'>
       <TitleContainer name={menuItems[5].name} place='media' />
       <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
-      {category === 0 ? <AudioRecordings screenWidth={screenWidth} /> : <VideoRecordings />}
+      {category === 0 ? <AudioRecordings screenWidth={screenWidth} /> : <VideoRecordings screenWidth={screenWidth} />}
       {category === 1 && (
         <Pagination
           onChangePage={(page) => dispatch(setCurrentPage(page))}

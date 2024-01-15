@@ -1,9 +1,9 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
-import './FullNewsSkeleton.scss';
+import './FullVideoSkeleton.scss';
 
-export const FullNewsSkeleton = () => (
-  <main className='full-news'>
+export const FullVideoSkeleton = () => (
+  <main className='full-video'>
     <ContentLoader
       className='full-news-skeleton'
       speed={2}
@@ -14,10 +14,10 @@ export const FullNewsSkeleton = () => (
       foregroundColor='#ecebeb'
     >
       <rect x='0' y='0' rx='0' ry='0' width='100%' height='40' />
-      <rect x='0' y='70' rx='0' ry='0' width='108' height='24' />
-      <rect x='0' y='134' rx='0' ry='0' width='1110' height='600' />
-      <rect x='0' y='774' rx='0' ry='0' width='855' height='168' />
-      <rect x='0' y='1002' rx='6' ry='6' width='255' height='50' />
+      <rect x='0' y='90' rx='0' ry='0' width='100%' height='622.8' />
+      <rect x='0' y='752.8' rx='0' ry='0' width='100%' height='29' />
+      <rect x='0' y='801.8' rx='0' ry='0' width='100%' height='24' />
+      <rect x='0' y='850.8' rx='0' ry='0' width='100%' height='21' />
     </ContentLoader>
   </main>
 );

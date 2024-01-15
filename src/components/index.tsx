@@ -44,3 +44,7 @@ export * from './UnionMemberSkeleton';
 export * from './VideoSkeleton';
 export * from './ProjectSkeleton';
 export * from './FullNewsSkeleton';
+export * from './FullProjectSkeleton';
+export * from './FullVideoSkeleton';
+export * from './FullUnionMemberSkeleton';
+export * from './FullArticleSkeleton';

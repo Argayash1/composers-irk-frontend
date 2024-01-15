@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { CTA, TitleContainer, Tabs } from '../components';
+import { CTA, TitleContainer, Tabs, FullUnionMemberSkeleton } from '../components';
 import { unionMembersArray } from '../utils/membersArray';
 import { allScores } from './Scores';
 import { TextContent } from '../components/TextContent';
@@ -28,7 +28,7 @@ const FullUnionMemberInfo = () => {
   }, [id]);
 
   if (!unionMember) {
-    return <>Загрузка...</>;
+    return <FullUnionMemberSkeleton />;
   }
 
   const unionMemberData: string[][] = [unionMember.biography, unionMember.works];

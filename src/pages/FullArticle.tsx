@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { articlesArray } from '../utils/articlesArray';
-import { TitleContainer } from '../components';
+import { FullArticleSkeleton, TitleContainer } from '../components';
 import { TextContent } from '../components/TextContent';
 
 const FullArticle = () => {
@@ -21,7 +21,7 @@ const FullArticle = () => {
   }, [id]);
 
   if (!article) {
-    return <>Загрузка статьи...</>;
+    return <FullArticleSkeleton />;
   }
 
   return (

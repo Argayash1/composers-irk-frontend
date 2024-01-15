@@ -1,5 +1,5 @@
 import React from 'react';
-import { TitleContainer } from '../components';
+import { FullVideoSkeleton, TitleContainer } from '../components';
 import { useParams } from 'react-router-dom';
 import { iFramesArray } from '../utils/iframesArray';
 
@@ -14,7 +14,7 @@ const FullVideo = () => {
   }, [id]);
 
   if (!video) {
-    return <>Загрузка видео...</>;
+    return <FullVideoSkeleton />;
   }
 
   return (

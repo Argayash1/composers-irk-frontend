@@ -25,7 +25,11 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'search' && 'title-container__page-title_place_search',
   );
 
-  const titleContainerClass = clsx('title-container', place === 'main' && 'title-container_place_main');
+  const titleContainerClass = clsx(
+    'title-container',
+    place === 'main' && 'title-container_place_main',
+    place === 'full-news' && 'title-container_place_full-news',
+  );
 
   const arrowLinkClass = clsx(
     'title-container__arrow-link',

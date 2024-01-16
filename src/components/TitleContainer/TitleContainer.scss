@@ -2,6 +2,7 @@
 
 .title-container {
   display: flex;
+  margin-bottom: 50px;
 
   &_place_main {
     max-width: 1280px;
@@ -38,8 +39,18 @@
     }
   }
 
+  &_place_union-members {
+    @media screen and (max-width: 891px) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 436px) {
+      margin-bottom: 31px;
+    }
+  }
+
   &__page-title {
-    margin: 0 0 50px;
+    margin: 0;
     padding: 0;
     color: #282f30;
     @include main-text-font(36, 700, 1.05);
@@ -47,13 +58,14 @@
 
     @media screen and (max-width: 1169px) {
       font-size: 22px;
-      min-height: 22px;
+      min-height: auto;
+      height: 22px;
     }
 
     @media screen and (max-width: 546px) {
       font-size: 20px;
       line-height: 120%; /* 24px */
-      min-height: 20px;
+      height: 48px;
     }
 
     &_place_main {
@@ -71,16 +83,6 @@
       @media screen and (max-width: 572px) {
         font-size: 16px;
         line-height: 1.25;
-      }
-    }
-
-    &_place_union-members {
-      @media screen and (max-width: 891px) {
-        margin-bottom: 40px;
-      }
-
-      @media screen and (max-width: 436px) {
-        margin-bottom: 31px;
       }
     }
 
@@ -154,6 +156,10 @@
     &_place_main {
       margin-right: 0;
       transform: rotate(180deg);
+    }
+
+    &_place_union-members {
+      margin-right: 20px;
     }
 
     &_place_search-results {

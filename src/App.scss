@@ -72,11 +72,7 @@
     padding: 0;
     display: inline-block;
     color: var(--main-text-color);
-    font-family: Manrope;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%; /* 24px */
+    @include main-text-font(20, 700, 1.2);
 
     @media screen and (max-width: 1169px) {
       font-size: 14px;
@@ -159,8 +155,7 @@
   }
 
   @media screen and (max-width: 546px) {
-    padding-right: 15px;
-    padding-left: 10px;
+    padding: 25px 15px 60px 10px;
   }
 
   &__title {
@@ -190,12 +185,15 @@
 
     @media screen and (max-width: 482px) {
       grid-template-columns: repeat(auto-fit, minmax(137px, 1fr));
-      gap: 20px 16px;
       justify-items: center;
     }
 
-    &_gap_tablet {
+    &_gap_mobile {
       gap: 30px 19px;
+
+      @media screen and (max-width: 482px) {
+        gap: 20px 16px;
+      }
     }
   }
 }
@@ -262,11 +260,8 @@
     margin: 0 0 40px 0;
     padding: 0;
     color: var(--main-text-color);
-    font-family: Manrope;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%; /* 23.4px */
+    @include main-text-font(18, 400, 1.3);
+
     max-height: 266px;
     max-width: 505px;
 
@@ -380,11 +375,8 @@
     margin: 40px 0 70px;
     padding: 0;
     color: var(--main-text-color);
-    font-family: Manrope;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%; /* 23.4px */
+    @include main-text-font(18, 400, 1.3);
+
     max-width: 855px;
 
     @media screen and (max-width: 1188px) {
@@ -443,11 +435,8 @@
   &__link {
     text-decoration: none;
     color: var(--default-text-color);
-    font-family: Manrope;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%; /* 22px */
+    @include main-text-font(18, 500, 1.4);
+
     display: flex;
     gap: 20px;
 
@@ -556,11 +545,7 @@
     margin: 40px 0 20px;
     padding: 0;
     color: var(--default-text-color);
-    font-family: 'Manrope';
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 105%; /* 29.4px */
+    @include main-text-font(28, 700, 1.05);
 
     @media screen and (max-width: 1189px) {
       max-width: 688.298px;
@@ -586,11 +571,7 @@
 
   &__date {
     color: var(--default-text-color);
-    font-family: 'Manrope';
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%; /* 24px */
+    @include main-text-font(20, 700, 1.2);
 
     @media screen and (max-width: 1189px) {
       font-size: 16px;
@@ -610,11 +591,7 @@
 
   &__description {
     color: var(--default-text-color);
-    font-family: Manrope;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%; /* 20.8px */
+    @include main-text-font(16, 400, 1.3);
 
     @media screen and (max-width: 1189px) {
       font-size: 14px;
@@ -762,11 +739,7 @@
     margin: 0;
     padding: o;
     color: var(--main-text-color);
-    font-family: Manrope;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
+    @include main-text-font(18, 400, 1.3);
 
     @media screen and (max-width: 1169px) {
       font-size: 16px;
@@ -853,11 +826,8 @@
 
   &__title {
     color: var(--main-text-color);
-    font-family: Manrope;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 105%; /* 29.4px */
+    @include main-text-font(28, 700, 1.05);
+
     margin: 0 0 50px;
     padding: 0;
 
@@ -875,11 +845,7 @@
 
   &__no-results-text {
     color: var(--main-text-color);
-    font-family: Manrope;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%; /* 24px */
+    @include main-text-font(20, 400, 1.2);
   }
 
   &__list {

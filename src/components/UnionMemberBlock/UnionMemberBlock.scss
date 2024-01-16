@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .union-member {
   display: flex;
   flex-direction: column;
@@ -48,11 +50,8 @@
 
   &__name {
     color: #282f30;
-    font-family: Manrope;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 110%; /* 22px */
+    @include main-text-font(20, 700, 1.1);
+
     margin: 0 0 10px 0;
     padding: 0;
     width: 255px;
@@ -62,25 +61,23 @@
       font-size: 16px;
       line-height: 120%; /* 19.2px */
       width: 217px;
-      min-height: 37px;
+      min-height: auto;
+      height: 37px;
     }
 
     @media screen and (max-width: 482px) {
       font-size: 12px;
       line-height: normal;
       width: 137px;
-      min-height: 34px;
+      height: 34px;
       margin-bottom: 5px;
     }
   }
 
   &__profession {
     color: #282f30;
-    font-family: Manrope;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%; /* 23.4px */
+    @include main-text-font(16, 400, 1.3);
+
     margin: 0;
     padding: 0;
     min-height: 46px;

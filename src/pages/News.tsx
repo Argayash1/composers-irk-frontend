@@ -79,7 +79,7 @@ const News = () => {
 
   return (
     <main className='news'>
-      <TitleContainer name={menuItems[1].name} />
+      <TitleContainer name={menuItems[1].name} place='news' />
       <NewsContainer
         place='news'
         itemsArray={items}

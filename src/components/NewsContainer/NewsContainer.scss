@@ -21,6 +21,10 @@
   &_place_news {
     padding: 0 0 92px;
 
+    @media screen and (max-width: 1126px) {
+      padding-bottom: 0;
+    }
+
     @media screen and (max-width: 546px) {
       padding-left: 15px;
     }
@@ -64,6 +68,10 @@
 
     &_place_news {
       row-gap: 72px;
+
+      @media screen and (max-width: 1169px) {
+        row-gap: 45px;
+      }
     }
 
     &-item {

@@ -4,6 +4,10 @@
   display: flex;
   margin-bottom: 50px;
 
+  @media screen and (max-width: 546px) {
+    margin-bottom: 40px;
+  }
+
   &_place_main {
     max-width: 1280px;
     width: 100%;
@@ -64,7 +68,7 @@
 
     @media screen and (max-width: 546px) {
       font-size: 20px;
-      line-height: 120%; /* 24px */
+      line-height: 1.2;
       height: 48px;
     }
 
@@ -74,6 +78,13 @@
 
       @media screen and (max-width: 712px) {
         margin-top: 0;
+        height: auto;
+      }
+    }
+
+    &_place_news {
+      @media screen and (max-width: 546px) {
+        height: 24px;
       }
     }
 
@@ -83,6 +94,15 @@
       @media screen and (max-width: 572px) {
         font-size: 16px;
         line-height: 1.25;
+        height: 24px;
+      }
+    }
+
+    &_place_full-union-member {
+      @media screen and (max-width: 546px) {
+        font-size: 16px;
+        line-height: 1.25;
+        height: 40px;
       }
     }
 

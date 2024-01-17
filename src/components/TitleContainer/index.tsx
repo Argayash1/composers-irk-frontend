@@ -21,7 +21,9 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
   const pageTitleClass = clsx(
     'title-container__page-title',
     place === 'main' && 'title-container__page-title_place_main',
+    place === 'news' && 'title-container__page-title_place_news',
     place === 'full-news' && 'title-container__page-title_place_full-news',
+    place === 'full-union-member' && 'title-container__page-title_place_full-union-member',
     place === 'projects' && 'title-container__page-title_place_projects',
     (place === 'full-project' || place === 'media') && 'title-container__page-title_place_full-project',
     (place === 'reports' || place === 'aboutus' || place === 'full-video') &&

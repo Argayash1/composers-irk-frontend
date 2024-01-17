@@ -23,12 +23,14 @@
     line-height: 130%; /* 18.2px */
     padding-top: 7px;
     padding-bottom: 7px;
+    border-radius: 4px;
   }
 
   @media screen and (max-width: 767px) {
     height: 45px;
     padding-top: 10px;
     line-height: 125%;
+    border-radius: 5px;
   }
 
   &:hover {

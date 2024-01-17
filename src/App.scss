@@ -225,8 +225,8 @@
 
     @media screen and (max-width: 1164px) {
       grid-template-columns: 296px 1fr;
-      grid-template-rows: 256px 40px;
-      column-gap: 61px;
+      grid-template-rows: 261px 35px;
+      column-gap: 59px;
       margin-bottom: 40px;
     }
 
@@ -270,6 +270,7 @@
       max-height: 226px;
       margin-top: 5px;
       margin-bottom: 0;
+      margin-left: 2px;
       display: -webkit-box;
       -webkit-line-clamp: 11;
       -webkit-box-orient: vertical;
@@ -281,7 +282,9 @@
       font-size: 14px;
       line-height: normal;
       max-width: 100%;
+      margin-top: 0;
       margin-bottom: 40px;
+      margin-left: 0;
       padding-left: 15px;
     }
   }

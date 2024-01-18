@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/composers-irk-frontend/static/css/main.bb83819c.css",
+    "main.css": "/composers-irk-frontend/static/css/main.d32a6100.css",
     "main.js": "/composers-irk-frontend/static/js/main.e1441929.js",
     "static/js/787.2cd87504.chunk.js": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js",
     "static/media/11.mp3": "/composers-irk-frontend/static/media/11.5c188e9a94240ae1c28b.mp3",
@@ -66,12 +66,12 @@
     "static/media/search-close-button.svg": "/composers-irk-frontend/static/media/search-close-button.fb6872d26cafa9eec19c.svg",
     "static/media/report-popup-close-button.svg": "/composers-irk-frontend/static/media/report-popup-close-button.25939e1d6a03366c017a.svg",
     "static/media/share-pannel-close-icon.svg": "/composers-irk-frontend/static/media/share-pannel-close-icon.8dd6296da60c89fa0fe971eb977a1379.svg",
-    "main.bb83819c.css.map": "/composers-irk-frontend/static/css/main.bb83819c.css.map",
+    "main.d32a6100.css.map": "/composers-irk-frontend/static/css/main.d32a6100.css.map",
     "main.e1441929.js.map": "/composers-irk-frontend/static/js/main.e1441929.js.map",
     "787.2cd87504.chunk.js.map": "/composers-irk-frontend/static/js/787.2cd87504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb83819c.css",
+    "static/css/main.d32a6100.css",
     "static/js/main.e1441929.js"
   ]
 }

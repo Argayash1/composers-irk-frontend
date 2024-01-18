@@ -15,7 +15,7 @@ export const ProjectBlock = ({ imageUrl, title, description, index }: ProjectBlo
       <img className='project-block__image' src={imageUrl} alt={title} />
       <h2 className='project-block__title'>{title}</h2>
       <p className='project-block__description'>{description}</p>
-      <CTA path={`/projects/${index}`} />
+      <CTA path={`/projects/${index}`} place='projects' />
     </div>
   );
 };

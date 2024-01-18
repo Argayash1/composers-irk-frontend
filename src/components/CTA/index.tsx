@@ -20,7 +20,8 @@ export const CTA = ({ linkText = 'Подробнее', path, place, onClick }: C
     'cta_type_link',
     linkText !== 'Подробнее' && 'cta_border_grey',
     place === 'main' && 'cta_place_main',
-    path && (path === '/scores' || path.includes('projects')) && 'cta_place_full-union-member',
+    path && path === '/scores' && 'cta_place_full-union-member',
+    place === 'projects' && 'cta_place_projects',
   );
 
   return (

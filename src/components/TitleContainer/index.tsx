@@ -17,6 +17,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'full-news' && 'title-container_place_full-news',
     place === 'union-members' && 'title-container_place_union-members',
     place === 'full-union-member' && 'title-container_place_full-union-member',
+    place === 'projects' && 'title-container_place_projects',
   );
 
   const pageTitleClass = clsx(
@@ -38,7 +39,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     'title-container__arrow-link',
     place === 'main' && 'title-container__arrow-link_place_main',
     place === 'search-results' && 'title-container__arrow-link_place_search-results',
-    place === 'union-members' && 'title-container__arrow-link_place_union-members',
+    (place === 'union-members' || place === 'projects') && 'title-container__arrow-link_place_union-members',
   );
 
   return (

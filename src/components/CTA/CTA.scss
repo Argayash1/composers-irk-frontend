@@ -102,6 +102,16 @@
     }
   }
 
+  &_place_projects {
+    @media screen and (max-width: 900px) {
+      width: 217px;
+    }
+
+    @media screen and (max-width: 622px) {
+      width: 100%;
+    }
+  }
+
   &_place_full-project {
     @media screen and (max-width: 546px) {
       margin-left: 0;

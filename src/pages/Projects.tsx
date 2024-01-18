@@ -40,8 +40,10 @@ const Projects = () => {
     };
   }, []);
 
-  const firstItem = currentPage * 4 - 4;
-  const lastItam = currentPage * 4;
+  const limit = screenWidth > 622 ? 4 : 3;
+
+  const firstItem = currentPage * limit - limit;
+  const lastItam = currentPage * limit;
 
   const slicedProjectsArray = projectsArray.slice(firstItem, lastItam);
 

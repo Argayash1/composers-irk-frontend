@@ -16,6 +16,12 @@
     }
   }
 
+  &_place_full-union-member {
+    @media screen and (max-width: 622px) {
+      margin-left: 15px;
+    }
+  }
+
   &__button {
     border: none;
     border-radius: 5px;

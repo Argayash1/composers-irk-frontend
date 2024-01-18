@@ -1,5 +1,6 @@
 import React from 'react';
 import './Tabs.scss';
+import clsx from 'clsx';
 
 type TabsProps = {
   tabNamesArray: string[];
@@ -8,11 +9,14 @@ type TabsProps = {
 };
 
 export const Tabs = ({ tabNamesArray, value, onChangeTab }: TabsProps) => {
-  const tabsClassName = `tabs ${
-    tabNamesArray.includes('Все ноты') || tabNamesArray.includes('Аудиозаписи') || tabNamesArray.includes('СМИ о нас')
-      ? 'tabs_place_scores'
-      : ''
-  }`;
+  const tabsClassName = clsx(
+    'tabs',
+    (tabNamesArray.includes('Все ноты') ||
+      tabNamesArray.includes('Аудиозаписи') ||
+      tabNamesArray.includes('СМИ о нас')) &&
+      'tabs_place_scores',
+    tabNamesArray.includes('Биография') && 'tabs_place_full-union-member',
+  );
 
   return (
     <ul className={tabsClassName}>

@@ -4,6 +4,7 @@ import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/video/slice';
 import { useSelector } from 'react-redux';
 import { selectVideoCurrentPage } from '../redux/video/selectors';
+import clsx from 'clsx';
 
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 
@@ -42,7 +43,7 @@ const Media = () => {
   }, []);
 
   return (
-    <main className='media'>
+    <main className={clsx('media', category === 1 && 'media_type_video')}>
       <TitleContainer name={menuItems[5].name} place='media' />
       <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
       {category === 0 ? <AudioRecordings screenWidth={screenWidth} /> : <VideoRecordings screenWidth={screenWidth} />}

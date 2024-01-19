@@ -20,7 +20,7 @@ export const VideoRecordings = ({ screenWidth }: VideoRecordingsProps) => {
       <Link to={`/media/${iFrameItem.id}`} className='video-recordings__item-link'>
         <h2 className='video-recordings__item-title'>{iFrameItem.title}</h2>
       </Link>
-      <span className='video-recordings__item-date'>01.01.2023</span>
+      <span className='video-recordings__item-date'>27.09.2023</span>
     </li>
   ));
 

@@ -5,7 +5,10 @@
   background-repeat: no-repeat;
   background-position: center;
   border: none;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
+  display: flex;
 
   &__play-icon {
     g path {

@@ -30,7 +30,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'full-union-member' && 'title-container__page-title_place_full-union-member',
     place === 'projects' && 'title-container__page-title_place_projects',
     place === 'full-project' && 'title-container__page-title_place_full-project',
-    place === 'scores' && 'title-container__page-title_place_scores',
+    place === 'scores' || (place === 'media' && 'title-container__page-title_place_scores'),
     (place === 'reports' || place === 'aboutus' || place === 'full-video') &&
       'title-container__page-title_place_reports',
     place === 'full-article' && 'title-container__page-title_place_full-article',
@@ -42,7 +42,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     'title-container__arrow-link',
     place === 'main' && 'title-container__arrow-link_place_main',
     place === 'search-results' && 'title-container__arrow-link_place_search-results',
-    (place === 'union-members' || place === 'projects' || place === 'scores') &&
+    (place === 'union-members' || place === 'projects' || place === 'scores' || place === 'media') &&
       'title-container__arrow-link_place_union-members',
     place === 'full-project' && 'title-container__arrow-link_place_full-project',
   );

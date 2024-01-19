@@ -19,6 +19,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'full-union-member' && 'title-container_place_full-union-member',
     place === 'projects' && 'title-container_place_projects',
     (place === 'full-project' || place === 'media') && 'title-container_place_full-project',
+    place === 'scores' && 'title-container_place_scores',
   );
 
   const pageTitleClass = clsx(
@@ -28,19 +29,21 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'full-news' && 'title-container__page-title_place_full-news',
     place === 'full-union-member' && 'title-container__page-title_place_full-union-member',
     place === 'projects' && 'title-container__page-title_place_projects',
+    place === 'full-project' && 'title-container__page-title_place_full-project',
+    place === 'scores' && 'title-container__page-title_place_scores',
     (place === 'reports' || place === 'aboutus' || place === 'full-video') &&
       'title-container__page-title_place_reports',
     place === 'full-article' && 'title-container__page-title_place_full-article',
     place === 'search-results' && 'title-container__page-title_place_search-results',
     place === 'search' && 'title-container__page-title_place_search',
-    place === 'full-project' && 'title-container__page-title_place_full-project',
   );
 
   const arrowLinkClass = clsx(
     'title-container__arrow-link',
     place === 'main' && 'title-container__arrow-link_place_main',
     place === 'search-results' && 'title-container__arrow-link_place_search-results',
-    (place === 'union-members' || place === 'projects') && 'title-container__arrow-link_place_union-members',
+    (place === 'union-members' || place === 'projects' || place === 'scores') &&
+      'title-container__arrow-link_place_union-members',
     place === 'full-project' && 'title-container__arrow-link_place_full-project',
   );
 

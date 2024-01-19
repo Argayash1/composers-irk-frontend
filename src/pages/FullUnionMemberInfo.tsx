@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CTA, TitleContainer, Tabs, FullUnionMemberSkeleton } from '../components';
 import { unionMembersArray } from '../utils/membersArray';
-import { allScores } from './Scores';
+import { allScores } from '../utils/scoresArray';
 import { TextContent } from '../components/TextContent';
 
 const FullUnionMemberInfo = () => {

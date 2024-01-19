@@ -406,7 +406,7 @@
 }
 
 .scores {
-  @include page-flex-container(60px, 85px, 120px);
+  @include page-flex-container(60px, 85px, 197px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -419,8 +419,7 @@
   }
 
   @media screen and (max-width: 546px) {
-    padding-right: 25px;
-    padding-left: 10px;
+    padding: 25px 25px 155px 10px;
   }
 
   &__list {
@@ -437,7 +436,7 @@
     }
 
     @media screen and (max-width: 622px) {
-      margin-top: 25px;
+      margin-top: 30px;
       gap: 30px;
     }
   }
@@ -448,17 +447,19 @@
     @include main-text-font(18, 500, 1.4);
 
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 22px;
 
     @media screen and (max-width: 1164px) {
       font-size: 16px;
-      line-height: 130%; /* 20.8px */
+      line-height: 1.3;
       gap: 13.5px;
     }
 
     @media screen and (max-width: 546px) {
       line-height: normal;
       padding-left: 5px;
+      gap: 11.33px;
     }
   }
 
@@ -469,7 +470,6 @@
     height: 22px;
 
     @media screen and (max-width: 1164px) {
-      margin-top: 4px;
       width: 14.25px;
       height: 16.5px;
     }

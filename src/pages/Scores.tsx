@@ -1,32 +1,37 @@
 import React from 'react';
 import { TitleContainer, Tabs, menuItems } from '../components';
+import { allScores, ScoreItem } from '../utils/scoresArray';
 
-const tabNames = ['Все ноты', 'Вокал', 'Фортепиано'];
+interface IScoreItems {
+  [key: number]: ScoreItem[];
+}
 
-export const allScores = [
-  { title: 'Д. Григоруцэ Вечное движение', url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU', category: 'piano' },
-  { title: 'C. Михайлов "Ната-вальс"', url: 'https://cloud.mail.ru/public/QSjX/xcjiwBJUm', category: 'piano' },
-  { title: 'Л. Янковская "Песня о Пскове"', url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU', category: 'voice' },
-];
+const tabNames = ['Все ноты', 'Вокал', 'Фортепиано', 'Баян, аккордеон'];
 
 const pianoScores = allScores.filter((score) => score.category === 'piano');
 const vocalScores = allScores.filter((score) => score.category === 'voice');
+const bajanScores = allScores.filter((score) => score.category === 'bajan');
 
 const Scores = () => {
-  const [scoreCategory, setScoreCategory] = React.useState<number>(0);
+  const [category, setCategory] = React.useState<number>(0);
 
   React.useEffect(() => {
     document.title = 'Ноты';
   }, []);
 
-  const scoreItems = scoreCategory === 0 ? allScores : scoreCategory === 1 ? vocalScores : pianoScores;
+  const scoreItems: IScoreItems = {
+    0: allScores,
+    1: vocalScores,
+    2: pianoScores,
+    3: bajanScores,
+  };
 
   return (
     <main className='scores'>
-      <TitleContainer name={menuItems[4].name} />
-      <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setScoreCategory(index)} value={scoreCategory} />
+      <TitleContainer name={menuItems[4].name} place='scores' />
+      <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
       <ul className='scores__list'>
-        {scoreItems.map((scoreItem, index) => (
+        {scoreItems[category].map((scoreItem, index) => (
           <li key={index}>
             <a className='scores__link' href={scoreItem.url}>
               <div className='scores__link-image'></div>

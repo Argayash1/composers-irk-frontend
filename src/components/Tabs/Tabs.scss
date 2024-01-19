@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .tabs {
   list-style: none;
   margin: 0;
@@ -30,11 +32,8 @@
     background: #fafafa;
     backdrop-filter: blur(6px);
     color: #282f30;
-    font-family: Manrope;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 125%; /* 20px */
+    @include main-text-font(14, 400, 1.25);
+
     margin: 0;
     padding: 0;
 
@@ -42,7 +41,7 @@
       width: 175px;
       height: 40px;
       font-size: 14px;
-      line-height: 120%; /* 16.8px */
+      line-height: 1.2;
     }
 
     @media screen and (max-width: 622px) {
@@ -53,6 +52,15 @@
 
     &_active {
       background: #f8e2a6;
+
+      @media screen and (min-width: 1164px) {
+        font-weight: 500;
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 622px) {
+        font-weight: 500;
+      }
     }
   }
 }

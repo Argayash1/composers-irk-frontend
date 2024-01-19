@@ -2,9 +2,10 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { CTA, TitleContainer, SharePanel, FullProjectSkeleton } from '../components';
 import { projectsArray } from '../utils/projectsArray';
+import { TextContent } from '../components/TextContent';
 
 const FullProject = () => {
-  const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string }>();
+  const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string[] }>();
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
 
   const { id } = useParams();
@@ -27,7 +28,7 @@ const FullProject = () => {
       <TitleContainer name={project.title} place='full-project' path='/projects' />
       <section className='full-project__container'>
         <img className='full-project__image' src={project.imageUrl} alt='' />
-        <p className='full-project__text'>{project.description}</p>
+        <TextContent textArray={project.description} place='full-project' />
         {isSharePanelOpen ? (
           <SharePanel itemTitle={project.title} onClick={handleToggleSharePanel} />
         ) : (

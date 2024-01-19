@@ -5,7 +5,7 @@ import './ProjectBlock.scss';
 type ProjectBlockProps = {
   imageUrl: string;
   title: string;
-  description: string;
+  description: string[];
   index: number;
 };
 

@@ -35,7 +35,7 @@ export const BreadCrumbs = () => {
     surname?: string;
     profession?: string;
     biography?: string[];
-    description?: string;
+    description?: string[];
     newsText?: string;
   };
 

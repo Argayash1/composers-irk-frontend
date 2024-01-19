@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading } from '../Heading';
 import './TextContent.scss';
+import clsx from 'clsx';
 
 type TextContentProps = {
   textArray: string[];
@@ -8,12 +9,16 @@ type TextContentProps = {
 };
 
 export const TextContent = ({ textArray, place }: TextContentProps) => {
+  const textContentClass = clsx(
+    'text-content',
+    place === 'full-union-member' && 'text-content_place_full-union-member',
+    place === 'full-project' && 'text-content_place_full-project',
+    place === 'about-us' && 'text-content_place_about-us',
+    place === 'full-article' && 'text-content_place_full-article',
+  );
+
   return (
-    <ul
-      className={`text-content ${place === 'full-union-member' ? 'text-content_place_full-union-member' : ''} ${
-        place === 'about-us' ? 'text-content_place_about-us' : ''
-      } ${place === 'full-article' ? 'text-content_place_full-article' : ''}`}
-    >
+    <ul className={textContentClass}>
       {textArray.map((item, index) => {
         if (item.startsWith('#')) {
           const matchResult = item ? item.match(/^(#+)\s/) : null;
@@ -28,16 +33,15 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
         } else {
           const isInterviewerQuestion = item.startsWith('< ');
           const paragraphtext = isInterviewerQuestion ? item.replace('< ', '') : item;
+          const textContentParagraphClass = clsx(
+            'text-content__paragraph',
+            isInterviewerQuestion && 'text-content__paragraph_font_bold',
+            place === 'full-project' && 'text-content__paragraph_place_full-project',
+          );
 
           return (
             <li key={index} className='text-content__item'>
-              <p
-                className={`text-content__paragraph ${
-                  isInterviewerQuestion ? 'text-content__paragraph_font_bold' : ''
-                }`}
-              >
-                {paragraphtext}
-              </p>
+              <p className={textContentParagraphClass}>{paragraphtext}</p>
             </li>
           );
         }

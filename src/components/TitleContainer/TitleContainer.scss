@@ -69,6 +69,16 @@
     }
   }
 
+  &_place_full-project {
+    @media screen and (max-width: 1180px) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 767px) {
+      margin-bottom: 25px;
+    }
+  }
+
   &__page-title {
     margin: 0;
     padding: 0;
@@ -130,12 +140,8 @@
     }
 
     &_place_full-project {
-      @media screen and (max-width: 1180px) {
-        margin-bottom: 40px;
-      }
-
-      @media screen and (max-width: 767px) {
-        margin-bottom: 25px;
+      @media screen and (max-width: 546px) {
+        height: auto;
       }
     }
 
@@ -197,6 +203,10 @@
 
     &_place_union-members {
       margin-right: 20px;
+    }
+
+    &_place_full-project {
+      margin-right: 10px;
     }
 
     &_place_search-results {

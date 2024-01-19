@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .our-history {
   display: flex;
   flex-direction: column;
@@ -17,22 +19,16 @@
 
   &__title {
     color: #282f30;
-    font-family: Manrope;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 105%; /* 29.4px */
+    @include main-text-font(28, 700, 1.05);
+
     margin: 0 0 50px;
     padding: 0;
   }
 
   &__parargraph-title {
     color: #282f30;
-    font-family: Manrope;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 110%; /* 22px */
+    @include main-text-font(20, 700, 1.1);
+
     margin: 40px 0 0;
     padding: 0;
   }

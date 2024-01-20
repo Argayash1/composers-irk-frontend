@@ -21,6 +21,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     (place === 'full-project' || place === 'media') && 'title-container_place_full-project',
     place === 'scores' && 'title-container_place_scores',
     (place === 'full-video' || place === 'reports' || place === 'aboutus') && 'title-container_place_reports',
+    place === 'full-video' && 'title-container_place_full-video',
   );
 
   const pageTitleClass = clsx(

@@ -89,6 +89,13 @@
     }
   }
 
+  &_place_full-video {
+    @media screen and (max-width: 546px) {
+      box-sizing: border-box;
+      padding-left: 10px;
+    }
+  }
+
   &_place_reports {
     @media screen and (max-width: 1164px) {
       margin-bottom: 40px;

@@ -19,9 +19,7 @@ const FullVideo = () => {
 
   return (
     <main className='full-video'>
-      <section className='full-video__title-container'>
-        <TitleContainer name='Медиа' place='full-video' path='/media' />
-      </section>
+      <TitleContainer name='Медиа' place='full-video' path='/media' />
       <section className='full-video__main-content'>
         <iframe className='full-video__iframe' src={video.iframeUrl} allowFullScreen title={video.title}></iframe>
         <h2 className='full-video__title'>{video.title}</h2>

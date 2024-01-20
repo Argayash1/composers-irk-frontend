@@ -526,13 +526,6 @@
     padding: 25px 0 106.17px;
   }
 
-  &__title-container {
-    @media screen and (max-width: 546px) {
-      box-sizing: border-box;
-      padding-left: 10px;
-    }
-  }
-
   &__main-content {
     display: flex;
     flex-direction: column;

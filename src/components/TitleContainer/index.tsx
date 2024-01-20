@@ -20,6 +20,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'projects' && 'title-container_place_projects',
     (place === 'full-project' || place === 'media') && 'title-container_place_full-project',
     place === 'scores' && 'title-container_place_scores',
+    (place === 'full-video' || place === 'reports' || place === 'aboutus') && 'title-container_place_reports',
   );
 
   const pageTitleClass = clsx(
@@ -30,9 +31,7 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'full-union-member' && 'title-container__page-title_place_full-union-member',
     place === 'projects' && 'title-container__page-title_place_projects',
     place === 'full-project' && 'title-container__page-title_place_full-project',
-    place === 'scores' || (place === 'media' && 'title-container__page-title_place_scores'),
-    (place === 'reports' || place === 'aboutus' || place === 'full-video') &&
-      'title-container__page-title_place_reports',
+    (place === 'scores' || place === 'media' || place === 'full-video') && 'title-container__page-title_place_scores',
     place === 'full-article' && 'title-container__page-title_place_full-article',
     place === 'search-results' && 'title-container__page-title_place_search-results',
     place === 'search' && 'title-container__page-title_place_search',
@@ -42,7 +41,11 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     'title-container__arrow-link',
     place === 'main' && 'title-container__arrow-link_place_main',
     place === 'search-results' && 'title-container__arrow-link_place_search-results',
-    (place === 'union-members' || place === 'projects' || place === 'scores' || place === 'media') &&
+    (place === 'union-members' ||
+      place === 'projects' ||
+      place === 'scores' ||
+      place === 'media' ||
+      place === 'full-video') &&
       'title-container__arrow-link_place_union-members',
     place === 'full-project' && 'title-container__arrow-link_place_full-project',
   );

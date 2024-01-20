@@ -89,6 +89,16 @@
     }
   }
 
+  &_place_reports {
+    @media screen and (max-width: 1164px) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 670px) {
+      margin-bottom: 25px;
+    }
+  }
+
   &__page-title {
     margin: 0;
     padding: 0;
@@ -158,16 +168,6 @@
     &_place_scores {
       @media screen and (max-width: 546px) {
         height: auto;
-      }
-    }
-
-    &_place_reports {
-      @media screen and (max-width: 1164px) {
-        margin-bottom: 40px;
-      }
-
-      @media screen and (max-width: 670px) {
-        margin-bottom: 25px;
       }
     }
 

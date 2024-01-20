@@ -523,9 +523,7 @@
   }
 
   @media screen and (max-width: 546px) {
-    padding-right: 0;
-    padding-left: 0;
-    padding-bottom: 106.17px;
+    padding: 25px 0 106.17px;
   }
 
   &__title-container {
@@ -538,9 +536,15 @@
   &__main-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     @media screen and (max-width: 1189px) {
+      width: 690px;
       margin: 0 auto;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 320px;
     }
   }
 
@@ -550,7 +554,7 @@
     border: none;
 
     @media screen and (max-width: 1189px) {
-      width: 688.298px;
+      width: 688.725px;
       height: 386.451px;
     }
 
@@ -561,24 +565,22 @@
   }
 
   &__title {
-    max-width: 1109.945px;
+    width: 100%;
     margin: 40px 0 20px;
     padding: 0;
     color: var(--default-text-color);
     @include main-text-font(28, 700, 1.05);
 
     @media screen and (max-width: 1189px) {
-      max-width: 688.298px;
       margin-top: 20px;
       margin-bottom: 10px;
       font-size: 18px;
-      line-height: 120%; /* 21.6px */
+      line-height: 1.2;
     }
 
     @media screen and (max-width: 767px) {
-      max-width: 319px;
       margin-top: 17px;
-      margin-bottom: 6.83;
+      margin-bottom: 8.83;
       font-size: 14px;
       line-height: normal;
     }
@@ -595,7 +597,7 @@
 
     @media screen and (max-width: 1189px) {
       font-size: 16px;
-      line-height: 130%; /* 20.8px */
+      line-height: 1.3;
       font-weight: 400;
     }
 
@@ -612,12 +614,16 @@
   &__description {
     color: var(--default-text-color);
     @include main-text-font(16, 400, 1.3);
+    margin: 25px 0 0;
+    padding: 0;
 
     @media screen and (max-width: 1189px) {
+      margin-top: 15px;
       font-size: 14px;
     }
 
     @media screen and (max-width: 767px) {
+      margin-top: 11px;
       font-size: 12px;
     }
 

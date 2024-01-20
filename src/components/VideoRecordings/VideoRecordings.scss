@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .video-recordings {
   list-style: none;
   display: grid;
@@ -59,11 +61,7 @@
     margin: 30px 0 15px;
     padding: 0;
     color: #000;
-    font-family: Manrope;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 110%; /* 22px */
+    @include main-text-font(20, 700, 1.1);
 
     @media screen and (max-width: 1187px) {
       width: 335.8px;
@@ -85,11 +83,7 @@
   &__item-date {
     color: #000;
     display: inline-block;
-    font-family: Manrope;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%; /* 15.6px */
+    @include main-text-font(16, 400, 1.3);
 
     @media screen and (max-width: 1187px) {
       color: #282f30;

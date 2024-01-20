@@ -1,12 +1,10 @@
+@import '../../assets/styles/mixins/main-text-font';
+
 .time-counter {
   width: 67px;
   height: 19px;
   color: #303a3d;
-  font-family: Manrope;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  @include main-text-font(14, 400);
 
   @media screen and (max-width: 810px) {
     width: 57px;

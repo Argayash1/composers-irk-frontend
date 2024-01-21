@@ -421,7 +421,7 @@
   }
 
   @media screen and (max-width: 546px) {
-    padding: 25px 25px 155px 10px;
+    padding: 25px 0 155px 10px;
   }
 
   &__list {
@@ -441,6 +441,10 @@
       margin-top: 30px;
       gap: 30px;
     }
+
+    @media screen and (max-width: 546px) {
+      padding-right: 15px;
+    }
   }
 
   &__link {
@@ -449,7 +453,6 @@
     @include main-text-font(18, 500, 1.4);
 
     display: flex;
-    align-items: center;
     gap: 22px;
 
     @media screen and (max-width: 1164px) {
@@ -470,15 +473,18 @@
     background-size: cover;
     width: 19px;
     height: 22px;
+    margin-top: 1.5px;
 
     @media screen and (max-width: 1164px) {
       width: 14.25px;
       height: 16.5px;
+      margin-top: 2.25px;
     }
 
     @media screen and (max-width: 546px) {
       width: 12.667px;
       height: 14.667px;
+      margin-top: 4.67px;
     }
   }
 }
@@ -690,11 +696,18 @@
 
   @media screen and (max-width: 1169px) {
     padding-top: 45px;
-    padding-bottom: 90px;
+    padding-bottom: 247px;
   }
 
   @media screen and (max-width: 546px) {
     padding: 25px 0 100px 10px;
+  }
+
+  &_type_our-histpry {
+    @media screen and (max-width: 546px) {
+      padding-right: 15px;
+      padding-left: 0;
+    }
   }
 }
 

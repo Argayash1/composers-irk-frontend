@@ -27,7 +27,7 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
 
           return (
             <li key={index} className='text-content__item'>
-              <Heading level={level} text={headerText} />
+              <Heading level={level} text={headerText} place={place} />
             </li>
           );
         } else {
@@ -37,6 +37,7 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
             'text-content__paragraph',
             (place === 'full-project' || place === 'full-article') && 'text-content__paragraph_place_full-project',
             place === 'full-article' && 'text-content__paragraph_place_full-article',
+            place === 'about-us' && 'text-content__paragraph_place_about-us',
             isInterviewerQuestion && 'text-content__paragraph_font_bold',
           );
 

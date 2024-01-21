@@ -16,7 +16,7 @@ export const Tabs = ({ tabNamesArray, value, onChangeTab }: TabsProps) => {
       tabNamesArray.includes('СМИ о нас')) &&
       'tabs_place_scores',
     tabNamesArray.includes('Биография') && 'tabs_place_full-union-member',
-    tabNamesArray.includes('Аудиозаписи') && value === 1 && 'tabs_type_right',
+    (tabNamesArray.includes('Аудиозаписи') || tabNamesArray.includes('СМИ о нас')) && value === 1 && 'tabs_type_right',
   );
 
   return (

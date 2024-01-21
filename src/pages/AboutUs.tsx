@@ -5,6 +5,7 @@ import { articlesArray } from '../utils/articlesArray';
 import { selectArticleCurrentPage } from '../redux/article/selectors';
 import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/article/slice';
+import clsx from 'clsx';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
@@ -50,8 +51,8 @@ export const AboutUs = () => {
   const articles = articlesArray.slice(firstItem, lastItam);
 
   return (
-    <main className='about-us'>
-      <TitleContainer name={menuItems[7].name} place='aboutus' />
+    <main className={clsx('about-us', category === 1 && 'about-us_type_our-histpry')}>
+      <TitleContainer name={menuItems[7].name} place='aboutus' value={category} />
       <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
       {category === 0 ? (
         <NewsContainer

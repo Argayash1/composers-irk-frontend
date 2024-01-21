@@ -3,6 +3,7 @@
 .heading {
   margin: 0 0 50px;
   padding: 0;
+
   @include main-text-font(28, 700, 1.05);
 
   color: #282f30;
@@ -18,6 +19,14 @@
     margin-bottom: 25px;
   }
 
+  &_type_our-history {
+    min-height: 33px;
+
+    @media screen and (max-width: 1164px) {
+      min-height: auto;
+    }
+  }
+
   &_level_3 {
     font-size: 20px;
     margin-top: 17px;
@@ -31,7 +40,21 @@
 
     @media screen and (max-width: 622px) {
       font-size: 16px;
+      line-height: 1.25;
       margin-top: 14.2px;
+    }
+  }
+
+  &_type_about-us {
+    min-height: 23px;
+
+    @media screen and (max-width: 1164px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 622px) {
+      min-height: auto;
+      margin-bottom: 15px;
     }
   }
 

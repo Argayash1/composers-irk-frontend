@@ -44,7 +44,7 @@ const Media = () => {
 
   return (
     <main className={clsx('media', category === 1 && 'media_type_video')}>
-      <TitleContainer name={menuItems[5].name} place='media' />
+      <TitleContainer name={menuItems[5].name} place='media' value={category} />
       <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
       {category === 0 ? <AudioRecordings screenWidth={screenWidth} /> : <VideoRecordings screenWidth={screenWidth} />}
       {category === 1 && (

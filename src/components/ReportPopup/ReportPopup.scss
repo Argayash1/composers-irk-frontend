@@ -7,17 +7,20 @@
     width: 980.738px;
     height: 1387.299px;
     border: 0.613px solid #000;
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
 
     @media screen and (max-width: 1164px) {
       width: 690px;
       height: 975px;
+      border: 0.431px solid #000;
     }
 
     @media screen and (max-width: 720px) {
       width: 304px;
       height: 430px;
+      border: 0.19px solid #000;
     }
   }
 }

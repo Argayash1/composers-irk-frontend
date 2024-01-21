@@ -31,7 +31,7 @@
   }
 
   &_place_aboutus {
-    padding: 50px 0 90px;
+    padding: 50px 0 92px;
 
     @media screen and (max-width: 1126px) {
       padding-top: 40px;
@@ -41,6 +41,7 @@
     @media screen and (max-width: 546px) {
       padding-top: 30px;
       padding-left: 15px;
+      padding-right: 25px;
     }
   }
 
@@ -74,8 +75,10 @@
       }
     }
 
-    &-item {
-      // border: 1px solid red;
+    &_place_about-us {
+      @media screen and (max-width: 546px) {
+        row-gap: 50px;
+      }
     }
   }
 }

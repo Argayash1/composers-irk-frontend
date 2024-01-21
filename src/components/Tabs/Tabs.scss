@@ -24,6 +24,12 @@
     }
   }
 
+  &_type_right {
+    @media screen and (max-width: 622px) {
+      margin-left: 0;
+    }
+  }
+
   &__button {
     border: none;
     border-radius: 5px;

@@ -8,9 +8,10 @@ type PageTitleProps = {
   name: string;
   path?: string;
   place?: string;
+  value?: number;
 };
 
-export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
+export const TitleContainer = ({ name, path = '/', place, value }: PageTitleProps) => {
   const titleContainerClass = clsx(
     'title-container',
     place === 'main' && 'title-container_place_main',
@@ -22,6 +23,8 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'scores' && 'title-container_place_scores',
     (place === 'full-video' || place === 'reports' || place === 'aboutus') && 'title-container_place_reports',
     place === 'full-video' && 'title-container_place_full-video',
+    place === 'full-article' && 'title-container_place_full-article',
+    value === 1 && 'title-container_tabs_right',
   );
 
   const pageTitleClass = clsx(
@@ -32,7 +35,8 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
     place === 'full-union-member' && 'title-container__page-title_place_full-union-member',
     place === 'projects' && 'title-container__page-title_place_projects',
     place === 'full-project' && 'title-container__page-title_place_full-project',
-    (place === 'scores' || place === 'media' || place === 'full-video') && 'title-container__page-title_place_scores',
+    (place === 'scores' || place === 'media' || place === 'full-video' || place === 'reports' || place === 'aboutus') &&
+      'title-container__page-title_place_scores',
     place === 'full-article' && 'title-container__page-title_place_full-article',
     place === 'search-results' && 'title-container__page-title_place_search-results',
     place === 'search' && 'title-container__page-title_place_search',
@@ -46,9 +50,11 @@ export const TitleContainer = ({ name, path = '/', place }: PageTitleProps) => {
       place === 'projects' ||
       place === 'scores' ||
       place === 'media' ||
-      place === 'full-video') &&
+      place === 'full-video' ||
+      place === 'reports' ||
+      place === 'aboutus') &&
       'title-container__arrow-link_place_union-members',
-    place === 'full-project' && 'title-container__arrow-link_place_full-project',
+    (place === 'full-project' || place === 'full-article') && 'title-container__arrow-link_place_full-project',
   );
 
   return (

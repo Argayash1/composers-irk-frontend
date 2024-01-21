@@ -106,6 +106,22 @@
     }
   }
 
+  &_place_full-article {
+    @media screen and (max-width: 1164px) {
+      margin-bottom: 40px;
+    }
+
+    @media screen and (max-width: 670px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &_tabs_right {
+    @media screen and (max-width: 546px) {
+      padding-left: 10px;
+    }
+  }
+
   &__page-title {
     margin: 0;
     padding: 0;
@@ -179,12 +195,10 @@
     }
 
     &_place_full-article {
-      @media screen and (max-width: 1164px) {
-        margin-bottom: 40px;
-      }
-
-      @media screen and (max-width: 670px) {
-        margin-bottom: 30px;
+      @media screen and (max-width: 546px) {
+        font-size: 16px;
+        line-height: 1.25;
+        height: auto;
       }
     }
 

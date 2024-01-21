@@ -35,8 +35,9 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
           const paragraphtext = isInterviewerQuestion ? item.replace('< ', '') : item;
           const textContentParagraphClass = clsx(
             'text-content__paragraph',
+            (place === 'full-project' || place === 'full-article') && 'text-content__paragraph_place_full-project',
+            place === 'full-article' && 'text-content__paragraph_place_full-article',
             isInterviewerQuestion && 'text-content__paragraph_font_bold',
-            place === 'full-project' && 'text-content__paragraph_place_full-project',
           );
 
           return (

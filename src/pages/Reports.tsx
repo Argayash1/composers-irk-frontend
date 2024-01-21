@@ -3,7 +3,7 @@ import { TitleContainer, Tabs, menuItems } from '../components';
 import { reportsArray } from '../utils/reportsArray';
 import { ReportPopup } from '../components/ReportPopup';
 
-const tabNames = ['Всё отчёты', 'Отчёты-2023', 'Отчёт-2022', 'Отчёты-2021'];
+const tabNames = ['Отчёт-2023', 'Отчёт-2022', 'Отчёт-2021', 'Отчёт-2020'];
 
 const Reports = () => {
   const [reportYear, setReportYear] = React.useState<number>(0);

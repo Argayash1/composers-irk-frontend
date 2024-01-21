@@ -17,13 +17,13 @@ export const NewsContainer = ({ place, itemsArray, status, limit, screenWidth }:
   const clientWidth = document.documentElement.clientWidth;
 
   const items = itemsArray.map((item) => (
-    <li key={item.id} className='news-container__news-list-item'>
+    <li key={item.id}>
       <NewsBlock {...item} />
     </li>
   ));
 
   const skeletons = [...new Array(limit)].map((_, index) => (
-    <li key={index} className='news-container__news-list-item'>
+    <li key={index}>
       <NewsSkeleton screenWidth={screenWidth} />
     </li>
   ));
@@ -37,7 +37,8 @@ export const NewsContainer = ({ place, itemsArray, status, limit, screenWidth }:
 
   const newsContainerListClassName = clsx(
     'news-container__news-list',
-    place === 'news' && 'news-container__news-list_place_news',
+    (place === 'news' || place === 'aboutus') && 'news-container__news-list_place_news',
+    place === 'aboutus' && 'news-container__news-list_place_about-us',
     clientWidth < 1280 && 'news-container__news-list_gap_tablet',
   );
 

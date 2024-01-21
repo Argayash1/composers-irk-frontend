@@ -22,6 +22,7 @@
 
     @media screen and (max-width: 622px) {
       padding-left: 15px;
+      padding-right: 25px;
     }
   }
 
@@ -49,7 +50,7 @@
 
     @media screen and (max-width: 546px) {
       padding-left: 15px;
-      margin-top: 20px;
+      margin-top: 30px;
     }
   }
 
@@ -77,12 +78,30 @@
       margin-bottom: 16.8px;
     }
 
-    &_font_bold {
-      font-weight: 700;
-    }
-
     &_place_full-project {
       font-size: 16px;
+
+      @media screen and (max-width: 546px) {
+        font-size: 14px;
+      }
+    }
+
+    &_place_full-article {
+      margin-bottom: 21.8px;
+
+      @media screen and (max-width: 622px) {
+        margin-bottom: 16.5px;
+      }
+    }
+
+    &_font_bold {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 22px;
+
+      @media screen and (max-width: 1169px) {
+        font-size: 16px;
+      }
 
       @media screen and (max-width: 546px) {
         font-size: 14px;

@@ -801,7 +801,7 @@
 }
 
 .contacts {
-  @include page-flex-container(60px, 84px, 0, 85px);
+  @include page-flex-container(60px, 84px, 355px, 85px);
 
   @media screen and (max-width: 1262px) {
     padding-right: 39px;
@@ -810,37 +810,11 @@
 
   @media screen and (max-width: 1169px) {
     padding-top: 45px;
-    padding-bottom: 100px;
+    padding-bottom: 366px;
   }
 
   @media screen and (max-width: 546px) {
-    padding-right: 25px;
-    padding-left: 10px;
-  }
-
-  &__list {
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: 247px 147px;
-    gap: 35px 198px;
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-  }
-
-  &__list-item {
-    &:first-of-type {
-      margin-top: 20px;
-    }
-
-    &:nth-child(3) {
-      margin-bottom: 9.06px;
-    }
-
-    &:last-of-type {
-      grid-column: 2/3;
-      grid-row: 1/4;
-    }
+    padding: 25px 25px 100px 10px;
   }
 }
 

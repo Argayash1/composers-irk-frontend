@@ -1,6 +1,13 @@
 import React from 'react';
 import { ContactItem } from '../../components';
 import './ContactsList.scss';
+import { Contact } from '../../pages/Contacts';
+import clsx from 'clsx';
+
+type ContactListProps = {
+  place?: string;
+  contactsData?: Contact[];
+};
 
 const footerContacts = [
   {
@@ -53,12 +60,13 @@ const footerContacts = [
   },
 ];
 
-export const ContactsList = () => {
+export const ContactsList = ({ place, contactsData }: ContactListProps) => {
+  const contacts = contactsData ? contactsData : footerContacts;
   return (
-    <ul className='contacts-list'>
-      {footerContacts.map((contact, index) => (
+    <ul className={clsx('contacts-list', place === 'contacts' && 'contacts-list_place_contacts')}>
+      {contacts.map((contact, index) => (
         <li key={index} className='contacts-list__item'>
-          <ContactItem {...contact} />
+          <ContactItem {...contact} place={place} />
         </li>
       ))}
     </ul>

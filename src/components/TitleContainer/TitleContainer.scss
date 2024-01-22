@@ -116,6 +116,16 @@
     }
   }
 
+  &_place_contacts {
+    @media screen and (max-width: 1164px) {
+      margin-bottom: 60px;
+    }
+
+    @media screen and (max-width: 546px) {
+      margin-bottom: 45px;
+    }
+  }
+
   &_tabs_right {
     @media screen and (max-width: 546px) {
       padding-left: 10px;

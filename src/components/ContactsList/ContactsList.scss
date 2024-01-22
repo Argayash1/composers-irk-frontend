@@ -17,6 +17,16 @@
     gap: 20px;
   }
 
+  &_place_contacts {
+    margin-top: 0;
+    gap: 35px;
+
+    @media screen and (max-width: 546px) {
+      padding-left: 5px;
+      gap: 30px;
+    }
+  }
+
   &__item {
     &:nth-child(3):hover {
       a svg path {

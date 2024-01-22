@@ -24,6 +24,7 @@ export const TitleContainer = ({ name, path = '/', place, value }: PageTitleProp
     (place === 'full-video' || place === 'reports' || place === 'aboutus') && 'title-container_place_reports',
     place === 'full-video' && 'title-container_place_full-video',
     place === 'full-article' && 'title-container_place_full-article',
+    place === 'contacts' && 'title-container_place_contacts',
     value === 1 && 'title-container_tabs_right',
   );
 
@@ -35,7 +36,12 @@ export const TitleContainer = ({ name, path = '/', place, value }: PageTitleProp
     place === 'full-union-member' && 'title-container__page-title_place_full-union-member',
     place === 'projects' && 'title-container__page-title_place_projects',
     place === 'full-project' && 'title-container__page-title_place_full-project',
-    (place === 'scores' || place === 'media' || place === 'full-video' || place === 'reports' || place === 'aboutus') &&
+    (place === 'scores' ||
+      place === 'media' ||
+      place === 'full-video' ||
+      place === 'reports' ||
+      place === 'aboutus' ||
+      place === 'contacts') &&
       'title-container__page-title_place_scores',
     place === 'full-article' && 'title-container__page-title_place_full-article',
     place === 'search-results' && 'title-container__page-title_place_search-results',
@@ -52,7 +58,8 @@ export const TitleContainer = ({ name, path = '/', place, value }: PageTitleProp
       place === 'media' ||
       place === 'full-video' ||
       place === 'reports' ||
-      place === 'aboutus') &&
+      place === 'aboutus' ||
+      place === 'contacts') &&
       'title-container__arrow-link_place_union-members',
     (place === 'full-project' || place === 'full-article') && 'title-container__arrow-link_place_full-project',
   );

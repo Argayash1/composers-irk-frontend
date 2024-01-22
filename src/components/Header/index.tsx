@@ -45,7 +45,11 @@ export const Header = () => {
       <div className='header__menu-container'>
         <Logo />
         <MainMenu place='header' />
-        <HeaderIcons onSearchClick={handleToggleSearch} onBurgerButtonClick={() => setIsBurgerMenuOpen(true)} />
+        <HeaderIcons
+          onSearchClick={handleToggleSearch}
+          onBurgerButtonClick={() => setIsBurgerMenuOpen(true)}
+          pathName={pathname}
+        />
         <BurgerMenu isOpen={isBurgerMenuOpen} onClose={() => setIsBurgerMenuOpen(false)} />
       </div>
       <SearchForm place='header' />

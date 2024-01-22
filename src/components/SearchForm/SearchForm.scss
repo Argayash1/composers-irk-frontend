@@ -49,6 +49,10 @@
       opacity: 1;
     }
 
+    &_place_search {
+      padding: 0;
+    }
+
     &_place_search-results {
       transition: none;
     }
@@ -107,6 +111,10 @@
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+
+      @media screen and (max-width: 546px) {
+        font-size: 12px;
+      }
     }
 
     &::-webkit-search-cancel-button {

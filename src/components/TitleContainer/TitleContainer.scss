@@ -126,6 +126,12 @@
     }
   }
 
+  &_place_search {
+    @media screen and (max-width: 546px) {
+      margin-bottom: 7px;
+    }
+  }
+
   &_tabs_right {
     @media screen and (max-width: 546px) {
       padding-left: 10px;
@@ -219,10 +225,6 @@
         display: block;
         margin-bottom: 7px;
       }
-    }
-
-    &_place_search {
-      margin-bottom: 7px;
     }
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactItem, ContactsList, Logo, TitleContainer, menuItems } from '../components';
+import { ContactsList, TitleContainer, menuItems } from '../components';
 import phone from '../assets/icons/phone-icon-contacts.svg';
 import email from '../assets/icons/mail-icon-contacts.svg';
 import vk from '../assets/icons/vk-icon-contacts.svg';

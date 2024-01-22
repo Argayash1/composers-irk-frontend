@@ -71,7 +71,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
       <div
         className={`search__container ${isSearchOpen || place === 'search' ? 'search__container_is_opened' : ''} ${
           place === 'search-results' ? 'search__container_place_search-results' : ''
-        }`}
+        } ${place === 'search' ? 'search__container_place_search' : ''}`}
       >
         <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
           <label htmlFor='search' className='search__label'>
@@ -94,7 +94,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
             {searchValue && <CloseButton onClick={handleClearSearchBar} />}
           </div>
         </form>
-        <CloseButton onClick={() => dispatch(setCloseSearch())} place='search' />
+        {place !== 'search' && <CloseButton onClick={() => dispatch(setCloseSearch())} place='search' />}
       </div>
     </section>
   );

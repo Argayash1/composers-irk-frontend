@@ -28,5 +28,11 @@
     @media screen and (max-width: 1126px) {
       margin-right: 26px;
     }
+
+    &_place_search {
+      &:not(:last-child) {
+        display: none;
+      }
+    }
   }
 }

@@ -90,7 +90,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
             <span className='search__error'>{errorText}</span>
           </label>
           <div className='search__buttons'>
-            <SearchButton type={ButtonTypeEnum.SUBMIT} />
+            <SearchButton type={ButtonTypeEnum.SUBMIT} place='search' />
             {searchValue && <CloseButton onClick={handleClearSearchBar} />}
           </div>
         </form>

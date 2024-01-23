@@ -3,6 +3,7 @@ import { CombinedArrayObject, TitleContainer, Pagination, SearchForm, SearchResu
 import { useSelector } from 'react-redux';
 import { setCurrentPage, setOpenSearch } from '../redux/search/slice';
 import { RootState, useAppDispatch } from '../redux/store';
+import clsx from 'clsx';
 
 const SearchResults: React.FC = () => {
   const { searchResults, currentPage } = useSelector((state: RootState) => state.search);
@@ -16,10 +17,14 @@ const SearchResults: React.FC = () => {
     <main className='search-results'>
       <TitleContainer name='Поиск' place='search-results' />
       <SearchForm place='search-results' />
-      <h2 className='search-results__title'>Результаты поиска</h2>
+      <h2
+        className={clsx('search-results__title', searchResults.length === 0 && 'search-results__title_type_no-results')}
+      >
+        Результаты поиска
+      </h2>
       {searchResults.length === 0 ? (
         <p className='search-results__no-results-text'>
-          {`${'К сожалению, ничего не нашлось. '} Попробуйте изменить Ваш запрос.`}
+          К сожалению, ничего не нашлось. Попробуйте изменить Ваш запрос.
         </p>
       ) : (
         <ul className='search-results__list'>

@@ -43,6 +43,18 @@
     }
   }
 
+  &_place_search {
+    @media screen and (max-width: 1220px) {
+      width: 19px;
+      height: 19px;
+
+      svg {
+        width: 19px;
+        height: 19px;
+      }
+    }
+  }
+
   &__text {
     color: #282f30;
     font-family: Manrope;

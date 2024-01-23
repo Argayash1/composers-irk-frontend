@@ -152,7 +152,10 @@
     display: inline-block;
     margin: 0;
     padding: 0;
-    display: inline-block;
+
+    @media screen and (max-width: 546px) {
+      font-size: 10px;
+    }
   }
 
   &__buttons {
@@ -161,6 +164,10 @@
     position: absolute;
     right: 8px;
     top: 8px;
+
+    @media screen and (max-width: 1262px) {
+      gap: 12px;
+    }
 
     @media screen and (max-width: 546px) {
       gap: 10px;

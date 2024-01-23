@@ -832,8 +832,9 @@
   }
 
   @media screen and (max-width: 546px) {
+    padding-top: 25px;
     padding-right: 15px;
-    padding-left: 15px;
+    padding-left: 10px;
   }
 
   &__title {
@@ -852,6 +853,7 @@
       font-size: 16px;
       line-height: 125%; /* 20px */
       margin-bottom: 30px;
+      padding-left: 5px;
     }
   }
 
@@ -878,6 +880,7 @@
 
     @media screen and (max-width: 546px) {
       gap: 30px;
+      padding-left: 5px;
     }
   }
 }

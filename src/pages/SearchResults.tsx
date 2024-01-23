@@ -14,41 +14,39 @@ const SearchResults: React.FC = () => {
 
   return (
     <main className='search-results'>
-      <section>
-        <TitleContainer name='Поиск' place='search-results' />
-        <SearchForm place='search-results' />
-        <h2 className='search-results__title'>Результаты поиска</h2>
-        {searchResults.length === 0 ? (
-          <p className='search-results__no-results-text'>
-            {`${'К сожалению, ничего не нашлось. '} Попробуйте изменить Ваш запрос.`}
-          </p>
-        ) : (
-          <ul className='search-results__list'>
-            {searchResults.map((searchResult: CombinedArrayObject, index: number) => (
-              <li key={index}>
-                <SearchResult
-                  title={searchResult.title || searchResult.surname + ' ' + searchResult.name}
-                  description={
-                    searchResult.description ||
-                    searchResult.articleDescription ||
-                    searchResult.shortBiography ||
-                    searchResult.newsText
-                  }
-                  path={`/${
-                    searchResult.description
-                      ? 'projects'
-                      : searchResult.articleDescription
-                      ? 'aboutus'
-                      : searchResult.shortBiography
-                      ? 'unionmembers'
-                      : 'news'
-                  }/${searchResult.id}`}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      <TitleContainer name='Поиск' place='search-results' />
+      <SearchForm place='search-results' />
+      <h2 className='search-results__title'>Результаты поиска</h2>
+      {searchResults.length === 0 ? (
+        <p className='search-results__no-results-text'>
+          {`${'К сожалению, ничего не нашлось. '} Попробуйте изменить Ваш запрос.`}
+        </p>
+      ) : (
+        <ul className='search-results__list'>
+          {searchResults.map((searchResult: CombinedArrayObject, index: number) => (
+            <li key={index}>
+              <SearchResult
+                title={searchResult.title || searchResult.surname + ' ' + searchResult.name}
+                description={
+                  searchResult.description ||
+                  searchResult.articleDescription ||
+                  searchResult.shortBiography ||
+                  searchResult.newsText
+                }
+                path={`/${
+                  searchResult.description
+                    ? 'projects'
+                    : searchResult.articleDescription
+                    ? 'aboutus'
+                    : searchResult.shortBiography
+                    ? 'unionmembers'
+                    : 'news'
+                }/${searchResult.id}`}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
       {searchResults.length > 0 && (
         <section>
           <Pagination

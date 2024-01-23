@@ -33,11 +33,6 @@
       padding-left: 38px;
     }
 
-    @media screen and (max-width: 1262px) {
-      padding-right: 39px;
-      padding-left: 47px;
-    }
-
     @media screen and (max-width: 546px) {
       padding-right: 15px;
       padding-left: 15px;
@@ -47,14 +42,28 @@
       visibility: visible;
       height: 83px;
       opacity: 1;
+
+      @media screen and (max-width: 1262px) {
+        height: 86px;
+      }
     }
 
     &_place_search {
       padding: 0;
+
+      @media screen and (max-width: 546px) {
+        padding-left: 5px;
+      }
     }
 
     &_place_search-results {
       transition: none;
+
+      @media screen and (max-width: 546px) {
+        padding-right: 0;
+        padding-left: 5px;
+        height: 80px;
+      }
     }
   }
 
@@ -99,6 +108,10 @@
     box-sizing: border-box;
     padding: 0 71px 0 10px;
     margin-bottom: 8px;
+
+    @media screen and (max-width: 546px) {
+      padding-right: 77px;
+    }
 
     &:not(.search__input_type_error):focus {
       outline: 2px solid #909da1;
@@ -148,5 +161,9 @@
     position: absolute;
     right: 8px;
     top: 8px;
+
+    @media screen and (max-width: 546px) {
+      gap: 10px;
+    }
   }
 }

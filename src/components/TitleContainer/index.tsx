@@ -26,6 +26,7 @@ export const TitleContainer = ({ name, path = '/', place, value }: PageTitleProp
     place === 'full-article' && 'title-container_place_full-article',
     place === 'contacts' && 'title-container_place_contacts',
     place === 'search' && 'title-container_place_search',
+    place === 'search-results' && 'title-container_place_search-results',
     value === 1 && 'title-container_tabs_right',
   );
 
@@ -43,10 +44,10 @@ export const TitleContainer = ({ name, path = '/', place, value }: PageTitleProp
       place === 'reports' ||
       place === 'aboutus' ||
       place === 'contacts' ||
-      place === 'search') &&
+      place === 'search' ||
+      place === 'search-results') &&
       'title-container__page-title_place_scores',
     place === 'full-article' && 'title-container__page-title_place_full-article',
-    place === 'search-results' && 'title-container__page-title_place_search-results',
   );
 
   const arrowLinkClass = clsx(
@@ -61,7 +62,8 @@ export const TitleContainer = ({ name, path = '/', place, value }: PageTitleProp
       place === 'reports' ||
       place === 'aboutus' ||
       place === 'contacts' ||
-      place === 'search') &&
+      place === 'search' ||
+      place === 'search-results') &&
       'title-container__arrow-link_place_union-members',
     (place === 'full-project' || place === 'full-article') && 'title-container__arrow-link_place_full-project',
   );

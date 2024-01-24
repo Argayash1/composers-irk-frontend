@@ -22,6 +22,7 @@ export * from './AudioRecordings';
 export * from './VideoRecordings';
 export * from './SharePanel';
 export * from './BreadCrumbs';
+export * from './TextContent';
 export * from './AudioPlayer';
 export * from './Overlay';
 export * from './Heading';

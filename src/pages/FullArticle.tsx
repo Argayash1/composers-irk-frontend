@@ -1,8 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { articlesArray } from '../utils/articlesArray';
-import { FullArticleSkeleton, TitleContainer } from '../components';
-import { TextContent } from '../components/TextContent';
+import { FullArticleSkeleton, TitleContainer, TextContent } from '../components';
 
 const FullArticle = () => {
   const [article, setArticle] = React.useState<{

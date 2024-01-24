@@ -1,12 +1,12 @@
 import React from 'react';
-import { NewsContainer, TitleContainer, Pagination, Tabs, menuItems } from '../components';
+import { NewsContainer, TitleContainer, Pagination, Tabs, TextContent, menuItems } from '../components';
 import { useSelector } from 'react-redux';
 import { articlesArray } from '../utils/articlesArray';
 import { selectArticleCurrentPage } from '../redux/article/selectors';
 import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/article/slice';
 import clsx from 'clsx';
-import { TextContent } from '../components/TextContent';
+import {} from '../components/TextContent';
 import { historyArray } from '../utils/historyArray';
 
 const tabNames = ['СМИ о нас', 'Наша история'];

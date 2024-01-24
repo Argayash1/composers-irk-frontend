@@ -1,8 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { CTA, TitleContainer, SharePanel, FullProjectSkeleton } from '../components';
+import { CTA, TitleContainer, SharePanel, FullProjectSkeleton, TextContent } from '../components';
 import { projectsArray } from '../utils/projectsArray';
-import { TextContent } from '../components/TextContent';
 
 const FullProject = () => {
   const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string[] }>();

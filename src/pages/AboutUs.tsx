@@ -1,11 +1,13 @@
 import React from 'react';
-import { NewsContainer, OurHistory, TitleContainer, Pagination, Tabs, menuItems } from '../components';
+import { NewsContainer, TitleContainer, Pagination, Tabs, menuItems } from '../components';
 import { useSelector } from 'react-redux';
 import { articlesArray } from '../utils/articlesArray';
 import { selectArticleCurrentPage } from '../redux/article/selectors';
 import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/article/slice';
 import clsx from 'clsx';
+import { TextContent } from '../components/TextContent';
+import { historyArray } from '../utils/historyArray';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
@@ -62,7 +64,7 @@ export const AboutUs = () => {
           limit={screenWidth > 638 ? 6 : 4}
         />
       ) : (
-        <OurHistory />
+        <TextContent textArray={historyArray} place='about-us' />
       )}
       {category === 0 && (
         <Pagination

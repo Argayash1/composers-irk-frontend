@@ -6,7 +6,19 @@
   padding: 0;
 
   &_place_about-us {
-    margin-top: 0;
+    margin-top: 50px;
+    max-width: 953px;
+
+    @media screen and (max-width: 1164px) {
+      margin-top: 40px;
+      max-width: 94.35%;
+    }
+
+    @media screen and (max-width: 546px) {
+      margin-top: 30px;
+      padding-left: 25px;
+      max-width: 88.53%;
+    }
   }
 
   &_place_full-union-member {

@@ -29,17 +29,19 @@ const Scores = () => {
   return (
     <main className='scores'>
       <TitleContainer name={menuItems[4].name} place='scores' />
-      <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
-      <ul className='scores__list'>
-        {scoreItems[category].map((scoreItem, index) => (
-          <li key={index}>
-            <a className='scores__link' href={scoreItem.url}>
-              <div className='scores__link-image'></div>
-              {scoreItem.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <section>
+        <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
+        <ul className='scores__list'>
+          {scoreItems[category].map((scoreItem, index) => (
+            <li key={index}>
+              <a className='scores__link' href={scoreItem.url}>
+                <div className='scores__link-image'></div>
+                {scoreItem.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 };

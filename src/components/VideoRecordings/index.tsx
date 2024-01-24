@@ -30,5 +30,9 @@ export const VideoRecordings = ({ screenWidth }: VideoRecordingsProps) => {
     </li>
   ));
 
-  return <ul className='video-recordings'>{videos ? videos : skeletons}</ul>;
+  return (
+    <section>
+      <ul className='video-recordings'>{videos ? videos : skeletons}</ul>
+    </section>
+  );
 };

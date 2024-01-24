@@ -82,9 +82,11 @@ const UnionMembers: React.FC = () => {
   return (
     <main className='union-members'>
       <TitleContainer name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' />
-      <ul className={clsx('union-members__list', setTabletModificator && 'union-members__list_gap_mobile')}>
-        {unionMembers ? unionMembers : skeletons}
-      </ul>
+      <section>
+        <ul className={clsx('union-members__list', setTabletModificator && 'union-members__list_gap_mobile')}>
+          {unionMembers ? unionMembers : skeletons}
+        </ul>
+      </section>
       <Pagination
         onChangePage={(page) => dispatch(setCurrentPage(page))}
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}

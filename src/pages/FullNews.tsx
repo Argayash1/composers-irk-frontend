@@ -34,14 +34,16 @@ const FullNews = () => {
   return (
     <main className='full-news'>
       <TitleContainer name={news.title} place='full-news' path='/news' />
-      <span className='full-news__date'>{news.createdAt}</span>
-      <img className='full-news__image' src={news.imageUrl} alt='' />
-      <p className='full-news__text'>{news.newsText}</p>
-      {isSharePanelOpen ? (
-        <SharePanel itemTitle={news.title} onClick={hadleToggleSharePanel} />
-      ) : (
-        <CTA onClick={hadleToggleSharePanel} />
-      )}
+      <section>
+        <span className='full-news__date'>{news.createdAt}</span>
+        <img className='full-news__image' src={news.imageUrl} alt='' />
+        <p className='full-news__text'>{news.newsText}</p>
+        {isSharePanelOpen ? (
+          <SharePanel itemTitle={news.title} onClick={hadleToggleSharePanel} />
+        ) : (
+          <CTA onClick={hadleToggleSharePanel} />
+        )}
+      </section>
     </main>
   );
 };

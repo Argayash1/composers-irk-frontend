@@ -62,7 +62,9 @@ const Projects = () => {
   return (
     <main className='projects'>
       <TitleContainer name={menuItems[3].name} place='projects' />
-      <ul className='projects__list'>{projects ? projects : skeletons}</ul>
+      <section>
+        <ul className='projects__list'>{projects ? projects : skeletons}</ul>
+      </section>
       <Pagination
         onChangePage={(page) => dispatch(setCurrentPage(page))}
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}

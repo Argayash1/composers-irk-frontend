@@ -68,12 +68,14 @@ const FullUnionMemberInfo = () => {
         <p className='full-union-member__short-biography'>{unionMember.shortBiography}</p>
         {showCTA && <CTA linkText='Ноты композитора' path='/scores' />}
       </section>
-      <Tabs
-        tabNamesArray={handleGenerateTabNames()}
-        value={сategory}
-        onChangeTab={(index: number) => setCategory(index)}
-      />
-      <TextContent textArray={unionMemberData[сategory]} place='full-union-member' />
+      <section>
+        <Tabs
+          tabNamesArray={handleGenerateTabNames()}
+          value={сategory}
+          onChangeTab={(index: number) => setCategory(index)}
+        />
+        <TextContent textArray={unionMemberData[сategory]} place='full-union-member' />
+      </section>
     </main>
   );
 };

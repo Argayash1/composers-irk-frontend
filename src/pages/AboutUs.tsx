@@ -55,7 +55,9 @@ export const AboutUs = () => {
   return (
     <main className={clsx('about-us', category === 1 && 'about-us_type_our-histpry')}>
       <TitleContainer name={menuItems[7].name} place='aboutus' value={category} />
-      <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
+      <section>
+        <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setCategory(index)} value={category} />
+      </section>
       {category === 0 ? (
         <NewsContainer
           place='aboutus'
@@ -64,7 +66,9 @@ export const AboutUs = () => {
           limit={screenWidth > 638 ? 6 : 4}
         />
       ) : (
-        <TextContent textArray={historyArray} place='about-us' />
+        <section>
+          <TextContent textArray={historyArray} place='about-us' />
+        </section>
       )}
       {category === 0 && (
         <Pagination

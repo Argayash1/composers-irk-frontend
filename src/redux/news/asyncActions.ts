@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { News, NewsData, SearchNewsParams } from './types';
+import { News, NewsData, NewsItems, SearchNewsParams } from './types';
 import axios from 'axios';
+import { localApi } from '../../utils/constants';
 
 export const fetchNews = createAsyncThunk<NewsData, SearchNewsParams>('news/fetchNewsStatus', async (params) => {
   const { currentPage, limit, screenWidth } = params;
-  const { data } = await axios.get<News[]>(
-    `https://64e36310bac46e480e78b878.mockapi.io/news?page=${currentPage}&limit=${limit}`,
-  );
+  const { data } = await axios.get<NewsItems>(`${localApi}/news?page=${currentPage}&limit=${limit}`);
+
+  console.log(data);
 
   return { data, screenWidth, currentPage };
 });

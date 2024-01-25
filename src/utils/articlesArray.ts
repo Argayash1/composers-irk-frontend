@@ -3,7 +3,7 @@ import { Article } from '../redux/article/types';
 
 export const articlesArray: Article[] = [
   {
-    id: '0',
+    _id: '0',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '01.01.2023',
     title: 'Музыкальный мир композитора Яна Круля',
@@ -31,7 +31,7 @@ export const articlesArray: Article[] = [
     ],
   },
   {
-    id: '1',
+    _id: '1',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '02.02.2023',
     title: 'Музыкальный мир композитора Яна Круля',
@@ -59,7 +59,7 @@ export const articlesArray: Article[] = [
     ],
   },
   {
-    id: '2',
+    _id: '2',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '03.03.2023',
     title: 'Музыкальный мир композитора Яна Круля',
@@ -87,7 +87,7 @@ export const articlesArray: Article[] = [
     ],
   },
   {
-    id: '3',
+    _id: '3',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '04.04.2023',
     title: 'Музыкальный мир композитора Яна Круля',
@@ -115,7 +115,7 @@ export const articlesArray: Article[] = [
     ],
   },
   {
-    id: '4',
+    _id: '4',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '05.05.2023',
     title: 'Музыкальный мир композитора Яна Круля',
@@ -143,7 +143,7 @@ export const articlesArray: Article[] = [
     ],
   },
   {
-    id: '5',
+    _id: '5',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '06.06.2023',
     title: 'Музыкальный мир композитора Яна Круля',
@@ -171,7 +171,7 @@ export const articlesArray: Article[] = [
     ],
   },
   {
-    id: '6',
+    _id: '6',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '07.07.2023',
     title: 'Музыкальный мир композитора Яна Круля',
@@ -199,7 +199,7 @@ export const articlesArray: Article[] = [
     ],
   },
   {
-    id: '7',
+    _id: '7',
     imageUrl: musicWorldOfJanKrul,
     createdAt: '08.08.2023',
     title: 'Музыкальный мир композитора Яна Круля',

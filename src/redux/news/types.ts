@@ -1,13 +1,18 @@
 export type News = {
-  id: string;
+  _id: string;
   title: string;
   imageUrl: string;
   newsText: string;
   createdAt: string;
 };
 
+export type NewsItems = {
+  news: News[];
+  totalPages: number;
+};
+
 export type NewsData = {
-  data: News[];
+  data: NewsItems;
   screenWidth: number;
   currentPage: number;
 };
@@ -23,6 +28,7 @@ export interface NewsSliceState {
   status: Status; //'loading' | 'success' | 'error';
   currentPage: number;
   limit: number;
+  totalPages: number;
 }
 
 export type SearchNewsParams = {

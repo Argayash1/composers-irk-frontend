@@ -6,6 +6,7 @@ type PaginationProps = {
   onSwitchToPreviousPage: () => void;
   onChangePage: (page: number) => void;
   currentPage: number;
+  totalPages?: number;
 };
 
 export type PageNumber = number | string;
@@ -15,25 +16,37 @@ export const Pagination = ({
   onSwitchToPreviousPage,
   onChangePage,
   currentPage,
+  totalPages,
 }: PaginationProps) => {
-  const handleGeneratePageNumbers = () => {
-    const pageNumbers: PageNumber[] = [1, 2, 3, 4, 5, 6, 7];
-    const ellipsis = '...';
+  const pageNumbers = totalPages ? handleGeneratePageNumbers(totalPages) : [1, 2, 3, 4, 5, 6, 7];
 
-    if (currentPage === 1 || currentPage === 2) {
-      pageNumbers.splice(4, 2, ellipsis);
+  function handleGeneratePageNumbers(totalPages: number) {
+    const numbers: number[] = [];
+    for (let i = 1; i <= totalPages; i++) {
+      numbers.push(i);
     }
-    if (currentPage === 3) {
-      pageNumbers.splice(5, 1, ellipsis);
-    }
-    if (currentPage === 5) {
-      pageNumbers.splice(1, 1, ellipsis);
-    }
-    if (currentPage === 6) {
-      pageNumbers.splice(1, 2, ellipsis);
-    }
-    if (currentPage === 7) {
-      pageNumbers.splice(1, 3, ellipsis);
+    return numbers;
+  }
+
+  const handleAddEllipsis = (pageNumbers: PageNumber[]) => {
+    if (pageNumbers.length >= 7) {
+      const ellipsis = '...';
+
+      if (currentPage === 1 || currentPage === 2) {
+        pageNumbers.splice(4, 2, ellipsis);
+      }
+      if (currentPage === 3) {
+        pageNumbers.splice(5, 1, ellipsis);
+      }
+      if (currentPage === 5) {
+        pageNumbers.splice(1, 1, ellipsis);
+      }
+      if (currentPage === 6) {
+        pageNumbers.splice(1, 2, ellipsis);
+      }
+      if (currentPage === 7) {
+        pageNumbers.splice(1, 3, ellipsis);
+      }
     }
 
     return pageNumbers;
@@ -45,10 +58,10 @@ export const Pagination = ({
       return true;
     }
 
-    const currentElement = handleGeneratePageNumbers()[currentIndex];
+    const currentElement = handleAddEllipsis(pageNumbers)[currentIndex];
 
     // Проверяем, является ли предыдущий элемент многоточием (...)
-    const nextElement = handleGeneratePageNumbers()[currentIndex + 1];
+    const nextElement = handleAddEllipsis(pageNumbers)[currentIndex + 1];
     if (nextElement === '...' || currentElement === '...') {
       return false;
     }
@@ -70,7 +83,7 @@ export const Pagination = ({
         </button>
       )}
       <ul className='pagination__list'>
-        {handleGeneratePageNumbers().map((page, index) => (
+        {handleAddEllipsis(pageNumbers).map((page, index) => (
           <li
             key={index}
             className={`pagination__list-item ${currentPage === page ? 'pagination__list-item_active' : ''} ${

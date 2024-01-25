@@ -9,7 +9,7 @@ import { setCurrentPage } from '../redux/news/slice';
 const News = () => {
   const dispatch = useAppDispatch();
 
-  const { items, status, currentPage } = useSelector(selectNewsData);
+  const { items, status, currentPage, totalPages } = useSelector(selectNewsData);
 
   const [fetching, setFetching] = React.useState(false);
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
@@ -92,6 +92,7 @@ const News = () => {
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
         onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
         currentPage={currentPage}
+        totalPages={totalPages}
       />
     </main>
   );

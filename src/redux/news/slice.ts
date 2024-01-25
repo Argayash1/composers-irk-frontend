@@ -7,6 +7,7 @@ const initialState: NewsSliceState = {
   status: Status.LOADING,
   currentPage: 1,
   limit: 6,
+  totalPages: 0,
 };
 
 const newsSlice = createSlice({
@@ -34,12 +35,14 @@ const newsSlice = createSlice({
       const { data, screenWidth, currentPage } = action.payload;
 
       if (screenWidth <= 638 && currentPage > 1) {
-        const newItems = data.filter((item) => !state.items.some((existingItem) => existingItem.id === item.id));
+        const newItems = data.news.filter((item) => !state.items.some((existingItem) => existingItem._id === item._id));
 
         state.items = [...state.items, ...newItems];
+        state.totalPages = data.totalPages;
         state.status = Status.SUCCESS;
       } else {
-        state.items = data;
+        state.items = data.news;
+        state.totalPages = data.totalPages;
         state.status = Status.SUCCESS;
       }
     });

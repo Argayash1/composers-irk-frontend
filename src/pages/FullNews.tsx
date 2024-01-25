@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, SharePanel, FullNewsSkeleton } from '../components';
 import axios from 'axios';
+import { localApi } from '../utils/constants';
+import { handleFormateDate } from '../utils/utils';
 
 const FullNews = () => {
   const [news, setNews] = React.useState<{ imageUrl: string; title: string; newsText: string; createdAt: string }>();
@@ -12,7 +14,7 @@ const FullNews = () => {
   React.useEffect(() => {
     async function fetchNews() {
       try {
-        const { data } = await axios.get('https://64e36310bac46e480e78b878.mockapi.io/news/' + id);
+        const { data } = await axios.get(`${localApi}/news/${id}`);
         setNews(data);
       } catch (err) {
         console.log(err);
@@ -35,7 +37,7 @@ const FullNews = () => {
     <main className='full-news'>
       <TitleContainer name={news.title} place='full-news' path='/news' />
       <section>
-        <span className='full-news__date'>{news.createdAt}</span>
+        <span className='full-news__date'>{handleFormateDate(news.createdAt)}</span>
         <img className='full-news__image' src={news.imageUrl} alt='' />
         <p className='full-news__text'>{news.newsText}</p>
         {isSharePanelOpen ? (

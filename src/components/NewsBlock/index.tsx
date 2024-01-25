@@ -2,10 +2,10 @@ import React from 'react';
 import { CTA } from '../CTA';
 import './NewsBlock.scss';
 import { Link } from 'react-router-dom';
-import { handleScrollToTop } from '../../utils/utils';
+import { handleFormateDate, handleScrollToTop } from '../../utils/utils';
 
 type NewsBlockProps = {
-  id: string;
+  _id: string;
   imageUrl: string;
   createdAt: string;
   title: string;
@@ -14,9 +14,9 @@ type NewsBlockProps = {
   index?: number;
 };
 
-export const NewsBlock = ({ id, imageUrl, createdAt, title, newsText, articleDescription, index }: NewsBlockProps) => {
-  const fullNewsPath = `/news/${id}`;
-  const fullArticlePath = `/aboutus/${id}`;
+export const NewsBlock = ({ _id, imageUrl, createdAt, title, newsText, articleDescription, index }: NewsBlockProps) => {
+  const fullNewsPath = `/news/${_id}`;
+  const fullArticlePath = `/aboutus/${_id}`;
 
   return (
     <div className='news-block'>
@@ -27,7 +27,7 @@ export const NewsBlock = ({ id, imageUrl, createdAt, title, newsText, articleDes
       >
         <img src={imageUrl} alt='' className='news-block__image' />
       </Link>
-      <span className='news-block__date'>{createdAt}</span>
+      <span className='news-block__date'>{handleFormateDate(createdAt)}</span>
       <h3 className='news-block__title'>{title}</h3>
       <p className='news-block__text'>{articleDescription ? articleDescription : newsText}</p>
       <CTA path={articleDescription ? fullArticlePath : fullNewsPath} />

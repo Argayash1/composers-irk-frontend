@@ -16,9 +16,8 @@ import yevdokimove from '../assets/images/union-members-yevdokimova.jpg';
 import gorbovskaya from '../assets/images/gorbovskaya.jpg';
 import tcaher from '../assets/images/union-members-tsaher.jpg';
 import puhnarevich from '../assets/images/puhnarevich.jpg';
-import { UnionMember } from '../redux/unionMember/types';
 
-export const unionMembersArray: UnionMember[] = [
+export const unionMembersArray = [
   {
     id: '0',
     imageUrl: krivoshein,

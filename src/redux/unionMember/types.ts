@@ -1,7 +1,8 @@
 export type UnionMember = {
-  id: string;
+  _id: string;
   imageUrl: string;
   surname: string;
+  patronymic: string;
   name: string;
   profession: string;
   biography: string[];
@@ -10,6 +11,17 @@ export type UnionMember = {
   awards?: string[];
   competitions?: string[];
   links?: string[];
+};
+
+export type UnionMemberItems = {
+  members: UnionMember[];
+  totalPages: number;
+};
+
+export type UnionMembersData = {
+  data: UnionMemberItems;
+  screenWidth: number;
+  currentPage: number;
 };
 
 export enum Status {
@@ -23,9 +35,11 @@ export interface UniomMemberSliceState {
   status: Status; //'loading' | 'success' | 'error';
   currentPage: number;
   limit: number;
+  totalPages: number;
 }
 
 export type SearchUniomMemberParams = {
   currentPage: number;
   limit: number;
+  screenWidth: number;
 };

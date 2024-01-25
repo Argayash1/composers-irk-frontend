@@ -1,19 +1,21 @@
 import React from 'react';
-import { unionMembersArray } from '../utils/membersArray';
 import { TitleContainer, Pagination, UnionMemberBlock, menuItems, UnionMemberSkeleton } from '../components';
 import { compareBySurname, hasVerticalScroll } from '../utils/utils';
 import { useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/unionMember/slice';
-import { selectUnionMemberCurrentPage } from '../redux/unionMember/selectors';
+import { selectUnionMembersData } from '../redux/unionMember/selectors';
 import { useAppDispatch } from '../redux/store';
 import clsx from 'clsx';
+import { fetchUnionMembers } from '../redux/unionMember/asyncActions';
 
 const UnionMembers: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const currentPage = useSelector(selectUnionMemberCurrentPage);
-  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
-  const [clientWidth, setClientWidth] = React.useState(document.documentElement.clientWidth);
+  const { items, currentPage, totalPages } = useSelector(selectUnionMembersData);
+
+  const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
+  const [clientWidth, setClientWidth] = React.useState<number>(document.documentElement.clientWidth);
+  const [cardsLimit, setCardsLimit] = React.useState<number>(0);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -39,39 +41,41 @@ const UnionMembers: React.FC = () => {
     };
   }, []);
 
-  const handleSetCardsPerPge = (): number => {
-    if (screenWidth >= 1170) {
-      return 12;
-    }
-    if (screenWidth < 1170 && screenWidth >= 767) {
-      return 9;
-    }
+  React.useEffect(() => {
+    const handleSetLimit = (): number => {
+      let limit;
 
-    if (screenWidth < 767) {
-      return 8;
-    }
+      if (screenWidth >= 1170) {
+        limit = 12;
+      } else if (screenWidth < 1170 && screenWidth >= 767) {
+        limit = 9;
+      } else if (screenWidth < 767) {
+        limit = 8;
+      } else {
+        limit = 0;
+      }
 
-    return 0; // или любое другое значение по умолчанию
-  };
+      setCardsLimit(limit);
 
-  const cardsPerPage = handleSetCardsPerPge();
+      return limit;
+    };
 
-  const firstItem = currentPage * cardsPerPage - cardsPerPage;
-  const lastItam = currentPage * cardsPerPage;
+    dispatch(fetchUnionMembers({ currentPage, limit: handleSetLimit(), screenWidth }));
+  }, [dispatch, currentPage, screenWidth]);
 
-  const membersArraySortedBySurnameAndSliced = [...unionMembersArray].sort(compareBySurname).slice(firstItem, lastItam);
+  const membersArraySortedBySurnameAndSliced = [...items].sort(compareBySurname);
 
   React.useEffect(() => {
     document.title = 'Состав';
   }, []);
 
   const unionMembers = membersArraySortedBySurnameAndSliced.map((member, index) => (
-    <li key={index}>
+    <li key={member._id}>
       <UnionMemberBlock {...member} />
     </li>
   ));
 
-  const skeletons = [...new Array(cardsPerPage)].map((_, index) => (
+  const skeletons = [...new Array(cardsLimit)].map((_, index) => (
     <li key={index} className='news-container__news-list-item'>
       <UnionMemberSkeleton screenWidth={screenWidth} />
     </li>
@@ -92,6 +96,7 @@ const UnionMembers: React.FC = () => {
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
         onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
         currentPage={currentPage}
+        totalPages={totalPages}
       />
     </main>
   );

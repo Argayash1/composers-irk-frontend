@@ -7,6 +7,7 @@ const initialState: UniomMemberSliceState = {
   status: Status.LOADING,
   currentPage: 1,
   limit: 6,
+  totalPages: 0,
 };
 
 const unionMemberSlice = createSlice({
@@ -31,11 +32,24 @@ const unionMemberSlice = createSlice({
     });
 
     builder.addCase(fetchUnionMembers.fulfilled, (state, action) => {
-      state.items = action.payload;
-      state.status = Status.SUCCESS;
+      const { data, screenWidth, currentPage } = action.payload;
+
+      if (screenWidth <= 638 && currentPage > 1) {
+        const newItems = data.members.filter(
+          (item) => !state.items.some((existingItem) => existingItem._id === item._id),
+        );
+
+        state.items = [...state.items, ...newItems];
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      } else {
+        state.items = data.members;
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      }
     });
 
-    builder.addCase(fetchUnionMembers.rejected, (state, action) => {
+    builder.addCase(fetchUnionMembers.rejected, (state) => {
       state.status = Status.ERROR;
       state.items = [];
     });

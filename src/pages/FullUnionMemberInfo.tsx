@@ -1,13 +1,15 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, Tabs, TextContent, FullUnionMemberSkeleton } from '../components';
-import { unionMembersArray } from '../utils/membersArray';
 import { allScores } from '../utils/scoresArray';
+import axios from 'axios';
+import { localApi } from '../utils/constants';
 
 const FullUnionMemberInfo = () => {
   const [unionMember, setUnionMember] = React.useState<{
     imageUrl: string;
     surname: string;
+    patronymic: string;
     name: string;
     profession: string;
     biography: string[];
@@ -20,11 +22,21 @@ const FullUnionMemberInfo = () => {
   const [сategory, setCategory] = React.useState<number>(0);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    const memberObject = unionMembersArray[Number(id)];
-    setUnionMember(memberObject);
-  }, [id]);
+    async function fetchUnionMember() {
+      try {
+        const { data } = await axios.get(`${localApi}/members/${id}`);
+        setUnionMember(data);
+      } catch (err) {
+        console.log(err);
+        navigate('/');
+      }
+    }
+
+    fetchUnionMember();
+  }, [id, navigate]);
 
   if (!unionMember) {
     return <FullUnionMemberSkeleton />;
@@ -59,7 +71,7 @@ const FullUnionMemberInfo = () => {
   return (
     <main className='full-union-member'>
       <TitleContainer
-        name={`${unionMember.surname} ${unionMember.name}`}
+        name={`${unionMember.surname} ${unionMember.name} ${unionMember.patronymic}`}
         place='full-union-member'
         path='/unionmembers'
       />

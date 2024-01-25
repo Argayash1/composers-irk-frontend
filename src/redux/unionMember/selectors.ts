@@ -1,5 +1,5 @@
 import { RootState } from '../store';
 
-export const selectUnionMemberData = (state: RootState) => state.unionMember;
+export const selectUnionMembersData = (state: RootState) => state.unionMember;
 
-export const selectUnionMemberCurrentPage = (state: RootState) => state.unionMember.currentPage;
+export const selectUnionMembersCurrentPage = (state: RootState) => state.unionMember.currentPage;

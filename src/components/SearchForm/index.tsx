@@ -25,7 +25,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const combinedArray: CombinedArrayObject[] = [...newsArray, ...unionMembersArray, ...articlesArray, ...projectsArray];
+  const combinedArray: CombinedArrayObject[] = [...newsArray, ...articlesArray, ...projectsArray];
 
   const handleSearchByAllSite = (e: React.FormEvent<HTMLFormElement>, query: string) => {
     e.preventDefault();

@@ -4,7 +4,7 @@ import './TextContent.scss';
 import clsx from 'clsx';
 
 type TextContentProps = {
-  textArray: string[];
+  textArray: string | string[];
   place?: string;
 };
 
@@ -17,9 +17,11 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
     place === 'full-article' && 'text-content_place_full-article',
   );
 
+  const text: string[] = typeof textArray === 'string' ? textArray.split('\n') : textArray;
+
   return (
     <ul className={textContentClass}>
-      {textArray.map((item, index) => {
+      {text.map((item, index) => {
         if (item.startsWith('#')) {
           const matchResult = item ? item.match(/^(#+)\s/) : null;
           const level = matchResult ? matchResult[1].length : 0;

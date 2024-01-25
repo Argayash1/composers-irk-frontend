@@ -20,15 +20,15 @@ export const Pagination = ({
 }: PaginationProps) => {
   const pageNumbers = totalPages ? handleGeneratePageNumbers(totalPages) : [1, 2, 3, 4, 5, 6, 7];
 
-  function handleGeneratePageNumbers(totalPages: number) {
-    const numbers: number[] = [];
+  function handleGeneratePageNumbers(totalPages: number): number[] {
+    const numbers = [];
     for (let i = 1; i <= totalPages; i++) {
       numbers.push(i);
     }
     return numbers;
   }
 
-  const handleAddEllipsis = (pageNumbers: PageNumber[]) => {
+  const handleAddEllipsis = (pageNumbers: PageNumber[]): PageNumber[] => {
     if (pageNumbers.length >= 7) {
       const ellipsis = '...';
 
@@ -52,7 +52,7 @@ export const Pagination = ({
     return pageNumbers;
   };
 
-  const isEllipsisOrPrecededByEllipsis = (currentIndex: number) => {
+  const isEllipsisOrPrecededByEllipsis = (currentIndex: number): boolean => {
     if (currentIndex === 0) {
       // Если текущий индекс равен 0, то нет предыдущего элемента.
       return true;
@@ -101,7 +101,7 @@ export const Pagination = ({
           </li>
         ))}
       </ul>
-      {currentPage < 7 && (
+      {currentPage < 7 && totalPages && totalPages > 1 && (
         <button className='pagination__button' onClick={onSwitchToNextPage}>
           Вперёд
         </button>

@@ -11,10 +11,9 @@ type NewsBlockProps = {
   title: string;
   newsText?: string;
   articleDescription?: string;
-  index?: number;
 };
 
-export const NewsBlock = ({ _id, imageUrl, createdAt, title, newsText, articleDescription, index }: NewsBlockProps) => {
+export const NewsBlock = ({ _id, imageUrl, createdAt, title, newsText, articleDescription }: NewsBlockProps) => {
   const fullNewsPath = `/news/${_id}`;
   const fullArticlePath = `/aboutus/${_id}`;
 

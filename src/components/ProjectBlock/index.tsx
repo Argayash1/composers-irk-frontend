@@ -3,19 +3,19 @@ import { CTA } from '../CTA';
 import './ProjectBlock.scss';
 
 type ProjectBlockProps = {
+  _id: string;
   imageUrl: string;
   title: string;
-  description: string[];
-  index: number;
+  description: string;
 };
 
-export const ProjectBlock = ({ imageUrl, title, description, index }: ProjectBlockProps) => {
+export const ProjectBlock = ({ _id, imageUrl, title, description }: ProjectBlockProps) => {
   return (
     <div className='project-block'>
       <img className='project-block__image' src={imageUrl} alt={title} />
       <h2 className='project-block__title'>{title}</h2>
       <p className='project-block__description'>{description}</p>
-      <CTA path={`/projects/${index}`} place='projects' />
+      <CTA path={`/projects/${_id}`} place='projects' />
     </div>
   );
 };

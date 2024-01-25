@@ -7,6 +7,7 @@ const initialState: ProjectSliceState = {
   status: Status.LOADING,
   currentPage: 1,
   limit: 6,
+  totalPages: 0,
 };
 
 const projectSlice = createSlice({
@@ -31,11 +32,24 @@ const projectSlice = createSlice({
     });
 
     builder.addCase(fetchProjects.fulfilled, (state, action) => {
-      state.items = action.payload;
-      state.status = Status.SUCCESS;
+      const { data, screenWidth, currentPage } = action.payload;
+
+      if (screenWidth <= 638 && currentPage > 1) {
+        const newItems = data.projects.filter(
+          (item) => !state.items.some((existingItem) => existingItem._id === item._id),
+        );
+
+        state.items = [...state.items, ...newItems];
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      } else {
+        state.items = data.projects;
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      }
     });
 
-    builder.addCase(fetchProjects.rejected, (state, action) => {
+    builder.addCase(fetchProjects.rejected, (state) => {
       state.status = Status.ERROR;
       state.items = [];
     });

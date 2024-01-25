@@ -1,18 +1,31 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, SharePanel, FullProjectSkeleton, TextContent } from '../components';
 import { projectsArray } from '../utils/projectsArray';
+import axios from 'axios';
+import { localApi } from '../utils/constants';
 
 const FullProject = () => {
   const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string[] }>();
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
 
   const { id } = useParams();
+  console.log(id);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    const newsObject = projectsArray[Number(id)];
-    setProject(newsObject);
-  }, [id]);
+    async function fetchUnionMember() {
+      try {
+        const { data } = await axios.get(`${localApi}/projects/${id}`);
+        setProject(data);
+      } catch (err) {
+        console.log(err);
+        navigate('/');
+      }
+    }
+
+    fetchUnionMember();
+  }, [id, navigate]);
 
   const handleToggleSharePanel = () => {
     setIsSharePanelOpen(!isSharePanelOpen);

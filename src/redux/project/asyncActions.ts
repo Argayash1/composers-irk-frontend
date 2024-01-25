@@ -1,14 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Project, SearchProjectParams } from './types';
+import { ProjectData, ProjectItems, SearchProjectParams } from './types';
 import axios from 'axios';
+import { localApi } from '../../utils/constants';
 
-export const fetchProjects = createAsyncThunk<Project[], SearchProjectParams>(
+export const fetchProjects = createAsyncThunk<ProjectData, SearchProjectParams>(
   'project/fetchProjectStatus',
   async (params) => {
-    const { currentPage, limit } = params;
-    const { data } = await axios.get<Project[]>(
-      `https://64e36310bac46e480e78b878.mockapi.io/news?page=${currentPage}&limit=${limit}`,
-    );
-    return data;
+    const { currentPage, limit, screenWidth } = params;
+    const { data } = await axios.get<ProjectItems>(`${localApi}/projects?page=${currentPage}&limit=${limit}`);
+    return { data, screenWidth, currentPage };
   },
 );

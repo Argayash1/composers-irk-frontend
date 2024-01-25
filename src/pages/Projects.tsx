@@ -1,17 +1,19 @@
 import React from 'react';
-import { projectsArray } from '../utils/projectsArray';
 import { ProjectBlock } from '../components/ProjectBlock';
 import { TitleContainer, Pagination, menuItems, ProjectSkeleton } from '../components';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
-import { selectProjectCurrentPage } from '../redux/project/selectors';
+import { selectProjectsData } from '../redux/project/selectors';
 import { setCurrentPage } from '../redux/project/slice';
+import { fetchProjects } from '../redux/project/asyncActions';
 
 const Projects = () => {
   const dispatch = useAppDispatch();
 
-  const currentPage = useSelector(selectProjectCurrentPage);
-  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+  const { currentPage, items, totalPages } = useSelector(selectProjectsData);
+
+  const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
+  const [cardsLimit, setCardsLimit] = React.useState<number>(0);
 
   React.useEffect(() => {
     document.title = 'Проекты';
@@ -40,21 +42,32 @@ const Projects = () => {
     };
   }, []);
 
-  const limit = screenWidth > 622 ? 4 : 3;
+  React.useEffect(() => {
+    const handleSetLimit = (): number => {
+      let limit;
 
-  const firstItem = currentPage * limit - limit;
-  const lastItam = currentPage * limit;
+      if (screenWidth > 622) {
+        limit = 4;
+      } else {
+        limit = 3;
+      }
 
-  const slicedProjectsArray = projectsArray.slice(firstItem, lastItam);
+      setCardsLimit(limit);
 
-  const projects = slicedProjectsArray.map((project, index) => (
-    <li key={index}>
-      <ProjectBlock index={index} {...project} />
+      return limit;
+    };
+
+    dispatch(fetchProjects({ currentPage, limit: handleSetLimit(), screenWidth }));
+  }, [dispatch, currentPage, screenWidth]);
+
+  const projects = items.map((project, index) => (
+    <li key={project._id}>
+      <ProjectBlock {...project} />
     </li>
   ));
 
-  const skeletons = [...new Array(projectsArray.length)].map((_, index) => (
-    <li>
+  const skeletons = [...new Array(cardsLimit)].map((_, index) => (
+    <li key={index}>
       <ProjectSkeleton screenWidth={screenWidth} />
     </li>
   ));
@@ -70,6 +83,7 @@ const Projects = () => {
         onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
         onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
         currentPage={currentPage}
+        totalPages={totalPages}
       />
     </main>
   );

@@ -10,7 +10,7 @@ export const allScores: ScoreItem[] = [
     url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU',
     category: 'piano',
   },
-  { title: 'Л. Янковская Песня о Пскове', url: 'https://cloud.mail.ru/public/8gMB/Ry8UWbtFU', category: 'voice' },
+  { title: 'Л. Янковская Песня о Пскове', url: 'https://cloud.mail.ru/public/reSU/RH3L4uFtc', category: 'voice' },
   {
     title: 'C. Михайлов Ната - Вальс (баян, аккордеон)',
     url: 'https://cloud.mail.ru/public/QSjX/xcjiwBJUm',

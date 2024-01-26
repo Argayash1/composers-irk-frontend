@@ -11,7 +11,7 @@ import { fetchUnionMembers } from '../redux/unionMember/asyncActions';
 const UnionMembers: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const { items, currentPage, totalPages } = useSelector(selectUnionMembersData);
+  const { items, currentPage, totalPages, status } = useSelector(selectUnionMembersData);
 
   const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
   const [clientWidth, setClientWidth] = React.useState<number>(document.documentElement.clientWidth);
@@ -88,7 +88,7 @@ const UnionMembers: React.FC = () => {
       <TitleContainer name={`${menuItems[2].name} ИООО Союза композиторов`} place='union-members' />
       <section>
         <ul className={clsx('union-members__list', setTabletModificator && 'union-members__list_gap_mobile')}>
-          {unionMembers ? unionMembers : skeletons}
+          {status === 'loading' ? skeletons : unionMembers}
         </ul>
       </section>
       <Pagination

@@ -10,7 +10,7 @@ import { fetchProjects } from '../redux/project/asyncActions';
 const Projects = () => {
   const dispatch = useAppDispatch();
 
-  const { currentPage, items, totalPages } = useSelector(selectProjectsData);
+  const { currentPage, items, totalPages, status } = useSelector(selectProjectsData);
 
   const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
@@ -72,11 +72,13 @@ const Projects = () => {
     </li>
   ));
 
+  console.log(skeletons);
+
   return (
     <main className='projects'>
       <TitleContainer name={menuItems[3].name} place='projects' />
       <section>
-        <ul className='projects__list'>{projects ? projects : skeletons}</ul>
+        <ul className='projects__list'>{status === 'loading' ? skeletons : projects}</ul>
       </section>
       <Pagination
         onChangePage={(page) => dispatch(setCurrentPage(page))}

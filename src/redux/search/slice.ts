@@ -1,23 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type Item = {
-  imageUrl?: string;
-  title?: string;
-  name?: string;
-  surname?: string;
-  profession?: string;
-  biography?: string[];
-  description?: string;
-  newsText?: string;
-};
-
-interface SearchSliceState {
-  currentPage: number;
-  isSearchOpen: boolean;
-  searchValue: string;
-  searchResults: Item[];
-  errorText: string;
-}
+import { Item, SearchSliceState } from './types';
 
 const initialState: SearchSliceState = {
   currentPage: 1,

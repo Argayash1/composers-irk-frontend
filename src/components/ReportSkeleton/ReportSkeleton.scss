@@ -1,0 +1,18 @@
+.report-skeleton {
+  width: 825px;
+  height: 1167px;
+  margin: 50px 0 0;
+  padding: 0;
+
+  @media screen and (max-width: 1164px) {
+    width: 592px;
+    height: 837px;
+    margin-top: 40px;
+  }
+
+  @media screen and (max-width: 670px) {
+    width: 290px;
+    height: 410px;
+    margin-top: 30px;
+  }
+}

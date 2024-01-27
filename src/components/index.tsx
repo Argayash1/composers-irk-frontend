@@ -48,3 +48,4 @@ export * from './FullProjectSkeleton';
 export * from './FullVideoSkeleton';
 export * from './FullUnionMemberSkeleton';
 export * from './FullArticleSkeleton';
+export * from './ReportSkeleton';

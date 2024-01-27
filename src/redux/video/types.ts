@@ -1,7 +1,9 @@
 export type Video = {
-  id: string;
+  _id: string;
   iframeUrl: string;
   title: string;
+  composer: string;
+  performer?: string;
 };
 
 export enum Status {
@@ -10,14 +12,27 @@ export enum Status {
   ERROR = 'error',
 }
 
+export type VideoItems = {
+  videos: Video[];
+  totalPages: number;
+};
+
+export type VideoData = {
+  data: VideoItems;
+  currentPage: number;
+  screenWidth: number;
+};
+
 export interface VideoSliceState {
-  items: Video[];
+  videoItems: Video[];
   status: Status; //'loading' | 'success' | 'error';
   currentPage: number;
   limit: number;
+  totalPages: number;
 }
 
 export type SearchVideoParams = {
   currentPage: number;
   limit: number;
+  screenWidth: number;
 };

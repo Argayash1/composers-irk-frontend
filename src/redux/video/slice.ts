@@ -3,23 +3,25 @@ import { Video, VideoSliceState, Status } from './types';
 import { fetchVideos } from './asyncActions';
 
 const initialState: VideoSliceState = {
-  items: [],
+  videoItems: [],
   status: Status.LOADING,
   currentPage: 1,
   limit: 6,
+  totalPages: 0,
 };
 
-const articleSlice = createSlice({
-  name: 'article',
+const videoSlice = createSlice({
+  name: 'video',
   initialState,
   reducers: {
     setItems(state, action: PayloadAction<Video[]>) {
-      state.items = action.payload;
+      state.videoItems = action.payload;
     },
 
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
     },
+
     setLimit: (state, action: PayloadAction<number>) => {
       state.limit = action.payload;
     },
@@ -27,21 +29,32 @@ const articleSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchVideos.pending, (state) => {
       state.status = Status.LOADING;
-      state.items = [];
+      state.videoItems = [];
     });
 
     builder.addCase(fetchVideos.fulfilled, (state, action) => {
-      state.items = action.payload;
-      state.status = Status.SUCCESS;
+      const { data, screenWidth, currentPage } = action.payload;
+      if (screenWidth <= 638 && currentPage > 1) {
+        const newItems = data.videos.filter(
+          (item) => !state.videoItems.some((existingItem) => existingItem._id === item._id),
+        );
+        state.videoItems = [...state.videoItems, ...newItems];
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      } else {
+        state.videoItems = data.videos;
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      }
     });
 
-    builder.addCase(fetchVideos.rejected, (state, action) => {
+    builder.addCase(fetchVideos.rejected, (state) => {
       state.status = Status.ERROR;
-      state.items = [];
+      state.videoItems = [];
     });
   },
 });
 
-export const { setItems, setCurrentPage } = articleSlice.actions;
+export const { setItems, setCurrentPage } = videoSlice.actions;
 
-export default articleSlice.reducer;
+export default videoSlice.reducer;

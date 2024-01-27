@@ -72,8 +72,6 @@ const Projects = () => {
     </li>
   ));
 
-  console.log(skeletons);
-
   return (
     <main className='projects'>
       <TitleContainer name={menuItems[3].name} place='projects' />

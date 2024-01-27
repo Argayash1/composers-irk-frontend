@@ -1,14 +1,14 @@
 import React from 'react';
-
 import './AudioRecordings.scss';
 import { AudioPlayer } from '../AudioPlayer';
-import { audioItems } from '../../utils/audioItems';
+import { IAudio } from '../../redux/audio/types';
 
 type AudioRecordingsProps = {
+  audioItems: IAudio[];
   screenWidth: number;
 };
 
-export const AudioRecordings = ({ screenWidth }: AudioRecordingsProps) => {
+export const AudioRecordings = ({ audioItems, screenWidth }: AudioRecordingsProps) => {
   return (
     <section>
       <ul className='audio-recordings'>

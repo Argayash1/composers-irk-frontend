@@ -1,15 +1,10 @@
 import React from 'react';
 import { TitleContainer, Tabs, menuItems } from '../components';
-import { allScores, ScoreItem } from '../utils/scoresArray';
 import { useAppDispatch } from '../redux/store';
 import { fetchScores } from '../redux/score/asyncActions';
 import { useSelector } from 'react-redux';
 import { selectScoresData } from '../redux/score/selectors';
 import { setCategoryId } from '../redux/score/slice';
-
-interface IScoreItems {
-  [key: number]: ScoreItem[];
-}
 
 const tabNames = ['Все ноты', 'Вокал', 'Фортепиано', 'Баян, аккордеон'];
 
@@ -22,7 +17,7 @@ const Scores = () => {
   }, []);
 
   React.useEffect(() => {
-    const category = categoryId > 0 ? categoryId : '';
+    const category = categoryId > 0 ? `category=${categoryId}` : '';
     dispatch(fetchScores(category));
   }, [dispatch, categoryId]);
 

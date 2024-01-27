@@ -16,8 +16,6 @@ type NewsContainerProps = {
 export const NewsContainer = ({ place, itemsArray, status, limit, screenWidth }: NewsContainerProps) => {
   const clientWidth = document.documentElement.clientWidth;
 
-  console.log(itemsArray);
-
   const items = itemsArray.map((item) => (
     <li key={item._id}>
       <NewsBlock {...item} />

@@ -6,7 +6,6 @@ import { selectArticleCurrentPage } from '../redux/article/selectors';
 import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/article/slice';
 import clsx from 'clsx';
-import {} from '../components/TextContent';
 import { historyArray } from '../utils/historyArray';
 
 const tabNames = ['СМИ о нас', 'Наша история'];

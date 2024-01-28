@@ -1,7 +1,6 @@
 import musicWorldOfJanKrul from '../assets/images/about-us-article-music-world-of-Jan-Krul.png';
-import { Article } from '../redux/article/types';
 
-export const articlesArray: Article[] = [
+export const articlesArray = [
   {
     _id: '0',
     imageUrl: musicWorldOfJanKrul,

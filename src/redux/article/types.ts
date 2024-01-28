@@ -4,7 +4,7 @@ export type Article = {
   createdAt: string;
   title: string;
   articleDescription: string;
-  articleText: string[];
+  articleText: string;
 };
 
 export enum Status {
@@ -30,6 +30,7 @@ export interface ArticleSliceState {
   currentPage: number;
   limit: number;
   totalPages: number;
+  item: Article;
 }
 
 export type SearchArticleParams = {

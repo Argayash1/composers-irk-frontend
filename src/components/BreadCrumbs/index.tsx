@@ -4,40 +4,40 @@ import { Link, useLocation } from 'react-router-dom';
 
 import './BreadCrumbs.scss';
 
-import { newsArray } from '../../utils/newsArray';
-import { projectsArray } from '../../utils/projectsArray';
-import { unionMembersArray } from '../../utils/membersArray';
-import { iFramesArray } from '../../utils/iframesArray';
-import { articlesArray } from '../../utils/articlesArray';
 import { menuItems } from '../../utils/constants';
+import { useSelector } from 'react-redux';
+import { selectNewsData } from '../../redux/news/selectors';
+import { selectUnionMembersData } from '../../redux/unionMember/selectors';
+import { selectProjectsData } from '../../redux/project/selectors';
+import { selectVideoData } from '../../redux/video/selectors';
+import { selectArticleData } from '../../redux/article/selectors';
 
 export const BreadCrumbs = () => {
+  const { item: newsItem } = useSelector(selectNewsData);
+  const { item: unionMemberItem } = useSelector(selectUnionMembersData);
+  const { item: projectItem } = useSelector(selectProjectsData);
+  const { videoItem } = useSelector(selectVideoData);
+  const { item: articleItem } = useSelector(selectArticleData);
+
   const { pathname } = useLocation();
   const pathnames = pathname.split('/').filter((pathname) => pathname);
 
   interface CrumbTexts {
     [key: string]: string;
-    news: string;
-    unionmembers: string;
-    projects: string;
-    scores: string;
-    media: string;
-    aboutus: string;
-    reports: string;
-    contacts: string;
   }
 
-  type Item = {
-    id?: string;
+  interface Item {
+    _id?: string;
     imageUrl?: string;
     title?: string;
     name?: string;
     surname?: string;
+    patronymic?: string;
     profession?: string;
-    biography?: string[];
-    description?: string[];
+    biography?: string;
+    description?: string;
     newsText?: string;
-  };
+  }
 
   const crumbTexts: CrumbTexts = {
     news: menuItems[1].name,
@@ -50,15 +50,15 @@ export const BreadCrumbs = () => {
     contacts: menuItems[8].name,
   };
 
-  const itemsArray: Item[] = pathname.includes('news')
-    ? newsArray
+  const item: Item = pathname.includes('news')
+    ? newsItem
     : pathname.includes('projects')
-    ? projectsArray
+    ? projectItem
     : pathname.includes('unionmembers')
-    ? unionMembersArray
+    ? unionMemberItem
     : pathname.includes('aboutus')
-    ? articlesArray
-    : iFramesArray;
+    ? articleItem
+    : videoItem;
 
   return (
     <nav className='bread-crumbs'>
@@ -74,8 +74,7 @@ export const BreadCrumbs = () => {
             index === pathnames.length - 1 ? (
               <li className='bread-crumbs__list-item' key={index}>
                 {pathnames.length === 2
-                  ? itemsArray[Number(pathname)].title ||
-                    `${itemsArray[Number(pathname)].surname} ${itemsArray[Number(pathname)].name}`
+                  ? item.title || `${item.surname} ${item.name} ${item.patronymic}`
                   : crumbTexts[pathname]}
               </li>
             ) : (

@@ -1,46 +1,42 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, SharePanel, FullProjectSkeleton, TextContent } from '../components';
-import axios from 'axios';
-import { localApi } from '../utils/constants';
+import { useAppDispatch } from '../redux/store';
+import { useSelector } from 'react-redux';
+import { selectProjectsData } from '../redux/project/selectors';
+import { fetchProjectById } from '../redux/project/asyncActions';
 
 const FullProject = () => {
-  const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string }>();
+  const dispatch = useAppDispatch();
+  const { item: projectItem, status } = useSelector(selectProjectsData);
+
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    async function fetchUnionMember() {
-      try {
-        const { data } = await axios.get(`${localApi}/projects/${id}`);
-        setProject(data);
-      } catch (err) {
-        console.log(err);
-        navigate('/');
-      }
+    if (id) {
+      dispatch(fetchProjectById(id));
     }
-
-    fetchUnionMember();
-  }, [id, navigate]);
+  }, [id, dispatch]);
 
   const handleToggleSharePanel = () => {
     setIsSharePanelOpen(!isSharePanelOpen);
   };
 
-  if (!project) {
+  if (status === 'loading') {
     return <FullProjectSkeleton />;
   }
 
   return (
     <main className='full-project'>
-      <TitleContainer name={project.title} place='full-project' path='/projects' />
+      <TitleContainer name={projectItem.title} place='full-project' path='/projects' />
       <section className='full-project__container'>
-        <img className='full-project__image' src={project.imageUrl} alt='' />
-        <TextContent text={project.description} place='full-project' />
+        <img className='full-project__image' src={projectItem.imageUrl} alt='' />
+        <TextContent text={projectItem.description} place='full-project' />
         {isSharePanelOpen ? (
-          <SharePanel itemTitle={project.title} onClick={handleToggleSharePanel} />
+          <SharePanel itemTitle={projectItem.title} onClick={handleToggleSharePanel} />
         ) : (
           <CTA onClick={handleToggleSharePanel} place='full-project' />
         )}

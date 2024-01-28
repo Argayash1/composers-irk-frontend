@@ -28,6 +28,7 @@ export interface ProjectSliceState {
   currentPage: number;
   limit: number;
   totalPages: number;
+  item: Project;
 }
 
 export type SearchProjectParams = {

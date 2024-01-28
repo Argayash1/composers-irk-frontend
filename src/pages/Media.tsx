@@ -8,7 +8,6 @@ import clsx from 'clsx';
 import { fetchAudios } from '../redux/audio/asyncActions';
 import { selectAudioData } from '../redux/audio/selectors';
 import { fetchVideos } from '../redux/video/asyncActions';
-import { iFramesArray } from '../utils/iframesArray';
 import { menuItems } from '../utils/constants';
 
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
@@ -16,6 +15,8 @@ const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 const Media = () => {
   const dispatch = useAppDispatch();
   const { items } = useSelector(selectAudioData);
+  const { videoItems } = useSelector(selectVideoData);
+
   const { currentPage, status, totalPages } = useSelector(selectVideoData);
 
   const [category, setCategory] = React.useState<number>(0);
@@ -80,7 +81,7 @@ const Media = () => {
       {category === 0 ? (
         <AudioRecordings screenWidth={screenWidth} audioItems={items} />
       ) : (
-        <VideoRecordings screenWidth={screenWidth} videoItems={iFramesArray} status={status} limit={cardsLimit} />
+        <VideoRecordings screenWidth={screenWidth} videoItems={videoItems} status={status} limit={cardsLimit} />
       )}
       {category === 1 && (
         <Pagination

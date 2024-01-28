@@ -5,12 +5,12 @@ export type UnionMember = {
   patronymic: string;
   name: string;
   profession: string;
-  biography: string[];
+  biography: string;
   shortBiography: string;
-  works: string[];
-  awards?: string[];
-  competitions?: string[];
-  links?: string[];
+  works: string;
+  awards?: string;
+  competitions?: string;
+  links?: string;
 };
 
 export type UnionMemberItems = {
@@ -36,6 +36,7 @@ export interface UniomMemberSliceState {
   currentPage: number;
   limit: number;
   totalPages: number;
+  item: UnionMember;
 }
 
 export type SearchUniomMemberParams = {

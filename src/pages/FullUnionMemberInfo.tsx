@@ -2,82 +2,66 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, Tabs, TextContent, FullUnionMemberSkeleton } from '../components';
 import { allScores } from '../utils/scoresArray';
-import axios from 'axios';
-import { localApi } from '../utils/constants';
+import { useAppDispatch } from '../redux/store';
+import { fetchUnionMemberById } from '../redux/unionMember/asyncActions';
+import { selectUnionMembersData } from '../redux/unionMember/selectors';
+import { useSelector } from 'react-redux';
 
 const FullUnionMemberInfo = () => {
-  const [unionMember, setUnionMember] = React.useState<{
-    imageUrl: string;
-    surname: string;
-    patronymic: string;
-    name: string;
-    profession: string;
-    biography: string;
-    shortBiography: string;
-    works: string;
-    competitions?: string;
-    awards?: string;
-    links?: string;
-  }>();
+  const dispatch = useAppDispatch();
+  const { item, status } = useSelector(selectUnionMembersData);
+
   const [сategory, setCategory] = React.useState<number>(0);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    async function fetchUnionMember() {
-      try {
-        const { data } = await axios.get(`${localApi}/members/${id}`);
-        setUnionMember(data);
-      } catch (err) {
-        console.log(err);
-        navigate('/');
-      }
+    if (id) {
+      dispatch(fetchUnionMemberById(id));
     }
+  }, [id, dispatch]);
 
-    fetchUnionMember();
-  }, [id, navigate]);
-
-  if (!unionMember) {
+  if (status === 'loading') {
     return <FullUnionMemberSkeleton />;
   }
 
-  const unionMemberData: string[] = [unionMember.biography, unionMember.works];
+  const unionMemberData: string[] = [item.biography, item.works];
 
   const handleGenerateTabNames = () => {
     const tabNames = ['Биография', 'Список сочинений'];
 
-    if (unionMember) {
-      if (unionMember.competitions) {
+    if (item) {
+      if (item.competitions) {
         tabNames.push('Конкурсы и фестивали');
-        unionMemberData.push(unionMember.competitions);
+        unionMemberData.push(item.competitions);
       }
-      if (unionMember.awards) {
+      if (item.awards) {
         tabNames.push('Награды');
-        unionMemberData.push(unionMember.awards);
+        unionMemberData.push(item.awards);
       }
-      if (unionMember.links) {
+      if (item.links) {
         tabNames.push('Ссылки');
-        unionMemberData.push(unionMember.links);
+        unionMemberData.push(item.links);
       }
     }
 
     return tabNames;
   };
 
-  const hasComposerScoresOnSite = allScores.some((score) => score.title.includes(unionMember.surname));
-  const showCTA = hasComposerScoresOnSite && unionMember.profession === 'Композитор';
+  const hasComposerScoresOnSite = allScores.some((score) => score.title.includes(item.surname));
+  const showCTA = hasComposerScoresOnSite && item.profession === 'Композитор';
 
   return (
     <main className='full-union-member'>
       <TitleContainer
-        name={`${unionMember.surname} ${unionMember.name} ${unionMember.patronymic}`}
+        name={`${item.surname} ${item.name} ${item.patronymic}`}
         place='full-union-member'
         path='/unionmembers'
       />
       <section className='full-union-member__container'>
-        <img className='full-union-member__image' src={unionMember.imageUrl} alt='' />
-        <p className='full-union-member__short-biography'>{unionMember.shortBiography}</p>
+        <img className='full-union-member__image' src={item.imageUrl} alt='' />
+        <p className='full-union-member__short-biography'>{item.shortBiography}</p>
         {showCTA && <CTA linkText='Ноты композитора' path='/scores' />}
       </section>
       <section>

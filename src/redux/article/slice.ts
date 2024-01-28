@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Article, ArticleSliceState, Status } from './types';
-import { fetchArticles } from './asyncActions';
+import { fetchArticleById, fetchArticles } from './asyncActions';
 
 const initialState: ArticleSliceState = {
   items: [],
@@ -8,6 +8,7 @@ const initialState: ArticleSliceState = {
   currentPage: 1,
   limit: 6,
   totalPages: 0,
+  item: { _id: '', imageUrl: '', createdAt: '', title: '', articleDescription: '', articleText: '' },
 };
 
 const articleSlice = createSlice({
@@ -52,6 +53,21 @@ const articleSlice = createSlice({
     builder.addCase(fetchArticles.rejected, (state) => {
       state.status = Status.ERROR;
       state.items = [];
+    });
+
+    builder.addCase(fetchArticleById.pending, (state) => {
+      state.status = Status.LOADING;
+      state.item = { _id: '', imageUrl: '', createdAt: '', title: '', articleDescription: '', articleText: '' };
+    });
+
+    builder.addCase(fetchArticleById.fulfilled, (state, action) => {
+      state.status = Status.SUCCESS;
+      state.item = action.payload;
+    });
+
+    builder.addCase(fetchArticleById.rejected, (state) => {
+      state.status = Status.LOADING;
+      state.item = { _id: '', imageUrl: '', createdAt: '', title: '', articleDescription: '', articleText: '' };
     });
   },
 });

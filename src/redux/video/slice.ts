@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Video, VideoSliceState, Status } from './types';
-import { fetchVideos } from './asyncActions';
+import { fetchVideoById, fetchVideos } from './asyncActions';
 
 const initialState: VideoSliceState = {
   videoItems: [],
@@ -8,6 +8,7 @@ const initialState: VideoSliceState = {
   currentPage: 1,
   limit: 6,
   totalPages: 0,
+  videoItem: { _id: '', iframeUrl: '', title: '', composer: '', performer: '' },
 };
 
 const videoSlice = createSlice({
@@ -51,6 +52,21 @@ const videoSlice = createSlice({
     builder.addCase(fetchVideos.rejected, (state) => {
       state.status = Status.ERROR;
       state.videoItems = [];
+    });
+
+    builder.addCase(fetchVideoById.pending, (state) => {
+      state.status = Status.LOADING;
+      state.videoItem = { _id: '', iframeUrl: '', title: '', composer: '', performer: '' };
+    });
+
+    builder.addCase(fetchVideoById.fulfilled, (state, action) => {
+      state.status = Status.SUCCESS;
+      state.videoItem = action.payload;
+    });
+
+    builder.addCase(fetchVideoById.rejected, (state) => {
+      state.status = Status.LOADING;
+      state.videoItem = { _id: '', iframeUrl: '', title: '', composer: '', performer: '' };
     });
   },
 });

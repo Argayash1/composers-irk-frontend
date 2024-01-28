@@ -1,31 +1,27 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, SharePanel, FullNewsSkeleton } from '../components';
-import axios from 'axios';
-import { localApi } from '../utils/constants';
 import { handleFormateDate } from '../utils/utils';
+import { useAppDispatch } from '../redux/store';
+import { fetchNewsById } from '../redux/news/asyncActions';
+import { selectNewsData } from '../redux/news/selectors';
+import { useSelector } from 'react-redux';
 
 const FullNews = () => {
-  const [news, setNews] = React.useState<{ imageUrl: string; title: string; newsText: string; createdAt: string }>();
+  const dispatch = useAppDispatch();
+  const { item, status } = useSelector(selectNewsData);
+
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    async function fetchNews() {
-      try {
-        const { data } = await axios.get(`${localApi}/news/${id}`);
-        setNews(data);
-      } catch (err) {
-        console.log(err);
-        navigate('/');
-      }
+    if (id) {
+      dispatch(fetchNewsById(id));
     }
+  }, [id, dispatch]);
 
-    fetchNews();
-  }, [id, navigate]);
-
-  if (!news) {
+  if (status === 'loading') {
     return <FullNewsSkeleton />;
   }
 
@@ -35,13 +31,13 @@ const FullNews = () => {
 
   return (
     <main className='full-news'>
-      <TitleContainer name={news.title} place='full-news' path='/news' />
+      <TitleContainer name={item.title} place='full-news' path='/news' />
       <section>
-        <span className='full-news__date'>{handleFormateDate(news.createdAt)}</span>
-        <img className='full-news__image' src={news.imageUrl} alt='' />
-        <p className='full-news__text'>{news.newsText}</p>
+        <span className='full-news__date'>{handleFormateDate(item.createdAt)}</span>
+        <img className='full-news__image' src={item.imageUrl} alt='' />
+        <p className='full-news__text'>{item.newsText}</p>
         {isSharePanelOpen ? (
-          <SharePanel itemTitle={news.title} onClick={hadleToggleSharePanel} />
+          <SharePanel itemTitle={item.title} onClick={hadleToggleSharePanel} />
         ) : (
           <CTA onClick={hadleToggleSharePanel} />
         )}

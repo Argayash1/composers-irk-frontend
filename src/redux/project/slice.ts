@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Project, ProjectSliceState, Status } from './types';
-import { fetchProjects } from './asyncActions';
+import { fetchProjectById, fetchProjects } from './asyncActions';
 
 const initialState: ProjectSliceState = {
   items: [],
@@ -8,6 +8,7 @@ const initialState: ProjectSliceState = {
   currentPage: 1,
   limit: 6,
   totalPages: 0,
+  item: { _id: '', imageUrl: '', title: '', description: '' },
 };
 
 const projectSlice = createSlice({
@@ -52,6 +53,21 @@ const projectSlice = createSlice({
     builder.addCase(fetchProjects.rejected, (state) => {
       state.status = Status.ERROR;
       state.items = [];
+    });
+
+    builder.addCase(fetchProjectById.pending, (state) => {
+      state.status = Status.LOADING;
+      state.item = { _id: '', imageUrl: '', title: '', description: '' };
+    });
+
+    builder.addCase(fetchProjectById.fulfilled, (state, action) => {
+      state.status = Status.SUCCESS;
+      state.item = action.payload;
+    });
+
+    builder.addCase(fetchProjectById.rejected, (state) => {
+      state.status = Status.LOADING;
+      state.item = { _id: '', imageUrl: '', title: '', description: '' };
     });
   },
 });

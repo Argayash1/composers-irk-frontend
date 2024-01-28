@@ -4,7 +4,7 @@ export type Item = {
   name?: string;
   surname?: string;
   profession?: string;
-  biography?: string[];
+  biography?: string;
   description?: string;
   newsText?: string;
 };

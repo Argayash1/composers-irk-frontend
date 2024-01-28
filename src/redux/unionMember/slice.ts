@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UnionMember, UniomMemberSliceState, Status } from './types';
-import { fetchUnionMembers } from './asyncActions';
+import { fetchUnionMemberById, fetchUnionMembers } from './asyncActions';
 
 const initialState: UniomMemberSliceState = {
   items: [],
@@ -8,6 +8,20 @@ const initialState: UniomMemberSliceState = {
   currentPage: 1,
   limit: 6,
   totalPages: 0,
+  item: {
+    _id: '',
+    imageUrl: '',
+    surname: '',
+    patronymic: '',
+    name: '',
+    profession: '',
+    biography: '',
+    shortBiography: '',
+    works: '',
+    awards: '',
+    competitions: '',
+    links: '',
+  },
 };
 
 const unionMemberSlice = createSlice({
@@ -52,6 +66,47 @@ const unionMemberSlice = createSlice({
     builder.addCase(fetchUnionMembers.rejected, (state) => {
       state.status = Status.ERROR;
       state.items = [];
+    });
+
+    builder.addCase(fetchUnionMemberById.pending, (state) => {
+      state.status = Status.LOADING;
+      state.item = {
+        _id: '',
+        imageUrl: '',
+        surname: '',
+        patronymic: '',
+        name: '',
+        profession: '',
+        biography: '',
+        shortBiography: '',
+        works: '',
+        awards: '',
+        competitions: '',
+        links: '',
+      };
+    });
+
+    builder.addCase(fetchUnionMemberById.fulfilled, (state, action) => {
+      state.status = Status.SUCCESS;
+      state.item = action.payload;
+    });
+
+    builder.addCase(fetchUnionMemberById.rejected, (state) => {
+      state.status = Status.LOADING;
+      state.item = {
+        _id: '',
+        imageUrl: '',
+        surname: '',
+        patronymic: '',
+        name: '',
+        profession: '',
+        biography: '',
+        shortBiography: '',
+        works: '',
+        awards: '',
+        competitions: '',
+        links: '',
+      };
     });
   },
 });

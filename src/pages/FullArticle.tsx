@@ -1,48 +1,38 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FullArticleSkeleton, TitleContainer, TextContent } from '../components';
-import axios from 'axios';
-import { localApi } from '../utils/constants';
+import { useAppDispatch } from '../redux/store';
+import { selectArticleData } from '../redux/article/selectors';
+import { useSelector } from 'react-redux';
+import { fetchArticleById } from '../redux/article/asyncActions';
 
 const FullArticle = () => {
-  const [article, setArticle] = React.useState<{
-    imageUrl: string;
-    title: string;
-    articleDescription: string;
-    articleText: string;
-    createdAt: string;
-  }>();
+  const dispatch = useAppDispatch();
+  const { item, status } = useSelector(selectArticleData);
+
   const navigate = useNavigate();
 
   const { id } = useParams();
 
   React.useEffect(() => {
-    async function fetchArticles() {
-      try {
-        const { data } = await axios.get(`${localApi}/articles/${id}`);
-        setArticle(data);
-      } catch (err) {
-        console.log(err);
-        navigate('/');
-      }
+    if (id) {
+      dispatch(fetchArticleById(id));
     }
+  }, [id, dispatch]);
 
-    fetchArticles();
-  }, [id, navigate]);
-
-  if (!article) {
+  if (status === 'loading') {
     return <FullArticleSkeleton />;
   }
 
   return (
     <main className='full-article'>
-      <TitleContainer name={article.title} place='full-article' path='/aboutus' />
+      <TitleContainer name={item.title} place='full-article' path='/aboutus' />
       <section>
         <div className='full-article__container'>
-          <img className='full-article__image' src={article.imageUrl} alt='' />
-          <p className='full-article__description'>{article.articleDescription}</p>
+          <img className='full-article__image' src={item.imageUrl} alt='' />
+          <p className='full-article__description'>{item.articleDescription}</p>
         </div>
-        <TextContent text={article.articleText} place='full-article' />
+        <TextContent text={item.articleText} place='full-article' />
       </section>
     </main>
   );

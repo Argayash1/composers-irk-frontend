@@ -1,19 +1,24 @@
 import React from 'react';
 import { FullVideoSkeleton, TitleContainer } from '../components';
 import { useParams } from 'react-router-dom';
-import { iFramesArray } from '../utils/iframesArray';
+import { useSelector } from 'react-redux';
+import { selectVideoData } from '../redux/video/selectors';
+import { fetchVideoById } from '../redux/video/asyncActions';
+import { useAppDispatch } from '../redux/store';
 
 const FullVideo = () => {
-  const [video, setVideo] = React.useState<{ iframeUrl: string; title: string }>();
+  const dispatch = useAppDispatch();
+  const { videoItem, status } = useSelector(selectVideoData);
 
   const { id } = useParams();
 
   React.useEffect(() => {
-    const videoObject = iFramesArray[Number(id)];
-    setVideo(videoObject);
-  }, [id]);
+    if (id) {
+      dispatch(fetchVideoById(id));
+    }
+  }, [id, dispatch]);
 
-  if (!video) {
+  if (status === 'loading') {
     return <FullVideoSkeleton />;
   }
 
@@ -21,8 +26,13 @@ const FullVideo = () => {
     <main className='full-video'>
       <TitleContainer name='Медиа' place='full-video' path='/media' />
       <section className='full-video__main-content'>
-        <iframe className='full-video__iframe' src={video.iframeUrl} allowFullScreen title={video.title}></iframe>
-        <h2 className='full-video__title'>{video.title}</h2>
+        <iframe
+          className='full-video__iframe'
+          src={videoItem.iframeUrl}
+          allowFullScreen
+          title={videoItem.title}
+        ></iframe>
+        <h2 className='full-video__title'>{videoItem.title}</h2>
         <span className='full-video__date'>27.09.2023</span>
         <p className='full-video__description'>Описание</p>
       </section>

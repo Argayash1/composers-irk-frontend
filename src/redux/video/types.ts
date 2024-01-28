@@ -29,6 +29,7 @@ export interface VideoSliceState {
   currentPage: number;
   limit: number;
   totalPages: number;
+  videoItem: Video;
 }
 
 export type SearchVideoParams = {

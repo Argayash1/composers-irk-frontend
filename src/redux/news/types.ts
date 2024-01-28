@@ -29,6 +29,7 @@ export interface NewsSliceState {
   currentPage: number;
   limit: number;
   totalPages: number;
+  item: News;
 }
 
 export type SearchNewsParams = {

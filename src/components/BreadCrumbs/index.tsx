@@ -9,7 +9,7 @@ import { projectsArray } from '../../utils/projectsArray';
 import { unionMembersArray } from '../../utils/membersArray';
 import { iFramesArray } from '../../utils/iframesArray';
 import { articlesArray } from '../../utils/articlesArray';
-import { menuItems } from '../MainMenu';
+import { menuItems } from '../../utils/constants';
 
 export const BreadCrumbs = () => {
   const { pathname } = useLocation();

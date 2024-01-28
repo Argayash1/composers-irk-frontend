@@ -9,7 +9,7 @@ const FullArticle = () => {
     imageUrl: string;
     title: string;
     articleDescription: string;
-    articleText: string[];
+    articleText: string;
     createdAt: string;
   }>();
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const FullArticle = () => {
           <img className='full-article__image' src={article.imageUrl} alt='' />
           <p className='full-article__description'>{article.articleDescription}</p>
         </div>
-        <TextContent textArray={article.articleText} place='full-article' />
+        <TextContent text={article.articleText} place='full-article' />
       </section>
     </main>
   );

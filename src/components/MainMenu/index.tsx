@@ -2,17 +2,7 @@ import React from 'react';
 import './MainMenu.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { CloseButton } from '../CloseButton';
-export const menuItems = [
-  { name: 'Главная', path: '/' },
-  { name: 'Новости', path: '/news' },
-  { name: 'Состав', path: '/unionmembers' },
-  { name: 'Проекты', path: '/projects' },
-  { name: 'Ноты', path: '/scores' },
-  { name: 'Медиа', path: '/media' },
-  { name: 'Отчёты', path: '/reports' },
-  { name: 'Про нас', path: '/aboutus' },
-  { name: 'Контакты', path: '/contacts' },
-];
+import { menuItems } from '../../utils/constants';
 
 type MainMenuProps = {
   place: string;

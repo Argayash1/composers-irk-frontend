@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrandBanner, NewsContainer, TitleContainer, menuItems } from '../components';
+import { BrandBanner, NewsContainer, TitleContainer } from '../components';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
 import { selectNewsData } from '../redux/news/selectors';
 import { fetchNews } from '../redux/news/asyncActions';
 import { selectCurrentPage } from '../redux/search/selectors';
+import { menuItems } from '../utils/constants';
 
 const Home = () => {
   const dispatch = useAppDispatch();

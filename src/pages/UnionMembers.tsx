@@ -1,5 +1,5 @@
 import React from 'react';
-import { TitleContainer, Pagination, UnionMemberBlock, menuItems, UnionMemberSkeleton } from '../components';
+import { TitleContainer, Pagination, UnionMemberBlock, UnionMemberSkeleton } from '../components';
 import { compareBySurname, hasVerticalScroll } from '../utils/utils';
 import { useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/unionMember/slice';
@@ -7,6 +7,7 @@ import { selectUnionMembersData } from '../redux/unionMember/selectors';
 import { useAppDispatch } from '../redux/store';
 import clsx from 'clsx';
 import { fetchUnionMembers } from '../redux/unionMember/asyncActions';
+import { menuItems } from '../utils/constants';
 
 const UnionMembers: React.FC = () => {
   const dispatch = useAppDispatch();

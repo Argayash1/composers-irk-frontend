@@ -1,10 +1,11 @@
 import React from 'react';
-import { NewsContainer, TitleContainer, Pagination, menuItems } from '../components';
+import { NewsContainer, TitleContainer, Pagination } from '../components';
 import { useAppDispatch } from '../redux/store';
 import { fetchNews } from '../redux/news/asyncActions';
 import { useSelector } from 'react-redux';
 import { selectNewsData } from '../redux/news/selectors';
 import { setCurrentPage } from '../redux/news/slice';
+import { menuItems } from '../utils/constants';
 
 const News = () => {
   const dispatch = useAppDispatch();

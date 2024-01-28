@@ -1,11 +1,12 @@
 import React from 'react';
 import { ProjectBlock } from '../components/ProjectBlock';
-import { TitleContainer, Pagination, menuItems, ProjectSkeleton } from '../components';
+import { TitleContainer, Pagination, ProjectSkeleton } from '../components';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
 import { selectProjectsData } from '../redux/project/selectors';
 import { setCurrentPage } from '../redux/project/slice';
 import { fetchProjects } from '../redux/project/asyncActions';
+import { menuItems } from '../utils/constants';
 
 const Projects = () => {
   const dispatch = useAppDispatch();

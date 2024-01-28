@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, TitleContainer, AudioRecordings, VideoRecordings, menuItems, Pagination } from '../components';
+import { Tabs, TitleContainer, AudioRecordings, VideoRecordings, Pagination } from '../components';
 import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/video/slice';
 import { useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import { fetchAudios } from '../redux/audio/asyncActions';
 import { selectAudioData } from '../redux/audio/selectors';
 import { fetchVideos } from '../redux/video/asyncActions';
 import { iFramesArray } from '../utils/iframesArray';
+import { menuItems } from '../utils/constants';
 
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 

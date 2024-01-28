@@ -5,7 +5,7 @@ import axios from 'axios';
 import { localApi } from '../utils/constants';
 
 const FullProject = () => {
-  const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string[] }>();
+  const [project, setProject] = React.useState<{ imageUrl: string; title: string; description: string }>();
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
 
   const { id } = useParams();
@@ -38,7 +38,7 @@ const FullProject = () => {
       <TitleContainer name={project.title} place='full-project' path='/projects' />
       <section className='full-project__container'>
         <img className='full-project__image' src={project.imageUrl} alt='' />
-        <TextContent textArray={project.description} place='full-project' />
+        <TextContent text={project.description} place='full-project' />
         {isSharePanelOpen ? (
           <SharePanel itemTitle={project.title} onClick={handleToggleSharePanel} />
         ) : (

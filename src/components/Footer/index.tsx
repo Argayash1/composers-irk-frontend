@@ -2,8 +2,8 @@ import React from 'react';
 import './Footer.scss';
 import { ContactsList, Logo } from '../../components';
 import { Link } from 'react-router-dom';
-import { menuItems } from '../MainMenu';
 import { handleScrollToTop } from '../../utils/utils';
+import { menuItems } from '../../utils/constants';
 
 const footerMenuItems = [
   menuItems[0],

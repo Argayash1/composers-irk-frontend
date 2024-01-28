@@ -1,10 +1,11 @@
 import React from 'react';
-import { TitleContainer, Tabs, menuItems, ReportSkeleton } from '../components';
+import { TitleContainer, Tabs, ReportSkeleton } from '../components';
 import { ReportPopup } from '../components/ReportPopup';
 import { useAppDispatch } from '../redux/store';
 import { useSelector } from 'react-redux';
 import { selectReportData } from '../redux/report/selectors';
 import { fetchReport } from '../redux/report/asyncActions';
+import { menuItems } from '../utils/constants';
 
 const tabNames = ['Отчёт-2023', 'Отчёт-2022', 'Отчёт-2021', 'Отчёт-2020'];
 

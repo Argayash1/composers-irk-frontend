@@ -4,11 +4,11 @@ import './TextContent.scss';
 import clsx from 'clsx';
 
 type TextContentProps = {
-  textArray: string | string[];
+  text: string;
   place?: string;
 };
 
-export const TextContent = ({ textArray, place }: TextContentProps) => {
+export const TextContent = ({ text, place }: TextContentProps) => {
   const textContentClass = clsx(
     'text-content',
     place === 'full-union-member' && 'text-content_place_full-union-member',
@@ -17,11 +17,9 @@ export const TextContent = ({ textArray, place }: TextContentProps) => {
     place === 'full-article' && 'text-content_place_full-article',
   );
 
-  const text: string[] = typeof textArray === 'string' ? textArray.split('\n') : textArray;
-
   return (
     <ul className={textContentClass}>
-      {text.map((item, index) => {
+      {text.split('\n').map((item, index) => {
         if (item.startsWith('#')) {
           const matchResult = item ? item.match(/^(#+)\s/) : null;
           const level = matchResult ? matchResult[1].length : 0;

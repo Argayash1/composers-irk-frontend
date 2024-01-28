@@ -1,10 +1,11 @@
 import React from 'react';
-import { TitleContainer, Tabs, menuItems } from '../components';
+import { TitleContainer, Tabs } from '../components';
 import { useAppDispatch } from '../redux/store';
 import { fetchScores } from '../redux/score/asyncActions';
 import { useSelector } from 'react-redux';
 import { selectScoresData } from '../redux/score/selectors';
 import { setCategoryId } from '../redux/score/slice';
+import { menuItems } from '../utils/constants';
 
 const tabNames = ['Все ноты', 'Вокал', 'Фортепиано', 'Баян, аккордеон'];
 

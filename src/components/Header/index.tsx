@@ -53,7 +53,7 @@ export const Header = () => {
         <BurgerMenu isOpen={isBurgerMenuOpen} onClose={() => setIsBurgerMenuOpen(false)} />
       </div>
       <SearchForm place='header' />
-      {/* {pathname !== '/' && pathname !== '/searchresults' && pathname !== '/search' && <BreadCrumbs />} */}
+      {pathname !== '/' && pathname !== '/searchresults' && pathname !== '/search' && <BreadCrumbs />}
     </header>
   );
 };

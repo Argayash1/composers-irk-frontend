@@ -12,12 +12,12 @@ const FullUnionMemberInfo = () => {
     patronymic: string;
     name: string;
     profession: string;
-    biography: string[];
+    biography: string;
     shortBiography: string;
-    works: string[];
-    competitions?: string[];
-    awards?: string[];
-    links?: string[];
+    works: string;
+    competitions?: string;
+    awards?: string;
+    links?: string;
   }>();
   const [сategory, setCategory] = React.useState<number>(0);
 
@@ -42,7 +42,7 @@ const FullUnionMemberInfo = () => {
     return <FullUnionMemberSkeleton />;
   }
 
-  const unionMemberData: string[][] = [unionMember.biography, unionMember.works];
+  const unionMemberData: string[] = [unionMember.biography, unionMember.works];
 
   const handleGenerateTabNames = () => {
     const tabNames = ['Биография', 'Список сочинений'];
@@ -86,7 +86,7 @@ const FullUnionMemberInfo = () => {
           value={сategory}
           onChangeTab={(index: number) => setCategory(index)}
         />
-        <TextContent textArray={unionMemberData[сategory]} place='full-union-member' />
+        <TextContent text={unionMemberData[сategory]} place='full-union-member' />
       </section>
     </main>
   );

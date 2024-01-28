@@ -1,16 +1,14 @@
 import React from 'react';
-import { NewsContainer, TitleContainer, Pagination, Tabs, TextContent, menuItems } from '../components';
+import { NewsContainer, TitleContainer, Pagination, Tabs, TextContent } from '../components';
 import { useSelector } from 'react-redux';
-import { articlesArray } from '../utils/articlesArray';
 import { selectArticleData } from '../redux/article/selectors';
 import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/article/slice';
 import clsx from 'clsx';
-import {} from '../components/TextContent';
-import { historyArray } from '../utils/historyArray';
 import { fetchArticles } from '../redux/article/asyncActions';
 import { fetchourHistory } from '../redux/ourHistory/asyncActions';
 import { selectOurHistoryData } from '../redux/ourHistory/selectors';
+import { menuItems } from '../utils/constants';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
@@ -89,7 +87,7 @@ export const AboutUs = () => {
         />
       ) : (
         <section>
-          <TextContent textArray={historyItem.text} place='about-us' />
+          <TextContent text={historyItem.text} place='about-us' />
         </section>
       )}
       {category === 0 && (

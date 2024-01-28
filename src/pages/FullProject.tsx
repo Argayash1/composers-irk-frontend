@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, SharePanel, FullProjectSkeleton, TextContent } from '../components';
-import { projectsArray } from '../utils/projectsArray';
 import axios from 'axios';
 import { localApi } from '../utils/constants';
 
@@ -10,7 +9,6 @@ const FullProject = () => {
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
 
   const { id } = useParams();
-  console.log(id);
   const navigate = useNavigate();
 
   React.useEffect(() => {

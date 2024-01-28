@@ -1,7 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { articlesArray } from '../utils/articlesArray';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FullArticleSkeleton, TitleContainer, TextContent } from '../components';
+import axios from 'axios';
+import { localApi } from '../utils/constants';
 
 const FullArticle = () => {
   const [article, setArticle] = React.useState<{
@@ -11,13 +12,23 @@ const FullArticle = () => {
     articleText: string[];
     createdAt: string;
   }>();
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
   React.useEffect(() => {
-    const articleObject = articlesArray[Number(id)];
-    setArticle(articleObject);
-  }, [id]);
+    async function fetchArticles() {
+      try {
+        const { data } = await axios.get(`${localApi}/articles/${id}`);
+        setArticle(data);
+      } catch (err) {
+        console.log(err);
+        navigate('/');
+      }
+    }
+
+    fetchArticles();
+  }, [id, navigate]);
 
   if (!article) {
     return <FullArticleSkeleton />;

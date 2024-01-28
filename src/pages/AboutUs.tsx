@@ -2,22 +2,27 @@ import React from 'react';
 import { NewsContainer, TitleContainer, Pagination, Tabs, TextContent, menuItems } from '../components';
 import { useSelector } from 'react-redux';
 import { articlesArray } from '../utils/articlesArray';
-import { selectArticleCurrentPage } from '../redux/article/selectors';
+import { selectArticleData } from '../redux/article/selectors';
 import { useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/article/slice';
 import clsx from 'clsx';
 import {} from '../components/TextContent';
 import { historyArray } from '../utils/historyArray';
+import { fetchArticles } from '../redux/article/asyncActions';
+import { fetchourHistory } from '../redux/ourHistory/asyncActions';
+import { selectOurHistoryData } from '../redux/ourHistory/selectors';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
 export const AboutUs = () => {
   const dispatch = useAppDispatch();
 
-  const currentPage = useSelector(selectArticleCurrentPage);
+  const { currentPage, totalPages, items, status } = useSelector(selectArticleData);
+  const { historyItem, historyStatus } = useSelector(selectOurHistoryData);
 
   const [category, setCategory] = React.useState<number>(0);
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+  const [cardsLimit, setCardsLimit] = React.useState<number>(0);
 
   React.useEffect(() => {
     document.title = 'Про нас';
@@ -46,11 +51,27 @@ export const AboutUs = () => {
     };
   }, []);
 
-  const limit = screenWidth > 638 ? 6 : 4;
-  const firstItem = currentPage * limit - limit;
-  const lastItam = currentPage * limit;
+  React.useEffect(() => {
+    const handleSetLimit = (): number => {
+      let limit;
 
-  const articles = articlesArray.slice(firstItem, lastItam);
+      if (screenWidth > 622) {
+        limit = 6;
+      } else {
+        limit = 3;
+      }
+
+      setCardsLimit(limit);
+
+      return limit;
+    };
+
+    if (category === 0) {
+      dispatch(fetchArticles({ currentPage, limit: handleSetLimit(), screenWidth }));
+    } else {
+      dispatch(fetchourHistory());
+    }
+  }, [dispatch, category, currentPage, screenWidth]);
 
   return (
     <main className={clsx('about-us', category === 1 && 'about-us_type_our-histpry')}>
@@ -61,13 +82,14 @@ export const AboutUs = () => {
       {category === 0 ? (
         <NewsContainer
           place='aboutus'
-          itemsArray={articles}
+          itemsArray={items}
           screenWidth={screenWidth}
           limit={screenWidth > 638 ? 6 : 4}
+          status={status}
         />
       ) : (
         <section>
-          <TextContent textArray={historyArray} place='about-us' />
+          <TextContent textArray={historyItem.text} place='about-us' />
         </section>
       )}
       {category === 0 && (
@@ -76,6 +98,7 @@ export const AboutUs = () => {
           onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
           onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
           currentPage={currentPage}
+          totalPages={totalPages}
         />
       )}
     </main>

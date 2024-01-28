@@ -1,14 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Article, SearchArticleParams } from './types';
+import { ArticleData, ArticleItems, SearchArticleParams } from './types';
 import axios from 'axios';
+import { localApi } from '../../utils/constants';
 
-export const fetchArticles = createAsyncThunk<Article[], SearchArticleParams>(
+export const fetchArticles = createAsyncThunk<ArticleData, SearchArticleParams>(
   'article/fetchArticleStatus',
   async (params) => {
-    const { currentPage, limit } = params;
-    const { data } = await axios.get<Article[]>(
-      `https://64e36310bac46e480e78b878.mockapi.io/news?page=${currentPage}&limit=${limit}`,
-    );
-    return data;
+    const { currentPage, limit, screenWidth } = params;
+    const { data } = await axios.get<ArticleItems>(`${localApi}/articles?page=${currentPage}&limit=${limit}`);
+    return { data, screenWidth, currentPage };
   },
 );

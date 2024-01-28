@@ -13,14 +13,27 @@ export enum Status {
   ERROR = 'error',
 }
 
+export type ArticleItems = {
+  articles: Article[];
+  totalPages: number;
+};
+
+export type ArticleData = {
+  data: ArticleItems;
+  currentPage: number;
+  screenWidth: number;
+};
+
 export interface ArticleSliceState {
   items: Article[];
   status: Status; //'loading' | 'success' | 'error';
   currentPage: number;
   limit: number;
+  totalPages: number;
 }
 
 export type SearchArticleParams = {
   currentPage: number;
   limit: number;
+  screenWidth: number;
 };

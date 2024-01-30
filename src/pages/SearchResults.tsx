@@ -1,9 +1,10 @@
 import React from 'react';
-import { CombinedArrayObject, TitleContainer, Pagination, SearchForm, SearchResult } from '../components';
+import { TitleContainer, Pagination, SearchForm, SearchResult } from '../components';
 import { useSelector } from 'react-redux';
 import { setCurrentPage, setOpenSearch } from '../redux/search/slice';
 import { RootState, useAppDispatch } from '../redux/store';
 import clsx from 'clsx';
+import { CombinedArrayObject } from '../redux/search/types';
 
 const SearchResults: React.FC = () => {
   const { searchResults, currentPage } = useSelector((state: RootState) => state.search);
@@ -32,10 +33,16 @@ const SearchResults: React.FC = () => {
           </p>
         ) : (
           <ul className='search-results__list'>
-            {searchResults.map((searchResult: CombinedArrayObject, index: number) => (
-              <li key={index}>
+            {searchResults.map((searchResult: CombinedArrayObject) => (
+              <li key={searchResult._id}>
                 <SearchResult
-                  title={searchResult.title || searchResult.surname + ' ' + searchResult.name}
+                  title={
+                    searchResult.composer
+                      ? searchResult.composer + ' ' + searchResult.title
+                      : searchResult.description || searchResult.articleDescription
+                      ? searchResult.title
+                      : searchResult.surname + ' ' + searchResult.name + ' ' + searchResult.patronymic
+                  }
                   description={
                     searchResult.description ||
                     searchResult.articleDescription ||
@@ -43,14 +50,16 @@ const SearchResults: React.FC = () => {
                     searchResult.newsText
                   }
                   path={`/${
-                    searchResult.description
+                    searchResult.composer
+                      ? 'scores'
+                      : searchResult.description
                       ? 'projects'
                       : searchResult.articleDescription
                       ? 'aboutus'
                       : searchResult.shortBiography
                       ? 'unionmembers'
                       : 'news'
-                  }/${searchResult.id}`}
+                  }${!searchResult.composer && '/' + searchResult._id}`}
                 />
               </li>
             ))}

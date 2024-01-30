@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Item, SearchSliceState } from './types';
+import { Item, SearchSliceState, Status } from './types';
+import { fetchCombinedArray } from './asyncActions';
 
 const initialState: SearchSliceState = {
   currentPage: 1,
@@ -7,6 +8,8 @@ const initialState: SearchSliceState = {
   searchValue: '',
   searchResults: [],
   errorText: '',
+  combinedArray: [],
+  status: Status.LOADING,
 };
 
 export const searchSlice = createSlice({
@@ -39,6 +42,22 @@ export const searchSlice = createSlice({
     setErrorText(state, action: PayloadAction<string>) {
       state.errorText = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCombinedArray.pending, (state) => {
+      state.status = Status.LOADING;
+      state.combinedArray = [];
+    });
+
+    builder.addCase(fetchCombinedArray.fulfilled, (state, action) => {
+      state.combinedArray = action.payload;
+      state.status = Status.SUCCESS;
+    });
+
+    builder.addCase(fetchCombinedArray.rejected, (state) => {
+      state.status = Status.ERROR;
+      state.combinedArray = [];
+    });
   },
 });
 

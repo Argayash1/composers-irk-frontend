@@ -1,18 +1,13 @@
 import React from 'react';
 import { SearchButton, CloseButton, ButtonTypeEnum } from '..';
 import './SearchForm.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { setSearchValue, setSearchResults, setErrorText, setCloseSearch } from '../../redux/search/slice';
 import { useNavigate } from 'react-router-dom';
-import { newsArray } from '../../utils/newsArray';
-import { unionMembersArray } from '../../utils/membersArray';
-import { articlesArray } from '../../utils/articlesArray';
-import { projectsArray } from '../../utils/projectsArray';
-import { RootState } from '../../redux/store';
-
-export interface CombinedArrayObject {
-  [key: string]: string | string[];
-}
+import { RootState, useAppDispatch } from '../../redux/store';
+import { CombinedArrayObject } from '../../redux/search/types';
+import axios from 'axios';
+import { localApi } from '../../utils/constants';
 
 type SearchFormProps = {
   place?: string;
@@ -20,19 +15,28 @@ type SearchFormProps = {
 
 export const SearchForm = ({ place }: SearchFormProps) => {
   const { searchValue, isSearchOpen, errorText } = useSelector((state: RootState) => state.search);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const combinedArray: CombinedArrayObject[] = [...newsArray, ...articlesArray, ...projectsArray];
-
-  const handleSearchByAllSite = (e: React.FormEvent<HTMLFormElement>, query: string) => {
+  const handleSearchByAllSite = async (e: React.FormEvent<HTMLFormElement>, query: string) => {
     e.preventDefault();
 
     if (searchValue) {
+      const combinedArray = localStorage.getItem('combinedArray');
+
+      if (combinedArray === null) {
+        const { data: combinedArray } = await axios.get<CombinedArrayObject[]>(`${localApi}/search`);
+        localStorage.setItem('combinedArray', JSON.stringify(combinedArray));
+      }
+
+      const combinedArrayFromLS = localStorage.getItem('combinedArray');
+      const parsedCombinedArray = combinedArrayFromLS !== null ? JSON.parse(combinedArrayFromLS) : null;
+
       dispatch(setErrorText(''));
-      const results: CombinedArrayObject[] = combinedArray.filter((obj) => {
+
+      const results: CombinedArrayObject[] = parsedCombinedArray.filter((obj: CombinedArrayObject) => {
         return Object.values(obj).some((value) => {
           if (typeof value === 'string') {
             return value.toLowerCase().includes(query.toLowerCase());

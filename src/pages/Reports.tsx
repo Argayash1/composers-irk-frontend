@@ -7,14 +7,14 @@ import { selectReportData } from '../redux/report/selectors';
 import { fetchReport } from '../redux/report/asyncActions';
 import { menuItems } from '../utils/constants';
 
-const tabNames = ['Отчёт-2023', 'Отчёт-2022', 'Отчёт-2021', 'Отчёт-2020'];
-
 const Reports = () => {
   const dispatch = useAppDispatch();
-  const { item, status } = useSelector(selectReportData);
+  const { items, status } = useSelector(selectReportData);
   const [reportIndex, setReportIndex] = React.useState<number>(0);
   const [isReportPopupOpen, setReportPopupOpen] = React.useState<boolean>(false);
   const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
+
+  const isMounted = React.useRef<boolean>(false);
 
   React.useEffect(() => {
     document.title = 'Отчёты';
@@ -44,27 +44,37 @@ const Reports = () => {
   }, []);
 
   React.useEffect(() => {
-    dispatch(fetchReport(reportIndex));
+    if (!isMounted.current) {
+      dispatch(fetchReport());
+    }
+
+    isMounted.current = true;
   }, [dispatch, reportIndex]);
 
-  const altText = `Отчёт за ${item.year} год`;
+  if (status === 'loading') {
+    return <ReportSkeleton screenWidth={screenWidth} />;
+  }
+
+  const report = items[reportIndex];
+  const tabNames = items.map((obj) => `Отчёт-${obj.year}`);
 
   return (
     <main className='reports'>
       <TitleContainer name={menuItems[6].name} place='reports' />
       <section className='reports__main-content'>
         <Tabs tabNamesArray={tabNames} onChangeTab={(index) => setReportIndex(index)} value={reportIndex} />
-        {status === 'loading' ? (
-          <ReportSkeleton screenWidth={screenWidth} />
-        ) : (
-          <img className='reports__image' src={item.imageUrl} alt={altText} onClick={() => setReportPopupOpen(true)} />
-        )}
+        <img
+          className='reports__image'
+          src={report.imageUrl}
+          alt={`Отчёт за ${report.year} год`}
+          onClick={() => setReportPopupOpen(true)}
+        />
       </section>
       <ReportPopup
         isOpen={isReportPopupOpen}
         onClose={() => setReportPopupOpen(false)}
-        imageUrl={item.imageUrl}
-        altText={altText}
+        imageUrl={report.imageUrl}
+        altText={`Отчёт за ${report.year} год`}
       />
     </main>
   );

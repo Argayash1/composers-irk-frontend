@@ -8,7 +8,7 @@ const initialState: VideoSliceState = {
   currentPage: 1,
   limit: 6,
   totalPages: 0,
-  videoItem: { _id: '', iframeUrl: '', title: '', composer: '', performer: '' },
+  videoItem: { _id: '', iframeUrl: '', title: '', composer: '', performer: '', createdAt: '', about: '' },
 };
 
 const videoSlice = createSlice({
@@ -56,7 +56,7 @@ const videoSlice = createSlice({
 
     builder.addCase(fetchVideoById.pending, (state) => {
       state.status = Status.LOADING;
-      state.videoItem = { _id: '', iframeUrl: '', title: '', composer: '', performer: '' };
+      state.videoItem = { _id: '', iframeUrl: '', title: '', composer: '', performer: '', createdAt: '', about: '' };
     });
 
     builder.addCase(fetchVideoById.fulfilled, (state, action) => {
@@ -66,7 +66,7 @@ const videoSlice = createSlice({
 
     builder.addCase(fetchVideoById.rejected, (state) => {
       state.status = Status.LOADING;
-      state.videoItem = { _id: '', iframeUrl: '', title: '', composer: '', performer: '' };
+      state.videoItem = { _id: '', iframeUrl: '', title: '', composer: '', performer: '', createdAt: '', about: '' };
     });
   },
 });

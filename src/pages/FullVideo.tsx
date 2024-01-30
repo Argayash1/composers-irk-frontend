@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectVideoData } from '../redux/video/selectors';
 import { fetchVideoById } from '../redux/video/asyncActions';
 import { useAppDispatch } from '../redux/store';
+import { handleFormateDate } from '../utils/utils';
 
 const FullVideo = () => {
   const dispatch = useAppDispatch();
@@ -33,8 +34,8 @@ const FullVideo = () => {
           title={videoItem.title}
         ></iframe>
         <h2 className='full-video__title'>{videoItem.title}</h2>
-        <span className='full-video__date'>27.09.2023</span>
-        <p className='full-video__description'>Описание</p>
+        <span className='full-video__date'>{handleFormateDate(videoItem.createdAt)}</span>
+        <p className='full-video__description'>{videoItem.about}</p>
       </section>
     </main>
   );

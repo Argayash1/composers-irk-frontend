@@ -10,6 +10,6 @@ export enum Status {
 }
 
 export interface ReportSliceState {
-  item: IReport;
+  items: IReport[];
   status: Status; //'loading' | 'success' | 'error';
 }

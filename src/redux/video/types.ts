@@ -4,6 +4,8 @@ export type Video = {
   title: string;
   composer: string;
   performer?: string;
+  createdAt: string;
+  about: string;
 };
 
 export enum Status {

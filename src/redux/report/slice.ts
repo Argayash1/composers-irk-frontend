@@ -3,7 +3,7 @@ import { IReport, ReportSliceState, Status } from './types';
 import { fetchReport } from './asyncActions';
 
 const initialState: ReportSliceState = {
-  item: { year: '', imageUrl: '' },
+  items: [],
   status: Status.LOADING,
 };
 
@@ -11,24 +11,24 @@ const reportSlice = createSlice({
   name: 'report',
   initialState,
   reducers: {
-    setItem(state, action: PayloadAction<IReport>) {
-      state.item = action.payload;
+    setItem(state, action: PayloadAction<IReport[]>) {
+      state.items = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchReport.pending, (state) => {
       state.status = Status.LOADING;
-      state.item = { year: '', imageUrl: '' };
+      state.items = [];
     });
 
     builder.addCase(fetchReport.fulfilled, (state, action) => {
-      state.item = action.payload;
+      state.items = action.payload;
       state.status = Status.SUCCESS;
     });
 
     builder.addCase(fetchReport.rejected, (state) => {
       state.status = Status.ERROR;
-      state.item = { year: '', imageUrl: '' };
+      state.items = [];
     });
   },
 });

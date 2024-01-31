@@ -1,15 +1,17 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CTA, TitleContainer, Tabs, TextContent, FullUnionMemberSkeleton } from '../components';
-import { allScores } from '../utils/scoresArray';
 import { useAppDispatch } from '../redux/store';
 import { fetchUnionMemberById } from '../redux/unionMember/asyncActions';
 import { selectUnionMembersData } from '../redux/unionMember/selectors';
 import { useSelector } from 'react-redux';
+import { fetchScores } from '../redux/score/asyncActions';
+import { selectScoresData } from '../redux/score/selectors';
 
 const FullUnionMemberInfo = () => {
   const dispatch = useAppDispatch();
   const { item, status } = useSelector(selectUnionMembersData);
+  const { items: scores, status: scoresStatus } = useSelector(selectScoresData);
 
   const [сategory, setCategory] = React.useState<number>(0);
 
@@ -19,12 +21,15 @@ const FullUnionMemberInfo = () => {
   React.useEffect(() => {
     if (id) {
       dispatch(fetchUnionMemberById(id));
+      dispatch(fetchScores(''));
     }
   }, [id, dispatch]);
 
-  if (status === 'loading') {
+  if (status === 'loading' && scoresStatus === 'loading') {
     return <FullUnionMemberSkeleton />;
   }
+
+  console.log(scores);
 
   const unionMemberData: string[] = [item.biography, item.works];
 
@@ -49,7 +54,7 @@ const FullUnionMemberInfo = () => {
     return tabNames;
   };
 
-  const hasComposerScoresOnSite = allScores.some((score) => score.title.includes(item.surname));
+  const hasComposerScoresOnSite = scores.some((score) => score.title.includes(item.surname));
   const showCTA = hasComposerScoresOnSite && item.profession === 'Композитор';
 
   return (

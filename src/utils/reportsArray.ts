@@ -1,8 +1,0 @@
-import report2020 from '../assets/images/report.jpg';
-
-export const reportsArray = [
-  { imageUrl: report2020, year: '2020' },
-  { imageUrl: report2020, year: '2020' },
-  { imageUrl: report2020, year: '2020' },
-  { imageUrl: report2020, year: '2020' },
-];

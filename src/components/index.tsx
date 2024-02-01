@@ -49,3 +49,4 @@ export * from './FullVideoSkeleton';
 export * from './FullUnionMemberSkeleton';
 export * from './FullArticleSkeleton';
 export * from './ReportSkeleton';
+export * from './Errorblock';

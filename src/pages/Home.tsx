@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrandBanner, NewsContainer, TitleContainer } from '../components';
+import { BrandBanner, Errorblock, NewsContainer, TitleContainer } from '../components';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
 import { selectNewsData } from '../redux/news/selectors';
@@ -62,13 +62,17 @@ const Home = () => {
     <main className='home'>
       <BrandBanner />
       <TitleContainer name={menuItems[1].name} place='main' path='/news' />
-      <NewsContainer
-        itemsArray={items}
-        place='main'
-        status={status}
-        limit={screenWidth > 638 ? 6 : 3}
-        screenWidth={screenWidth}
-      />
+      {status === 'error' ? (
+        <Errorblock />
+      ) : (
+        <NewsContainer
+          itemsArray={items}
+          place='main'
+          status={status}
+          limit={screenWidth > 638 ? 6 : 3}
+          screenWidth={screenWidth}
+        />
+      )}
     </main>
   );
 };

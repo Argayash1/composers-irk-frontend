@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../redux/store';
 import { CombinedArrayObject } from '../../redux/search/types';
 import axios from 'axios';
-import { localApi } from '../../utils/constants';
+import { localApi, noSearhRequestMessage } from '../../utils/constants';
 
 type SearchFormProps = {
   place?: string;
@@ -53,7 +53,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
       dispatch(setSearchResults(results));
       navigate('/searchresults');
     } else {
-      dispatch(setErrorText('Запрос должен включать хотя бы один символ.'));
+      dispatch(setErrorText(noSearhRequestMessage));
     }
   };
 

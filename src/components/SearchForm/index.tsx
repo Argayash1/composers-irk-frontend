@@ -2,59 +2,44 @@ import React from 'react';
 import { SearchButton, CloseButton, ButtonTypeEnum } from '..';
 import './SearchForm.scss';
 import { useSelector } from 'react-redux';
-import { setSearchValue, setSearchResults, setErrorText, setCloseSearch } from '../../redux/search/slice';
+import { setSearchValue, setErrorText, setCloseSearch, setCurrentPage } from '../../redux/search/slice';
 import { useNavigate } from 'react-router-dom';
-import { RootState, useAppDispatch } from '../../redux/store';
-import { CombinedArrayObject } from '../../redux/search/types';
-import axios from 'axios';
-import { localApi } from '../../utils/constants';
+import { useAppDispatch } from '../../redux/store';
+import { NO_KEY_WORD_ERROR } from '../../utils/constants';
+import { fetchSearchResults } from '../../redux/search/asyncActions';
+import { selectSearchData } from '../../redux/search/selectors';
 
 type SearchFormProps = {
   place?: string;
 };
 
 export const SearchForm = ({ place }: SearchFormProps) => {
-  const { searchValue, isSearchOpen, errorText } = useSelector((state: RootState) => state.search);
+  const { searchValue, isSearchOpen, errorText, screenWidth } = useSelector(selectSearchData);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const handleSearchByAllSite = async (e: React.FormEvent<HTMLFormElement>, query: string) => {
+  const [query, setQuery] = React.useState<string>('');
+  const [isLoading, setIsloading] = React.useState<boolean>(false);
+
+  const limit = screenWidth > 933 ? 6 : screenWidth <= 933 && screenWidth > 600 ? 5 : 3;
+
+  const handleSearchByAllSite = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsloading(true);
 
-    if (searchValue) {
-      const combinedArray = localStorage.getItem('combinedArray');
-
-      if (combinedArray === null) {
-        const { data: combinedArray } = await axios.get<CombinedArrayObject[]>(`${localApi}/search`);
-        localStorage.setItem('combinedArray', JSON.stringify(combinedArray));
-      }
-
-      const combinedArrayFromLS = localStorage.getItem('combinedArray');
-      const parsedCombinedArray = combinedArrayFromLS !== null ? JSON.parse(combinedArrayFromLS) : null;
-
+    if (query) {
+      dispatch(setSearchValue(query));
+      dispatch(setCurrentPage(1));
       dispatch(setErrorText(''));
-
-      const results: CombinedArrayObject[] = parsedCombinedArray.filter((obj: CombinedArrayObject) => {
-        return Object.values(obj).some((value) => {
-          if (typeof value === 'string') {
-            return value.toLowerCase().includes(query.toLowerCase());
-          }
-
-          if (Array.isArray(value)) {
-            return value.some((item) => typeof item === 'string' && item.toLowerCase().includes(query.toLowerCase()));
-          }
-
-          return false;
-        });
-      });
-
-      dispatch(setSearchResults(results));
+      dispatch(fetchSearchResults({ query: `q=${query}`, currentPage: 1, limit: `limit=${limit}`, screenWidth }));
       navigate('/searchresults');
     } else {
-      dispatch(setErrorText('Запрос должен включать хотя бы один символ.'));
+      dispatch(setErrorText(NO_KEY_WORD_ERROR));
     }
+
+    setIsloading(false);
   };
 
   const handleClearSearchBar = () => {
@@ -63,7 +48,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchValue(e.target.value));
+    setQuery(e.target.value);
   };
 
   return (
@@ -77,12 +62,12 @@ export const SearchForm = ({ place }: SearchFormProps) => {
           place === 'search-results' ? 'search__container_place_search-results' : ''
         } ${place === 'search' ? 'search__container_place_search' : ''}`}
       >
-        <form className='search__form' action='' onSubmit={(e) => handleSearchByAllSite(e, searchValue)} noValidate>
+        <form className='search__form' action='' onSubmit={handleSearchByAllSite} noValidate>
           <label htmlFor='search' className='search__label'>
             <input
               className={`search__input ${errorText ? 'search__input_type_error' : ''}`}
               type='search'
-              value={searchValue || ''}
+              value={query || ''}
               name='search'
               id='search'
               onChange={handleChange}
@@ -94,7 +79,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
             <span className='search__error'>{errorText}</span>
           </label>
           <div className='search__buttons'>
-            <SearchButton type={ButtonTypeEnum.SUBMIT} place='search' />
+            <SearchButton type={ButtonTypeEnum.SUBMIT} place='search' isLoading={isLoading} />
             {searchValue && <CloseButton onClick={handleClearSearchBar} />}
           </div>
         </form>

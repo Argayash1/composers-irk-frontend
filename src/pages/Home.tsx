@@ -4,14 +4,12 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../redux/store';
 import { selectNewsData } from '../redux/news/selectors';
 import { fetchNews } from '../redux/news/asyncActions';
-import { selectCurrentPage } from '../redux/search/selectors';
 import { menuItems } from '../utils/constants';
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
   const { items, status } = useSelector(selectNewsData);
-  const currentPage = useSelector(selectCurrentPage);
 
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
 
@@ -55,8 +53,8 @@ const Home = () => {
       return limit;
     };
 
-    dispatch(fetchNews({ currentPage, limit: handleSetLimit(), screenWidth }));
-  }, [dispatch, currentPage, screenWidth]);
+    dispatch(fetchNews({ currentPage: 1, limit: handleSetLimit(), screenWidth }));
+  }, [dispatch, screenWidth]);
 
   return (
     <main className='home'>

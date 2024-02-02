@@ -1,10 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { localApi } from '../../utils/constants';
-import { CombinedArrayObject } from './types';
+import { SearchData, SearchItems, SearchParams } from './types';
 
-export const fetchCombinedArray = createAsyncThunk<CombinedArrayObject[]>('search/fetchCombinedArray', async () => {
-  const { data } = await axios.get<CombinedArrayObject[]>(`${localApi}/combined`);
+export const fetchSearchResults = createAsyncThunk<SearchData, SearchParams>(
+  'search/fetchSearchResults',
+  async (params) => {
+    const { query, currentPage, limit, screenWidth } = params;
 
-  return data;
-});
+    const { data } = await axios.get<SearchItems>(`${localApi}/search?${query}&page=${currentPage}&${limit}`);
+
+    return { data, screenWidth, currentPage };
+  },
+);

@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Item, SearchSliceState, Status } from './types';
-import { fetchCombinedArray } from './asyncActions';
+import { SearchSliceState, Status } from './types';
+import { fetchSearchResults } from './asyncActions';
 
 const initialState: SearchSliceState = {
   currentPage: 1,
+  totalPages: 0,
+  screenWidth: window.innerWidth,
   isSearchOpen: false,
   searchValue: '',
   searchResults: [],
   errorText: '',
-  combinedArray: [],
   status: Status.LOADING,
 };
 
@@ -35,33 +36,45 @@ export const searchSlice = createSlice({
       state.searchValue = action.payload;
     },
 
-    setSearchResults(state, action: PayloadAction<Item[]>) {
-      state.searchResults = action.payload;
-    },
-
     setErrorText(state, action: PayloadAction<string>) {
       state.errorText = action.payload;
     },
+
+    setScreenWidth(state, action: PayloadAction<number>) {
+      state.screenWidth = action.payload;
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCombinedArray.pending, (state) => {
+    builder.addCase(fetchSearchResults.pending, (state) => {
       state.status = Status.LOADING;
-      state.combinedArray = [];
     });
 
-    builder.addCase(fetchCombinedArray.fulfilled, (state, action) => {
-      state.combinedArray = action.payload;
-      state.status = Status.SUCCESS;
+    builder.addCase(fetchSearchResults.fulfilled, (state, action) => {
+      const { data, screenWidth, currentPage } = action.payload;
+
+      if (screenWidth <= 638 && currentPage > 1) {
+        const newItems = data.results.filter(
+          (item) => !state.searchResults.some((existingItem) => existingItem._id === item._id),
+        );
+
+        state.searchResults = [...state.searchResults, ...newItems];
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      } else {
+        state.searchResults = data.results;
+        state.totalPages = data.totalPages;
+        state.status = Status.SUCCESS;
+      }
     });
 
-    builder.addCase(fetchCombinedArray.rejected, (state) => {
+    builder.addCase(fetchSearchResults.rejected, (state) => {
       state.status = Status.ERROR;
-      state.combinedArray = [];
+      state.searchResults = [];
     });
   },
 });
 
-export const { setCurrentPage, setOpenSearch, setCloseSearch, setSearchValue, setSearchResults, setErrorText } =
+export const { setCurrentPage, setOpenSearch, setCloseSearch, setSearchValue, setScreenWidth, setErrorText } =
   searchSlice.actions;
 
 export default searchSlice.reducer;

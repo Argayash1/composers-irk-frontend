@@ -42,7 +42,6 @@ const unionMemberSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchUnionMembers.pending, (state) => {
       state.status = Status.LOADING;
-      state.items = [];
     });
 
     builder.addCase(fetchUnionMembers.fulfilled, (state, action) => {

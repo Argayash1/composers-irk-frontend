@@ -1,16 +1,24 @@
 import React from 'react';
 import { TitleContainer, Pagination, SearchForm, SearchResult } from '../components';
 import { useSelector } from 'react-redux';
-import { setCurrentPage, setOpenSearch } from '../redux/search/slice';
-import { RootState, useAppDispatch } from '../redux/store';
+import { setCurrentPage, setOpenSearch, setScreenWidth } from '../redux/search/slice';
 import clsx from 'clsx';
 import { CombinedArrayObject } from '../redux/search/types';
+import { selectSearchData } from '../redux/search/selectors';
+import { useAppDispatch } from '../redux/store';
+import { fetchSearchResults } from '../redux/search/asyncActions';
 
 const SearchResults: React.FC = () => {
-  const { searchResults, currentPage } = useSelector((state: RootState) => state.search);
+  const { searchResults, currentPage, totalPages, searchValue, screenWidth } = useSelector(selectSearchData);
   const dispatch = useAppDispatch();
 
-  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+  const isMounted = React.useRef<boolean>(false);
+
+  const limit = screenWidth > 933 ? 6 : screenWidth <= 933 && screenWidth > 600 ? 5 : 3;
+
+  React.useEffect(() => {
+    document.title = 'Результаты поиска';
+  }, []);
 
   React.useEffect(() => {
     dispatch(setOpenSearch());
@@ -18,7 +26,7 @@ const SearchResults: React.FC = () => {
 
   React.useEffect(() => {
     const handleResize = () => {
-      setScreenWidth(window.innerWidth);
+      dispatch(setScreenWidth(window.innerWidth));
     };
 
     let timeoutId: NodeJS.Timeout;
@@ -37,15 +45,15 @@ const SearchResults: React.FC = () => {
       window.removeEventListener('resize', delayedHandleResize);
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [dispatch]);
 
-  const limit = screenWidth > 933 ? 6 : screenWidth <= 933 && screenWidth > 600 ? 5 : 3;
-  const firstItem = currentPage * limit - limit;
-  const lastItam = currentPage * limit;
+  React.useEffect(() => {
+    if (isMounted.current) {
+      dispatch(fetchSearchResults({ query: `q=${searchValue}`, currentPage, limit: `limit=${limit}`, screenWidth }));
+    }
 
-  const totalPages = Math.ceil(searchResults.length / limit);
-
-  const searchResultsItems = searchResults.slice(firstItem, lastItam);
+    isMounted.current = true;
+  }, [dispatch, currentPage, limit, screenWidth, searchValue]);
 
   return (
     <main className='search-results'>
@@ -66,14 +74,18 @@ const SearchResults: React.FC = () => {
           </p>
         ) : (
           <ul className='search-results__list'>
-            {searchResultsItems.map((searchResult: CombinedArrayObject) => (
+            {searchResults.map((searchResult: CombinedArrayObject) => (
               <li key={searchResult._id}>
                 <SearchResult
                   title={
-                    searchResult.composer
+                    searchResult.iframeUrl
+                      ? searchResult.title
+                      : searchResult.composer
                       ? searchResult.composer + ' ' + searchResult.title
                       : searchResult.title
                       ? searchResult.title
+                      : searchResult.year
+                      ? `Отчёт-${searchResult.year}`
                       : searchResult.text
                       ? 'Наша история'
                       : searchResult.surname + ' ' + searchResult.name + ' ' + searchResult.patronymic
@@ -95,9 +107,11 @@ const SearchResults: React.FC = () => {
                       ? 'unionmembers'
                       : searchResult.iframeUrl || searchResult.audioUrl
                       ? 'media'
+                      : searchResult.year
+                      ? 'reports'
                       : 'news'
                   }${
-                    (searchResult.iframeUrl || !searchResult.composer) && !searchResult.text
+                    (searchResult.iframeUrl || !searchResult.composer) && !searchResult.text && !searchResult.year
                       ? '/' + searchResult._id
                       : ''
                   }`}

@@ -16,13 +16,19 @@ export enum Status {
   ERROR = 'error',
 }
 
+export type SearchItems = {
+  results: CombinedArrayObject[];
+  totalPages: number;
+};
+
 export interface SearchSliceState {
   currentPage: number;
+  totalPages: number;
+  screenWidth: number;
   isSearchOpen: boolean;
   searchValue: string;
   searchResults: Item[];
   errorText: string;
-  combinedArray: CombinedArrayObject[];
   status: Status;
 }
 
@@ -30,3 +36,16 @@ export interface CombinedArrayObject {
   _id: string;
   [key: string]: string | string[];
 }
+
+export type SearchParams = {
+  query: string;
+  currentPage: number;
+  limit: string;
+  screenWidth: number;
+};
+
+export type SearchData = {
+  data: SearchItems;
+  screenWidth: number;
+  currentPage: number;
+};

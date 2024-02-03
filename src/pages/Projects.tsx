@@ -15,6 +15,7 @@ const Projects = () => {
 
   const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
+  const [fetching, setFetching] = React.useState(false);
 
   React.useEffect(() => {
     document.title = 'Проекты';
@@ -60,6 +61,26 @@ const Projects = () => {
 
     dispatch(fetchProjects({ currentPage, limit: handleSetLimit(), screenWidth }));
   }, [dispatch, currentPage, screenWidth]);
+
+  const handleScroll = React.useCallback(() => {
+    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
+    const scrollThreshold = 100; // Допустимая погрешность
+
+    if (screenWidth <= 1126 && !fetching && scrollTop + clientHeight >= scrollHeight - scrollThreshold) {
+      setFetching(true);
+      dispatch(setCurrentPage(currentPage + 1));
+      setTimeout(() => {
+        setFetching(false);
+      }, 500);
+    }
+  }, [currentPage, dispatch, fetching, screenWidth]);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   const projects = items.map((project, index) => (
     <li key={project._id}>

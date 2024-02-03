@@ -1,7 +1,7 @@
 import React from 'react';
 import { TitleContainer, Pagination, SearchForm, SearchResult } from '../components';
 import { useSelector } from 'react-redux';
-import { setCurrentPage, setOpenSearch, setScreenWidth } from '../redux/search/slice';
+import { setCurrentPage, setScreenWidth } from '../redux/search/slice';
 import clsx from 'clsx';
 import { CombinedArrayObject } from '../redux/search/types';
 import { selectSearchData } from '../redux/search/selectors';
@@ -13,16 +13,13 @@ const SearchResults: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const isMounted = React.useRef<boolean>(false);
+  const [query, setQuery] = React.useState<string>('');
 
   const limit = screenWidth > 933 ? 6 : screenWidth <= 933 && screenWidth > 600 ? 5 : 3;
 
   React.useEffect(() => {
     document.title = 'Результаты поиска';
   }, []);
-
-  React.useEffect(() => {
-    dispatch(setOpenSearch());
-  }, [dispatch]);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -58,7 +55,12 @@ const SearchResults: React.FC = () => {
   return (
     <main className='search-results'>
       <TitleContainer name='Поиск' place='search-results' />
-      <SearchForm place='search-results' />
+      <SearchForm
+        place='search-results'
+        query={query}
+        onClearQuery={() => setQuery('')}
+        onChange={(e) => setQuery(e.target.value)}
+      />
       <section>
         <h2
           className={clsx(

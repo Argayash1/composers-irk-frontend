@@ -17,6 +17,11 @@ const UnionMembers: React.FC = () => {
   const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
   const [clientWidth, setClientWidth] = React.useState<number>(document.documentElement.clientWidth);
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
+  const [fetching, setFetching] = React.useState(false);
+
+  React.useEffect(() => {
+    document.title = 'Состав';
+  }, []);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -66,9 +71,25 @@ const UnionMembers: React.FC = () => {
 
   const membersArraySortedBySurnameAndSliced = [...items].sort(compareBySurname);
 
+  const handleScroll = React.useCallback(() => {
+    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
+    const scrollThreshold = 100; // Допустимая погрешность
+
+    if (screenWidth <= 1126 && !fetching && scrollTop + clientHeight >= scrollHeight - scrollThreshold) {
+      setFetching(true);
+      dispatch(setCurrentPage(currentPage + 1));
+      setTimeout(() => {
+        setFetching(false);
+      }, 500);
+    }
+  }, [currentPage, dispatch, fetching, screenWidth]);
+
   React.useEffect(() => {
-    document.title = 'Состав';
-  }, []);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   const unionMembers = membersArraySortedBySurnameAndSliced.map((member, index) => (
     <li key={member._id}>

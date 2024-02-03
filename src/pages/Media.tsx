@@ -22,6 +22,7 @@ const Media = () => {
   const [category, setCategory] = React.useState<number>(0);
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
+  const [fetching, setFetching] = React.useState(false);
 
   React.useEffect(() => {
     document.title = 'Медиа';
@@ -71,6 +72,26 @@ const Media = () => {
       dispatch(fetchVideos({ currentPage, limit: handleSetLimit(), screenWidth }));
     }
   }, [dispatch, category, currentPage, screenWidth]);
+
+  const handleScroll = React.useCallback(() => {
+    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
+    const scrollThreshold = 100; // Допустимая погрешность
+
+    if (screenWidth <= 1126 && !fetching && scrollTop + clientHeight >= scrollHeight - scrollThreshold) {
+      setFetching(true);
+      dispatch(setCurrentPage(currentPage + 1));
+      setTimeout(() => {
+        setFetching(false);
+      }, 500);
+    }
+  }, [currentPage, dispatch, fetching, screenWidth]);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
     <main className={clsx('media', category === 1 && 'media_type_video')}>

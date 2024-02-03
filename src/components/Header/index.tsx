@@ -11,7 +11,9 @@ export const Header = () => {
   const { isSearchOpen } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState<boolean>(false);
+  const [query, setQuery] = React.useState<string>('');
 
   React.useEffect(() => {
     function handleAutoCloseMenu() {
@@ -29,12 +31,14 @@ export const Header = () => {
   React.useEffect(() => {
     if (pathname !== '/searchresults') {
       dispatch(setCloseSearch());
+      setQuery('');
     }
   }, [pathname, dispatch]);
 
   const handleToggleSearch = () => {
     if (isSearchOpen) {
       dispatch(setCloseSearch());
+      setQuery('');
     } else {
       dispatch(setOpenSearch());
     }
@@ -52,7 +56,12 @@ export const Header = () => {
         />
         <BurgerMenu isOpen={isBurgerMenuOpen} onClose={() => setIsBurgerMenuOpen(false)} />
       </div>
-      <SearchForm place='header' />
+      <SearchForm
+        place='header'
+        query={query}
+        onClearQuery={() => setQuery('')}
+        onChange={(e) => setQuery(e.target.value)}
+      />
       {pathname !== '/' && pathname !== '/searchresults' && pathname !== '/search' && <BreadCrumbs />}
     </header>
   );

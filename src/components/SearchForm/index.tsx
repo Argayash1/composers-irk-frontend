@@ -10,17 +10,19 @@ import { fetchSearchResults } from '../../redux/search/asyncActions';
 import { selectSearchData } from '../../redux/search/selectors';
 
 type SearchFormProps = {
-  place?: string;
+  place: string;
+  query: string;
+  onClearQuery: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const SearchForm = ({ place }: SearchFormProps) => {
+export const SearchForm = ({ place, query, onClearQuery, onChange }: SearchFormProps) => {
   const { searchValue, isSearchOpen, errorText, screenWidth } = useSelector(selectSearchData);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const [query, setQuery] = React.useState<string>('');
   const [isLoading, setIsloading] = React.useState<boolean>(false);
 
   const limit = screenWidth > 933 ? 6 : screenWidth <= 933 && screenWidth > 600 ? 5 : 3;
@@ -47,8 +49,9 @@ export const SearchForm = ({ place }: SearchFormProps) => {
     inputRef.current?.focus();
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+  const handleCloseSearch = () => {
+    dispatch(setCloseSearch());
+    onClearQuery();
   };
 
   return (
@@ -70,7 +73,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
               value={query || ''}
               name='search'
               id='search'
-              onChange={handleChange}
+              onChange={onChange}
               placeholder='Введите запрос'
               autoComplete='off'
               ref={inputRef}
@@ -83,7 +86,7 @@ export const SearchForm = ({ place }: SearchFormProps) => {
             {searchValue && <CloseButton onClick={handleClearSearchBar} />}
           </div>
         </form>
-        {place !== 'search' && <CloseButton onClick={() => dispatch(setCloseSearch())} place='search' />}
+        {place !== 'search' && <CloseButton onClick={handleCloseSearch} place='search' />}
       </div>
     </section>
   );

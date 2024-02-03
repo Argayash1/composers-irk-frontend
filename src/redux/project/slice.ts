@@ -34,7 +34,7 @@ const projectSlice = createSlice({
     builder.addCase(fetchProjects.fulfilled, (state, action) => {
       const { data, screenWidth, currentPage } = action.payload;
 
-      if (screenWidth <= 638 && currentPage > 1) {
+      if (screenWidth <= 1126 && currentPage > 1) {
         const newItems = data.projects.filter(
           (item) => !state.items.some((existingItem) => existingItem._id === item._id),
         );

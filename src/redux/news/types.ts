@@ -7,7 +7,7 @@ export type News = {
 };
 
 export type NewsItems = {
-  news: News[];
+  data: News[];
   totalPages: number;
 };
 

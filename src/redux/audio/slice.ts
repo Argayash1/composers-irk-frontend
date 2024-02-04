@@ -22,7 +22,7 @@ const articleSlice = createSlice({
     });
 
     builder.addCase(fetchAudios.fulfilled, (state, action) => {
-      state.items = action.payload;
+      state.items = action.payload.data;
       state.status = Status.SUCCESS;
     });
 

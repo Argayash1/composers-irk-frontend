@@ -14,7 +14,7 @@ export type UnionMember = {
 };
 
 export type UnionMemberItems = {
-  members: UnionMember[];
+  data: UnionMember[];
   totalPages: number;
 };
 

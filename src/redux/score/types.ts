@@ -11,6 +11,11 @@ export enum Status {
   ERROR = 'error',
 }
 
+export type ScoreItems = {
+  data: Score[];
+  totalPages: number;
+};
+
 export interface ScoreSliceState {
   items: Score[];
   status: Status; //'loading' | 'success' | 'error';

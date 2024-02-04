@@ -12,7 +12,7 @@ export enum Status {
 }
 
 export type ProjectItems = {
-  projects: Project[];
+  data: Project[];
   totalPages: number;
 };
 

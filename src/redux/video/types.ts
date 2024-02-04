@@ -15,7 +15,7 @@ export enum Status {
 }
 
 export type VideoItems = {
-  videos: Video[];
+  data: Video[];
   totalPages: number;
 };
 

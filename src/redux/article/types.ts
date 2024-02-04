@@ -14,7 +14,7 @@ export enum Status {
 }
 
 export type ArticleItems = {
-  articles: Article[];
+  data: Article[];
   totalPages: number;
 };
 

@@ -1,4 +1,5 @@
 export interface IAudio {
+  _id: string;
   audioUrl: string;
   composer: string;
   title: string;
@@ -10,6 +11,11 @@ export enum Status {
   SUCCESS = 'success',
   ERROR = 'error',
 }
+
+export type AudiosItems = {
+  data: IAudio[];
+  totalPages: number;
+};
 
 export interface AudioSliceState {
   items: IAudio[];

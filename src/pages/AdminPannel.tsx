@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Admin, Pagination, Resource } from 'react-admin';
+import { Admin, Layout, MenuItemLink, Resource, Sidebar } from 'react-admin';
 import {
   Dashboard,
   NewsList,
@@ -10,12 +10,26 @@ import {
   ScoresList,
   ReportsList,
   AudiosList,
+  OurHistoryList,
 } from '../components';
-import customDataProvider from '../providers/newsProvider';
+import dataProvider from '../providers/dataProvider';
+
+const CustomSidebar = () => (
+  <Sidebar>
+    <MenuItemLink to='/admin/news' primaryText='Новости' />
+  </Sidebar>
+);
+
+const CustomLayout = () => (
+  <Layout>
+    <CustomSidebar />
+    <p>Привет</p>
+  </Layout>
+);
 
 const AdminPannel = () => (
   // @ts-ignore
-  <Admin dataProvider={customDataProvider} dashboard={Dashboard} pagination={<Pagination />}>
+  <Admin dataProvider={dataProvider} dashboard={Dashboard}>
     <Resource name='news' list={NewsList} />
     <Resource name='members' list={MembersList} />
     <Resource name='projects' list={ProjectsList} />
@@ -24,6 +38,7 @@ const AdminPannel = () => (
     <Resource name='videos' list={VideosList} />
     <Resource name='reports' list={ReportsList} />
     <Resource name='articles' list={ArticlesList} />
+    <Resource name='ourHistory' list={OurHistoryList} />
   </Admin>
 );
 

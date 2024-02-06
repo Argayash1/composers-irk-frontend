@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { News } from '../redux/news/types';
 
-const customDataProvider = {
+const dataProvider = {
   getList: async (resource: string, params: any) => {
     const { page, perPage } = params.pagination;
-    const query = `?page=${page}&limit=${perPage}`;
+    const query = resource !== 'ourHistory' ? `?page=${page}&limit=${perPage}` : '';
 
     try {
       const { data: response } = await axios.get(`http://localhost:3001/${resource}${query}`);
@@ -13,7 +13,9 @@ const customDataProvider = {
         const adaptedData = response.data.map((item: News) => {
           return { id: item._id, ...item };
         });
+
         const totalPages = response.totalPages || 0;
+
         return { data: adaptedData, total: totalPages };
       } else {
         throw new Error('Response does not contain the expected "data" key');
@@ -25,4 +27,4 @@ const customDataProvider = {
   },
 };
 
-export default customDataProvider;
+export default dataProvider;

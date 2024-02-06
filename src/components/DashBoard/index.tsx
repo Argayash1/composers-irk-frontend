@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { DashboardMenuItem, MenuItemLink, useTranslate } from 'react-admin';
+
 import './DashBoard.scss';
 
 export const Dashboard = () => {
@@ -32,6 +34,9 @@ export const Dashboard = () => {
             </li>
             <li>
               <Link to='/admin/articles'>Статьи</Link>
+            </li>
+            <li>
+              <Link to='/admin/ourHistory'>Наша история</Link>
             </li>
           </ul>
         </nav>

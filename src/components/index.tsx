@@ -58,4 +58,5 @@ export * from './VideosList';
 export * from './ArticlesList';
 export * from './ScoresList';
 export * from './ReportsList';
+export * from './OurHistoryList';
 export * from './DashBoard';

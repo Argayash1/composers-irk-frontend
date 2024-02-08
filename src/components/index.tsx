@@ -59,4 +59,6 @@ export * from './ArticlesList';
 export * from './ScoresList';
 export * from './ReportsList';
 export * from './OurHistoryList';
+export * from './NewsShow';
+export * from './NewsEdit';
 export * from './DashBoard';

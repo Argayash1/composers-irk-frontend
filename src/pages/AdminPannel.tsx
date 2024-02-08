@@ -11,6 +11,7 @@ import {
   ReportsList,
   AudiosList,
   OurHistoryList,
+  NewsEdit,
 } from '../components';
 import dataProvider from '../providers/dataProvider';
 
@@ -30,7 +31,7 @@ const CustomLayout = () => (
 const AdminPannel = () => (
   // @ts-ignore
   <Admin dataProvider={dataProvider} dashboard={Dashboard}>
-    <Resource name='news' list={NewsList} />
+    <Resource name='news' list={NewsList} edit={NewsEdit} />
     <Resource name='members' list={MembersList} />
     <Resource name='projects' list={ProjectsList} />
     <Resource name='scores' list={ScoresList} />

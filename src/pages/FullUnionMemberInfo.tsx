@@ -29,8 +29,6 @@ const FullUnionMemberInfo = () => {
     return <FullUnionMemberSkeleton />;
   }
 
-  console.log(scores);
-
   const unionMemberData: string[] = [item.biography, item.works];
 
   const handleGenerateTabNames = () => {

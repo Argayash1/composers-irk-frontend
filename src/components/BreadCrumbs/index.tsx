@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import './BreadCrumbs.scss';
 
@@ -11,6 +11,24 @@ import { selectUnionMembersData } from '../../redux/unionMember/selectors';
 import { selectProjectsData } from '../../redux/project/selectors';
 import { selectVideoData } from '../../redux/video/selectors';
 import { selectArticleData } from '../../redux/article/selectors';
+import { Crumb } from '../Crumb';
+
+export interface CrumbTexts {
+  [key: string]: string;
+}
+
+export interface Item {
+  _id?: string;
+  imageUrl?: string;
+  title?: string;
+  name?: string;
+  surname?: string;
+  patronymic?: string;
+  profession?: string;
+  biography?: string;
+  description?: string;
+  newsText?: string;
+}
 
 export const BreadCrumbs = () => {
   const { item: newsItem } = useSelector(selectNewsData);
@@ -21,25 +39,10 @@ export const BreadCrumbs = () => {
 
   const { pathname } = useLocation();
   const pathnames = pathname.split('/').filter((pathname) => pathname);
-
-  interface CrumbTexts {
-    [key: string]: string;
-  }
-
-  interface Item {
-    _id?: string;
-    imageUrl?: string;
-    title?: string;
-    name?: string;
-    surname?: string;
-    patronymic?: string;
-    profession?: string;
-    biography?: string;
-    description?: string;
-    newsText?: string;
-  }
+  pathnames.unshift('/');
 
   const crumbTexts: CrumbTexts = {
+    '/': menuItems[0].name,
     news: menuItems[1].name,
     unionmembers: menuItems[2].name,
     projects: menuItems[3].name,
@@ -64,28 +67,9 @@ export const BreadCrumbs = () => {
     <nav className='bread-crumbs'>
       {pathnames.length > 0 && (
         <ul className='bread-crumbs__list'>
-          <li className='bread-crumbs__list-item'>
-            <Link className='bread-crumbs__list-item_link' to='/'>
-              Главная
-            </Link>
-            <span className='bread-crumbs__span'>|</span>
-          </li>
-          {pathnames.map((pathname, index) =>
-            index === pathnames.length - 1 ? (
-              <li className='bread-crumbs__list-item' key={index}>
-                {pathnames.length === 2
-                  ? item.title || `${item.surname} ${item.name} ${item.patronymic}`
-                  : crumbTexts[pathname]}
-              </li>
-            ) : (
-              <li className='bread-crumbs__list-item' key={index}>
-                <Link className='bread-crumbs__list-item_link' to={`/${pathnames.slice(0, index + 1).join('/')}`}>
-                  {crumbTexts[pathname]}
-                </Link>
-                <span className='bread-crumbs__span'>|</span>
-              </li>
-            ),
-          )}
+          {pathnames.map((pathname, index) => (
+            <Crumb item={item} index={index} pathname={pathname} pathnames={pathnames} crumbTexts={crumbTexts} />
+          ))}
         </ul>
       )}
     </nav>

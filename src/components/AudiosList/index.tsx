@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { List, Datagrid, TextField } from 'react-admin';
+import { List, Datagrid, TextField, UrlField } from 'react-admin';
 
 export const AudiosList = () => (
   <List>
     <Datagrid rowClick='edit'>
       <TextField source='_id' />
-      <TextField source='audioUrl' />
-      <TextField source='composer' />
-      <TextField source='title' />
-      <TextField source='performer' />
+      <UrlField source='audioUrl' label='Ссылка на аудиофайл' />
+      <TextField source='composer' label='Композитор' />
+      <TextField source='title' label='Название' />
+      <TextField source='performer' label='Исполнитель' />
     </Datagrid>
   </List>
 );

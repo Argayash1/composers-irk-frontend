@@ -1,17 +1,15 @@
+// NewsShow.js
 import * as React from 'react';
-import { List, Datagrid, TextField, ImageField, EditButton, DeleteButton } from 'react-admin';
+import { ImageField, Show, SimpleShowLayout, TextField } from 'react-admin';
 
-export const NewsList = () => (
-  <List>
-    <Datagrid rowClick='edit'>
+export const NewsShow = () => (
+  <Show resource='news'>
+    <SimpleShowLayout>
+      <TextField source='_id' />
       <TextField source='title' label='Заголовок' />
       <TextField source='newsText' label='Текст новости' />
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <TextField source='createdAt' label='Дата создания' />
-      <EditButton label='' />
-      <DeleteButton label='' />
-    </Datagrid>
-  </List>
+    </SimpleShowLayout>
+  </Show>
 );
-
-export default NewsList;

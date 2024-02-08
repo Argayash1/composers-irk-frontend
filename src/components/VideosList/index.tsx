@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { List, Datagrid, TextField } from 'react-admin';
+import { List, Datagrid, TextField, UrlField } from 'react-admin';
 
 export const VideosList = () => (
   <List>
     <Datagrid rowClick='edit'>
       <TextField source='_id' />
-      <TextField source='iframeUrl' />
+      <UrlField source='iframeUrl' />
       <TextField source='composer' />
       <TextField source='title' />
       <TextField source='performer' />

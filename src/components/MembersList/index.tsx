@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { List, Datagrid, TextField } from 'react-admin';
+import { List, Datagrid, TextField, ImageField } from 'react-admin';
 
 export const MembersList = () => (
   <List>
     <Datagrid rowClick='edit'>
       <TextField source='_id' />
-      <TextField source='imageUrl' />
+      <ImageField source='imageUrl' />
       <TextField source='surname' />
       <TextField source='name' />
       <TextField source='patronymic' />

@@ -38,16 +38,15 @@ Frontend-часть сайта **ИООО "Союз композиторов"**.
 
 ## Инструкция по использованию проекта
 
-В проекте исопльзуется язык HTML версии 5.3 в сочетании со стилевыми файлами CSS версии 3.
+- `git clone https://github.com/Argayash1/composers-irk-frontend.git` - клонирование репозитория с кодом проекта
+- `cd composers-irk-frontend` - перейти в папку с проектом
+- `npm install` - установка зависимостей проекта
+- `npm start` - сборка проекта в режиме разработки
+- `npm run build` - сборка проекта в продакшн-режиме
+- `npm run test` - сборка проекта в режиме тестирования
+- `npm run eject` - "извлечение" скрытой конфигурации сборки приложения
 
-Инструкция по установке:
-
-- `git clone https://github.com/Argayash1/composers-irk-frontend.git`
-- `cd composers-irk-frontend`
-- `npm install`
-- `npm start`
-
-## Ссылки.
+## Ссылки
 
 - [Макет в Figma](https://www.figma.com/file/Mh5fPABdGx3KJpSu3pRVI1/Union-of-Composers?type=design&node-id=119-989&mode=design&t=lcbL98jXENfMpgFE-0)
 - [Деплой на github-pages](https://argayash1.github.io/composers-irk-frontend/)

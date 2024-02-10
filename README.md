@@ -36,7 +36,7 @@ Frontend-часть сайта **ИООО "Союз композиторов"**.
   <img src="https://github.com/devicons/devicon/blob/master/icons/typescript/typescript-original.svg" title="typescript" alt="typescript" width="40" height="40"/>&nbsp
 </div>
 
-## Инструкция по использованию проекта.
+## Инструкция по использованию проекта
 
 В проекте исопльзуется язык HTML версии 5.3 в сочетании со стилевыми файлами CSS версии 3.
 
@@ -50,6 +50,6 @@ Frontend-часть сайта **ИООО "Союз композиторов"**.
 ## Ссылки.
 
 - [Макет в Figma](https://www.figma.com/file/Mh5fPABdGx3KJpSu3pRVI1/Union-of-Composers?type=design&node-id=119-989&mode=design&t=lcbL98jXENfMpgFE-0)
-- [Деплой github-pages](https://argayash1.github.io/composers-irk-frontend/)
+- [Деплой на github-pages](https://argayash1.github.io/composers-irk-frontend/)
 
 ## Желаю увлекательного изучения!

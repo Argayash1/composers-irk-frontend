@@ -24,6 +24,10 @@ export type UnionMembersData = {
   currentPage: number;
 };
 
+export type OneUnionMemberData = {
+  data: UnionMember;
+};
+
 export enum Status {
   LOADING = 'loading',
   SUCCESS = 'success',

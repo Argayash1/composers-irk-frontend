@@ -17,6 +17,10 @@ export type NewsData = {
   currentPage: number;
 };
 
+export type OneNewsData = {
+  data: News;
+};
+
 export enum Status {
   LOADING = 'loading',
   SUCCESS = 'success',

@@ -22,6 +22,10 @@ export type ProjectData = {
   screenWidth: number;
 };
 
+export type OneProjectData = {
+  data: Project;
+};
+
 export interface ProjectSliceState {
   items: Project[];
   status: Status; //'loading' | 'success' | 'error';

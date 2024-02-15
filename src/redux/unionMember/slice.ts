@@ -85,7 +85,7 @@ const unionMemberSlice = createSlice({
 
     builder.addCase(fetchUnionMemberById.fulfilled, (state, action) => {
       state.status = Status.SUCCESS;
-      state.item = action.payload;
+      state.item = action.payload.data;
     });
 
     builder.addCase(fetchUnionMemberById.rejected, (state) => {

@@ -24,6 +24,10 @@ export type ArticleData = {
   screenWidth: number;
 };
 
+export type OneArticleData = {
+  data: Article;
+};
+
 export interface ArticleSliceState {
   items: Article[];
   status: Status; //'loading' | 'success' | 'error';

@@ -59,7 +59,7 @@ const projectSlice = createSlice({
 
     builder.addCase(fetchProjectById.fulfilled, (state, action) => {
       state.status = Status.SUCCESS;
-      state.item = action.payload;
+      state.item = action.payload.data;
     });
 
     builder.addCase(fetchProjectById.rejected, (state) => {

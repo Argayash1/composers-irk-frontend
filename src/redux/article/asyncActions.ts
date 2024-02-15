@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Article, ArticleData, ArticleItems, SearchArticleParams } from './types';
+import { Article, ArticleData, ArticleItems, OneArticleData, SearchArticleParams } from './types';
 import axios from 'axios';
 import { localApi } from '../../utils/constants';
 
@@ -12,8 +12,8 @@ export const fetchArticles = createAsyncThunk<ArticleData, SearchArticleParams>(
   },
 );
 
-export const fetchArticleById = createAsyncThunk<Article, string>('article/fetchArticleById', async (id) => {
-  const { data } = await axios.get<Article>(`${localApi}/articles/${id}`);
+export const fetchArticleById = createAsyncThunk<OneArticleData, string>('article/fetchArticleById', async (id) => {
+  const { data } = await axios.get<OneArticleData>(`${localApi}/articles/${id}`);
 
   return data;
 });

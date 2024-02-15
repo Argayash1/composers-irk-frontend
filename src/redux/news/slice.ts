@@ -60,7 +60,7 @@ const newsSlice = createSlice({
 
     builder.addCase(fetchNewsById.fulfilled, (state, action) => {
       state.status = Status.SUCCESS;
-      state.item = action.payload;
+      state.item = action.payload.data;
     });
 
     builder.addCase(fetchNewsById.rejected, (state) => {

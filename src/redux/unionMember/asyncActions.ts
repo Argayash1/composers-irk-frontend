@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { SearchUniomMemberParams, UnionMember, UnionMemberItems, UnionMembersData } from './types';
+import { OneUnionMemberData, SearchUniomMemberParams, UnionMemberItems, UnionMembersData } from './types';
 import axios from 'axios';
 import { localApi } from '../../utils/constants';
 
@@ -13,10 +13,10 @@ export const fetchUnionMembers = createAsyncThunk<UnionMembersData, SearchUniomM
   },
 );
 
-export const fetchUnionMemberById = createAsyncThunk<UnionMember, string>(
+export const fetchUnionMemberById = createAsyncThunk<OneUnionMemberData, string>(
   'members/fetchUnionMemberById',
   async (id) => {
-    const { data } = await axios.get<UnionMember>(`${localApi}/members/${id}`);
+    const { data } = await axios.get<OneUnionMemberData>(`${localApi}/members/${id}`);
 
     return data;
   },

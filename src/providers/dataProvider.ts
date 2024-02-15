@@ -2,17 +2,6 @@ import axios from 'axios';
 import { News } from '../redux/news/types';
 
 const dataProvider = {
-  delete: async (resource: string, params: any) => {
-    try {
-      const { data: response } = await axios.delete(`http://localhost:3001/${resource}/${params.id}`);
-
-      return { data: { id: params.id } }; // Возвращаем объект с удаленным ID
-    } catch (error) {
-      console.error('Error in customDataProvider:', error);
-      throw error;
-    }
-  },
-
   getList: async (resource: string, params: any) => {
     const { page, perPage } = params.pagination;
     const query = resource !== 'ourHistory' ? `?page=${page}&limit=${perPage}` : '';
@@ -48,6 +37,17 @@ const dataProvider = {
       } else {
         throw new Error('Response does not contain the expected "data" key');
       }
+    } catch (error) {
+      console.error('Error in customDataProvider:', error);
+      throw error;
+    }
+  },
+
+  delete: async (resource: string, params: any) => {
+    try {
+      const { data: response } = await axios.delete(`http://localhost:3001/${resource}/${params.id}`);
+
+      return { data: { id: params.id } }; // Возвращаем объект с удаленным ID
     } catch (error) {
       console.error('Error in customDataProvider:', error);
       throw error;

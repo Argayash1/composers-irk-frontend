@@ -25,6 +25,10 @@ export type VideoData = {
   screenWidth: number;
 };
 
+export type OneVideoData = {
+  data: Video;
+};
+
 export interface VideoSliceState {
   videoItems: Video[];
   status: Status; //'loading' | 'success' | 'error';

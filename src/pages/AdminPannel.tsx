@@ -40,6 +40,7 @@ const AdminPannel = () => (
     <Resource name='reports' list={ReportsList} />
     <Resource name='articles' list={ArticlesList} />
     <Resource name='ourHistory' list={OurHistoryList} />
+    <Resource name='news' list={NewsList} edit={NewsEdit} options={{ edit: { basePath: '/admin/news' } }} />
   </Admin>
 );
 

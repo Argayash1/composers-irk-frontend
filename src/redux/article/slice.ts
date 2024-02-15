@@ -59,7 +59,7 @@ const articleSlice = createSlice({
 
     builder.addCase(fetchArticleById.fulfilled, (state, action) => {
       state.status = Status.SUCCESS;
-      state.item = action.payload;
+      state.item = action.payload.data;
     });
 
     builder.addCase(fetchArticleById.rejected, (state) => {

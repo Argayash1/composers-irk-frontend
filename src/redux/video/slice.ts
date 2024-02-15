@@ -61,7 +61,7 @@ const videoSlice = createSlice({
 
     builder.addCase(fetchVideoById.fulfilled, (state, action) => {
       state.status = Status.SUCCESS;
-      state.videoItem = action.payload;
+      state.videoItem = action.payload.data;
     });
 
     builder.addCase(fetchVideoById.rejected, (state) => {

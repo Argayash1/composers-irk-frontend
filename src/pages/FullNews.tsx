@@ -11,6 +11,8 @@ const FullNews = () => {
   const dispatch = useAppDispatch();
   const { item, status } = useSelector(selectNewsData);
 
+  console.log(item);
+
   const [isSharePanelOpen, setIsSharePanelOpen] = React.useState<boolean>(false);
   const { id } = useParams();
   const navigate = useNavigate();

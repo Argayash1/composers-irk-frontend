@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { News, NewsData, NewsItems, SearchNewsParams } from './types';
+import { News, NewsData, NewsItems, OneNewsData, SearchNewsParams } from './types';
 import axios from 'axios';
 import { localApi } from '../../utils/constants';
 
@@ -10,8 +10,8 @@ export const fetchNews = createAsyncThunk<NewsData, SearchNewsParams>('news/fetc
   return { data, screenWidth, currentPage };
 });
 
-export const fetchNewsById = createAsyncThunk<News, string>('news/fetchNewsById', async (id) => {
-  const { data } = await axios.get<News>(`${localApi}/news/${id}`);
+export const fetchNewsById = createAsyncThunk<OneNewsData, string>('news/fetchNewsById', async (id) => {
+  const { data } = await axios.get<OneNewsData>(`${localApi}/news/${id}`);
 
   return data;
 });

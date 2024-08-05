@@ -111,7 +111,7 @@ export const AboutUs = () => {
           <TextContent text={historyItem.text} place='about-us' />
         </section>
       )}
-      {category === 0 && (
+      {category === 0 && totalPages > 1 && (
         <Pagination
           onChangePage={(page) => dispatch(setCurrentPage(page))}
           onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}

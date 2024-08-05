@@ -100,13 +100,15 @@ const Projects = () => {
       <section>
         <ul className='projects__list'>{status === 'loading' ? skeletons : projects}</ul>
       </section>
-      <Pagination
-        onChangePage={(page) => dispatch(setCurrentPage(page))}
-        onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
-        onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+      {totalPages > 1 && (
+        <Pagination
+          onChangePage={(page) => dispatch(setCurrentPage(page))}
+          onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
+          onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      )}
     </main>
   );
 };

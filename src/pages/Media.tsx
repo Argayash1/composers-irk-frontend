@@ -104,7 +104,7 @@ const Media = () => {
       ) : (
         <VideoRecordings screenWidth={screenWidth} videoItems={videoItems} status={status} limit={cardsLimit} />
       )}
-      {category === 1 && (
+      {category === 1 && totalPages > 1 && (
         <Pagination
           onChangePage={(page) => dispatch(setCurrentPage(page))}
           onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}

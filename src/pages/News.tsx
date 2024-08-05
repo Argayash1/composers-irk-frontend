@@ -88,13 +88,15 @@ const News = () => {
         limit={screenWidth > 638 ? 9 : 4}
         screenWidth={screenWidth}
       />
-      <Pagination
-        onChangePage={(page) => dispatch(setCurrentPage(page))}
-        onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
-        onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+      {totalPages > 1 && (
+        <Pagination
+          onChangePage={(page) => dispatch(setCurrentPage(page))}
+          onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
+          onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      )}
     </main>
   );
 };

@@ -1,6 +1,6 @@
 export const mockApi = 'https://64e36310bac46e480e78b878.mockapi.io';
 export const localApi = 'http://localhost:3001';
-export const mainApi = 'http://xn--e1aebaciacstbcjgmeqlg9o.xn--p1ai/api';
+export const mainApi = 'https://xn--e1aebaciacstbcjgmeqlg9o.xn--p1ai/api';
 
 export const NO_KEY_WORD_ERROR = 'Запрос должен включать хотя бы один символ.';
 

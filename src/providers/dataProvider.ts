@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { News } from '../redux/news/types';
+import { mainApi } from '../utils/constants';
 
 const dataProvider = {
   getList: async (resource: string, params: any) => {
@@ -7,7 +8,7 @@ const dataProvider = {
     const query = resource !== 'ourHistory' ? `?page=${page}&limit=${perPage}` : '';
 
     try {
-      const { data: response } = await axios.get(`http://localhost:3001/${resource}${query}`);
+      const { data: response } = await axios.get(`${mainApi}/${resource}${query}`);
 
       if (response && response.data) {
         const adaptedData = response.data.map((item: News) => {
@@ -28,7 +29,7 @@ const dataProvider = {
 
   getOne: async (resource: string, params: any) => {
     try {
-      const { data: response } = await axios.get(`http://localhost:3001/${resource}/${params.id}`);
+      const { data: response } = await axios.get(`${mainApi}/${resource}/${params.id}`);
 
       if (response && response.data) {
         const adaptedData = { id: response.data._id, ...response.data };
@@ -45,7 +46,7 @@ const dataProvider = {
 
   delete: async (resource: string, params: any) => {
     try {
-      const { data: response } = await axios.delete(`http://localhost:3001/${resource}/${params.id}`);
+      const { data: response } = await axios.delete(`${mainApi}/${resource}/${params.id}`);
 
       return { data: { id: params.id } }; // Возвращаем объект с удаленным ID
     } catch (error) {

@@ -9,6 +9,7 @@ import { fetchArticles } from '../redux/article/asyncActions';
 import { fetchourHistory } from '../redux/ourHistory/asyncActions';
 import { selectOurHistoryData } from '../redux/ourHistory/selectors';
 import { menuItems } from '../utils/constants';
+import { useResize } from '../hooks/useResize';
 
 const tabNames = ['СМИ о нас', 'Наша история'];
 
@@ -18,37 +19,11 @@ export const AboutUs = () => {
   const { currentPage, totalPages, items, status } = useSelector(selectArticleData);
   const { historyItem, historyStatus } = useSelector(selectOurHistoryData);
 
+  const { screenWidth } = useResize();
+
   const [category, setCategory] = React.useState<number>(0);
-  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
   const [fetching, setFetching] = React.useState(false);
-
-  React.useEffect(() => {
-    document.title = 'Про нас';
-  }, []);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    let timeoutId: NodeJS.Timeout;
-
-    const delayedHandleResize = () => {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        handleResize();
-      }, 500);
-    };
-
-    window.addEventListener('resize', delayedHandleResize);
-
-    return () => {
-      window.removeEventListener('resize', delayedHandleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   React.useEffect(() => {
     const handleSetLimit = (): number => {

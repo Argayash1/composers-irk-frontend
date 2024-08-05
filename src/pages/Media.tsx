@@ -9,47 +9,20 @@ import { fetchAudios } from '../redux/audio/asyncActions';
 import { selectAudioData } from '../redux/audio/selectors';
 import { fetchVideos } from '../redux/video/asyncActions';
 import { menuItems } from '../utils/constants';
+import { useResize } from '../hooks/useResize';
 
 const tabNames = ['Аудиозаписи', 'Видеозаписи'];
 
 const Media = () => {
   const dispatch = useAppDispatch();
   const { items } = useSelector(selectAudioData);
-  const { videoItems } = useSelector(selectVideoData);
+  const { videoItems, currentPage, status, totalPages } = useSelector(selectVideoData);
 
-  const { currentPage, status, totalPages } = useSelector(selectVideoData);
+  const { screenWidth } = useResize();
 
   const [category, setCategory] = React.useState<number>(0);
-  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
   const [fetching, setFetching] = React.useState(false);
-
-  React.useEffect(() => {
-    document.title = 'Медиа';
-  }, []);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    let timeoutId: NodeJS.Timeout;
-
-    const delayedHandleResize = () => {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        handleResize();
-      }, 300);
-    };
-
-    window.addEventListener('resize', delayedHandleResize);
-
-    return () => {
-      window.removeEventListener('resize', delayedHandleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   React.useEffect(() => {
     const handleSetLimit = (): number => {

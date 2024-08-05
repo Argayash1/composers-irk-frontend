@@ -16,7 +16,7 @@ const FullUnionMemberInfo = () => {
   const [сategory, setCategory] = React.useState<number>(0);
 
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   React.useEffect(() => {
     if (id) {

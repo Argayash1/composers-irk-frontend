@@ -14,10 +14,6 @@ const Scores = () => {
   const { categoryId, items } = useSelector(selectScoresData);
 
   React.useEffect(() => {
-    document.title = 'Ноты';
-  }, []);
-
-  React.useEffect(() => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     dispatch(fetchScores(category));
   }, [dispatch, categoryId]);

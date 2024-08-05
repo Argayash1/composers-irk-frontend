@@ -7,42 +7,17 @@ import { selectProjectsData } from '../redux/project/selectors';
 import { setCurrentPage } from '../redux/project/slice';
 import { fetchProjects } from '../redux/project/asyncActions';
 import { menuItems } from '../utils/constants';
+import { useResize } from '../hooks/useResize';
 
 const Projects = () => {
   const dispatch = useAppDispatch();
 
   const { currentPage, items, totalPages, status } = useSelector(selectProjectsData);
 
-  const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
+  const { screenWidth } = useResize();
+
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
   const [fetching, setFetching] = React.useState(false);
-
-  React.useEffect(() => {
-    document.title = 'Проекты';
-  }, []);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    let timeoutId: NodeJS.Timeout;
-
-    const delayedHandleResize = () => {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        handleResize();
-      }, 300);
-    };
-
-    window.addEventListener('resize', delayedHandleResize);
-
-    return () => {
-      window.removeEventListener('resize', delayedHandleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   React.useEffect(() => {
     const handleSetLimit = (): number => {

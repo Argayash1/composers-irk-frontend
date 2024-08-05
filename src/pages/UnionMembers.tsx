@@ -1,6 +1,6 @@
 import React from 'react';
 import { TitleContainer, Pagination, UnionMemberBlock, UnionMemberSkeleton } from '../components';
-import { compareBySurname, hasVerticalScroll } from '../utils/utils';
+import { hasVerticalScroll } from '../utils/utils';
 import { useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/unionMember/slice';
 import { selectUnionMembersData } from '../redux/unionMember/selectors';
@@ -42,8 +42,6 @@ const UnionMembers: React.FC = () => {
     dispatch(fetchUnionMembers({ currentPage, limit: handleSetLimit(), screenWidth }));
   }, [dispatch, currentPage, screenWidth]);
 
-  const membersArraySortedBySurnameAndSliced = [...items].sort(compareBySurname);
-
   const handleScroll = React.useCallback(() => {
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     const scrollThreshold = 100; // Допустимая погрешность
@@ -64,7 +62,7 @@ const UnionMembers: React.FC = () => {
     };
   }, [handleScroll]);
 
-  const unionMembers = membersArraySortedBySurnameAndSliced.map((member, index) => (
+  const unionMembers = items.map((member) => (
     <li key={member._id}>
       <UnionMemberBlock {...member} />
     </li>

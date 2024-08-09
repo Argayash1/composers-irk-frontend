@@ -9,11 +9,10 @@ type ListProps = {
 export const ArticlesList = (props: ListProps) => (
   <List {...props}>
     <Datagrid rowClick='edit'>
-      <TextField source='_id' />
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <TextField source='createdAt' label='Дата создания' />
       <TextField source='title' label='Заголовок' />
-      <TextField source='articleDescription' />
+      <TextField source='articleDescription' label='Описание статьи' />
       <TextField source='articleText' label='Текст статьи' />
     </Datagrid>
   </List>

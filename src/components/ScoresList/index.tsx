@@ -4,10 +4,10 @@ import { List, Datagrid, TextField, UrlField } from 'react-admin';
 export const ScoresList = () => (
   <List>
     <Datagrid rowClick='edit'>
-      <TextField source='_id' />
-      <UrlField source='url' />
-      <TextField source='title' />
-      <TextField source='composer' />
+      <UrlField source='url' label='Ссылка на ноты' />
+      <TextField source='title' label='Название произведения' />
+      <TextField source='composer' label='Композитор' />
+      <TextField source='category' label='Категория' />
     </Datagrid>
   </List>
 );

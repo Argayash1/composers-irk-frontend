@@ -4,13 +4,12 @@ import { List, Datagrid, TextField, UrlField } from 'react-admin';
 export const VideosList = () => (
   <List>
     <Datagrid rowClick='edit'>
-      <TextField source='_id' />
-      <UrlField source='iframeUrl' />
-      <TextField source='composer' />
-      <TextField source='title' />
-      <TextField source='performer' />
-      <TextField source='createdAt' />
-      <TextField source='about' />
+      <UrlField source='iframeUrl' label='Ссылка на видео в YouTube' />
+      <TextField source='composer' label='Композитор' />
+      <TextField source='title' label='Название произведения' />
+      <TextField source='performer' label='Исполнители' />
+      <TextField source='about' label='Описание произведения' />
+      <TextField source='createdAt' label='Дата создания' />
     </Datagrid>
   </List>
 );

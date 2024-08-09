@@ -1,5 +1,5 @@
 {
-  "homepage": "https://argayash1.github.io/composers-irk-frontend/",
+  "homepage": "http://xn--e1aebaciacstbcjgmeqlg9o.xn--p1ai/",
   "name": "composers-irk-frontend",
   "version": "0.1.0",
   "private": true,
@@ -16,7 +16,9 @@
     "clsx": "^2.1.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
+    "ra-data-simple-rest": "^4.16.9",
     "react": "^18.2.0",
+    "react-admin": "^4.16.9",
     "react-content-loader": "^6.2.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",

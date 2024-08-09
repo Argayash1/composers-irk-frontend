@@ -15,7 +15,7 @@ export enum Status {
 }
 
 export type VideoItems = {
-  videos: Video[];
+  data: Video[];
   totalPages: number;
 };
 
@@ -23,6 +23,10 @@ export type VideoData = {
   data: VideoItems;
   currentPage: number;
   screenWidth: number;
+};
+
+export type OneVideoData = {
+  data: Video;
 };
 
 export interface VideoSliceState {

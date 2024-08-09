@@ -65,7 +65,7 @@ const SearchResults: React.FC = () => {
         <h2
           className={clsx(
             'search-results__title',
-            searchResults.length === 0 && 'search-results__title_type_no-results',
+            searchResults.length === 0 && 'search-results__title_type_no-results'
           )}
         >
           Результаты поиска

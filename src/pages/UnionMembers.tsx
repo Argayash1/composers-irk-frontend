@@ -1,6 +1,6 @@
 import React from 'react';
 import { TitleContainer, Pagination, UnionMemberBlock, UnionMemberSkeleton } from '../components';
-import { compareBySurname, hasVerticalScroll } from '../utils/utils';
+import { hasVerticalScroll } from '../utils/utils';
 import { useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/unionMember/slice';
 import { selectUnionMembersData } from '../redux/unionMember/selectors';
@@ -8,44 +8,17 @@ import { useAppDispatch } from '../redux/store';
 import clsx from 'clsx';
 import { fetchUnionMembers } from '../redux/unionMember/asyncActions';
 import { menuItems } from '../utils/constants';
+import { useResize } from '../hooks/useResize';
 
 const UnionMembers: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const { items, currentPage, totalPages, status } = useSelector(selectUnionMembersData);
 
-  const [screenWidth, setScreenWidth] = React.useState<number>(window.innerWidth);
-  const [clientWidth, setClientWidth] = React.useState<number>(document.documentElement.clientWidth);
+  const { screenWidth, clientWidth } = useResize();
+
   const [cardsLimit, setCardsLimit] = React.useState<number>(0);
   const [fetching, setFetching] = React.useState(false);
-
-  React.useEffect(() => {
-    document.title = 'Состав';
-  }, []);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-      setClientWidth(document.documentElement.clientWidth);
-    };
-
-    let timeoutId: NodeJS.Timeout;
-
-    const delayedHandleResize = () => {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        handleResize();
-      }, 500);
-    };
-
-    window.addEventListener('resize', delayedHandleResize);
-
-    return () => {
-      window.removeEventListener('resize', delayedHandleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   React.useEffect(() => {
     const handleSetLimit = (): number => {
@@ -69,8 +42,6 @@ const UnionMembers: React.FC = () => {
     dispatch(fetchUnionMembers({ currentPage, limit: handleSetLimit(), screenWidth }));
   }, [dispatch, currentPage, screenWidth]);
 
-  const membersArraySortedBySurnameAndSliced = [...items].sort(compareBySurname);
-
   const handleScroll = React.useCallback(() => {
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     const scrollThreshold = 100; // Допустимая погрешность
@@ -91,7 +62,7 @@ const UnionMembers: React.FC = () => {
     };
   }, [handleScroll]);
 
-  const unionMembers = membersArraySortedBySurnameAndSliced.map((member, index) => (
+  const unionMembers = items.map((member) => (
     <li key={member._id}>
       <UnionMemberBlock {...member} />
     </li>
@@ -113,13 +84,15 @@ const UnionMembers: React.FC = () => {
           {status === 'loading' ? skeletons : unionMembers}
         </ul>
       </section>
-      <Pagination
-        onChangePage={(page) => dispatch(setCurrentPage(page))}
-        onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
-        onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+      {totalPages > 1 && (
+        <Pagination
+          onChangePage={(page) => dispatch(setCurrentPage(page))}
+          onSwitchToNextPage={() => dispatch(setCurrentPage(currentPage + 1))}
+          onSwitchToPreviousPage={() => dispatch(setCurrentPage(currentPage - 1))}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      )}
     </main>
   );
 };

@@ -10,7 +10,7 @@ const FullArticle = () => {
   const dispatch = useAppDispatch();
   const { item, status } = useSelector(selectArticleData);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { id } = useParams();
 

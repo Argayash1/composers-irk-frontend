@@ -1,8 +1,9 @@
 import React from 'react';
 import './MainMenu.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { CloseButton } from '../CloseButton';
 import { menuItems } from '../../utils/constants';
+import { useTitle } from '../../hooks/useTitle';
 
 type MainMenuProps = {
   place: string;
@@ -11,7 +12,14 @@ type MainMenuProps = {
 };
 
 export const MainMenu = ({ place, isOpen, onClose }: MainMenuProps) => {
-  const handleCloseBurgerMenu = () => {
+  const { pathname } = useLocation();
+
+  const pageTitle = menuItems.find((menuItem) => menuItem.path === pathname)?.name;
+
+  const [setTitle] = useTitle(pageTitle ? pageTitle : 'ИООО "Союз композиторов"');
+
+  const handleCloseBurgerMenu = (pageTitle?: string) => {
+    pageTitle && setTitle(pageTitle);
     if (onClose) {
       onClose();
     }
@@ -25,7 +33,7 @@ export const MainMenu = ({ place, isOpen, onClose }: MainMenuProps) => {
     >
       {place === 'burger' && <CloseButton onClick={handleCloseBurgerMenu} place='burger' />}
       {place === 'burger' && (
-        <Link to='/search' className='main-menu__search-link' onClick={handleCloseBurgerMenu}>
+        <Link to='/search' className='main-menu__search-link' onClick={() => handleCloseBurgerMenu('Поиск')}>
           <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
             <path
               d='M10 10L14 14M6.66667 11.3333C4.08934 11.3333 2 9.244 2 6.66667C2 4.08934 4.08934 2 6.66667 2C9.244 2 11.3333 4.08934 11.3333 6.66667C11.3333 9.244 9.244 11.3333 6.66667 11.3333Z'
@@ -48,7 +56,7 @@ export const MainMenu = ({ place, isOpen, onClose }: MainMenuProps) => {
                 }`
               }
               to={item.path}
-              onClick={handleCloseBurgerMenu}
+              onClick={() => handleCloseBurgerMenu(item.name)}
             >
               {item.name}
             </NavLink>

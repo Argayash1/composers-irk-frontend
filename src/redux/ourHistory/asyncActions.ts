@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IOurHistory } from './types';
+import { ourHistoryItems } from './types';
 import axios from 'axios';
-import { localApi } from '../../utils/constants';
+import { mainApi } from '../../utils/constants';
 
-export const fetchourHistory = createAsyncThunk<IOurHistory[]>('ourHistory/fetchOurHistoryStatus', async () => {
-  const { data } = await axios.get<IOurHistory[]>(`${localApi}/ourHistory`);
+export const fetchourHistory = createAsyncThunk<ourHistoryItems>('ourHistory/fetchOurHistoryStatus', async () => {
+  const { data } = await axios.get<ourHistoryItems>(`${mainApi}/ourHistory`);
   return data;
 });

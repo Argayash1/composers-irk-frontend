@@ -19,6 +19,7 @@ import FullVideo from './pages/FullVideo';
 import FullArticle from './pages/FullArticle';
 import SearchResults from './pages/SearchResults';
 import Search from './pages/Search';
+import AdminPannel from './pages/AdminPannel';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path='searchresults' element={<SearchResults />} />
         <Route path='search' element={<Search />} />
       </Route>
+      <Route path='/admin/*' element={<AdminPannel />} />
     </Routes>
   );
 }

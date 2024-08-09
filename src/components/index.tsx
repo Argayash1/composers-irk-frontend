@@ -52,6 +52,7 @@ export * from './ReportSkeleton';
 export * from './Errorblock';
 export * from './NewsList';
 export * from './NewsEdit';
+export * from './NewsCreate';
 export * from './MembersList';
 export * from './MembersEdit';
 export * from './ProjectsList';

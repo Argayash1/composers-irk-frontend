@@ -20,6 +20,7 @@ import {
   VideosEdit,
   ReportsEdit,
   OurHistoryEdit,
+  NewsCreate,
 } from '../components';
 import dataProvider from '../providers/dataProvider';
 import UserIcon from '@mui/icons-material/Group';
@@ -54,6 +55,7 @@ const AdminPannel = () => (
       options={{ label: 'Новости' }}
       icon={NewspaperIcon}
       edit={NewsEdit}
+      create={NewsCreate}
       recordRepresentation={(record) => `${record.title}`}
     />
     <Resource
@@ -118,6 +120,7 @@ const AdminPannel = () => (
       options={{ label: 'Наша история' }}
       icon={HistoryIcon}
       edit={OurHistoryEdit}
+      recordRepresentation={() => 'Текст'}
     />
   </Admin>
 );

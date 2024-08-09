@@ -11,7 +11,7 @@ export const Dashboard = () => {
     <Card>
       <Title title='Главная' />
       <CardContent>
-        <h1>Добро пожаловать в административную паннель сайта ИООО "Союз композиторов"</h1>
+        <h1>Добро пожаловать в административную панель сайта ИООО "Союз композиторов"</h1>
         <ul className='dashboard__nav-list'>
           <li>
             <Link to='/admin/news'>Новости</Link>

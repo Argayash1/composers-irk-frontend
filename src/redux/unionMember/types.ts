@@ -14,7 +14,7 @@ export type UnionMember = {
 };
 
 export type UnionMemberItems = {
-  members: UnionMember[];
+  data: UnionMember[];
   totalPages: number;
 };
 
@@ -22,6 +22,10 @@ export type UnionMembersData = {
   data: UnionMemberItems;
   screenWidth: number;
   currentPage: number;
+};
+
+export type OneUnionMemberData = {
+  data: UnionMember;
 };
 
 export enum Status {

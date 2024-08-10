@@ -22,7 +22,7 @@ const ourHistorySlice = createSlice({
     });
 
     builder.addCase(fetchourHistory.fulfilled, (state, action) => {
-      state.historyItem = action.payload[0];
+      state.historyItem = action.payload.data[0];
       state.historyStatus = Status.SUCCESS;
     });
 

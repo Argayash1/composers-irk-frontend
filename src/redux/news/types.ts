@@ -7,7 +7,7 @@ export type News = {
 };
 
 export type NewsItems = {
-  news: News[];
+  data: News[];
   totalPages: number;
 };
 
@@ -15,6 +15,10 @@ export type NewsData = {
   data: NewsItems;
   screenWidth: number;
   currentPage: number;
+};
+
+export type OneNewsData = {
+  data: News;
 };
 
 export enum Status {

@@ -9,6 +9,11 @@ export enum Status {
   ERROR = 'error',
 }
 
+export type ourHistoryItems = {
+  data: IOurHistory[];
+  totalPages: number;
+};
+
 export interface OurHistorySliceState {
   historyItem: IOurHistory;
   historyStatus: Status; //'loading' | 'success' | 'error';

@@ -22,10 +22,6 @@ const contactsData: Contact[] = [
 ];
 
 export const Contacts = () => {
-  React.useEffect(() => {
-    document.title = 'Контакты';
-  }, []);
-
   return (
     <main className='contacts'>
       <TitleContainer name={menuItems[8].name} place='contacts' />

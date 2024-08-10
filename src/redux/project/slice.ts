@@ -35,15 +35,13 @@ const projectSlice = createSlice({
       const { data, screenWidth, currentPage } = action.payload;
 
       if (screenWidth <= 1126 && currentPage > 1) {
-        const newItems = data.projects.filter(
-          (item) => !state.items.some((existingItem) => existingItem._id === item._id),
-        );
+        const newItems = data.data.filter((item) => !state.items.some((existingItem) => existingItem._id === item._id));
 
         state.items = [...state.items, ...newItems];
         state.totalPages = data.totalPages;
         state.status = Status.SUCCESS;
       } else {
-        state.items = data.projects;
+        state.items = data.data;
         state.totalPages = data.totalPages;
         state.status = Status.SUCCESS;
       }
@@ -61,7 +59,7 @@ const projectSlice = createSlice({
 
     builder.addCase(fetchProjectById.fulfilled, (state, action) => {
       state.status = Status.SUCCESS;
-      state.item = action.payload;
+      state.item = action.payload.data;
     });
 
     builder.addCase(fetchProjectById.rejected, (state) => {

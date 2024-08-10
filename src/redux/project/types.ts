@@ -12,7 +12,7 @@ export enum Status {
 }
 
 export type ProjectItems = {
-  projects: Project[];
+  data: Project[];
   totalPages: number;
 };
 
@@ -20,6 +20,10 @@ export type ProjectData = {
   data: ProjectItems;
   currentPage: number;
   screenWidth: number;
+};
+
+export type OneProjectData = {
+  data: Project;
 };
 
 export interface ProjectSliceState {

@@ -16,7 +16,7 @@ const FullUnionMemberInfo = () => {
   const [сategory, setCategory] = React.useState<number>(0);
 
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   React.useEffect(() => {
     if (id) {
@@ -28,8 +28,6 @@ const FullUnionMemberInfo = () => {
   if (status === 'loading' && scoresStatus === 'loading') {
     return <FullUnionMemberSkeleton />;
   }
-
-  console.log(scores);
 
   const unionMemberData: string[] = [item.biography, item.works];
 

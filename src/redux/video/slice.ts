@@ -36,14 +36,14 @@ const videoSlice = createSlice({
     builder.addCase(fetchVideos.fulfilled, (state, action) => {
       const { data, screenWidth, currentPage } = action.payload;
       if (screenWidth <= 638 && currentPage > 1) {
-        const newItems = data.videos.filter(
+        const newItems = data.data.filter(
           (item) => !state.videoItems.some((existingItem) => existingItem._id === item._id),
         );
         state.videoItems = [...state.videoItems, ...newItems];
         state.totalPages = data.totalPages;
         state.status = Status.SUCCESS;
       } else {
-        state.videoItems = data.videos;
+        state.videoItems = data.data;
         state.totalPages = data.totalPages;
         state.status = Status.SUCCESS;
       }
@@ -61,7 +61,7 @@ const videoSlice = createSlice({
 
     builder.addCase(fetchVideoById.fulfilled, (state, action) => {
       state.status = Status.SUCCESS;
-      state.videoItem = action.payload;
+      state.videoItem = action.payload.data;
     });
 
     builder.addCase(fetchVideoById.rejected, (state) => {

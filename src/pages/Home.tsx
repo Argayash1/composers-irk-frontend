@@ -5,40 +5,14 @@ import { useAppDispatch } from '../redux/store';
 import { selectNewsData } from '../redux/news/selectors';
 import { fetchNews } from '../redux/news/asyncActions';
 import { menuItems } from '../utils/constants';
+import { useResize } from '../hooks/useResize';
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
   const { items, status } = useSelector(selectNewsData);
 
-  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
-
-  React.useEffect(() => {
-    document.title = 'ИООО "Союз композиторов"';
-  }, []);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    let timeoutId: NodeJS.Timeout;
-
-    const delayedHandleResize = () => {
-      clearTimeout(timeoutId);
-
-      timeoutId = setTimeout(() => {
-        handleResize();
-      }, 500);
-    };
-
-    window.addEventListener('resize', delayedHandleResize);
-
-    return () => {
-      window.removeEventListener('resize', delayedHandleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
+  const { screenWidth } = useResize();
 
   React.useEffect(() => {
     const handleSetLimit = () => {

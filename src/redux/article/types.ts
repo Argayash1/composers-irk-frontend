@@ -14,7 +14,7 @@ export enum Status {
 }
 
 export type ArticleItems = {
-  articles: Article[];
+  data: Article[];
   totalPages: number;
 };
 
@@ -22,6 +22,10 @@ export type ArticleData = {
   data: ArticleItems;
   currentPage: number;
   screenWidth: number;
+};
+
+export type OneArticleData = {
+  data: Article;
 };
 
 export interface ArticleSliceState {

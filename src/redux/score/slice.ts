@@ -27,7 +27,7 @@ const scoreSlice = createSlice({
     });
 
     builder.addCase(fetchScores.fulfilled, (state, action) => {
-      state.items = action.payload;
+      state.items = action.payload.data;
       state.status = Status.SUCCESS;
     });
 

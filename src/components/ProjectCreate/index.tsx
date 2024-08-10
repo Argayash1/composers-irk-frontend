@@ -6,7 +6,7 @@ export const ProjectCreate = (props: any) => {
 
   const onSuccess = () => {
     notify(`Проект успешно создан!`);
-    redirect('list', 'news');
+    redirect('list', 'projects');
   };
 
   const onError = () => {

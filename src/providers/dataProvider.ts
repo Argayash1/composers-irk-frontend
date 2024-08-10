@@ -63,7 +63,10 @@ const dataProvider = {
       } else {
         throw new Error('Ответ сервера не содержит свойства "data"');
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error('Error in customDataProvider:', error);
+      throw error;
+    }
   },
 
   update: async (resource: string, params: any) => {

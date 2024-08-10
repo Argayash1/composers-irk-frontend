@@ -24,6 +24,11 @@ import {
   MemberCreate,
   ProjectCreate,
   ScoreCreate,
+  AudioCreate,
+  VideoCreate,
+  ReportCreate,
+  ArticleCreate,
+  OurHistoryCreate,
 } from '../components';
 import dataProvider from '../providers/dataProvider';
 import UserIcon from '@mui/icons-material/Group';
@@ -94,6 +99,7 @@ const AdminPannel = () => (
       options={{ label: 'Аудиозаписи' }}
       icon={HeadsetIcon}
       edit={AudiosEdit}
+      create={AudioCreate}
       recordRepresentation={(record) => `${record.composer} ${record.title}`}
     />
     <Resource
@@ -102,6 +108,7 @@ const AdminPannel = () => (
       options={{ label: 'Видеозаписи' }}
       icon={VideoStableIcon}
       edit={VideosEdit}
+      create={VideoCreate}
       recordRepresentation={(record) => `${record.composer} ${record.title}`}
     />
     <Resource
@@ -110,6 +117,7 @@ const AdminPannel = () => (
       options={{ label: 'Отчёты' }}
       icon={ReportIcon}
       edit={ReportsEdit}
+      create={ReportCreate}
       recordRepresentation={(record) => `${record.year}`}
     />
     <Resource
@@ -118,6 +126,7 @@ const AdminPannel = () => (
       options={{ label: 'СМИ о нас' }}
       icon={ArticleIcon}
       edit={ArticlesEdit}
+      create={ArticleCreate}
       recordRepresentation={(record) => `${record.title}`}
     />
     <Resource
@@ -126,6 +135,7 @@ const AdminPannel = () => (
       options={{ label: 'Наша история' }}
       icon={HistoryIcon}
       edit={OurHistoryEdit}
+      create={OurHistoryCreate}
       recordRepresentation={() => 'Текст'}
     />
   </Admin>

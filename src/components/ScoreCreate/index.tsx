@@ -6,7 +6,7 @@ export const ScoreCreate = (props: any) => {
 
   const onSuccess = () => {
     notify(`Ноты успешно созданы!`);
-    redirect('list', 'news');
+    redirect('list', 'scores');
   };
 
   const onError = () => {

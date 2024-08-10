@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, UrlField } from 'react-admin';
+import { List, Datagrid, TextField, UrlField, EditButton, DeleteButton, DateField } from 'react-admin';
 
 export const VideosList = () => (
   <List>
@@ -9,7 +9,9 @@ export const VideosList = () => (
       <TextField source='title' label='Название произведения' />
       <TextField source='performer' label='Исполнители' />
       <TextField source='about' label='Описание произведения' />
-      <TextField source='createdAt' label='Дата создания' />
+      <DateField source='createdAt' label='Дата создания' />
+      <EditButton label='' />
+      <DeleteButton label='' />
     </Datagrid>
   </List>
 );

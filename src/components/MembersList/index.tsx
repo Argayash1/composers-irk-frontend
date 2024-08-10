@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, ImageField } from 'react-admin';
+import { List, Datagrid, TextField, ImageField, EditButton, DeleteButton } from 'react-admin';
 
 export const MembersList = () => (
   <List>
@@ -15,6 +15,8 @@ export const MembersList = () => (
       <TextField source='awards' label='Награды' />
       <TextField source='competitions' label='Конкурсы и фестивали' />
       <TextField source='links' label='Ссылки' />
+      <EditButton label='' />
+      <DeleteButton label='' />
     </Datagrid>
   </List>
 );

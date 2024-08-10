@@ -21,6 +21,9 @@ import {
   ReportsEdit,
   OurHistoryEdit,
   NewsCreate,
+  MemberCreate,
+  ProjectCreate,
+  ScoreCreate,
 } from '../components';
 import dataProvider from '../providers/dataProvider';
 import UserIcon from '@mui/icons-material/Group';
@@ -64,6 +67,7 @@ const AdminPannel = () => (
       options={{ label: 'Состав' }}
       icon={UserIcon}
       edit={MembersEdit}
+      create={MemberCreate}
       recordRepresentation={(record) => `${record.surname} ${record.name} ${record.patronymic}`}
     />
     <Resource
@@ -72,6 +76,7 @@ const AdminPannel = () => (
       options={{ label: 'Проекты' }}
       icon={AccountTreeIcon}
       edit={ProjectsEdit}
+      create={ProjectCreate}
       recordRepresentation={(record) => `${record.title}`}
     />
     <Resource
@@ -80,6 +85,7 @@ const AdminPannel = () => (
       options={{ label: 'Ноты' }}
       icon={MusicNoteIcon}
       edit={ScoresEdit}
+      create={ScoreCreate}
       recordRepresentation={(record) => `${record.composer} ${record.title}`}
     />
     <Resource

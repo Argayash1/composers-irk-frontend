@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, UrlField } from 'react-admin';
+import { List, Datagrid, TextField, UrlField, EditButton, DeleteButton } from 'react-admin';
 
 export const AudiosList = () => (
   <List>
@@ -8,6 +8,8 @@ export const AudiosList = () => (
       <TextField source='composer' label='Композитор' />
       <TextField source='title' label='Название произведения' />
       <TextField source='performer' label='Исполнитель' />
+      <EditButton label='' />
+      <DeleteButton label='' />
     </Datagrid>
   </List>
 );

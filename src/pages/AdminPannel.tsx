@@ -43,6 +43,7 @@ import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import indigo from '@mui/material/colors/indigo';
 import amber from '@mui/material/colors/amber';
 import red from '@mui/material/colors/red';
+import authProvider from '../providers/authProvider';
 
 const lightTheme = {
   ...defaultTheme,
@@ -55,8 +56,16 @@ const lightTheme = {
 const darkTheme = { ...defaultTheme, palette: { mode: 'dark' } };
 
 const AdminPannel = () => (
-  // @ts-ignore
-  <Admin dataProvider={dataProvider} basename='/admin' dashboard={Dashboard} theme={lightTheme} darkTheme={darkTheme}>
+  <Admin
+    // @ts-ignore
+    dataProvider={dataProvider}
+    authProvider={authProvider}
+    basename='/admin'
+    dashboard={Dashboard}
+    theme={lightTheme}
+    // @ts-ignore
+    darkTheme={darkTheme}
+  >
     <Resource
       name='news'
       list={NewsList}

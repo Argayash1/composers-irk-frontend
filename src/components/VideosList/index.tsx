@@ -4,11 +4,11 @@ import { List, Datagrid, TextField, UrlField, EditButton, DeleteButton, DateFiel
 export const VideosList = () => (
   <List>
     <Datagrid rowClick='edit'>
-      <UrlField source='iframeUrl' label='Ссылка на видео в YouTube' />
       <TextField source='composer' label='Композитор' />
       <TextField source='title' label='Название произведения' />
       <TextField source='performer' label='Исполнители' />
       <TextField source='about' label='Описание произведения' />
+      <UrlField source='iframeUrl' label='Ссылка на видео в YouTube' />
       <DateField source='createdAt' label='Дата создания' />
       <EditButton label='' />
       <DeleteButton label='' />

@@ -4,10 +4,10 @@ import { List, Datagrid, TextField, UrlField, EditButton, DeleteButton } from 'r
 export const AudiosList = () => (
   <List>
     <Datagrid rowClick='edit'>
-      <UrlField source='audioUrl' label='Ссылка на аудиофайл' />
       <TextField source='composer' label='Композитор' />
       <TextField source='title' label='Название произведения' />
       <TextField source='performer' label='Исполнитель' />
+      <UrlField source='audioUrl' label='Ссылка на аудиофайл' />
       <EditButton label='' />
       <DeleteButton label='' />
     </Datagrid>

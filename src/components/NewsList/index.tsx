@@ -5,7 +5,7 @@ export const NewsList = () => (
   <List>
     <Datagrid rowClick='edit'>
       <TextField source='title' label='Заголовок' />
-      <TextField source='newsText' label='Текст новости' />
+      <TextField source='newsText' label='Текст' />
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <DateField source='createdAt' label='Дата создания' />
       <EditButton label='' />

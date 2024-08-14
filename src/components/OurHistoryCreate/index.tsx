@@ -1,4 +1,5 @@
 import { Create, SimpleForm, TextInput, required, useNotify, useRedirect } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const OurHistoryCreate = (props: any) => {
   const notify = useNotify();
@@ -15,7 +16,7 @@ export const OurHistoryCreate = (props: any) => {
 
   return (
     <Create {...props} mutationOptions={{ onSuccess, onError }} undoable={false} title='Создать нашу историю'>
-      <SimpleForm>
+      <SimpleForm toolbar={<CustomToolbar />}>
         <TextInput source='text' label='Текст' resettable validate={[required()]} multiline fullWidth />
       </SimpleForm>
     </Create>

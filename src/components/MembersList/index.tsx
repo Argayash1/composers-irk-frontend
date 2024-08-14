@@ -1,8 +1,34 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, ImageField, EditButton, DeleteButton } from 'react-admin';
+import {
+  List,
+  Datagrid,
+  TextField,
+  ImageField,
+  EditButton,
+  DeleteButton,
+  TextInput,
+  TopToolbar,
+  FilterButton,
+  CreateButton,
+} from 'react-admin';
+
+const memberFilters = [
+  <TextInput label='Фамилия' source='surname' />,
+  <TextInput label='Имя' source='name' />,
+  <TextInput label='Отчество' source='patronymic' />,
+  <TextInput label='Професссия' source='profession' />,
+];
 
 export const MembersList = () => (
-  <List>
+  <List
+    filters={memberFilters}
+    actions={
+      <TopToolbar>
+        <FilterButton />
+        <CreateButton label='Создать' />
+      </TopToolbar>
+    }
+  >
     <Datagrid rowClick='edit'>
       <TextField source='surname' label='Фамилия' />
       <TextField source='name' label='Имя' />

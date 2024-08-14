@@ -1,4 +1,5 @@
 import { Create, SimpleForm, TextInput, required, useNotify, useRedirect } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const MemberCreate = (props: any) => {
   const notify = useNotify();
@@ -15,7 +16,7 @@ export const MemberCreate = (props: any) => {
 
   return (
     <Create {...props} mutationOptions={{ onSuccess, onError }} title='Создать карточку члена Союза'>
-      <SimpleForm>
+      <SimpleForm toolbar={<CustomToolbar />}>
         <TextInput source='imageUrl' label='Ссылка на изображение' resettable validate={[required()]} fullWidth />
         <TextInput source='surname' label='Фамилия' resettable validate={[required()]} fullWidth />
         <TextInput source='name' label='Имя' resettable validate={[required()]} multiline fullWidth />

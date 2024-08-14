@@ -1,4 +1,5 @@
 import { Create, SimpleForm, TextInput, required, useNotify, useRedirect } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const ProjectCreate = (props: any) => {
   const notify = useNotify();
@@ -15,7 +16,7 @@ export const ProjectCreate = (props: any) => {
 
   return (
     <Create {...props} mutationOptions={{ onSuccess, onError }} undoable={false} title='Создать проект'>
-      <SimpleForm>
+      <SimpleForm toolbar={<CustomToolbar />}>
         <TextInput source='imageUrl' label='Ссылка на изображение' resettable validate={[required()]} fullWidth />
         <TextInput source='title' label='Название проекта' resettable validate={[required()]} fullWidth />
         <TextInput

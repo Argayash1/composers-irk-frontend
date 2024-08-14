@@ -22,9 +22,11 @@ export const Pagination = ({
 
   function handleGeneratePageNumbers(totalPages: number): number[] {
     const numbers = [];
+
     for (let i = 1; i <= totalPages; i++) {
       numbers.push(i);
     }
+
     return numbers;
   }
 
@@ -101,7 +103,7 @@ export const Pagination = ({
           </li>
         ))}
       </ul>
-      {currentPage < 7 && totalPages && totalPages > 1 && (
+      {totalPages && totalPages > 1 && currentPage < totalPages && (
         <button className='pagination__button' onClick={onSwitchToNextPage}>
           Вперёд
         </button>

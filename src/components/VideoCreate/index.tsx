@@ -1,4 +1,5 @@
 import { Create, SimpleForm, TextInput, required, useNotify, useRedirect } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const VideoCreate = (props: any) => {
   const notify = useNotify();
@@ -15,7 +16,7 @@ export const VideoCreate = (props: any) => {
 
   return (
     <Create {...props} mutationOptions={{ onSuccess, onError }} undoable={false} title='Добавить видеозапись'>
-      <SimpleForm>
+      <SimpleForm toolbar={<CustomToolbar />}>
         <TextInput source='iframeUrl' label='Ссылка на видео в YouTube' resettable validate={[required()]} fullWidth />
         <TextInput source='composer' label='Композитор' resettable validate={[required()]} fullWidth />
         <TextInput source='title' label='Название произведения' resettable validate={[required()]} fullWidth />

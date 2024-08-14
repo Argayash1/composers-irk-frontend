@@ -1,4 +1,5 @@
-import { Edit, PrevNextButtons, SimpleForm, TextInput, TopToolbar } from 'react-admin';
+import { Edit, PrevNextButtons, required, SimpleForm, TextInput, TopToolbar } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const VideosEdit = (props: any) => (
   <Edit
@@ -10,14 +11,14 @@ export const VideosEdit = (props: any) => (
       </TopToolbar>
     }
   >
-    <SimpleForm>
+    <SimpleForm toolbar={<CustomToolbar />}>
       <TextInput source='id' label='ID' disabled fullWidth />
       <TextInput source='createdAt' label='Дата создания' disabled fullWidth />
-      <TextInput source='iframeUrl' label='Ссылка на видео в YouTube' fullWidth />
-      <TextInput source='composer' label='Композитор' fullWidth />
-      <TextInput source='title' label='Название произведения' fullWidth />
-      <TextInput source='performer' label='Исполнитель' fullWidth />
-      <TextInput source='about' label='Описание произведения' fullWidth />
+      <TextInput source='composer' label='Композитор' validate={[required()]} fullWidth />
+      <TextInput source='title' label='Название произведения' validate={[required()]} fullWidth />
+      <TextInput source='iframeUrl' label='Ссылка на видео в YouTube' validate={[required()]} fullWidth />
+      <TextInput source='performer' label='Исполнители' multiline fullWidth />
+      <TextInput source='about' label='Описание произведения' multiline fullWidth />
     </SimpleForm>
   </Edit>
 );

@@ -1,4 +1,5 @@
 import { Edit, PrevNextButtons, SimpleForm, TextInput, TopToolbar } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const ArticlesEdit = (props: any) => (
   <Edit
@@ -9,7 +10,7 @@ export const ArticlesEdit = (props: any) => (
       </TopToolbar>
     }
   >
-    <SimpleForm>
+    <SimpleForm toolbar={<CustomToolbar />}>
       <TextInput source='id' label='ID' disabled fullWidth />
       <TextInput source='createdAt' label='Дата создания' disabled fullWidth />
       <TextInput source='imageUrl' label='Ссылка на изображение' fullWidth />

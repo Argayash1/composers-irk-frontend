@@ -7,7 +7,7 @@ export const fetchUnionMembers = createAsyncThunk<UnionMembersData, SearchUniomM
   'unionMember/fetchUnionMembers',
   async (params) => {
     const { currentPage, limit, screenWidth } = params;
-    const { data } = await axios.get<UnionMemberItems>(`${mainApi}/members?page=${currentPage}&limit=${limit}`);
+    const { data } = await axios.get<UnionMemberItems>(`${mainApi}/members?page=${currentPage}&limit=${limit}&sortBy=surname&order=asc`);
 
     return { data, screenWidth, currentPage };
   }

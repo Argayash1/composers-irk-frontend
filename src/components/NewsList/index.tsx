@@ -1,8 +1,34 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, ImageField, DateField, EditButton, DeleteButton } from 'react-admin';
+import {
+  List,
+  Datagrid,
+  TextField,
+  ImageField,
+  DateField,
+  EditButton,
+  DeleteButton,
+  TextInput,
+  TopToolbar,
+  CreateButton,
+  FilterButton,
+} from 'react-admin';
+
+const newsFilters = [
+  <TextInput label='Заголовок' source='title' />,
+  <TextInput label='Текст' source='newsText' />,
+  <TextInput label='Дата создания' source='createdAt' />,
+];
 
 export const NewsList = () => (
-  <List>
+  <List
+    filters={newsFilters}
+    actions={
+      <TopToolbar>
+        <FilterButton />
+        <CreateButton label='Создать' />
+      </TopToolbar>
+    }
+  >
     <Datagrid rowClick='edit'>
       <TextField source='title' label='Заголовок' />
       <TextField source='newsText' label='Текст' />

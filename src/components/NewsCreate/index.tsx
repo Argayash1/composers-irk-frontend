@@ -1,4 +1,5 @@
 import { Create, SimpleForm, TextInput, required, useNotify, useRedirect } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const NewsCreate = (props: any) => {
   const notify = useNotify();
@@ -14,8 +15,8 @@ export const NewsCreate = (props: any) => {
   };
 
   return (
-    <Create {...props} mutationOptions={{ onSuccess, onError }} undoable={false} title='Создать новость'>
-      <SimpleForm>
+    <Create {...props} mutationOptions={{ onSuccess, onError }} title='Создать новость'>
+      <SimpleForm toolbar={<CustomToolbar />}>
         <TextInput source='title' label='Заголовок' resettable validate={[required()]} fullWidth />
         <TextInput source='newsText' label='Текст новости' resettable validate={[required()]} multiline fullWidth />
         <TextInput source='imageUrl' label='Ссылка на изображение' resettable validate={[required()]} fullWidth />

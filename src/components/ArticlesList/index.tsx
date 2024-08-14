@@ -1,8 +1,35 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, ImageField, EditButton, DeleteButton, DateField } from 'react-admin';
+import {
+  List,
+  Datagrid,
+  TextField,
+  ImageField,
+  EditButton,
+  DeleteButton,
+  DateField,
+  TextInput,
+  TopToolbar,
+  FilterButton,
+  CreateButton,
+} from 'react-admin';
+
+const articleFilters = [
+  <TextInput label='Заголовок' source='title' />,
+  <TextInput label='Описание статьи' source='articleDescription' />,
+  <TextInput label='Описание статьи' source='articleText' />,
+  <TextInput label='Дата создания' source='createdAt' />,
+];
 
 export const ArticlesList = () => (
-  <List>
+  <List
+    filters={articleFilters}
+    actions={
+      <TopToolbar>
+        <FilterButton />
+        <CreateButton label='Создать' />
+      </TopToolbar>
+    }
+  >
     <Datagrid rowClick='edit'>
       <TextField source='title' label='Заголовок' />
       <TextField source='articleDescription' label='Описание статьи' />

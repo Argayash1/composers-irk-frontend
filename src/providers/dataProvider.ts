@@ -3,14 +3,17 @@ import { News } from '../redux/news/types';
 import { mainApi } from '../utils/constants';
 
 const responseErrorMessage = 'Ответ сервера не содержит данных или не содержит свойства "data"'
-const dataProviderErrorMessage = 'Ошибка в дата-провайдере:'
+export const dataProviderErrorMessage = 'Ошибка в дата-провайдере:'
 
 const dataProvider = {
   getList: async (resource: string, params: any) => {
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort
+    const filterQueries = Object.entries(params.filter).map((array) => {
+      return array.join('=')
+    }).join('&');
     const adaptedField = field === 'id' ? '_id' : field
-    const query = resource !== 'ourHistory' ? `?page=${page}&limit=${perPage <= 100 ? perPage : 10}&sortBy=${adaptedField}&order=${order.toLowerCase()}` : '';
+    const query = resource !== 'ourHistory' ? `?page=${page}&limit=${perPage <= 100 ? perPage : 10}&sortBy=${adaptedField}&order=${order.toLowerCase()}&${filterQueries}` : '';
 
     try {
       const { data: response } = await axios.get(`${mainApi}/${resource}${query}`);
@@ -35,8 +38,6 @@ const dataProvider = {
 
     try {
       const { data: response } = await axios.get(`${mainApi}/${resource}${itemId}`);
-
-      console.log(response)
 
       if (response && response.data) {
         const adaptedData =
@@ -102,6 +103,20 @@ const dataProvider = {
       const { data: response } = await axios.delete(`${mainApi}/${resource}/${params.id}`);
 
       return { data: response.data };
+    } catch (error) {
+      console.error(dataProviderErrorMessage, error);
+      throw error;
+    }
+  },
+
+  deleteMany: async (resource: string, params: any) => {
+    const adaptedResource = resource === 'news' ? resource : resource.slice(0, -1)
+    const payload = { [`${adaptedResource}Ids`]: params.ids }
+
+    try {
+      const { data: response } = await axios.delete(`${mainApi}/${resource}`, { data: payload });
+
+      return { data: [response] };
     } catch (error) {
       console.error(dataProviderErrorMessage, error);
       throw error;

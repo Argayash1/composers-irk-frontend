@@ -1,32 +1,64 @@
+import axios from 'axios';
 import { AuthProvider } from 'react-admin';
+import { dataProviderErrorMessage } from './dataProvider';
+import { localApi, mainApi } from '../utils/constants';
 
 const authProvider: AuthProvider = {
-  login: ({ username, password }) => {
-    if (username !== 'john' || password !== '123') {
-      return Promise.reject();
+  login: async ({ username, password }) => {
+    if (!password) {
+      return;
     }
-    localStorage.setItem('username', username);
-    return Promise.resolve();
+
+    try {
+      const { data } = await axios.post(`${mainApi}/signin`, { password, email: 'jankrul1901@gmail.com' })
+      if (data.message) {
+        localStorage.setItem('auth', 'true');
+      }
+
+      return data.message
+    } catch (error) {
+      console.error(dataProviderErrorMessage, error);
+      throw error;
+    }
   },
-  logout: () => {
-    localStorage.removeItem('username');
-    return Promise.resolve();
+
+  logout: async () => {
+    try {
+      const { data } = await axios.get(`${mainApi}/signout`)
+      localStorage.removeItem('auth');
+      return Promise.resolve();
+    } catch (error) {
+      console.error(dataProviderErrorMessage, error);
+      throw error;
+    }
   },
-  checkAuth: () => (localStorage.getItem('username') ? Promise.resolve() : Promise.reject()),
-  checkError: (error) => {
+
+  checkAuth: () => {
+    return localStorage.getItem('auth') ? Promise.resolve() : Promise.reject()
+  },
+
+  checkError: async (error) => {
     const status = error.status;
-    if (status === 401 || status === 403) {
-      localStorage.removeItem('username');
-      return Promise.reject();
+    try {
+      if (status === 401 || status === 403) {
+        await axios.get(`${mainApi}/signout`)
+        localStorage.removeItem('auth');
+        return Promise.reject();
+      }
+      // other error code (404, 500, etc): no need to log out
+      return Promise.resolve();
+    } catch {
+      console.error(dataProviderErrorMessage, error);
+      throw error;
     }
-    // other error code (404, 500, etc): no need to log out
-    return Promise.resolve();
   },
+
   getIdentity: () =>
     Promise.resolve({
       id: 'user',
-      fullName: 'John Doe',
+      fullName: 'Ян Круль',
     }),
+
   getPermissions: () => Promise.resolve(''),
 };
 

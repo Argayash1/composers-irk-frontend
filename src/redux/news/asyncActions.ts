@@ -5,7 +5,7 @@ import { mainApi } from '../../utils/constants';
 
 export const fetchNews = createAsyncThunk<NewsData, SearchNewsParams>('news/fetchNews', async (params) => {
   const { currentPage, limit, screenWidth } = params;
-  const { data } = await axios.get<NewsItems>(`${mainApi}/news?page=${currentPage}&limit=${limit}`);
+  const { data } = await axios.get<NewsItems>(`${mainApi}/news?page=${currentPage}&limit=${limit}&sortBy=createdAt&order=desc`);
 
   return { data, screenWidth, currentPage };
 });

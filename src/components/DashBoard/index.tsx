@@ -3,44 +3,39 @@ import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Title } from 'react-admin';
-
-import './DashBoard.scss';
+import styles from './DashBoard.module.scss';
+import { dashboardItems } from '../../utils/dashboardItems';
+import { Logo } from '../Logo';
+import { contentAdreses } from '../../utils/contentAdreses';
 
 export const Dashboard = () => {
+  const dashboardListItems = dashboardItems.map((item, index) => (
+    <li key={index}>
+      <Link to={item.path} className={styles.navLink}>
+        <item.icon style={{ width: '80px', height: '80px' }} color='action' />
+        {item.name}
+      </Link>
+    </li>
+  ));
+
+  const contentAdressesListItems = contentAdreses.map((contentAdress, index) => (
+    <li className={styles.contentListItem} key={index}>
+      <p className={styles.contentListItemTitle}>{contentAdress.title}</p>&nbsp;
+      <a href={contentAdress.url}>{contentAdress.url}</a>
+    </li>
+  ));
+
   return (
     <Card>
       <Title title='Главная' />
       <CardContent>
-        <h1>Добро пожаловать в административную панель сайта ИООО "Союз композиторов"</h1>
-        <ul className='dashboard__nav-list'>
-          <li>
-            <Link to='/admin/news'>Новости</Link>
-          </li>
-          <li>
-            <Link to='/admin/members'>Состав</Link>
-          </li>
-          <li>
-            <Link to='/admin/projects'>Проекты</Link>
-          </li>
-          <li>
-            <Link to='/admin/scores'>Ноты</Link>
-          </li>
-          <li>
-            <Link to='/admin/audios'>Aудиозаписи</Link>
-          </li>
-          <li>
-            <Link to='/admin/videos'>Видеозаписи</Link>
-          </li>
-          <li>
-            <Link to='/admin/reports'>Отчёты</Link>
-          </li>
-          <li>
-            <Link to='/admin/articles'>Статьи</Link>
-          </li>
-          <li>
-            <Link to='/admin/ourHistory'>Наша история</Link>
-          </li>
-        </ul>
+        <Logo place='admin' />
+        <h1 className={styles.title}>Добро пожаловать в административную панель сайта ИООО "Союз композиторов"!</h1>
+        <nav>
+          <ul className={styles.navList}>{dashboardListItems}</ul>
+        </nav>
+        <h2 className={styles.listTitle}>Адреса для размещения контента:</h2>
+        <ul className={styles.contentList}>{contentAdressesListItems}</ul>
       </CardContent>
     </Card>
   );

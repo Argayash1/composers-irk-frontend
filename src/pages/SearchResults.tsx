@@ -7,6 +7,7 @@ import { CombinedArrayObject } from '../redux/search/types';
 import { selectSearchData } from '../redux/search/selectors';
 import { useAppDispatch } from '../redux/store';
 import { fetchSearchResults } from '../redux/search/asyncActions';
+import { useTitle } from '../hooks/useTitle';
 
 const SearchResults: React.FC = () => {
   const { searchResults, currentPage, totalPages, searchValue, screenWidth } = useSelector(selectSearchData);
@@ -17,9 +18,7 @@ const SearchResults: React.FC = () => {
 
   const limit = screenWidth > 933 ? 6 : screenWidth <= 933 && screenWidth > 600 ? 5 : 3;
 
-  React.useEffect(() => {
-    document.title = 'Результаты поиска';
-  }, []);
+  useTitle('Результаты поиска');
 
   React.useEffect(() => {
     const handleResize = () => {

@@ -1,8 +1,16 @@
-import { Edit, SimpleForm, TextInput } from 'react-admin';
+import { Edit, PrevNextButtons, SimpleForm, TextInput, TopToolbar } from 'react-admin';
+import { CustomToolbar } from '../CustomToolbar';
 
 export const ArticlesEdit = (props: any) => (
-  <Edit {...props} undoable={false}>
-    <SimpleForm>
+  <Edit
+    {...props}
+    actions={
+      <TopToolbar>
+        <PrevNextButtons />
+      </TopToolbar>
+    }
+  >
+    <SimpleForm toolbar={<CustomToolbar />}>
       <TextInput source='id' label='ID' disabled fullWidth />
       <TextInput source='createdAt' label='Дата создания' disabled fullWidth />
       <TextInput source='imageUrl' label='Ссылка на изображение' fullWidth />

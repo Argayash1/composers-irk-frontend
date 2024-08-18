@@ -1,0 +1,48 @@
+.title {
+  max-width: 738px;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto 0;
+  display: flex;
+  gap: 20px;
+  max-width: 680px;
+  flex-wrap: wrap;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.87);
+  width: 120px;
+  height: 120px;
+}
+
+.listTitle {
+  text-align: center;
+}
+
+.contentList {
+  margin: 0 auto 0;
+  padding: 0;
+  min-width: max-content;
+  width: 680px;
+  list-style-type: circle;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentListItem {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contentListItemTitle {
+  margin: 0;
+  padding: 0;
+}

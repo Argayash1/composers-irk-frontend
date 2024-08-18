@@ -48,6 +48,11 @@
     }
   }
 
+  &_place_admin {
+    margin-inline: auto;
+    width: max-content;
+  }
+
   &__image {
     width: 31px;
     height: 38px;

@@ -79,4 +79,5 @@ export * from './OurHistoryEdit';
 export * from './OurHistoryCreate';
 export * from './NewsShow';
 export * from './DashBoard';
-export * from './CustomToolbar'
+export * from './CustomToolbar';
+export * from './LoginPage';

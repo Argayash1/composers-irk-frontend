@@ -1,18 +1,20 @@
 import axios from 'axios';
 import { AuthProvider } from 'react-admin';
 import { dataProviderErrorMessage } from './dataProvider';
-import { localApi, mainApi } from '../utils/constants';
+import { mainApi } from '../utils/constants';
 
 const authProvider: AuthProvider = {
-  login: async ({ username, password }) => {
+  login: async ({ email, password }) => {
     if (!password) {
       return;
     }
 
     try {
-      const { data } = await axios.post(`${mainApi}/signin`, { password, email: 'jankrul1901@gmail.com' })
+      const { data } = await axios.post(`${mainApi}/signin`, { password, email })
+      const authData = { fullName: data.fullName, avatar: data.avatar, id: data.id }
+
       if (data.message) {
-        localStorage.setItem('auth', 'true');
+        localStorage.setItem('auth', JSON.stringify(authData));
       }
 
       return data.message
@@ -24,7 +26,7 @@ const authProvider: AuthProvider = {
 
   logout: async () => {
     try {
-      const { data } = await axios.get(`${mainApi}/signout`)
+      await axios.get(`${mainApi}/signout`)
       localStorage.removeItem('auth');
       return Promise.resolve();
     } catch (error) {
@@ -34,30 +36,29 @@ const authProvider: AuthProvider = {
   },
 
   checkAuth: () => {
-    return localStorage.getItem('auth') ? Promise.resolve() : Promise.reject()
+    return localStorage.getItem('auth') ? Promise.resolve() : Promise.reject({ message: 'Неправильные логин или пароль' })
   },
 
-  checkError: async (error) => {
+  checkError: (error) => {
     const status = error.status;
+
+    if (status === 401 || status === 403) {
+      localStorage.removeItem('auth');
+      return Promise.reject();
+    }
+    return Promise.resolve();
+  },
+
+  getIdentity: () => {
     try {
-      if (status === 401 || status === 403) {
-        await axios.get(`${mainApi}/signout`)
-        localStorage.removeItem('auth');
-        return Promise.reject();
-      }
-      // other error code (404, 500, etc): no need to log out
-      return Promise.resolve();
-    } catch {
-      console.error(dataProviderErrorMessage, error);
-      throw error;
+      const authData = localStorage.getItem('auth');
+      const parsedAuthData = authData && JSON.parse(authData);
+
+      return Promise.resolve({ ...parsedAuthData });
+    } catch (error) {
+      return Promise.reject(error);
     }
   },
-
-  getIdentity: () =>
-    Promise.resolve({
-      id: 'user',
-      fullName: 'Ян Круль',
-    }),
 
   getPermissions: () => Promise.resolve(''),
 };

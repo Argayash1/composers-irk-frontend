@@ -16,10 +16,11 @@ export const MainMenu = ({ place, isOpen, onClose }: MainMenuProps) => {
 
   const pageTitle = menuItems.find((menuItem) => menuItem.path === pathname)?.name;
 
-  const [setTitle] = useTitle(pageTitle ? pageTitle : 'ИООО "Союз композиторов"');
+  const [setTitle] = useTitle(pageTitle ? pageTitle : 'ИООО "Союз композиторов"'); // присваиваем название страницы с помощью useLocation, т.к. иначе при рефреше название сбрасывается
 
   const handleCloseBurgerMenu = (pageTitle?: string) => {
     pageTitle && setTitle(pageTitle);
+
     if (onClose) {
       onClose();
     }

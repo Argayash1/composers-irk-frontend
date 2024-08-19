@@ -5,12 +5,12 @@ import {
   TextField,
   UrlField,
   EditButton,
-  DeleteButton,
   TextInput,
   TopToolbar,
   FilterButton,
   CreateButton,
 } from 'react-admin';
+import { BulkResetViewsButton } from '../BulkResetViewsButton';
 
 const audioFilters = [
   <TextInput label='Композитор' source='composer' />,
@@ -34,7 +34,7 @@ export const AudiosList = () => (
       <TextField source='performer' label='Исполнитель' />
       <UrlField source='audioUrl' label='Ссылка на аудиофайл' />
       <EditButton label='' />
-      <DeleteButton label='' mutationMode='pessimistic' />
+      <BulkResetViewsButton resource='audios' resourceName='аудиозапись' />
     </Datagrid>
   </List>
 );

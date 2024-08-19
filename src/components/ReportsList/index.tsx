@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, ImageField, EditButton, DeleteButton, TopToolbar, CreateButton } from 'react-admin';
+import { List, Datagrid, TextField, ImageField, EditButton, TopToolbar, CreateButton } from 'react-admin';
+import { BulkResetViewsButton } from '../BulkResetViewsButton';
 
 export const ReportsList = () => (
   <List
@@ -13,7 +14,7 @@ export const ReportsList = () => (
       <TextField source='year' label='Год' />
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <EditButton label='' />
-      <DeleteButton label='' mutationMode='pessimistic' />
+      <BulkResetViewsButton resource='reports' resourceName='отчёт' />
     </Datagrid>
   </List>
 );

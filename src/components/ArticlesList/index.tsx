@@ -5,13 +5,13 @@ import {
   TextField,
   ImageField,
   EditButton,
-  DeleteButton,
   DateField,
   TextInput,
   TopToolbar,
   FilterButton,
   CreateButton,
 } from 'react-admin';
+import { BulkResetViewsButton } from '../BulkResetViewsButton';
 
 const articleFilters = [
   <TextInput label='Заголовок' source='title' />,
@@ -37,7 +37,7 @@ export const ArticlesList = () => (
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <DateField source='createdAt' label='Дата создания' />
       <EditButton label='' />
-      <DeleteButton label='' mutationMode='pessimistic' />
+      <BulkResetViewsButton resource='articles' resourceName='статью' />
     </Datagrid>
   </List>
 );

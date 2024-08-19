@@ -81,3 +81,4 @@ export * from './NewsShow';
 export * from './DashBoard';
 export * from './CustomToolbar';
 export * from './LoginPage';
+export * from './BulkResetViewsButton';

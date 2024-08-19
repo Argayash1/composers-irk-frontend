@@ -5,12 +5,12 @@ import {
   TextField,
   ImageField,
   EditButton,
-  DeleteButton,
   TextInput,
   TopToolbar,
   FilterButton,
   CreateButton,
 } from 'react-admin';
+import { BulkResetViewsButton } from '../BulkResetViewsButton';
 
 const projectFilters = [
   <TextInput label='Заголовок' source='title' />,
@@ -32,7 +32,7 @@ export const ProjectsList = () => (
       <TextField source='description' label='Описание проекта' />
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <EditButton label='' />
-      <DeleteButton label='' mutationMode='pessimistic' />
+      <BulkResetViewsButton resource='projects' resourceName='проект' />
     </Datagrid>
   </List>
 );

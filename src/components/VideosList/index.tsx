@@ -5,13 +5,13 @@ import {
   TextField,
   UrlField,
   EditButton,
-  DeleteButton,
   DateField,
   TextInput,
   TopToolbar,
   FilterButton,
   CreateButton,
 } from 'react-admin';
+import { BulkResetViewsButton } from '../BulkResetViewsButton';
 
 const videoFilters = [
   <TextInput label='Композитор' source='composer' />,
@@ -36,7 +36,7 @@ export const VideosList = () => (
       <UrlField source='iframeUrl' label='Ссылка на видео в YouTube' />
       <DateField source='createdAt' label='Дата создания' />
       <EditButton label='' />
-      <DeleteButton label='' mutationMode='pessimistic' />
+      <BulkResetViewsButton resource='videos' resourceName='видеозапись' />
     </Datagrid>
   </List>
 );

@@ -5,12 +5,12 @@ import {
   TextField,
   ImageField,
   EditButton,
-  DeleteButton,
   TextInput,
   TopToolbar,
   FilterButton,
   CreateButton,
 } from 'react-admin';
+import { BulkResetViewsButton } from '../BulkResetViewsButton';
 
 const memberFilters = [
   <TextInput label='Фамилия' source='surname' />,
@@ -42,7 +42,7 @@ export const MembersList = () => (
       <TextField source='competitions' label='Конкурсы и фестивали' />
       <TextField source='links' label='Ссылки' />
       <EditButton label='' />
-      <DeleteButton label='' mutationMode='pessimistic' />
+      <BulkResetViewsButton resource='members' resourceName='карточку члена Союза' />
     </Datagrid>
   </List>
 );

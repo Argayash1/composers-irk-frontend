@@ -13,7 +13,7 @@ export const ReportsList = () => (
       <TextField source='year' label='Год' />
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <EditButton label='' />
-      <DeleteButton label='' />
+      <DeleteButton label='' mutationMode='pessimistic' />
     </Datagrid>
   </List>
 );

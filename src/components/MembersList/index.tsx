@@ -42,7 +42,7 @@ export const MembersList = () => (
       <TextField source='competitions' label='Конкурсы и фестивали' />
       <TextField source='links' label='Ссылки' />
       <EditButton label='' />
-      <DeleteButton label='' />
+      <DeleteButton label='' mutationMode='pessimistic' />
     </Datagrid>
   </List>
 );

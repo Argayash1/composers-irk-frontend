@@ -32,7 +32,7 @@ export const ProjectsList = () => (
       <TextField source='description' label='Описание проекта' />
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <EditButton label='' />
-      <DeleteButton label='' />
+      <DeleteButton label='' mutationMode='pessimistic' />
     </Datagrid>
   </List>
 );

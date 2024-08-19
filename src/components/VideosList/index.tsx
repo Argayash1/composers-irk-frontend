@@ -36,7 +36,7 @@ export const VideosList = () => (
       <UrlField source='iframeUrl' label='Ссылка на видео в YouTube' />
       <DateField source='createdAt' label='Дата создания' />
       <EditButton label='' />
-      <DeleteButton label='' />
+      <DeleteButton label='' mutationMode='pessimistic' />
     </Datagrid>
   </List>
 );

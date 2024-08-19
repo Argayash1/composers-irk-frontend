@@ -33,7 +33,7 @@ export const ScoresList = () => (
       <UrlField source='url' label='Ссылка на ноты' />
       <TextField source='category' label='Категория' />
       <EditButton label='' />
-      <DeleteButton label='' />
+      <DeleteButton label='' mutationMode='pessimistic' />
     </Datagrid>
   </List>
 );

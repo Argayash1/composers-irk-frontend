@@ -37,7 +37,7 @@ export const ArticlesList = () => (
       <ImageField source='imageUrl' label='Ссылка на изображение' />
       <DateField source='createdAt' label='Дата создания' />
       <EditButton label='' />
-      <DeleteButton label='' />
+      <DeleteButton label='' mutationMode='pessimistic' />
     </Datagrid>
   </List>
 );

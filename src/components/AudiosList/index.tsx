@@ -34,7 +34,7 @@ export const AudiosList = () => (
       <TextField source='performer' label='Исполнитель' />
       <UrlField source='audioUrl' label='Ссылка на аудиофайл' />
       <EditButton label='' />
-      <DeleteButton label='' />
+      <DeleteButton label='' mutationMode='pessimistic' />
     </Datagrid>
   </List>
 );
